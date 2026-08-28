@@ -128,12 +128,32 @@ export default function ServicesPage() {
               <p className="mt-4 max-w-2xl text-lede text-ink/65">{s.line}</p>
 
               <div className="mt-10 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
-                <div className="space-y-5">
-                  {s.body.map((p) => (
-                    <p key={p} className="max-w-prose leading-relaxed text-ink/70">
-                      {p}
-                    </p>
-                  ))}
+                {/* The figure lives inside the prose column rather than below
+                    the grid. Sat outside it, it left the requirements panel
+                    hanging over an empty half-row. */}
+                <div>
+                  <div className="space-y-5">
+                    {s.body.map((p) => (
+                      <p
+                        key={p}
+                        className="max-w-prose leading-relaxed text-ink/70"
+                      >
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                  {s.n === "01" ? (
+                    <Plate
+                      src="/img/hangar-1600.webp"
+                      width={1600}
+                      height={1600}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      alt="A wide-body airliner in bare primer on maintenance stands inside a hangar at night."
+                      figure="Fig. 04"
+                      caption="Screening starts with the asset, not the commercial terms."
+                      className="mt-10"
+                    />
+                  ) : null}
                 </div>
 
                 <div className="record-panel self-start">
@@ -166,18 +186,6 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              {s.n === "01" ? (
-                <Plate
-                  src="/img/hangar-1600.webp"
-                  width={1600}
-                  height={1600}
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  alt="A wide-body airliner in bare primer on maintenance stands inside a hangar at night."
-                  figure="Fig. 02"
-                  caption="Screening starts with the asset, not the commercial terms."
-                  className="mt-12 max-w-xl"
-                />
-              ) : null}
             </div>
           </section>
         ))}

@@ -158,6 +158,19 @@ export default function PeoplePage() {
                 >
                   khanhussein@fulcrumtriad.com
                 </a>
+                {/* The career record beside this column runs to eight entries,
+                    so without something here the column bottoms out early and
+                    leaves a hole the width of half the page. */}
+                <Plate
+                  src="/img/principal-1200.webp"
+                  width={1200}
+                  height={1749}
+                  sizes="(min-width: 768px) 38vw, 100vw"
+                  alt="An airliner on final approach beneath heavy overcast."
+                  figure="Fig. 08"
+                  caption="Thirty years of arrivals and departures, from the operating side."
+                  className="mt-10"
+                />
               </div>
 
               <ol className="border-t border-rule">
@@ -258,12 +271,12 @@ export default function PeoplePage() {
               from you.
             </p>
             <Plate
-              src="/img/borescope-1200.webp"
+              src="/img/structure-1200.webp"
               width={1200}
-              height={686}
+              height={974}
               sizes="(min-width: 1024px) 55vw, 100vw"
-              alt="A gloved engineer guiding a video borescope probe into an inspection port on a jet engine."
-              figure="Fig. 06"
+              alt="An airliner wing in cruise, flap track fairings and upper surface in daylight."
+              figure="Fig. 09"
               caption="This is the capability we are adding, not the one we are claiming."
               className="mt-12 max-w-2xl"
             />

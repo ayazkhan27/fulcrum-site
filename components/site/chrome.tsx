@@ -48,18 +48,24 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="border-t border-rule">
-      <div className="mx-auto max-w-5xl px-6 py-12">
-        <div className="flex flex-wrap items-start justify-between gap-8">
-          <div className="text-ink/70">
-            <Wordmark className="h-9 w-auto" />
+      <div className="mx-auto max-w-5xl px-6 py-14">
+        {/* Flex rather than a grid: the wordmark sets its own width from its
+            height, so the text simply takes the rest and the gap stays tight. */}
+        <div className="flex flex-wrap items-center gap-x-12 gap-y-8">
+          <Link href="/" aria-label="Fulcrum, home" className="block shrink-0">
+            <Wordmark className="h-20 w-auto" />
+          </Link>
+          <div className="min-w-64 flex-1">
+            <p className="text-meta leading-relaxed text-ink/65">
+              Fulcrum is a placement intermediary. We are not a lessor, we do not
+              own aircraft, and we do not take positions. We act for owners and
+              lessors under written mandate and are paid by them.
+            </p>
+            <p className="mt-5 font-mono text-meta text-ink/50">
+              New York · infobd@fulcrumtriad.com
+            </p>
           </div>
-          <p className="max-w-md text-meta leading-relaxed text-ink/65">
-            Fulcrum is a placement intermediary. We are not a lessor, we do not
-            own aircraft, and we do not take positions. We act for owners and
-            lessors under written mandate and are paid by them.
-          </p>
         </div>
-        <p className="eyebrow mt-10 text-ink/65">New York</p>
       </div>
     </footer>
   )

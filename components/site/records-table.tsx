@@ -178,7 +178,7 @@ export function RecordsTable() {
     <figure className="m-0">
       {lens ? (
         <Magnify
-          size={132}
+          size={46}
           zoom={2}
           follow={0.18}
           color={RETICLE}

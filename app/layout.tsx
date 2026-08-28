@@ -29,13 +29,13 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Fulcrum — aircraft placement, lessor side",
+  title: "Fulcrum · Aviation assets, precision in motion",
   description:
-    "A New York placement intermediary for widebody aircraft. We act for owners and lessors, screen fleets against tender requirements, and assemble technical bids.",
+    "A New York intermediary for aviation assets: aircraft, engines, ground support equipment and tooling. We act for owners and lessors, screen against tender requirements, and assemble technical bids.",
   openGraph: {
-    title: "Fulcrum — aircraft placement, lessor side",
+    title: "Fulcrum · Aviation assets, precision in motion",
     description:
-      "A New York placement intermediary for widebody aircraft. We act for owners and lessors.",
+      "A New York intermediary for aviation assets: aircraft, engines, ground support equipment and tooling. We act for owners and lessors.",
     type: "website",
   },
 }

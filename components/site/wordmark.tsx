@@ -19,17 +19,17 @@ export function Wordmark({
   return (
     <>
       <Image
-        src="/img/fulcrum-logo.png"
-        width={1784}
-        height={415}
+        src="/img/fulcrum-logo.webp"
+        width={900}
+        height={209}
         alt="Fulcrum"
         priority={priority}
         className={`${className} on-dark`}
       />
       <Image
-        src="/img/fulcrum-logo-dark.png"
-        width={1784}
-        height={415}
+        src="/img/fulcrum-logo-dark.webp"
+        width={900}
+        height={209}
         alt="Fulcrum"
         priority={priority}
         aria-hidden

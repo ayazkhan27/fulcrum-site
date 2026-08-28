@@ -1,10 +1,11 @@
 import Link from "next/link"
 
+import { BrandStinger } from "@/components/site/brand-stinger"
 import { Footer, Header } from "@/components/site/chrome"
 import { GateList } from "@/components/site/gates"
 import { Plate } from "@/components/site/plate"
 import { RecordsTable } from "@/components/site/records-table"
-import { ScoringBand, ScoringWorksheet } from "@/components/site/scoring"
+import { ScoringBand } from "@/components/site/scoring"
 
 function Section({
   id,
@@ -33,6 +34,7 @@ function Section({
 export default function Page() {
   return (
     <>
+      <BrandStinger />
       <Header />
       <main>
         {/* ---------------- 1 · Hero ---------------- */}
@@ -67,10 +69,20 @@ export default function Page() {
           </div>
         </section>
 
-        {/* --------- Indicator band: dense, no padding, real figures --------- */}
+        {/* --------- Indicator band: dense, no padding, real figures.
+             It carries the whole scoring argument now that the worked example
+             is gone, so it needs one line naming what the figures are. --------- */}
         <section aria-label="Scoring at a glance" className="border-t border-rule">
-          <div className="mx-auto max-w-5xl px-6">
-            <ScoringBand />
+          <div className="mx-auto max-w-5xl px-6 pt-14">
+            <p className="eyebrow text-ink/65">Scoring, from a published tender</p>
+            <p className="mt-4 max-w-2xl leading-relaxed text-ink/70">
+              Tenders publish how they will score you. Refusing every redelivery
+              concession on this one costs about seven points of a hundred, on an
+              award where three quarters of the score is price.
+            </p>
+            <div className="mt-10">
+              <ScoringBand />
+            </div>
           </div>
         </section>
 
@@ -132,27 +144,6 @@ export default function Page() {
             How each gate works
           </Link>
         </Section>
-
-        {/* ---- Proof of work. Full width, stacked: the plate and the panel
-             have different internal structures, so side-by-side never aligned.
-             The section now reads top to bottom as an argument. ---- */}
-        <section className="border-t border-rule py-20 sm:py-24">
-          <div className="mx-auto max-w-5xl px-6">
-            <p className="eyebrow text-ink/65">Proof of work</p>
-            <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
-              What four lines of arithmetic are worth.
-            </h2>
-            <p className="mt-8 max-w-prose text-lede text-ink/65">
-              Structured tenders publish how they will score you. Almost nobody
-              does the division. Here is a real example, worked from the
-              document, and what reading it carefully was worth to an owner.
-            </p>
-
-            <div className="mt-12">
-              <ScoringWorksheet />
-            </div>
-          </div>
-        </section>
 
         {/* ---------------- 4 · Independence ---------------- */}
         <Section eyebrow="Independence" title="One side, and how we are paid.">
@@ -224,21 +215,61 @@ export default function Page() {
           >
             Who we are, and what we disclose
           </Link>
+          <Plate
+            src="/img/bench-1600.webp"
+            width={1600}
+            height={1064}
+            sizes="(min-width: 1024px) 64rem, 100vw"
+            alt="Three airliners holding formation against an overcast sky."
+            figure="Fig. 02"
+            caption="Three disciplines, one screen: safety and compliance, data and scoring, operations."
+            className="mt-14"
+          />
         </Section>
 
         {/* ---------------- 7 · Contact ---------------- */}
         <Section id="contact" eyebrow="Contact" title="Talk to us directly.">
-          <p className="max-w-prose leading-relaxed text-ink/70">
-            If you own or manage widebody aircraft and want to know which of them
-            can clear a specific requirement, that is the conversation to start
-            with. No fee unless an aircraft is placed.
-          </p>
-          <a
-            href="mailto:infobd@fulcrumtriad.com"
-            className="mt-8 inline-block font-mono text-lede text-advisory transition-opacity hover:opacity-70"
-          >
-            infobd@fulcrumtriad.com
-          </a>
+          <div className="grid items-start gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
+            <div>
+              <p className="max-w-prose leading-relaxed text-ink/70">
+                If you own or manage widebody aircraft and want to know which of
+                them can clear a specific requirement, that is the conversation
+                to start with. No fee unless an aircraft is placed.
+              </p>
+              <dl className="mt-10 border-t border-rule">
+                {[
+                  ["General", "infobd@fulcrumtriad.com"],
+                  ["Operations", "operations@fulcrumtriad.com"],
+                  ["Khan Musharraf Hussein", "khanhussein@fulcrumtriad.com"],
+                ].map(([who, address]) => (
+                  <div
+                    key={address}
+                    className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-rule py-4"
+                  >
+                    <dt className="text-meta text-ink/60">{who}</dt>
+                    <dd>
+                      <a
+                        href={`mailto:${address}`}
+                        className="font-mono text-meta text-advisory transition-opacity hover:opacity-70"
+                      >
+                        {address}
+                      </a>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="eyebrow mt-8 text-ink/50">New York</p>
+            </div>
+            <Plate
+              src="/img/contact-1200.webp"
+              width={1200}
+              height={1280}
+              sizes="(min-width: 768px) 40vw, 100vw"
+              alt="An airliner passing overhead, seen looking up between two city towers."
+              figure="Fig. 03"
+              caption="We are in New York, and we answer our own mail."
+            />
+          </div>
         </Section>
       </main>
       <Footer />

@@ -19,15 +19,19 @@
 @theme {
   --color-ground: #15181b; /* page ground */
   --color-ink: #f0f2f1; /* text on ground */
-  --color-panel: #f0f2f1; /* record surface */
-  --color-panel-ink: #101314; /* text on record */
+  /* A panel is a lift off the ground, not a flip of it. Earlier this pair
+     inverted, which turned every table and callout into a hard white slab in
+     dark mode and a hard black one in light. Panels now sit a step above the
+     ground in the same tonal family and are defined by their hairline. */
+  --color-panel: #1b1f22; /* record surface, one step up from the ground */
+  --color-panel-ink: #f0f2f1; /* same ink as the page */
   --color-rule: #272d31; /* hairlines, borders */
-  --color-advisory: #7fb2c4; /* pass / within limits, on the ground */
-  --color-caution: #d9971f; /* at limit / eliminated, on the ground */
-  /* The panel is the inverse tone, so its accents are the inverse too.
-     Without this split, PASS/FAIL sits at 2:1 on the record surface. */
-  --color-advisory-panel: #2f6c82;
-  --color-caution-panel: #8a5c05;
+  --color-advisory: #7fb2c4; /* pass / within limits */
+  --color-caution: #d9971f; /* at limit / eliminated */
+  /* Panels are no longer inverted, so panel accents match ground accents.
+     The two names are kept so callers need not know which surface they are on. */
+  --color-advisory-panel: #7fb2c4;
+  --color-caution-panel: #d9971f;
 
   --font-display: var(--font-avenir), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-avenir), ui-sans-serif, system-ui, sans-serif;
@@ -63,13 +67,13 @@
 :root[data-theme="light"] {
   --color-ground: #f4f6f5;
   --color-ink: #101314;
-  --color-panel: #15181b;
-  --color-panel-ink: #f0f2f1;
-  --color-rule: #d3d9d6;
+  --color-panel: #ffffff;
+  --color-panel-ink: #101314;
+  --color-rule: #d8ddda;
   --color-advisory: #2f6c82;
   --color-caution: #8a5c05;
-  --color-advisory-panel: #7fb2c4;
-  --color-caution-panel: #d9971f;
+  --color-advisory-panel: #2f6c82;
+  --color-caution-panel: #8a5c05;
 }
 
 @layer base {
@@ -125,18 +129,26 @@
   }
 }
 
+/* Labels are set in the body face, letter-spaced, rather than in mono. Mono is
+   reserved for things that are actually monospaced data: serial numbers, cycle
+   counts, formulae, addresses. Using it for prose labels made every caption
+   read like a terminal and sat badly against Avenir. */
 @utility eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: var(--text-eyebrow);
-  letter-spacing: var(--text-eyebrow--letter-spacing);
+  font-weight: 600;
+  letter-spacing: 0.11em;
   line-height: var(--text-eyebrow--line-height);
   text-transform: uppercase;
 }
 
-/* The signature: a record panel, always the opposite tone to the page. */
+/* A record panel: lifted a step off the ground and held by a hairline. The
+   border does the work the tonal inversion used to do, so the panel reads as
+   a distinct surface without shouting. */
 @utility record-panel {
   background-color: var(--color-panel);
   color: var(--color-panel-ink);
+  border: 1px solid var(--color-rule);
 }
 
 /* Artwork that ships as two tonal cuts, one per ground. Used by the wordmark
@@ -152,6 +164,175 @@
 }
 :root[data-theme="light"] .on-light {
   display: block;
+}
+
+/* ---------------------------------------------------------------------------
+   Brand stinger. Three beats cut to the voice line; see brand-stinger.tsx for
+   the timings, which come off the waveform rather than being invented.
+--------------------------------------------------------------------------- */
+.stinger {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background-color: var(--color-ground);
+  opacity: 1;
+  transition: opacity 600ms ease;
+}
+.stinger--out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stinger__lockup {
+  position: relative;
+  width: min(52rem, 88vw);
+  /* No overflow clip: the glint is masked per piece now, and clipping here
+     would cut the tops off the pieces while they drop in. */
+}
+.stinger__row {
+  display: flex;
+  align-items: center;
+  gap: 3.5%;
+}
+.stinger__row > :first-child {
+  flex: 0 0 26%;
+}
+.stinger__row > :last-child {
+  flex: 1 1 auto;
+}
+
+/* Beat 1: the peaks and the wordmark fall in and seat, like driven pegs. */
+.stinger__drop {
+  display: block;
+  opacity: 0;
+  transform: translate3d(0, -55%, 0);
+}
+.stinger__drop.is-in {
+  animation: stinger-drop 620ms cubic-bezier(0.2, 1.5, 0.35, 1) forwards;
+}
+.stinger__drop--late.is-in {
+  animation-delay: 90ms;
+}
+@keyframes stinger-drop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -55%, 0);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Beat 2: the tagline slides in from the left and settles under the wordmark. */
+.stinger__tag {
+  display: block;
+  margin-top: 1.6%;
+  margin-left: auto;
+  width: 52%;
+  opacity: 0;
+  transform: translate3d(-28%, 0, 0);
+}
+.stinger__tag img {
+  width: 100%;
+  height: auto;
+}
+.stinger__tag.is-in {
+  animation: stinger-slide 700ms cubic-bezier(0.16, 0.9, 0.3, 1) forwards;
+}
+@keyframes stinger-slide {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Beat 3: a specular sweep. The glint is clipped to each piece's own alpha, so
+   it runs across the peaks and the letterforms instead of across the rectangle
+   that contains them. Both tonal cuts share an alpha channel, so one mask
+   serves either ground. */
+.stinger__piece {
+  position: relative;
+  display: block;
+}
+/* Deliberately does not set `display`: a descendant selector here would
+   out-specify `.on-light { display: none }` and render both tonal cuts
+   stacked. Preflight already gives images `display: block`. */
+.stinger__piece img {
+  width: 100%;
+  height: auto;
+}
+.stinger__glint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background-image: linear-gradient(
+    100deg,
+    transparent 42%,
+    rgb(255 255 255 / 0.9) 50%,
+    transparent 58%
+  );
+  background-repeat: no-repeat;
+  background-size: 260% 100%;
+  background-position: -130% 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+.stinger__glint.is-on {
+  animation: stinger-glint 950ms ease-out forwards;
+}
+/* Sweeps left to right. Because the gradient is wider than its box, a rising
+   background-position slides the band leftward, so the travel runs from a
+   positive offset down to a negative one. */
+@keyframes stinger-glint {
+  0% {
+    opacity: 0;
+    background-position: 130% 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-position: -130% 0;
+  }
+}
+
+.stinger__skip {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  color: color-mix(in oklab, var(--color-ink) 55%, transparent);
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  transition: color 200ms ease;
+}
+.stinger__skip:hover {
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stinger {
+    display: none;
+  }
 }
 
 @utility hairline {
