@@ -2,9 +2,9 @@ import Image from "next/image"
 
 /**
  * Fulcrum wordmark: the brushed-metal mountain mark plus lockup, supplied as
- * a finished asset (fulcrum-logo.png) rather than built from paths. It ships
- * on its own black plate, so it renders identically on both the dark and
- * light grounds instead of trying to invert.
+ * a finished asset (fulcrum-logo.png) with the black backdrop keyed out to
+ * transparency, so it sits directly on the page ground rather than its own
+ * plate.
  */
 export function Wordmark({
   className,
