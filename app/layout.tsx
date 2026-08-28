@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { IBM_Plex_Mono } from "next/font/google"
 import localFont from "next/font/local"
+import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css"
 
@@ -60,7 +61,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
