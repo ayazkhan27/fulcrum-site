@@ -15,10 +15,11 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react"
  * Kept generic on purpose so it can be reused as an ad or title card: pass
  * different `beats`, a different `audioSrc`, or set `once={false}` to replay it.
  *
- * Autoplay note: browsers block audio until the user has interacted with the
- * page, so on a cold landing the animation is expected to run silently. It is
- * built to stand on its own without sound, and unmutes on the first pointer or
- * key event if one arrives while it is still running.
+ * Autoplay note: browsers refuse to start audio until the user has interacted
+ * with the origin, so a cold landing cannot reliably carry the voice line. The
+ * gate exists to solve that rather than to decorate: the click that dismisses
+ * it is the gesture that lets `play()` succeed, which is why the Audio object
+ * is constructed and started inside the handler rather than in an effect.
  */
 
 export type StingerBeats = {
@@ -129,11 +130,14 @@ export function BrandStinger({
   audioSrc = "/fulcrum-vo.mp3",
   storageKey = "fulcrum-stinger-seen",
   once = true,
+  gate = true,
 }: {
   beats?: StingerBeats
   audioSrc?: string
   storageKey?: string
   once?: boolean
+  /** Ask before playing, so the voice line is allowed to start. */
+  gate?: boolean
 }) {
   // The server snapshot is always false, so the markup React renders on the
   // server matches the first client render and nothing hydrate-mismatches.
@@ -142,26 +146,15 @@ export function BrandStinger({
     () => shouldPlay(storageKey, once),
     () => false,
   )
-  const [done, setDone] = useState(false)
+  const [phase, setPhase] = useState<"gate" | "run" | "done">(
+    gate ? "gate" : "run",
+  )
   const [stage, setStage] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
-  const playing = armed && !done
+  const running = armed && phase === "run"
 
   useEffect(() => {
-    if (!playing) return
-
-    const audio = new Audio(audioSrc)
-    audio.preload = "auto"
-    audioRef.current = audio
-    // Rejected when the user has not interacted with the page yet. The
-    // animation is the point; the voice line is a bonus when allowed.
-    audio.play().catch(() => {})
-
-    const unmute = () => {
-      if (audio.paused) audio.play().catch(() => {})
-    }
-    window.addEventListener("pointerdown", unmute, { once: true })
-    window.addEventListener("keydown", unmute, { once: true })
+    if (!running) return
 
     const at = (s: number, fn: () => void) =>
       window.setTimeout(fn, Math.round(s * 1000))
@@ -170,24 +163,81 @@ export function BrandStinger({
       at(beats.tagline, () => setStage(2)),
       at(beats.shine, () => setStage(3)),
       at(beats.out, () => setStage(4)),
-      at(beats.out + 0.7, () => setDone(true)),
+      at(beats.out + 0.7, () => setPhase("done")),
     ]
+    return () => timers.forEach(clearTimeout)
+  }, [running, beats])
 
-    return () => {
-      timers.forEach(clearTimeout)
-      window.removeEventListener("pointerdown", unmute)
-      window.removeEventListener("keydown", unmute)
-      audio.pause()
+  // Stop the voice line if the component goes away mid-run.
+  useEffect(() => () => audioRef.current?.pause(), [])
+
+  /**
+   * Must stay synchronous: `play()` only inherits the user gesture if it is
+   * called during the click, so awaiting anything first loses the permission.
+   */
+  const enter = (withSound: boolean) => {
+    if (withSound) {
+      const audio = new Audio(audioSrc)
+      audio.preload = "auto"
+      audioRef.current = audio
+      audio.play().catch(() => {})
     }
-  }, [playing, audioSrc, beats])
+    setPhase("run")
+  }
 
   const skip = () => {
     audioRef.current?.pause()
     setStage(4)
-    setDone(true)
+    setPhase("done")
   }
 
-  if (!playing) return null
+  if (!armed || phase === "done") return null
+
+  if (phase === "gate") {
+    return (
+      <div className="stinger" role="dialog" aria-label="Introduction">
+        <div className="stinger__gate">
+          <Image
+            src="/img/intro-mark-dark.webp"
+            width={514}
+            height={297}
+            alt=""
+            priority
+            className="on-dark stinger__gatemark"
+          />
+          <Image
+            src="/img/intro-mark-light.webp"
+            width={514}
+            height={297}
+            alt=""
+            aria-hidden
+            priority
+            className="on-light stinger__gatemark"
+          />
+          <div className="stinger__actions">
+            <button
+              type="button"
+              className="stinger__btn"
+              onClick={() => enter(true)}
+              autoFocus
+            >
+              Play with sound
+            </button>
+            <button
+              type="button"
+              className="stinger__btn stinger__btn--ghost"
+              onClick={() => enter(false)}
+            >
+              Play silently
+            </button>
+          </div>
+          <button type="button" className="stinger__skip" onClick={skip}>
+            Skip intro
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
