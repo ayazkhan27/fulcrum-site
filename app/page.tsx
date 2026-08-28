@@ -51,15 +51,15 @@ export default function Page() {
               technical offer that survives them.
             </p>
             <Plate
-              src="/img/hangar-1600.webp"
+              src="/img/approach-1600.webp"
               width={1600}
-              height={1600}
+              height={1176}
               priority
-              sizes="(min-width: 1024px) 55vw, 100vw"
-              alt="A wide-body airliner in bare primer on maintenance stands inside a hangar at night."
+              sizes="(min-width: 1024px) 64rem, 100vw"
+              alt="A narrowbody airliner photographed head-on at dusk, wings and nose gear square to the camera."
               figure="Fig. 01"
               caption="An aircraft is an asset under inspection long before it is a route."
-              className="mt-14 max-w-2xl"
+              className="mt-14"
             />
             <div className="mt-16">
               <RecordsTable />

@@ -21,7 +21,7 @@ export function Header() {
           aria-label="Fulcrum, home"
           className="text-ink transition-opacity hover:opacity-70"
         >
-          <Wordmark priority className="h-12 w-auto sm:h-14" />
+          <Wordmark priority className="h-16 w-auto sm:h-[4.75rem]" />
         </Link>
         <nav aria-label="Primary">
           <ul className="flex items-center gap-5 sm:gap-6">

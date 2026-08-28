@@ -263,7 +263,7 @@ export default function PeoplePage() {
               height={686}
               sizes="(min-width: 1024px) 55vw, 100vw"
               alt="A gloved engineer guiding a video borescope probe into an inspection port on a jet engine."
-              figure="Fig. 05"
+              figure="Fig. 06"
               caption="This is the capability we are adding, not the one we are claiming."
               className="mt-12 max-w-2xl"
             />

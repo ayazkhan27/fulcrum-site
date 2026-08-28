@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 import { Footer, Header } from "@/components/site/chrome"
+import { Plate } from "@/components/site/plate"
 
 export const metadata: Metadata = {
   title: "Services | Fulcrum",
@@ -165,6 +166,18 @@ export default function ServicesPage() {
                 </div>
               </div>
 
+              {s.n === "01" ? (
+                <Plate
+                  src="/img/hangar-1600.webp"
+                  width={1600}
+                  height={1600}
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  alt="A wide-body airliner in bare primer on maintenance stands inside a hangar at night."
+                  figure="Fig. 02"
+                  caption="Screening starts with the asset, not the commercial terms."
+                  className="mt-12 max-w-xl"
+                />
+              ) : null}
             </div>
           </section>
         ))}
