@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Fulcrum design system
+
+   Governing idea: the page is an instrument; the content panels are records.
+   The signature device is the tonal inversion between the two.
+
+   In dark mode that reads as a light document on an anodised ground. In light
+   mode the same device is simply flipped: a dark instrument panel on paper.
+   The relationship is what carries the identity, not the absolute colours, so
+   both modes are the same design rather than two designs.
+
+   Accents follow EICAS convention (cyan advisory / amber caution) and are used
+   ONLY where that meaning applies. Never decoratively. Each is tuned per mode
+   so contrast holds on both grounds.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-ground: #15181b; /* page ground */
+  --color-ink: #f0f2f1; /* text on ground */
+  --color-panel: #f0f2f1; /* record surface */
+  --color-panel-ink: #101314; /* text on record */
+  --color-rule: #272d31; /* hairlines, borders */
+  --color-advisory: #7fb2c4; /* pass / within limits, on the ground */
+  --color-caution: #d9971f; /* at limit / eliminated, on the ground */
+  /* The panel is the inverse tone, so its accents are the inverse too.
+     Without this split, PASS/FAIL sits at 2:1 on the record surface. */
+  --color-advisory-panel: #2f6c82;
+  --color-caution-panel: #8a5c05;
+
+  --font-display: var(--font-avenir), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-avenir), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --radius: 0px;
+
+  /* Modular scale, 16px base, 1.25 Major Third. Nothing here goes below
+     0.8125rem / 13px: 12px is the accepted caption floor and an uppercase,
+     letter-spaced label reads smaller than its nominal size. */
+  --text-eyebrow: 0.8125rem; /* 13px */
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.14em;
+
+  --text-meta: 0.875rem; /* 14px, secondary text */
+  --text-meta--line-height: 1.6;
+
+
+  --text-display: clamp(2.5rem, 7vw, 5.25rem);
+  --text-display--line-height: 0.94;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-title: clamp(1.75rem, 3.5vw, 2.75rem);
+  --text-title--line-height: 1.05;
+  --text-title--letter-spacing: -0.015em;
+
+  --text-lede: clamp(1.125rem, 1.6vw, 1.375rem); /* 18px to 22px */
+  --text-lede--line-height: 1.55;
+}
+
+/* Light mode: the same inversion, flipped. Ground becomes paper, panels
+   become the instrument. Accents darken so they clear 4.5:1 on paper. */
+:root[data-theme="light"] {
+  --color-ground: #f4f6f5;
+  --color-ink: #101314;
+  --color-panel: #15181b;
+  --color-panel-ink: #f0f2f1;
+  --color-rule: #d3d9d6;
+  --color-advisory: #2f6c82;
+  --color-caution: #8a5c05;
+  --color-advisory-panel: #7fb2c4;
+  --color-caution-panel: #d9971f;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-rule);
+  }
+
+  html {
+    background-color: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 100%; /* respect the browser's own base size */
+    line-height: 1.5; /* WCAG 1.4.12 floor for body copy */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    color-scheme: dark;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  body {
+    min-height: 100svh;
+  }
+
+  ::selection {
+    background-color: var(--color-advisory);
+    color: var(--color-ground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-advisory);
+    outline-offset: 3px;
+  }
+
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  line-height: var(--text-eyebrow--line-height);
+  text-transform: uppercase;
+}
+
+/* The signature: a record panel, always the opposite tone to the page. */
+@utility record-panel {
+  background-color: var(--color-panel);
+  color: var(--color-panel-ink);
+}
+
+@utility hairline {
+  border-width: 0;
+  border-top-width: 1px;
+  border-style: solid;
+  border-color: var(--color-rule);
+}
