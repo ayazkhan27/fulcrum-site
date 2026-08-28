@@ -139,14 +139,18 @@
   color: var(--color-panel-ink);
 }
 
-/* Two tonal cuts of the wordmark; the ground decides which one is real. */
-.logo-on-light {
+/* Artwork that ships as two tonal cuts, one per ground. Used by the wordmark
+   and by the cutout at the top of the home page: both carry their own tones
+   rather than inheriting currentColor, so neither can be recoloured in CSS.
+   Both cuts render and the ground decides which one is real, which means the
+   correct one paints on the first frame instead of flashing the wrong one. */
+.on-light {
   display: none;
 }
-:root[data-theme="light"] .logo-on-dark {
+:root[data-theme="light"] .on-dark {
   display: none;
 }
-:root[data-theme="light"] .logo-on-light {
+:root[data-theme="light"] .on-light {
   display: block;
 }
 

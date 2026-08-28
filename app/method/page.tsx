@@ -46,7 +46,7 @@ export default function MethodPage() {
                 priority
                 sizes="(min-width: 640px) 45vw, 100vw"
                 alt="Head-on view of a high-bypass turbofan intake, fan blades and nacelle chevrons visible."
-                figure="Fig. 03"
+                figure="Fig. 02"
                 caption="Gate 01 is decided here, on the dataplate, before anything else is considered."
               />
               <Plate
@@ -55,7 +55,7 @@ export default function MethodPage() {
                 height={1200}
                 sizes="(min-width: 640px) 45vw, 100vw"
                 alt="A wide-body main landing gear bogie seen from below, brake stacks and torque links visible."
-                figure="Fig. 04"
+                figure="Fig. 03"
                 caption="Gate 03: an overhaul falling inside the protected window ends a candidacy quietly."
               />
             </div>
@@ -98,7 +98,7 @@ export default function MethodPage() {
               height={1156}
               sizes="(min-width: 1024px) 60vw, 100vw"
               alt="A drafting plate showing an airfoil cross-section with station markings and dimensions."
-              figure="Fig. 05"
+              figure="Fig. 04"
               caption="Screening is drafting work. The answer is in the numbers or it is not an answer."
               className="mt-12 max-w-3xl"
             />

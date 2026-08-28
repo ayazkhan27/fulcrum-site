@@ -24,7 +24,7 @@ export function Wordmark({
         height={415}
         alt="Fulcrum"
         priority={priority}
-        className={`${className} logo-on-dark`}
+        className={`${className} on-dark`}
       />
       <Image
         src="/img/fulcrum-logo-dark.png"
@@ -33,7 +33,7 @@ export function Wordmark({
         alt="Fulcrum"
         priority={priority}
         aria-hidden
-        className={`${className} logo-on-light`}
+        className={`${className} on-light`}
       />
     </>
   )

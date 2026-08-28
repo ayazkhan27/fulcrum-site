@@ -38,32 +38,29 @@ export default function Page() {
         {/* ---------------- 1 · Hero ---------------- */}
         <section className="py-20 sm:py-28">
           <div className="mx-auto max-w-5xl px-6">
-            <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
-              <div>
             <p className="eyebrow text-advisory">
               New York · Widebody aircraft placement
             </p>
-            <h1 className="mt-7 font-display text-display font-extrabold text-ink">
+            <h1 className="mt-7 max-w-4xl font-display text-display font-extrabold text-ink">
               Most of the fleet is already ineligible.
             </h1>
-            <p className="mt-8 text-lede text-ink/65">
+            <p className="mt-8 max-w-2xl text-lede text-ink/65">
               Fulcrum is a placement intermediary for widebody aircraft. We act
               for owners and lessors, screening fleets against a
               requirement&rsquo;s binding constraints, then assembling the
               technical offer that survives them.
             </p>
-              </div>
-              <Plate
-                src="/img/hangar-1600.webp"
-                width={1600}
-                height={1600}
-                priority
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                alt="A wide-body airliner in bare primer on maintenance stands inside a hangar at night."
-                figure="Fig. 01"
-                caption="An aircraft is an asset under inspection long before it is a route."
-              />
-            </div>
+            <Plate
+              src="/img/hangar-1600.webp"
+              width={1600}
+              height={1600}
+              priority
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              alt="A wide-body airliner in bare primer on maintenance stands inside a hangar at night."
+              figure="Fig. 01"
+              caption="An aircraft is an asset under inspection long before it is a route."
+              className="mt-14 max-w-2xl"
+            />
             <div className="mt-16">
               <RecordsTable />
             </div>

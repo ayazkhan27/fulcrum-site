@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 import { Footer, Header } from "@/components/site/chrome"
-import { Plate } from "@/components/site/plate"
 
 export const metadata: Metadata = {
   title: "Services | Fulcrum",
@@ -116,7 +115,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {SERVICES.map((s, i) => (
+        {SERVICES.map((s) => (
           <section key={s.n} className="border-t border-rule py-16 sm:py-20">
             <div className="mx-auto max-w-5xl px-6">
               <div className="flex items-baseline gap-4">
@@ -166,18 +165,6 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              {i === 0 ? (
-                <Plate
-                  src="/img/engine-1200.webp"
-                  width={1200}
-                  height={1200}
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  alt="Head-on view of a high-bypass turbofan intake, fan blades and nacelle chevrons visible."
-                  figure="Fig. 07"
-                  caption="The first gate is decided here, and it costs nothing to check. Everything expensive comes after."
-                  className="mt-12 max-w-xl"
-                />
-              ) : null}
             </div>
           </section>
         ))}
