@@ -1,11 +1,13 @@
 import Image from "next/image"
 
 /**
- * Fulcrum wordmark: the brushed-metal mountain mark plus lockup, supplied as
- * a finished asset (fulcrum-logo.png) with the black backdrop keyed out to
- * transparency. `bg-logo-plate` is transparent on the dark ground, where the
- * mark already reads on its own, and becomes the original dark backing on
- * the light ground, where a silver mark on paper would otherwise vanish.
+ * Fulcrum wordmark, in two tonal cuts of the same artwork: the brushed-metal
+ * original for the graphite ground, and an inverted cut for paper. Both ship
+ * with the black backdrop keyed out.
+ *
+ * Both are rendered and one is hidden by CSS rather than swapped in JS, so the
+ * correct cut is painted on the first frame instead of flashing the wrong one
+ * while a script decides.
  */
 export function Wordmark({
   className,
@@ -15,15 +17,24 @@ export function Wordmark({
   priority?: boolean
 }) {
   return (
-    <span className="inline-block bg-logo-plate">
+    <>
       <Image
         src="/img/fulcrum-logo.png"
         width={1784}
         height={415}
         alt="Fulcrum"
         priority={priority}
-        className={className}
+        className={`${className} logo-on-dark`}
       />
-    </span>
+      <Image
+        src="/img/fulcrum-logo-dark.png"
+        width={1784}
+        height={415}
+        alt="Fulcrum"
+        priority={priority}
+        aria-hidden
+        className={`${className} logo-on-light`}
+      />
+    </>
   )
 }

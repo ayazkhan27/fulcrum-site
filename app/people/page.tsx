@@ -131,7 +131,7 @@ export default function PeoplePage() {
         </section>
 
         {/* ---------------- Profile ---------------- */}
-        <section className="border-t border-rule py-20 sm:py-28">
+        <section className="border-t border-rule py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
             <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
               <div>
@@ -178,7 +178,7 @@ export default function PeoplePage() {
         </section>
 
         {/* ---------------- Team ---------------- */}
-        <section className="border-t border-rule py-20 sm:py-28">
+        <section className="border-t border-rule py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
             <p className="eyebrow text-ink/65">The team</p>
             <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
@@ -201,7 +201,7 @@ export default function PeoplePage() {
         </section>
 
         {/* ---------------- Disclosure ---------------- */}
-        <section className="border-t border-rule py-20 sm:py-28">
+        <section className="border-t border-rule py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
             <p className="eyebrow text-caution-panel">Disclosure</p>
             <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
@@ -244,7 +244,7 @@ export default function PeoplePage() {
           </div>
         </section>
 
-        <section className="border-t border-rule py-20 sm:py-28">
+        <section className="border-t border-rule py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
             <p className="eyebrow text-ink/65">Building the bench</p>
             <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">

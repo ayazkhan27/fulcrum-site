@@ -29,12 +29,6 @@
   --color-advisory-panel: #2f6c82;
   --color-caution-panel: #8a5c05;
 
-  /* The logo art is a light mark on transparency, cut from a black lockup.
-     It reads fine straight on the dark ground, so this stays transparent
-     there; the light ground needs its own dark backing back, or the silver
-     mark disappears into the paper. */
-  --color-logo-plate: transparent;
-
   --font-display: var(--font-avenir), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-avenir), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
@@ -76,7 +70,6 @@
   --color-caution: #8a5c05;
   --color-advisory-panel: #7fb2c4;
   --color-caution-panel: #d9971f;
-  --color-logo-plate: #15181b;
 }
 
 @layer base {
@@ -144,6 +137,17 @@
 @utility record-panel {
   background-color: var(--color-panel);
   color: var(--color-panel-ink);
+}
+
+/* Two tonal cuts of the wordmark; the ground decides which one is real. */
+.logo-on-light {
+  display: none;
+}
+:root[data-theme="light"] .logo-on-dark {
+  display: none;
+}
+:root[data-theme="light"] .logo-on-light {
+  display: block;
 }
 
 @utility hairline {

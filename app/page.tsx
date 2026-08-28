@@ -18,7 +18,7 @@ function Section({
   children: React.ReactNode
 }) {
   return (
-    <section id={id} className="border-t border-rule py-20 sm:py-28">
+    <section id={id} className="border-t border-rule py-20 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <p className="eyebrow text-ink/65">{eyebrow}</p>
         <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
@@ -79,44 +79,44 @@ export default function Page() {
 
         {/* ---------------- 2 · What we do ---------------- */}
         <Section eyebrow="What we do" title="We work one side of the table.">
-          <div className="grid gap-10 md:grid-cols-[1.15fr_1fr] md:gap-16">
-            <p className="max-w-prose leading-relaxed text-ink/70">
-              An owner or lessor appoints us under written mandate. We screen the
-              fleet against a specific requirement, say which aircraft can
-              actually clear it, and build the technical submission. They bid in
-              their own name and keep the relationship. We never sit on both
-              sides of the same transaction.
-            </p>
-            <ul className="self-start border-t border-rule">
-              {[
-                [
-                  "Screening",
-                  "Which aircraft can clear the requirement, by serial number.",
-                ],
-                [
-                  "Scoring",
-                  "Where the points actually sit, and what can safely be conceded.",
-                ],
-                [
-                  "Bid assembly",
-                  "The technical package, to the standard the tender demands.",
-                ],
-                [
-                  "Submission",
-                  "Deadlines, formats, and the clocks that void an offer.",
-                ],
-              ].map(([name, note]) => (
-                <li key={name} className="border-b border-rule py-4">
-                  <p className="font-display text-[0.9375rem] font-bold text-ink">
-                    {name}
-                  </p>
-                  <p className="mt-1 text-meta leading-relaxed text-ink/60">
-                    {note}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="max-w-2xl leading-relaxed text-ink/70">
+            An owner or lessor appoints us under written mandate. We screen the
+            fleet against a specific requirement, say which aircraft can
+            actually clear it, and build the technical submission. They bid in
+            their own name and keep the relationship. We never sit on both sides
+            of the same transaction.
+          </p>
+          {/* Four equal parts of one engagement, so they read as a set rather
+              than a ranked list running down one side of the page. */}
+          <ul className="mt-12 grid gap-x-12 border-t border-rule sm:grid-cols-2">
+            {[
+              [
+                "Screening",
+                "Which aircraft can clear the requirement, by serial number.",
+              ],
+              [
+                "Scoring",
+                "Where the points actually sit, and what can safely be conceded.",
+              ],
+              [
+                "Bid assembly",
+                "The technical package, to the standard the tender demands.",
+              ],
+              [
+                "Submission",
+                "Deadlines, formats, and the clocks that void an offer.",
+              ],
+            ].map(([name, note]) => (
+              <li key={name} className="border-b border-rule py-5">
+                <p className="font-display text-[0.9375rem] font-bold text-ink">
+                  {name}
+                </p>
+                <p className="mt-1 text-meta leading-relaxed text-ink/60">
+                  {note}
+                </p>
+              </li>
+            ))}
+          </ul>
         </Section>
 
         {/* ---------------- 3 · The screen ---------------- */}
@@ -139,7 +139,7 @@ export default function Page() {
         {/* ---- Proof of work. Full width, stacked: the plate and the panel
              have different internal structures, so side-by-side never aligned.
              The section now reads top to bottom as an argument. ---- */}
-        <section className="border-t border-rule py-20 sm:py-28">
+        <section className="border-t border-rule py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
             <p className="eyebrow text-ink/65">Proof of work</p>
             <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
@@ -151,18 +151,7 @@ export default function Page() {
               document, and what reading it carefully was worth to an owner.
             </p>
 
-            <Plate
-              src="/img/records-1600.webp"
-              width={1600}
-              height={914}
-              sizes="(min-width: 1024px) 60vw, 100vw"
-              alt="An open technical records binder under a desk lamp, shelves of archive files behind it."
-              figure="Fig. 02"
-              caption="A tender is a record like any other. Everything below was printed in one, available to every bidder who asked for it."
-              className="mt-12 max-w-3xl"
-            />
-
-            <div className="mt-14">
+            <div className="mt-12">
               <ScoringWorksheet />
             </div>
           </div>
@@ -219,7 +208,7 @@ export default function Page() {
 
         {/* ---------------- 6 · People ---------------- */}
         <Section eyebrow="People" title="The firm is new. The people are not.">
-          <div className="grid gap-10 md:grid-cols-[1.15fr_1fr] md:gap-16">
+          <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
             <p className="max-w-prose leading-relaxed text-ink/70">
               Fulcrum has no corporate track record and will not manufacture
               one. What it has is thirty years spent inside a national flag

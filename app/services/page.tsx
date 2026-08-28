@@ -183,7 +183,7 @@ export default function ServicesPage() {
         ))}
 
         {/* ---------------- Boundaries ---------------- */}
-        <section className="border-t border-rule py-20 sm:py-28">
+        <section className="border-t border-rule py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
             <p className="eyebrow text-caution">Boundaries</p>
             <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
@@ -208,7 +208,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ---------------- Fee ---------------- */}
-        <section className="border-t border-rule py-20 sm:py-28">
+        <section className="border-t border-rule py-20 sm:py-24">
           <div className="mx-auto max-w-5xl px-6">
             <p className="eyebrow text-ink/65">Fee</p>
             <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
