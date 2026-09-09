@@ -1,0 +1,573 @@
+{
+  "date": "2026-09-09T21:34:16.016Z",
+  "results": [
+    {
+      "route": "/",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 11,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/aviation",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/energy",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/services",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/consulting",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/brokerage",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/people",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/contact",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/aviation/aircraft-engine-transactions",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/textiles",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 5,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/commodities",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/industrial",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/healthcare",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/defense",
+      "width": 1280,
+      "status": 200,
+      "scrollWidth": 1280,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "navigation": {
+        "width": 1280,
+        "navVisible": true,
+        "links": 11,
+        "bounds": {
+          "x": 914,
+          "y": 201.8125,
+          "width": 310,
+          "height": 558.640625
+        },
+        "escapeCloses": true
+      }
+    },
+    {
+      "form": {
+        "width": 1280,
+        "draft": "mailto:infobd@fulcrumtriad.com?subject=Fulcrum%20enquiry%2C%20Medical%20equipment&body=Name%3A%20Audit%20Test%0AOrganization%3A%20Audit%0AEmail%3A%20audit%40example.com%0AArea%3A%20Medical%20equipment%0A%0ARead-only%20form%20audit.",
+        "notice": "Your enquiry is ready. Nothing has been sent yet.\n\nOpen email draft"
+      }
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 11,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/aviation",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/energy",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/services",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/consulting",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/brokerage",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/people",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/contact",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/aviation/aircraft-engine-transactions",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/textiles",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 5,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/commodities",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/industrial",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/healthcare",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/defense",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "navigation": {
+        "width": 390,
+        "navVisible": true,
+        "links": 11,
+        "bounds": {
+          "x": 24,
+          "y": 182.375,
+          "width": 342,
+          "height": 602.296875
+        },
+        "escapeCloses": true
+      }
+    },
+    {
+      "form": {
+        "width": 390,
+        "draft": "mailto:infobd@fulcrumtriad.com?subject=Fulcrum%20enquiry%2C%20Medical%20equipment&body=Name%3A%20Audit%20Test%0AOrganization%3A%20Audit%0AEmail%3A%20audit%40example.com%0AArea%3A%20Medical%20equipment%0A%0ARead-only%20form%20audit.",
+        "notice": "Your enquiry is ready. Nothing has been sent yet.\n\nOpen email draft"
+      }
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 11,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/aviation",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/energy",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/services",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/consulting",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/brokerage",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/people",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/contact",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/aviation/aircraft-engine-transactions",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/textiles",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 5,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/commodities",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/industrial",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/healthcare",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 2,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "route": "/sectors/defense",
+      "width": 375,
+      "status": 200,
+      "scrollWidth": 375,
+      "imageCount": 3,
+      "badImages": [],
+      "foreignImages": [],
+      "fonts": [],
+      "brokenAnchors": [],
+      "overflow": []
+    },
+    {
+      "navigation": {
+        "width": 375,
+        "navVisible": true,
+        "links": 11,
+        "bounds": {
+          "x": 24,
+          "y": 179.546875,
+          "width": 327,
+          "height": 602.296875
+        },
+        "escapeCloses": true
+      }
+    },
+    {
+      "form": {
+        "width": 375,
+        "draft": "mailto:infobd@fulcrumtriad.com?subject=Fulcrum%20enquiry%2C%20Medical%20equipment&body=Name%3A%20Audit%20Test%0AOrganization%3A%20Audit%0AEmail%3A%20audit%40example.com%0AArea%3A%20Medical%20equipment%0A%0ARead-only%20form%20audit.",
+        "notice": "Your enquiry is ready. Nothing has been sent yet.\n\nOpen email draft"
+      }
+    }
+  ],
+  "failures": []
+}

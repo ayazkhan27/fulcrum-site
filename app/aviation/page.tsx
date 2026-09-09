@@ -6,14 +6,14 @@ import {
 export const metadata: Metadata = {
   title: "Aviation | Fulcrum",
   description:
-    "Global consulting and brokerage across aircraft, engines, maintenance and the equipment that keeps operations moving. For airlines, airports, their subsidiaries and civil and military clients.",
+    "Aircraft, engine and spare-parts sourcing, MRO partnerships and airport equipment representation for Bangladesh and international markets.",
   alternates: { canonical: "/aviation" },
 }
 const content: CapabilityContent = {
   label: "Aviation",
   title: "From terminal to tarmac.",
   intro:
-    "Advisory, sourcing and brokerage across aircraft, engines, maintenance and the systems behind aviation. For airlines, airports, their subsidiaries, and civil and defense-sector requirements.",
+    "Connecting airlines and airports with aircraft, engines, parts and the partners that keep operations moving. We coordinate sourcing, supplier representation and transactions for Bangladesh and international markets.",
   heading: "Expertise across assets, infrastructure and operations.",
   items: [
     [
@@ -22,23 +22,23 @@ const content: CapabilityContent = {
     ],
     [
       "Engines",
-      "Sourcing and placement, records review coordination, commercial support and shop-visit planning.",
+      "Engine sourcing and placement, overhaul-provider introductions and shop-visit coordination. Configuration, records and maintenance requirements are reviewed with qualified specialists.",
     ],
     [
       "Maintenance & MRO",
-      "Provider identification, maintenance planning, technical workscoping and coordination with qualified specialists.",
+      "MRO partnership development, repair-provider sourcing and coordination of aircraft checks and engine overhauls, from the initial work scope to agreed milestones.",
     ],
     [
       "Ground support & airport systems",
-      "Ground-support equipment, vehicles, tooling, airport systems and operational infrastructure requirements.",
+      "Sourcing and manufacturer introductions for ground-support equipment, generators, apron buses, passenger boarding bridges and radar systems. We align specifications, proposals and delivery requirements.",
     ],
     [
-      "Airline subsidiaries",
-      "Flight catering, cargo, ground handling, training, security and the businesses behind the passenger experience.",
+      "Parts, bearings & support infrastructure",
+      "Spare parts, components, bearings and tooling, alongside warehouse and repair-facility requirements. We connect purchasing teams with relevant suppliers and coordinate supporting documentation.",
     ],
     [
-      "Parts & manufacturer representation",
-      "Parts, components, tooling and consumables. Potential manufacturer or supplier representation is subject to a specific agreed mandate.",
+      "Manufacturer & supplier representation",
+      "A commercial bridge between international suppliers and airline or airport buyers in Bangladesh. Market engagement, proposal coordination and transaction follow-through are defined for each mandate.",
     ],
   ],
   noteTitle: "The whole operation comes into view.",

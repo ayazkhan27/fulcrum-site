@@ -6,27 +6,27 @@ import {
 export const metadata: Metadata = {
   title: "Energy | Fulcrum",
   description:
-    "Independent consulting and brokerage for petroleum products and liquefied natural gas (LNG), serving buyers, sellers and project partners, including clients outside aviation.",
+    "Petroleum products, fossil fuels and LNG sourcing, supplier representation and transaction coordination for Bangladesh and international markets.",
   alternates: { canonical: "/energy" },
 }
 const content: CapabilityContent = {
   label: "Energy",
   title: "A clearer path through energy markets.",
   intro:
-    "Independent advisory and transaction intermediation for petroleum products and liquefied natural gas (LNG). A distinct energy practice for commercial, government and infrastructure-related requirements, including those outside aviation.",
+    "Connecting energy requirements with producers, suppliers and commercial partners. We support petroleum products, fossil fuels and LNG assignments for commercial buyers, public-sector procurement and infrastructure projects in Bangladesh and international markets.",
   heading: "Commercial clarity across the energy value chain.",
   items: [
     [
       "Petroleum products",
-      "Requirement definition, buyer or supplier identification, counterparty introductions and commercial coordination.",
+      "Sourcing and commercial coordination for petroleum products and fossil oils. Product specification, quantity, origin and delivery requirements shape the supplier search.",
     ],
     [
       "Liquefied natural gas",
       "Opportunity assessment, participant introductions and transaction support for defined LNG requirements.",
     ],
     [
-      "Supplier & buyer introductions",
-      "Identification and introductions against an agreed brief, with counterparty review and specialist checks scoped to the proposed transaction.",
+      "Producer & supplier representation",
+      "Market engagement and buyer introductions for producers and suppliers, with the represented party, negotiating authority and commission arrangements agreed for each assignment.",
     ],
     [
       "Negotiation & documentation support",
@@ -37,8 +37,8 @@ const content: CapabilityContent = {
       "Coordination around storage, transport, delivery terms and the specialist partners required to move a transaction forward.",
     ],
     [
-      "Commercial & infrastructure advisory",
-      "Opportunity assessment, market-entry questions and coordination with potential storage, transport and infrastructure partners, subject to scope and specialist review.",
+      "Public-sector & infrastructure requirements",
+      "Requirement review, tender-document coordination and supplier engagement for energy procurement and supporting infrastructure. We track questions, submissions and commercial milestones with the parties.",
     ],
   ],
   noteTitle: "A clear role. A defined requirement.",

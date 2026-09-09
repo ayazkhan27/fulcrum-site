@@ -1,13 +1,12 @@
 import Link from "next/link"
-import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { Header, Footer } from "@/components/site/chrome"
 import { AviationExplorer } from "@/components/site/aviation-explorer"
-import { SignatureArtwork } from "@/components/site/signature-artwork"
-import {
-  TechnicalArtwork,
-  CapabilityIcon,
-} from "@/components/site/technical-artwork"
+import { CapabilityIcon } from "@/components/site/technical-artwork"
+import { AssetVisual } from "@/components/site/asset-visual"
+import { sectors } from "@/lib/sectors"
+import type { AssetKey } from "@/lib/asset-library"
+import { suppliedAssets } from "@/lib/asset-library"
 export type CapabilityContent = {
   label: string
   title: string
@@ -21,12 +20,25 @@ export type CapabilityContent = {
 }
 export function CapabilityPage({ content }: { content: CapabilityContent }) {
   const sector = content.label === "Aviation" || content.label === "Energy"
+  const match = sectors.find((s) => s.name === content.label)
+  const heroAsset: AssetKey =
+    match?.asset ??
+    (
+      {
+        Aviation: "terminal",
+        Energy: "petroleum",
+        Capabilities: "terminal",
+        Consulting: "fabric",
+        Brokerage: "paperPlane",
+      } as Record<string, AssetKey>
+    )[content.label] ??
+    "terminal"
   return (
     <>
       <Header />
       <main id="main">
         <section
-          className={`detail-hero${sector ? ` vertical-hero vertical-hero-${content.label.toLowerCase()}` : ""}`}
+          className={["detail-hero", sector ? `vertical-hero vertical-hero-${content.label.toLowerCase()}` : ""].join(" ")}
         >
           <div className="shell detail-hero-grid">
             <div>
@@ -38,34 +50,27 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             </div>
-            {sector ? (
-              <figure className="sector-hero-photo" data-reactive>
-                <Image
-                  src={
-                    content.label === "Aviation"
-                      ? "/aviation-aerial.png"
-                      : "/energy-terminal.png"
-                  }
-                  alt={
-                    content.label === "Aviation"
-                      ? "Illustrative bird’s-eye view of an aircraft at an airport"
-                      : "Illustrative aerial view of LNG storage and a coastal loading terminal"
-                  }
-                  fill
-                  sizes="(max-width: 800px) 100vw, 50vw"
-                  preload
-                />
-                <figcaption>
-                  {content.label === "Aviation"
-                    ? "Assets. Infrastructure. Operations."
-                    : "Products. Counterparties. Coordination."}{" "}
-                  / Illustrative imagery
-                </figcaption>
-              </figure>
-            ) : content.label === "Capabilities" ? (
-              <SignatureArtwork kind={content.label} />
+            {content.label === "Medical equipment" ? (
+              <div className="medical-hero">
+                <span aria-hidden="true">M+</span>
+                <p>Equipment. Specifications. Coordination.</p>
+              </div>
+            ) : suppliedAssets[heroAsset].treatment === "object" ? (
+              <div className="hero-object-panel">
+                <AssetVisual asset={heroAsset} className="detail-asset" priority />
+                <div className="hero-object-scope">
+                  <p className="eyebrow">In focus</p>
+                  <ul>{content.items.slice(0, 3).map(([name]) => <li key={name}>{name}</li>)}</ul>
+                  <span>Illustrative imagery</span>
+                </div>
+              </div>
             ) : (
-              <TechnicalArtwork kind={content.label} />
+              <AssetVisual
+                asset={heroAsset}
+                className="detail-asset"
+                priority
+                caption="Illustrative imagery"
+              />
             )}
           </div>
         </section>
@@ -89,6 +94,25 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
           </div>
         )}
         {content.label === "Aviation" && <AviationExplorer />}
+        {content.label === "Capabilities" && (
+          <section
+            className="shell service-directory"
+            aria-label="Explore sectors"
+          >
+            {sectors.map((s) => (
+              <Link key={s.slug} href={s.href}>
+                {s.name}
+                <ArrowUpRight size={16} />
+              </Link>
+            ))}
+          </section>
+        )}
+        {content.label === "Textiles & mill supply" && (
+          <div className="shell textile-materials">
+            <AssetVisual asset="cotton" caption="Cotton & raw materials" />
+            <AssetVisual asset="fibre" caption="Fibres & mill inputs" />
+          </div>
+        )}
         <section className="section shell" id="execution">
           <div className="detail-heading">
             <p className="eyebrow">Our capabilities</p>

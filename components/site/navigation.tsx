@@ -6,6 +6,11 @@ import { ArrowUpRight, Menu, X } from "lucide-react"
 const links = [
   ["/aviation", "Aviation"],
   ["/energy", "Energy"],
+  ["/sectors/textiles", "Textiles & mill supply"],
+  ["/sectors/commodities", "Edible oils & commodities"],
+  ["/sectors/industrial", "Industrial equipment"],
+  ["/sectors/healthcare", "Medical equipment"],
+  ["/sectors/defense", "Government & defense"],
   ["/consulting", "Consulting"],
   ["/brokerage", "Brokerage"],
   ["/people", "People"],

@@ -6,19 +6,19 @@ import {
 export const metadata: Metadata = {
   title: "Brokerage | Fulcrum",
   description:
-    "Independent intermediary support across aviation assets, maintenance, equipment, petroleum products and LNG. A clear mandate connects the requirement to the right commercial opportunity.",
+    "A commercial bridge between buyers and international manufacturers, suppliers and service providers. We coordinate opportunities across aviation, energy, textiles, commodities and equipment, with a focus on Bangladesh and cross-border requirements.",
   alternates: { canonical: "/brokerage" },
 }
 const content: CapabilityContent = {
   label: "Brokerage",
   title: "The right connections. A purposeful process.",
   intro:
-    "Independent intermediary support across aviation assets, maintenance, equipment, petroleum products and LNG. A clear mandate connects the requirement to the right commercial opportunity.",
+    "A commercial bridge between buyers and international manufacturers, suppliers and service providers. We coordinate opportunities across aviation, energy, textiles, commodities and equipment, with a focus on Bangladesh and cross-border requirements.",
   heading: "A structured path from requirement to execution.",
   items: [
     [
       "Define",
-      "Agree the requirement, scope, representation, timeline and commercial terms in a written mandate.",
+      "Agree the requirement, represented party, authority, timeline and fees or commissions in a written mandate.",
     ],
     [
       "Identify",
@@ -34,7 +34,7 @@ const content: CapabilityContent = {
     ],
     [
       "Advance",
-      "Support the parties and their professional advisers through documentation, milestones and completion.",
+      "Track submissions, open questions, delivery interfaces and agreed milestones with the parties and their advisers through completion.",
     ],
   ],
   noteTitle: "Independent. Accountable. Aligned.",

@@ -18,11 +18,11 @@ const content: CapabilityContent = {
   items: [
     [
       "Strategy & market development",
-      "Opportunity assessment, market entry, partnerships and commercial planning across aviation and energy.",
+      "Opportunity assessment, Bangladesh market entry, supplier partnerships and commercial planning across aviation, energy, textiles and equipment procurement.",
     ],
     [
       "Operations",
-      "Process review, capability planning and practical support for airlines, airports and operating subsidiaries.",
+      "Requirement mapping, supplier interfaces and practical coordination for operators, purchasing organizations and manufacturers.",
     ],
     [
       "Procurement & requirements",
@@ -33,8 +33,8 @@ const content: CapabilityContent = {
       "Structured review of assets, documentation, counterparties and commercial terms with appropriate specialists.",
     ],
     [
-      "Subsidiary development",
-      "Advisory for catering, cargo, ground handling, training and related aviation businesses.",
+      "Manufacturer market entry",
+      "Clarify target buyers, procurement routes and the local commercial work required to connect international manufacturers with opportunities in Bangladesh.",
     ],
     [
       "Project coordination",
@@ -42,7 +42,7 @@ const content: CapabilityContent = {
     ],
   ],
   noteTitle: "Clarity before commitment.",
-  note: "Each engagement begins with a defined question, scope and deliverable. We bring operating experience and analytical discipline to the assignment, coordinating qualified specialists where the work requires deeper technical expertise.",
+  note: "Each engagement begins with a defined question, scope and deliverable. We combine operating experience with commercial coordination, bringing in qualified specialists where the assignment requires technical expertise.",
   related: "/contact",
   relatedLabel: "Discuss a consulting assignment",
 }

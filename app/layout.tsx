@@ -30,21 +30,21 @@ const avenir = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fulcrumtriad.com"),
-  title: "Fulcrum | Aviation and energy advisory & brokerage",
+  title: "Fulcrum | Global sourcing & representation",
   description:
-    "Global consulting and brokerage across aviation, aircraft, engines, maintenance, operational equipment, petroleum products and LNG.",
+    "Sourcing, supplier representation and commercial coordination across aviation, energy, textiles, industrial equipment and healthcare. Bangladesh connections, global reach.",
   openGraph: {
-    title: "Fulcrum · Global advisory and brokerage across aviation and energy",
+    title: "Fulcrum · Global sourcing. Local representation.",
     description:
-      "Independent consulting and transaction support for aviation and energy clients worldwide.",
+      "Connecting international suppliers and manufacturers with requirements in Bangladesh and beyond.",
     type: "website",
     siteName: "Fulcrum",
     images: [
       {
-        url: "/aviation-aerial.png",
-        width: 1536,
-        height: 1024,
-        alt: "Fulcrum aviation and energy advisory. Illustrative aircraft image.",
+        url: "/assets/su-jun-mega-projects-8020883_1920.png",
+        width: 1920,
+        height: 1250,
+        alt: "Terminal architecture. Fulcrum sourcing and representation.",
       },
     ],
   },

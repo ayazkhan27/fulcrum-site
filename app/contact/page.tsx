@@ -4,7 +4,7 @@ import { EnquiryForm } from "@/components/site/enquiry-form"
 export const metadata: Metadata = {
   title: "Contact | Fulcrum",
   description:
-    "Discuss an aviation, energy, consulting or brokerage requirement with Fulcrum.",
+    "Discuss sourcing, manufacturer representation or procurement across aviation, energy, textiles, commodities, industrial and medical equipment.",
   alternates: { canonical: "/contact" },
 }
 export default function ContactPage() {
@@ -73,11 +73,11 @@ export default function ContactPage() {
                 ],
                 [
                   "Do you work beyond aviation?",
-                  "Yes. Our energy work includes petroleum products and LNG for buyers, sellers and project partners, including clients outside aviation.",
+                  "Yes. Our scope includes energy and petroleum, edible oils, cotton and textiles, industrial and medical equipment, and government procurement. We connect buyers and suppliers and coordinate the commercial work around a defined requirement.",
                 ],
                 [
                   "How does an engagement begin?",
-                  "We first clarify the requirement and our potential role. Scope, representation and commercial terms are documented before an assignment begins.",
+                  "We first clarify the requirement and our potential role. Scope, representation, responsibilities and fees or commissions are documented before an assignment begins.",
                 ],
               ].map(([question, answer]) => (
                 <details key={question}>

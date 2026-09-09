@@ -1,43 +1,20 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Image from "next/image"
-import airportImage from "@/public/fulcrum-airport-hero.png"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { Header, Footer } from "@/components/site/chrome"
 import { SharedCapabilities } from "@/components/site/shared-capabilities"
-import { ConnectionDiagram } from "@/components/site/connection-diagram"
 import { PaperFlight } from "@/components/site/paper-flight"
+import { AssetVisual } from "@/components/site/asset-visual"
+import { sectors } from "@/lib/sectors"
 import "./flight.css"
 import "./home.css"
 
 export const metadata: Metadata = {
-  title: "Fulcrum | Global aviation and energy advisory & brokerage",
+  title: "Fulcrum | Global sourcing. Local representation.",
   description:
-    "Global advisory and brokerage across aviation and energy. Connecting expertise, assets, suppliers and opportunities across aviation, petroleum products and LNG.",
+    "Connecting international manufacturers and suppliers with Bangladesh. Sourcing, representation and commercial coordination across aviation, energy, textiles, industry and healthcare.",
   alternates: { canonical: "/" },
 }
-
-const sectors = [
-  {
-    name: "Aviation",
-    number: "01",
-    href: "/aviation",
-    image: airportImage,
-    alt: "Illustrative passenger aircraft at an airport terminal",
-    line: "From terminal to tarmac.",
-    text: "Aircraft and engines. Maintenance and parts. The equipment, systems and services behind airlines and airports.",
-  },
-  {
-    name: "Energy",
-    number: "02",
-    href: "/energy",
-    image: "/energy-terminal.png",
-    alt: "Illustrative aerial view of a coastal LNG terminal and vessel",
-    line: "From requirement to opportunity.",
-    text: "Petroleum products and LNG. Commercial advisory, introductions and coordination across the energy value chain.",
-  },
-]
-
 export default function Page() {
   return (
     <div className="home-page">
@@ -50,200 +27,232 @@ export default function Page() {
           aria-labelledby="overview-title"
         >
           <div className="opening-meta">
-            <p className="eyebrow">Independent perspective. Global ambition.</p>
-            <a href="#verticals" aria-label="Explore our two verticals">
-              <ArrowDown size={20} aria-hidden="true" />
+            <p className="eyebrow">
+              International sources. Bangladesh connections.
+            </p>
+            <a href="#verticals" aria-label="Explore our sectors">
+              <ArrowDown size={20} />
             </a>
           </div>
           <h2 id="overview-title">
-            Two distinct verticals.
+            A world of possibilities.
             <br />
-            One considered approach.
+            One point of connection.
           </h2>
           <div className="opening-bottom">
-            <p>Expertise. Assets. Opportunity.</p>
+            <p>Sourcing. Representation. Follow-through.</p>
             <p>
-              Fulcrum connects expertise, assets, suppliers and opportunities
-              across global aviation, petroleum products and LNG, supporting
-              commercial, government and defense-sector requirements from
-              initial assessment through transaction execution.
+              We connect manufacturers, suppliers and buyers across borders.
+              From aircraft engines to textile inputs, Fulcrum coordinates the
+              people, proposals and details that turn a requirement into a
+              commercial relationship.
             </p>
           </div>
         </section>
         <section
+          className="sector-editorial shell"
           id="verticals"
-          className="verticals"
-          aria-label="Our two verticals"
+          aria-labelledby="sector-title"
         >
-          {sectors.map((sector) => (
-            <Link
-              key={sector.name}
-              href={sector.href}
-              className={`vertical-panel vertical-${sector.name.toLowerCase()}`}
-              data-reactive
-            >
-              <div className="vertical-image">
-                <Image
-                  src={sector.image}
-                  alt={sector.alt}
-                  fill
-                  sizes="(max-width: 700px) 100vw, 50vw"
-                />
-              </div>
-              <div className="vertical-top">
-                <span className="eyebrow">
-                  {sector.number} / {sector.name}
-                </span>
-                <span className="round-arrow">
-                  <ArrowUpRight size={23} aria-hidden="true" />
-                </span>
-              </div>
-              <div className="vertical-copy">
-                <h2>{sector.name}</h2>
-                <p>{sector.line}</p>
-                <span className="vertical-explore">
-                  Explore {sector.name.toLowerCase()}{" "}
-                  <ArrowUpRight size={16} aria-hidden="true" />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </section>
-        <div className="visual-caption shell">
-          <span>Aviation & energy / Two connected perspectives</span>
-          <span>Illustrative imagery</span>
-        </div>
-        <section className="section shell positioning-section" id="perspective">
-          <p className="eyebrow">01 / A wider perspective</p>
-          <div>
-            <h2>
-              Separate industries.
+          <div className="sector-section-heading">
+            <p className="eyebrow">01 / Where we work</p>
+            <h2 id="sector-title">
+              Different industries.
               <br />
-              Connected thinking.
+              The same attention to detail.
             </h2>
-            <p className="positioning-lede">
-              A clear requirement is the beginning.
-              <br />
-              The right connections make it move.
-            </p>
-            <div className="positioning-columns">
-              {sectors.map((sector) => (
-                <div key={sector.name}>
-                  <h3>{sector.name}</h3>
-                  <p>{sector.text}</p>
-                </div>
-              ))}
-            </div>
-            <Link href="/people" className="text-link">
-              Meet Fulcrum <ArrowUpRight size={18} aria-hidden="true" />
+            <Link href="/services" className="text-link">
+              All services <ArrowUpRight size={18} />
             </Link>
+          </div>
+          <div className="sector-feature-grid">
+            {[sectors[0], sectors[2]].map((sector, i) => (
+              <Link
+                href={sector.href}
+                className="sector-feature"
+                key={sector.slug}
+              >
+                <AssetVisual asset={sector.asset!} />
+                <div className="sector-feature-caption">
+                  <div>
+                    <p className="eyebrow">
+                      0{i + 1} /{" "}
+                      {i === 0
+                        ? "Infrastructure & operations"
+                        : "Materials & manufacturing"}
+                    </p>
+                    <h3>{sector.name}</h3>
+                    <p>{sector.short}</p>
+                  </div>
+                  <span className="round-arrow">
+                    <ArrowUpRight aria-hidden="true" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="sector-index">
+            {[sectors[1], ...sectors.slice(3)].map((sector, i) => (
+              <Link
+                href={sector.href}
+                className="sector-index-row"
+                key={sector.slug}
+              >
+                <span className="sector-index-number">
+                  {String(i + 3).padStart(2, "0")}
+                </span>
+                <div className="sector-index-art">
+                  {sector.asset ? (
+                    <AssetVisual asset={sector.asset} />
+                  ) : (
+                    <span className="medical-type" aria-hidden="true">
+                      M<span>+</span>
+                    </span>
+                  )}
+                </div>
+                <div className="sector-index-copy">
+                  <h3>{sector.name}</h3>
+                  <p>{sector.intro}</p>
+                </div>
+                <ArrowUpRight aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+        </section>
+        <section className="representation-section section" id="perspective">
+          <div className="shell representation-grid">
+            <div>
+              <p className="eyebrow">02 / On your side of the table</p>
+              <h2>
+                Global supply.
+                <br />
+                Local understanding.
+              </h2>
+              <p className="representation-lede">
+                Your connection to Bangladesh.
+                <br />
+                Your coordination across borders.
+              </p>
+              <p>
+                We work on behalf of an agreed party: a manufacturer entering a
+                market, a supplier developing a relationship, or a buyer seeking
+                the right source. We stay close to the commercial details, from
+                the first brief to the agreed delivery milestones.
+              </p>
+              <Link href="/brokerage" className="text-link">
+                How representation works <ArrowUpRight size={18} />
+              </Link>
+            </div>
+            <div className="materials-pair">
+              <AssetVisual asset="cotton" caption="The raw material." />
+              <AssetVisual asset="fibre" caption="The next possibility." />
+            </div>
           </div>
         </section>
         <section className="shared-section section" id="capabilities">
           <div className="shell">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">02 / Shared capabilities</p>
+                <p className="eyebrow">03 / From the first brief onward</p>
                 <h2>
-                  The work between
+                  The detail makes
                   <br />
-                  ambition and execution.
+                  the difference.
                 </h2>
               </div>
               <p className="section-note">
-                Explore the support that can be brought together around your
+                One coordinated commercial process, shaped around your
                 assignment.
               </p>
             </div>
             <div className="shared-layout">
-              <ConnectionDiagram />
+              <div className="process-intro">
+                <span className="process-word">
+                  Connect.
+                  <br />
+                  Coordinate.
+                  <br />
+                  Complete.
+                </span>
+                <p>
+                  Sources, specifications, proposals, documents and deadlines.
+                  We keep the moving parts in view.
+                </p>
+                <Link href="/services" className="text-link">
+                  Explore our capabilities <ArrowUpRight size={18} />
+                </Link>
+              </div>
               <SharedCapabilities />
             </div>
-            <Link href="/services" className="text-link">
-              Explore all capabilities{" "}
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </Link>
           </div>
         </section>
         <section className="section shell ways-section">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">03 / How we engage</p>
+              <p className="eyebrow">04 / A clear mandate</p>
               <h2>
-                A defined role.
-                <br />A clearer way forward.
+                One relationship.
+                <br />
+                An agreed responsibility.
               </h2>
             </div>
             <p className="section-note">
-              Advice and intermediation are different responsibilities. We
-              establish which role fits before the work begins.
+              We define whom we represent, what we will do, and how our fees or
+              commissions work before the assignment begins.
             </p>
           </div>
           <div className="engagement-grid">
-            <Link href="/consulting" className="engagement-card" data-reactive>
-              <span className="eyebrow">01 / Consulting</span>
+            <Link href="/consulting" className="engagement-card">
+              <span className="eyebrow">Consulting</span>
               <h3>
                 Clarity before
                 <br />
                 commitment.
               </h3>
               <p>
-                Frame the question. Assess options. Coordinate specialist input
-                so a decision has a sound basis.
+                Frame requirements, compare options and coordinate specialist
+                input for a better-informed decision.
               </p>
               <span className="text-link">
-                Explore consulting <ArrowUpRight size={18} aria-hidden="true" />
+                Explore consulting <ArrowUpRight size={18} />
               </span>
             </Link>
-            <Link href="/brokerage" className="engagement-card" data-reactive>
-              <span className="eyebrow">02 / Brokerage</span>
+            <Link href="/brokerage" className="engagement-card">
+              <span className="eyebrow">Representation & brokerage</span>
               <h3>
-                Connections with
-                <br />a clear purpose.
+                The right people.
+                <br />
+                Working together.
               </h3>
               <p>
-                Identify counterparties and support the commercial process, with
-                representation and remuneration agreed in advance.
+                Connect counterparties, coordinate proposals and maintain
+                momentum through the commercial process.
               </p>
               <span className="text-link">
-                Explore brokerage <ArrowUpRight size={18} aria-hidden="true" />
+                Explore brokerage <ArrowUpRight size={18} />
               </span>
             </Link>
           </div>
         </section>
         <section className="section shell people-preview">
           <div>
-            <p className="eyebrow">04 / People, not promises</p>
+            <p className="eyebrow">05 / The people behind the work</p>
             <h2>
-              A new firm.
+              Experience at work.
               <br />
-              Experienced perspectives.
+              Perspective that connects.
             </h2>
           </div>
           <div>
             <p>
-              Fulcrum is developing its practice around the operating experience
-              and specialist perspectives of its people. Individual experience
-              is not presented as a corporate transaction record.
+              Operating experience, analytical discipline and commercial
+              coordination come together in the Fulcrum team. Meet the people
+              who bring those perspectives to your assignment.
             </p>
             <Link href="/people" className="text-link">
-              Meet our people <ArrowUpRight size={18} aria-hidden="true" />
+              Meet our people <ArrowUpRight size={18} />
             </Link>
           </div>
-        </section>
-        <section className="role-band shell">
-          <p className="eyebrow">Clear from the outset</p>
-          <p>
-            Independent advisory and transaction intermediation. Each assignment
-            is subject to an agreed scope, appropriate checks and the expertise
-            it requires.
-          </p>
-          <Link
-            href="/brokerage#role"
-            aria-label="Read about Fulcrum’s role and boundaries"
-          >
-            <ArrowUpRight aria-hidden="true" />
-          </Link>
         </section>
       </main>
       <Footer />

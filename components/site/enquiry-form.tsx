@@ -52,6 +52,12 @@ export function EnquiryForm() {
             </option>
             <option>Aviation</option>
             <option>Energy, petroleum & LNG</option>
+            <option>Textiles, cotton & mill supply</option>
+            <option>Edible oils & commodities</option>
+            <option>Industrial equipment</option>
+            <option>Medical equipment</option>
+            <option>Government & defense procurement</option>
+            <option>Manufacturer representation</option>
             <option>Consulting</option>
             <option>Brokerage</option>
             <option>Other requirement</option>

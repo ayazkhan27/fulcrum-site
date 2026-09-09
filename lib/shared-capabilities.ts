@@ -1,7 +1,7 @@
 export const sharedCapabilities = [
   {
     title: "Consulting",
-    body: "Frame strategic, operational and commercial questions across aviation and energy.",
+    body: "Frame procurement, market-entry and commercial questions across aviation, energy and wider industrial supply.",
     output: "An agreed brief, options and a practical decision framework.",
   },
   {
@@ -10,8 +10,8 @@ export const sharedCapabilities = [
     output: "A relevant shortlist and a structured basis for comparison.",
   },
   {
-    title: "Brokerage",
-    body: "Support introductions and the commercial process, with the represented party and authority established for the assignment.",
+    title: "Representation & brokerage",
+    body: "Represent a buyer, manufacturer or supplier through introductions and the commercial process, with authority and remuneration agreed for the assignment.",
     output:
       "A documented role, communication process and transaction workstream.",
   },

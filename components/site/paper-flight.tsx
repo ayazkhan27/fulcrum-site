@@ -46,18 +46,20 @@ export function PaperFlight() {
         "--flight-tagline-opacity",
         String(1 - clamp((p - 0.3) / 0.3))
       )
-      if (scene) scene.draw(p, ambientTime)
+      // Keep the aircraft in view until the stage scrolls out with the document.
+      const approach = p * 0.42
+      if (scene) scene.draw(approach, ambientTime)
       else {
         object
           .querySelector("svg")!
           .setAttribute("viewBox", [0, 0, width, height].join(" "))
-        projectPaperPlane(width, height, p).forEach((face, i) => {
+        projectPaperPlane(width, height, approach).forEach((face, i) => {
           polygons[i].setAttribute("points", face.points)
           polygons[i].setAttribute("fill", face.fill)
           polygons[i].setAttribute("stroke", face.fill)
         })
       }
-      object.style.opacity = String(1 - clamp((p - 0.88) / 0.12))
+      object.style.opacity = "1"
     }
     const fallback = () => {
       failed = true
