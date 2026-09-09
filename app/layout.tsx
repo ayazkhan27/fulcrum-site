@@ -1,17 +1,26 @@
 import type { Metadata } from "next"
-import { IBM_Plex_Mono } from "next/font/google"
 import localFont from "next/font/local"
+import { SiteMotion } from "@/components/site/site-motion"
 
 import "./globals.css"
+import "./editorial.css"
 
-// Display and body: Avenir, loaded locally across its full weight range so
-// both the display headings and running text draw from the same family.
+// Avenir stays local for body copy. Editorial headings use the system
+// Helvetica stack; no third-party font files are copied or remotely fetched.
 const avenir = localFont({
   src: [
     { path: "./fonts/avenir/Avenir-Light.ttf", weight: "300", style: "normal" },
     { path: "./fonts/avenir/Avenir-Book.ttf", weight: "400", style: "normal" },
-    { path: "./fonts/avenir/Avenir-Regular.ttf", weight: "500", style: "normal" },
-    { path: "./fonts/avenir/Avenir-Medium.ttf", weight: "600", style: "normal" },
+    {
+      path: "./fonts/avenir/Avenir-Regular.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/avenir/Avenir-Medium.ttf",
+      weight: "600",
+      style: "normal",
+    },
     { path: "./fonts/avenir/Avenir-Heavy.ttf", weight: "800", style: "normal" },
     { path: "./fonts/avenir/Avenir-Black.ttf", weight: "900", style: "normal" },
   ],
@@ -19,24 +28,25 @@ const avenir = localFont({
   display: "swap",
 })
 
-// Data: mono is not decoration here. It is how MSNs, part numbers, cycle counts
-// and margins are actually written in this industry.
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-plex-mono",
-  display: "swap",
-})
-
 export const metadata: Metadata = {
-  title: "Fulcrum · Aviation assets, precision in motion",
+  metadataBase: new URL("https://fulcrumtriad.com"),
+  title: "Fulcrum | Aviation and energy advisory & brokerage",
   description:
-    "A New York intermediary for aviation assets: aircraft, engines, ground support equipment and tooling. We act for owners and lessors, screen against tender requirements, and assemble technical bids.",
+    "Global consulting and brokerage across aviation, aircraft, engines, maintenance, operational equipment, petroleum products and LNG.",
   openGraph: {
-    title: "Fulcrum · Aviation assets, precision in motion",
+    title: "Fulcrum · Global advisory and brokerage across aviation and energy",
     description:
-      "A New York intermediary for aviation assets: aircraft, engines, ground support equipment and tooling. We act for owners and lessors.",
+      "Independent consulting and transaction support for aviation and energy clients worldwide.",
     type: "website",
+    siteName: "Fulcrum",
+    images: [
+      {
+        url: "/aviation-aerial.png",
+        width: 1536,
+        height: 1024,
+        alt: "Fulcrum aviation and energy advisory. Illustrative aircraft image.",
+      },
+    ],
   },
 }
 
@@ -46,21 +56,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${avenir.variable} ${plexMono.variable}`}
-      suppressHydrationWarning
-    >
-      <head>
-        {/* Runs before first paint so the correct ground colour is already
-            in place. Without this the page flashes dark before switching. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem('fulcrum-theme');var m=window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.dataset.theme=s||(m?'light':'dark')}catch(e){document.documentElement.dataset.theme='dark'}})()`,
-          }}
-        />
-      </head>
-      <body>{children}</body>
+    <html lang="en" className={avenir.variable}>
+      <body id="top">
+        {children}
+        <SiteMotion />
+      </body>
     </html>
   )
 }

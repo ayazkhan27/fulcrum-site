@@ -1,278 +1,252 @@
+import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
+import airportImage from "@/public/fulcrum-airport-hero.png"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { Header, Footer } from "@/components/site/chrome"
+import { SharedCapabilities } from "@/components/site/shared-capabilities"
+import { ConnectionDiagram } from "@/components/site/connection-diagram"
+import { PaperFlight } from "@/components/site/paper-flight"
+import "./flight.css"
+import "./home.css"
 
-import { BrandStinger } from "@/components/site/brand-stinger"
-import { Footer, Header } from "@/components/site/chrome"
-import { GateList } from "@/components/site/gates"
-import { Plate } from "@/components/site/plate"
-import { RecordsTable } from "@/components/site/records-table"
-import { ScoringBand } from "@/components/site/scoring"
-
-function Section({
-  id,
-  eyebrow,
-  title,
-  children,
-}: {
-  id?: string
-  eyebrow: string
-  title: string
-  children: React.ReactNode
-}) {
-  return (
-    <section id={id} className="border-t border-rule py-20 sm:py-24">
-      <div className="mx-auto max-w-5xl px-6">
-        <p className="eyebrow text-ink/65">{eyebrow}</p>
-        <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
-          {title}
-        </h2>
-        <div className="mt-8">{children}</div>
-      </div>
-    </section>
-  )
+export const metadata: Metadata = {
+  title: "Fulcrum | Global aviation and energy advisory & brokerage",
+  description:
+    "Global advisory and brokerage across aviation and energy. Connecting expertise, assets, suppliers and opportunities across aviation, petroleum products and LNG.",
+  alternates: { canonical: "/" },
 }
+
+const sectors = [
+  {
+    name: "Aviation",
+    number: "01",
+    href: "/aviation",
+    image: airportImage,
+    alt: "Illustrative passenger aircraft at an airport terminal",
+    line: "From terminal to tarmac.",
+    text: "Aircraft and engines. Maintenance and parts. The equipment, systems and services behind airlines and airports.",
+  },
+  {
+    name: "Energy",
+    number: "02",
+    href: "/energy",
+    image: "/energy-terminal.png",
+    alt: "Illustrative aerial view of a coastal LNG terminal and vessel",
+    line: "From requirement to opportunity.",
+    text: "Petroleum products and LNG. Commercial advisory, introductions and coordination across the energy value chain.",
+  },
+]
 
 export default function Page() {
   return (
-    <>
-      <BrandStinger />
-      <Header />
-      <main>
-        {/* ---------------- 1 · Hero ---------------- */}
-        <section className="py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-6">
-            <p className="eyebrow text-advisory">
-              New York · Widebody aircraft placement
-            </p>
-            <h1 className="mt-7 max-w-4xl font-display text-display font-extrabold text-ink">
-              Most of the fleet is already ineligible.
-            </h1>
-            <p className="mt-8 max-w-2xl text-lede text-ink/65">
-              Fulcrum is a placement intermediary for widebody aircraft. We act
-              for owners and lessors, screening fleets against a
-              requirement&rsquo;s binding constraints, then assembling the
-              technical offer that survives them.
-            </p>
-            <Plate
-              src="/img/approach-1600.webp"
-              width={1600}
-              height={1176}
-              priority
-              sizes="(min-width: 1024px) 64rem, 100vw"
-              alt="A narrowbody airliner photographed head-on at dusk, wings and nose gear square to the camera."
-              figure="Fig. 01"
-              caption="An aircraft is an asset under inspection long before it is a route."
-              className="mt-14"
-            />
-            <div className="mt-16">
-              <RecordsTable />
-            </div>
-          </div>
-        </section>
-
-        {/* --------- Indicator band: dense, no padding, real figures.
-             It carries the whole scoring argument now that the worked example
-             is gone, so it needs one line naming what the figures are. --------- */}
-        <section aria-label="Scoring at a glance" className="border-t border-rule">
-          <div className="mx-auto max-w-5xl px-6 pt-14">
-            <p className="eyebrow text-ink/65">Scoring, from a published tender</p>
-            <p className="mt-4 max-w-2xl leading-relaxed text-ink/70">
-              Tenders publish how they will score you. Refusing every redelivery
-              concession on this one costs about seven points of a hundred, on an
-              award where three quarters of the score is price.
-            </p>
-            <div className="mt-10">
-              <ScoringBand />
-            </div>
-          </div>
-        </section>
-
-        {/* ---------------- 2 · What we do ---------------- */}
-        <Section eyebrow="What we do" title="We work one side of the table.">
-          <p className="max-w-2xl leading-relaxed text-ink/70">
-            An owner or lessor appoints us under written mandate. We screen the
-            fleet against a specific requirement, say which aircraft can
-            actually clear it, and build the technical submission. They bid in
-            their own name and keep the relationship. We never sit on both sides
-            of the same transaction.
-          </p>
-          {/* Four equal parts of one engagement, so they read as a set rather
-              than a ranked list running down one side of the page. */}
-          <ul className="mt-12 grid gap-x-12 border-t border-rule sm:grid-cols-2">
-            {[
-              [
-                "Screening",
-                "Which aircraft can clear the requirement, by serial number.",
-              ],
-              [
-                "Scoring",
-                "Where the points actually sit, and what can safely be conceded.",
-              ],
-              [
-                "Bid assembly",
-                "The technical package, to the standard the tender demands.",
-              ],
-              [
-                "Submission",
-                "Deadlines, formats, and the clocks that void an offer.",
-              ],
-            ].map(([name, note]) => (
-              <li key={name} className="border-b border-rule py-5">
-                <p className="font-display text-[0.9375rem] font-bold text-ink">
-                  {name}
-                </p>
-                <p className="mt-1 text-meta leading-relaxed text-ink/60">
-                  {note}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* ---------------- 3 · The screen ---------------- */}
-        <Section eyebrow="Method" title="The screen comes first.">
-          <p className="max-w-prose leading-relaxed text-ink/70">
-            Most placement work starts with commercial terms. We start with the
-            asset, because in a structured tender the asset decides more of the
-            outcome than the negotiation does. Screening runs as an ordered
-            cascade. Each gate eliminates, cheapest first.
-          </p>
-          <GateList />
-          <Link
-            href="/method"
-            className="mt-10 inline-block cursor-pointer border-b border-advisory pb-0.5 text-meta text-advisory transition-opacity duration-200 hover:opacity-70"
-          >
-            How each gate works
-          </Link>
-        </Section>
-
-        {/* ---------------- 4 · Independence ---------------- */}
-        <Section eyebrow="Independence" title="One side, and how we are paid.">
-          <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-            <p className="max-w-prose leading-relaxed text-ink/70">
-              Our fee is paid by the owner or lessor who appoints us, on success,
-              and is disclosed to both sides. We hold no aircraft and take no
-              positions. We have no joint ventures, no affiliations, and no
-              interests that could put us on the other side of a client&rsquo;s
-              trade.
-            </p>
-            <p className="max-w-prose leading-relaxed text-ink/70">
-              We are not a lessor and do not present ourselves as one. Our
-              principals spent their careers on the airline side of this
-              business, which is disclosed openly on our people page along with
-              the recusals that follow from it.
-            </p>
-          </div>
-        </Section>
-
-        {/* ---------------- 5 · Compliance ---------------- */}
-        <Section
-          eyebrow="Compliance"
-          title="Written down, before any work starts."
+    <div className="home-page">
+      <Header home />
+      <main id="main">
+        <PaperFlight />
+        <section
+          className="editorial-opening shell"
+          id="overview"
+          aria-labelledby="overview-title"
         >
-          <p className="max-w-prose leading-relaxed text-ink/70">
-            Many airlines in this market are state-owned, which makes their staff
-            foreign officials under the US Foreign Corrupt Practices Act. For a
-            counterparty assessing risk, how an intermediary behaves is not fine
-            print. These are the rules we work under.
-          </p>
-          <ul className="mt-10 grid gap-x-16 border-t border-rule sm:grid-cols-2">
-            {[
-              "A written mandate before any work begins.",
-              "Agency disclosed to both sides.",
-              "Fee paid by the appointing party, and only by them.",
-              "No payment of any kind to anyone connected with a government counterparty.",
-              "Sanctions and OFAC screening on every counterparty.",
-              "Tender channels used exactly as published, never an unsolicited approach.",
-            ].map((rule) => (
-              <li
-                key={rule}
-                className="border-b border-rule py-4 leading-relaxed text-ink/70"
-              >
-                {rule}
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* ---------------- 6 · People ---------------- */}
-        <Section eyebrow="People" title="The firm is new. The people are not.">
-          <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
-            <p className="max-w-prose leading-relaxed text-ink/70">
-              Fulcrum has no corporate track record and will not manufacture
-              one. What it has is thirty years spent inside a national flag
-              carrier, at General Manager level across five divisions, and a
-              method you can inspect on this site and judge for yourself.
-            </p>
-            <p className="max-w-prose leading-relaxed text-ink/70">
-              That history sits on the airline side of the table rather than
-              ours, so we publish it in full, together with the recusals that
-              follow from it.
+          <div className="opening-meta">
+            <p className="eyebrow">Independent perspective. Global ambition.</p>
+            <a href="#verticals" aria-label="Explore our two verticals">
+              <ArrowDown size={20} aria-hidden="true" />
+            </a>
+          </div>
+          <h2 id="overview-title">
+            Two distinct verticals.
+            <br />
+            One considered approach.
+          </h2>
+          <div className="opening-bottom">
+            <p>Expertise. Assets. Opportunity.</p>
+            <p>
+              Fulcrum connects expertise, assets, suppliers and opportunities
+              across global aviation, petroleum products and LNG, supporting
+              commercial, government and defense-sector requirements from
+              initial assessment through transaction execution.
             </p>
           </div>
-          <Link
-            href="/people"
-            className="mt-10 inline-block cursor-pointer border-b border-advisory pb-0.5 text-meta text-advisory transition-opacity duration-200 hover:opacity-70"
-          >
-            Who we are, and what we disclose
-          </Link>
-          <Plate
-            src="/img/bench-1600.webp"
-            width={1600}
-            height={1064}
-            sizes="(min-width: 1024px) 64rem, 100vw"
-            alt="Three airliners holding formation against an overcast sky."
-            figure="Fig. 02"
-            caption="Three disciplines, one screen: safety and compliance, data and scoring, operations."
-            className="mt-14"
-          />
-        </Section>
-
-        {/* ---------------- 7 · Contact ---------------- */}
-        <Section id="contact" eyebrow="Contact" title="Talk to us directly.">
-          <div className="grid items-start gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
-            <div>
-              <p className="max-w-prose leading-relaxed text-ink/70">
-                If you own or manage widebody aircraft and want to know which of
-                them can clear a specific requirement, that is the conversation
-                to start with. No fee unless an aircraft is placed.
-              </p>
-              <dl className="mt-10 border-t border-rule">
-                {[
-                  ["General", "infobd@fulcrumtriad.com"],
-                  ["Operations", "operations@fulcrumtriad.com"],
-                  ["Khan Musharraf Hussein", "khanhussein@fulcrumtriad.com"],
-                ].map(([who, address]) => (
-                  <div
-                    key={address}
-                    className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-rule py-4"
-                  >
-                    <dt className="text-meta text-ink/60">{who}</dt>
-                    <dd>
-                      <a
-                        href={`mailto:${address}`}
-                        className="font-mono text-meta text-advisory transition-opacity hover:opacity-70"
-                      >
-                        {address}
-                      </a>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="eyebrow mt-8 text-ink/50">New York</p>
+        </section>
+        <section
+          id="verticals"
+          className="verticals"
+          aria-label="Our two verticals"
+        >
+          {sectors.map((sector) => (
+            <Link
+              key={sector.name}
+              href={sector.href}
+              className={`vertical-panel vertical-${sector.name.toLowerCase()}`}
+              data-reactive
+            >
+              <div className="vertical-image">
+                <Image
+                  src={sector.image}
+                  alt={sector.alt}
+                  fill
+                  sizes="(max-width: 700px) 100vw, 50vw"
+                />
+              </div>
+              <div className="vertical-top">
+                <span className="eyebrow">
+                  {sector.number} / {sector.name}
+                </span>
+                <span className="round-arrow">
+                  <ArrowUpRight size={23} aria-hidden="true" />
+                </span>
+              </div>
+              <div className="vertical-copy">
+                <h2>{sector.name}</h2>
+                <p>{sector.line}</p>
+                <span className="vertical-explore">
+                  Explore {sector.name.toLowerCase()}{" "}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </section>
+        <div className="visual-caption shell">
+          <span>Aviation & energy / Two connected perspectives</span>
+          <span>Illustrative imagery</span>
+        </div>
+        <section className="section shell positioning-section" id="perspective">
+          <p className="eyebrow">01 / A wider perspective</p>
+          <div>
+            <h2>
+              Separate industries.
+              <br />
+              Connected thinking.
+            </h2>
+            <p className="positioning-lede">
+              A clear requirement is the beginning.
+              <br />
+              The right connections make it move.
+            </p>
+            <div className="positioning-columns">
+              {sectors.map((sector) => (
+                <div key={sector.name}>
+                  <h3>{sector.name}</h3>
+                  <p>{sector.text}</p>
+                </div>
+              ))}
             </div>
-            <Plate
-              src="/img/contact-1200.webp"
-              width={1200}
-              height={1280}
-              sizes="(min-width: 768px) 40vw, 100vw"
-              alt="An airliner passing overhead, seen looking up between two city towers."
-              figure="Fig. 03"
-              caption="We are in New York, and we answer our own mail."
-            />
+            <Link href="/people" className="text-link">
+              Meet Fulcrum <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
           </div>
-        </Section>
+        </section>
+        <section className="shared-section section" id="capabilities">
+          <div className="shell">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">02 / Shared capabilities</p>
+                <h2>
+                  The work between
+                  <br />
+                  ambition and execution.
+                </h2>
+              </div>
+              <p className="section-note">
+                Explore the support that can be brought together around your
+                assignment.
+              </p>
+            </div>
+            <div className="shared-layout">
+              <ConnectionDiagram />
+              <SharedCapabilities />
+            </div>
+            <Link href="/services" className="text-link">
+              Explore all capabilities{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+        <section className="section shell ways-section">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">03 / How we engage</p>
+              <h2>
+                A defined role.
+                <br />A clearer way forward.
+              </h2>
+            </div>
+            <p className="section-note">
+              Advice and intermediation are different responsibilities. We
+              establish which role fits before the work begins.
+            </p>
+          </div>
+          <div className="engagement-grid">
+            <Link href="/consulting" className="engagement-card" data-reactive>
+              <span className="eyebrow">01 / Consulting</span>
+              <h3>
+                Clarity before
+                <br />
+                commitment.
+              </h3>
+              <p>
+                Frame the question. Assess options. Coordinate specialist input
+                so a decision has a sound basis.
+              </p>
+              <span className="text-link">
+                Explore consulting <ArrowUpRight size={18} aria-hidden="true" />
+              </span>
+            </Link>
+            <Link href="/brokerage" className="engagement-card" data-reactive>
+              <span className="eyebrow">02 / Brokerage</span>
+              <h3>
+                Connections with
+                <br />a clear purpose.
+              </h3>
+              <p>
+                Identify counterparties and support the commercial process, with
+                representation and remuneration agreed in advance.
+              </p>
+              <span className="text-link">
+                Explore brokerage <ArrowUpRight size={18} aria-hidden="true" />
+              </span>
+            </Link>
+          </div>
+        </section>
+        <section className="section shell people-preview">
+          <div>
+            <p className="eyebrow">04 / People, not promises</p>
+            <h2>
+              A new firm.
+              <br />
+              Experienced perspectives.
+            </h2>
+          </div>
+          <div>
+            <p>
+              Fulcrum is developing its practice around the operating experience
+              and specialist perspectives of its people. Individual experience
+              is not presented as a corporate transaction record.
+            </p>
+            <Link href="/people" className="text-link">
+              Meet our people <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+        <section className="role-band shell">
+          <p className="eyebrow">Clear from the outset</p>
+          <p>
+            Independent advisory and transaction intermediation. Each assignment
+            is subject to an agreed scope, appropriate checks and the expertise
+            it requires.
+          </p>
+          <Link
+            href="/brokerage#role"
+            aria-label="Read about Fulcrum’s role and boundaries"
+          >
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
+        </section>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

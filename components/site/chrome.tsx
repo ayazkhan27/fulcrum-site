@@ -1,70 +1,86 @@
 import Link from "next/link"
-
-import { ThemeToggle } from "@/components/site/theme-toggle"
+import { ArrowUpRight } from "lucide-react"
+import { Navigation } from "@/components/site/navigation"
 import { Wordmark } from "@/components/site/wordmark"
 
-// Three items plus the theme control. Every entry resolves to real content;
-// nothing here is a placeholder.
-const NAV = [
-  { href: "/services", label: "Services" },
-  { href: "/method", label: "Method" },
-  { href: "/people", label: "People" },
-  { href: "/#contact", label: "Contact" },
-]
-
-export function Header() {
+export function Header({ home = false }: { home?: boolean }) {
   return (
-    <header className="border-b border-rule">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-5">
-        <Link
-          href="/"
-          aria-label="Fulcrum, home"
-          className="text-ink transition-opacity hover:opacity-70"
-        >
-          <Wordmark priority className="h-16 w-auto sm:h-[4.75rem]" />
+    <header className={home ? "site-header home-header" : "site-header"}>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <div className="shell header-inner">
+        <Link href="/" aria-label="Fulcrum, home" className="brand-link">
+          {home ? (
+            <Wordmark priority large dark />
+          ) : (
+            <Wordmark priority />
+          )}
         </Link>
-        <nav aria-label="Primary">
-          <ul className="flex items-center gap-5 sm:gap-6">
-            {NAV.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-meta text-ink/60 transition-colors hover:text-ink"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            <li className="flex items-center">
-              <ThemeToggle />
-            </li>
-          </ul>
-        </nav>
+        <Navigation editorial={home} />
       </div>
     </header>
   )
 }
-
 export function Footer() {
   return (
-    <footer className="border-t border-rule">
-      <div className="mx-auto max-w-5xl px-6 py-14">
-        {/* Flex rather than a grid: the wordmark sets its own width from its
-            height, so the text simply takes the rest and the gap stays tight. */}
-        <div className="flex flex-wrap items-center gap-x-12 gap-y-8">
-          <Link href="/" aria-label="Fulcrum, home" className="block shrink-0">
-            <Wordmark className="h-20 w-auto" />
+    <footer className="site-footer">
+      <div className="shell">
+        <div className="footer-top">
+          <div>
+            <p className="eyebrow">The next move starts here</p>
+            <Link className="footer-invitation" href="/contact">
+              Let’s move forward.
+              <ArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
+          <Link href="/contact" className="button button-light">
+            Start a conversation <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
-          <div className="min-w-64 flex-1">
-            <p className="text-meta leading-relaxed text-ink/65">
-              Fulcrum is a placement intermediary. We are not a lessor, we do not
-              own aircraft, and we do not take positions. We act for owners and
-              lessors under written mandate and are paid by them.
-            </p>
-            <p className="mt-5 font-mono text-meta text-ink/50">
-              New York · infobd@fulcrumtriad.com
+        </div>
+        <div className="footer-grid">
+          <div>
+            <Link href="/" aria-label="Fulcrum, home" className="footer-brand">
+              <Wordmark />
+            </Link>
+            <p className="footer-description">
+              Global consulting and brokerage
+              <br />
+              across aviation and energy.
             </p>
           </div>
+          <div>
+            <p className="eyebrow">Explore</p>
+            <Link href="/aviation">Aviation</Link>
+            <Link href="/energy">Energy</Link>
+            <Link href="/services">All capabilities</Link>
+            <Link href="/aviation/aircraft-engine-transactions">
+              Aircraft & engine transactions
+            </Link>
+          </div>
+          <div>
+            <p className="eyebrow">Fulcrum</p>
+            <Link href="/people">Our people</Link>
+            <Link href="/consulting">Consulting</Link>
+            <Link href="/brokerage">Brokerage</Link>
+          </div>
+          <div>
+            <p className="eyebrow">Connect</p>
+            <a href="mailto:infobd@fulcrumtriad.com">infobd@fulcrumtriad.com</a>
+            <p>New York · Global reach</p>
+            <Link href="/contact">Contact details ↗</Link>
+          </div>
+        </div>
+        <p className="footer-scope">
+          Fulcrum provides advisory and transaction-intermediary support. Scope,
+          representation and remuneration are agreed per engagement. The imagery
+          is illustrative and does not depict assets or facilities owned by
+          Fulcrum.
+        </p>
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Fulcrum. All rights reserved.</p>
+          <p>Independent advice. Disclosed representation.</p>
+          <a href="#top">Back to top ↑</a>
         </div>
       </div>
     </footer>

@@ -1,0 +1,159 @@
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
+import { Header, Footer } from "@/components/site/chrome"
+import { AviationExplorer } from "@/components/site/aviation-explorer"
+import { SignatureArtwork } from "@/components/site/signature-artwork"
+import {
+  TechnicalArtwork,
+  CapabilityIcon,
+} from "@/components/site/technical-artwork"
+export type CapabilityContent = {
+  label: string
+  title: string
+  intro: string
+  heading: string
+  items: [string, string][]
+  noteTitle: string
+  note: string
+  related: string
+  relatedLabel: string
+}
+export function CapabilityPage({ content }: { content: CapabilityContent }) {
+  const sector = content.label === "Aviation" || content.label === "Energy"
+  return (
+    <>
+      <Header />
+      <main id="main">
+        <section
+          className={`detail-hero${sector ? ` vertical-hero vertical-hero-${content.label.toLowerCase()}` : ""}`}
+        >
+          <div className="shell detail-hero-grid">
+            <div>
+              <p className="eyebrow">Fulcrum / {content.label}</p>
+              <h1>{content.title}</h1>
+              <p className="detail-intro">{content.intro}</p>
+              <Link href="/contact" className="text-link">
+                Discuss your requirement{" "}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            </div>
+            {sector ? (
+              <figure className="sector-hero-photo" data-reactive>
+                <Image
+                  src={
+                    content.label === "Aviation"
+                      ? "/aviation-aerial.png"
+                      : "/energy-terminal.png"
+                  }
+                  alt={
+                    content.label === "Aviation"
+                      ? "Illustrative bird’s-eye view of an aircraft at an airport"
+                      : "Illustrative aerial view of LNG storage and a coastal loading terminal"
+                  }
+                  fill
+                  sizes="(max-width: 800px) 100vw, 50vw"
+                  preload
+                />
+                <figcaption>
+                  {content.label === "Aviation"
+                    ? "Assets. Infrastructure. Operations."
+                    : "Products. Counterparties. Coordination."}{" "}
+                  / Illustrative imagery
+                </figcaption>
+              </figure>
+            ) : content.label === "Capabilities" ? (
+              <SignatureArtwork kind={content.label} />
+            ) : (
+              <TechnicalArtwork kind={content.label} />
+            )}
+          </div>
+        </section>
+        {sector && (
+          <div className="sector-subnav shell">
+            <a href="#execution">
+              Explore {content.label.toLowerCase()} capabilities ↓
+            </a>
+            <Link
+              href={
+                content.label === "Aviation"
+                  ? "/aviation/aircraft-engine-transactions"
+                  : "/energy#role"
+              }
+            >
+              {content.label === "Aviation"
+                ? "Aircraft & engine transactions"
+                : "Our role in energy transactions"}
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
+        {content.label === "Aviation" && <AviationExplorer />}
+        <section className="section shell" id="execution">
+          <div className="detail-heading">
+            <p className="eyebrow">Our capabilities</p>
+            <h2>{content.heading}</h2>
+          </div>
+          <div className="capability-list">
+            {content.items.map(([name, body], i) => (
+              <article key={name}>
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <CapabilityIcon kind={content.label} index={i} />
+                  <h3>{name}</h3>
+                  <p>{body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="section detail-note" id="role">
+          <div className="shell">
+            <div>
+              <p className="eyebrow">The way we work</p>
+              <h2>{content.noteTitle}</h2>
+            </div>
+            <div>
+              <p>{content.note}</p>
+              {(content.label === "Energy" ||
+                content.label === "Brokerage") && (
+                <details className="role-disclosure">
+                  <summary>
+                    Representation, fees and transaction boundaries
+                  </summary>
+                  <p>
+                    Buyer or seller representation, authority to negotiate,
+                    documentation and delivery coordination are potential
+                    engagement scopes, not implied standing mandates. The
+                    parties, responsibilities and remuneration are agreed in
+                    writing for each assignment.
+                  </p>
+                  <p>
+                    Fees may be structured for advisory work or linked to agreed
+                    success milestones. No universal fee arrangement is
+                    represented here. Introductions remain subject to
+                    appropriate review; an introduction is not a guarantee of
+                    counterparty performance.
+                  </p>
+                  <p>
+                    The services described here are advisory and intermediary
+                    services. Any proposal involving commodity ownership or
+                    principal trading requires separate authority, arrangements
+                    and professional review. Legal, engineering, inspection,
+                    financing and regulatory conclusions remain with qualified
+                    parties.
+                  </p>
+                </details>
+              )}
+              <Link href={content.related} className="text-link">
+                {content.relatedLabel}{" "}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  )
+}

@@ -1,45 +1,37 @@
 import type { Metadata } from "next"
-
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 import { Footer, Header } from "@/components/site/chrome"
-import { Plate } from "@/components/site/plate"
 
 export const metadata: Metadata = {
-  title: "People | Fulcrum",
+  title: "Our people | Fulcrum",
   description:
-    "Fulcrum is a new firm built by people with long operating careers inside commercial aviation.",
+    "Meet the operating, analytical and commercial experience behind Fulcrum.",
+  alternates: { canonical: "/people" },
 }
-
-const FIGURES = [
-  { value: "30", unit: "yrs", label: "Inside a national flag carrier" },
-  { value: "700", unit: "staff", label: "Largest team directly led" },
-  { value: "5", unit: "divisions", label: "Run at General Manager level" },
-  { value: "1989", unit: "", label: "Year the aviation career started" },
-]
-
 const CAREER = [
   {
     period: "2016 – 2019",
     role: "General Manager, Printing & Publications",
     detail:
-      "Ran the carrier's in-house print operation and its 70 staff, setting policy and priorities across clerical, graphic, press and bindery functions.",
+      "Managed the carrier’s in-house print operation across publications, production and supporting functions.",
   },
   {
     period: "2014 – 2016",
     role: "General Manager, Biman Flight Catering Centre",
     detail:
-      "Led 700 staff at the facility supplying in-flight meals to roughly 20 airlines operating through Dhaka. Annual profit doubled in each of two consecutive years, and a major kitchen renovation restored the centre's standing as a regional brand in its own right.",
+      "Led the flight catering operation, with responsibility for people, service delivery and facility development.",
   },
   {
     period: "2011 – 2016",
     role: "General Manager, Public Relations",
     detail:
-      "The airline's spokesperson, reporting to the Chief Executive Officer. Directed a team of twenty across branding, events, advertising and publications on budgets of $1–3M, and built the event programme from the ground up, including new aircraft induction ceremonies and the launch of the frequent flyer programme.",
+      "Served as the airline’s spokesperson and led public relations, branding, events and publications.",
   },
   {
     period: "2010 – 2011",
     role: "Deputy General Manager, Motor Transport",
-    detail:
-      "A 300-strong division running a fleet of nearly 100 vehicles around the clock. Travelled to the Mitsubishi plant in Japan to negotiate a 31-microbus procurement, saving the airline roughly two crore taka.",
+    detail: "Managed transport operations and supported vehicle procurement.",
   },
   {
     period: "2009 – 2010",
@@ -51,7 +43,7 @@ const CAREER = [
     period: "2004 – 2009",
     role: "Deputy General Manager, Public Relations",
     detail:
-      "Communications and public information strategy for the carrier. Orchestrated the airline's first rebranding, run with Boeing's branding professionals over roughly two years and twenty people.",
+      "Worked on communications, public information and airline branding.",
   },
   {
     period: "2000 – 2004",
@@ -67,24 +59,43 @@ const CAREER = [
   },
 ]
 
-const TEAM = [
+const PEOPLE = [
+  {
+    name: "Khan Musharraf Hussein",
+    initials: "KH",
+    role: "Founding principal",
+    summary:
+      "Three decades inside Biman Bangladesh Airlines, bringing an operator’s perspective to commercial decisions.",
+    expertise: "Leadership · Airline operations · Commercial strategy",
+    bio: "Khan’s career spans public relations, flight catering, security, transport and training. His roles included General Manager and Deputy General Manager posts, bringing practical experience of the systems behind an airline.",
+    email: "khanhussein@fulcrumtriad.com",
+  },
   {
     name: "Muhammad Abdul Wadud",
-    role: "Safety & Compliance",
+    initials: "AW",
+    role: "Safety & compliance",
     summary:
-      "Thirty-six years inside airline safety and quality, including 24 years building and running Safety Management Systems and 15 running Quality Management Systems at Biman Bangladesh Airlines and US-Bangladesh Airlines. He led IOSA registration and renewal audits for over a decade, has run more than 80 internal and external safety and quality audits, and served three years as a safety inspector with Bangladesh's Civil Aviation Authority. At Fulcrum he leads the audit trail behind every screen: maintenance records, safety documentation and regulatory standing checked before an aircraft reaches a client's shortlist.",
+      "Extensive airline safety, quality and regulatory experience, with a focus on documentation and operational standards.",
+    expertise: "Safety · Quality systems · Regulatory review",
+    bio: "His background includes corporate quality and risk management at Biman Bangladesh Airlines and participation in Bangladesh’s State Safety Programme coordination work. At Fulcrum, his focus is safety documentation, quality systems and review coordination.",
   },
   {
     name: "Ayaz Khan",
-    role: "Data & Scoring",
+    initials: "AK",
+    role: "Data & scoring",
     summary:
-      "A statistician completing a Master of Arts in Statistics at Columbia University, where he is a National Science Foundation Graduate Research Fellow. His work is building auditable, production-grade models: fraud detection systems, natural language pipelines over regulatory filings, and machine learning tools deployed against live enterprise data. At Fulcrum he applies that discipline to scoring, turning a tender's published formula into the arithmetic behind every recommendation, so a concession is priced rather than guessed at.",
+      "Statistical thinking and analytical discipline that turn complex requirements into clear, auditable decisions.",
+    expertise: "Statistics · Evaluation · Decision support",
+    bio: "A recipient of the National Science Foundation Graduate Research Fellowship, Ayaz works on statistical analysis, data models and decision support. At Fulcrum, he applies that discipline to evaluation and scoring, making the reasoning behind a recommendation easier to inspect.",
   },
   {
     name: "Fatin Khan",
+    initials: "FK",
     role: "Operations",
     summary:
-      "Ten years building and running operating businesses, most recently leading product and regulatory strategy for a cross-border real-estate platform, translating legal requirements into working roadmaps across jurisdictions. He has sourced and negotiated with more than a dozen vendors and built the operational infrastructure behind ventures he founded and scaled himself. At Fulcrum he runs the mechanics of a bid: compliance matrices, submission logistics, and the deadlines that decide whether a qualified offer is even read.",
+      "Commercial coordination and practical execution, keeping vendors, information and deadlines moving together.",
+    expertise: "Coordination · Vendors · Execution",
+    bio: "Fatin’s focus is vendor coordination and translating requirements into practical work plans. At Fulcrum, he coordinates information, submission logistics and deadlines across the assignment.",
   },
 ]
 
@@ -92,200 +103,138 @@ export default function PeoplePage() {
   return (
     <>
       <Header />
-      <main>
-        <section className="py-20 sm:py-28">
-          <div className="mx-auto max-w-5xl px-6">
-            <p className="eyebrow text-advisory-panel">People</p>
-            <h1 className="mt-7 max-w-4xl font-display text-title font-extrabold text-ink">
-              The firm is new. The people are not.
+      <main id="main">
+        <section className="detail-hero people-hero">
+          <div className="shell">
+            <p className="eyebrow">Fulcrum / Our people</p>
+            <h1>
+              Perspective earned.
+              <br />
+              Expertise connected.
             </h1>
-            <p className="mt-8 max-w-2xl text-lede text-ink/65">
-              Fulcrum has no corporate track record and will not pretend
-              otherwise. What it has is people who spent their careers inside
-              the operating side of commercial aviation, and who know how these
-              decisions actually get made.
+            <p className="detail-intro">
+              Operating experience. Analytical discipline. Commercial judgment.
+              Different strengths, brought together around your assignment.
             </p>
           </div>
         </section>
-
-        <section aria-label="Experience at a glance" className="border-t border-rule">
-          <div className="mx-auto max-w-5xl px-6">
-            <dl className="grid grid-cols-2 border-t border-l border-rule sm:grid-cols-4">
-              {FIGURES.map((f) => (
-                <div key={f.label} className="border-r border-b border-rule px-5 py-7">
-                  <dd className="font-display text-[2rem] font-extrabold tracking-tight text-ink tabular sm:text-[2.5rem]">
-                    {f.value}
-                    {f.unit ? (
-                      <span className="ml-1 font-mono text-meta font-normal tracking-normal text-ink/65">
-                        {f.unit}
-                      </span>
-                    ) : null}
-                  </dd>
-                  <dt className="mt-2 text-meta leading-snug text-ink/60">
-                    {f.label}
-                  </dt>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </section>
-
-        {/* ---------------- Profile ---------------- */}
-        <section className="border-t border-rule py-20 sm:py-24">
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
-              <div>
-                <h2 className="font-display text-title font-extrabold text-ink">
-                  Khan Musharraf Hussein
-                </h2>
-                <p className="eyebrow mt-4 text-advisory-panel">Founding principal</p>
-                <p className="mt-6 leading-relaxed text-ink/70">
-                  Thirty years at Biman Bangladesh Airlines, from public
-                  relations officer in 1989 to General Manager across five
-                  divisions. He has been the airline&rsquo;s spokesperson,
-                  run its flight catering subsidiary, headed its security
-                  function, and negotiated its vehicle procurement in Japan.
-                </p>
-                <p className="mt-4 leading-relaxed text-ink/70">
-                  MA in Mass Communication and Journalism, University of Dhaka.
-                  Trained at George Washington University, the Royal Institute
-                  of Public Administration in London, the Boeing Marketing
-                  Academy, and IATA in Singapore.
-                </p>
-                <a
-                  href="mailto:khanhussein@fulcrumtriad.com"
-                  className="mt-6 inline-block cursor-pointer font-mono text-meta text-advisory-panel transition-opacity duration-200 hover:opacity-70"
-                >
-                  khanhussein@fulcrumtriad.com
-                </a>
-                {/* The career record beside this column runs to eight entries,
-                    so without something here the column bottoms out early and
-                    leaves a hole the width of half the page. */}
-                <Plate
-                  src="/img/principal-1200.webp"
-                  width={1200}
-                  height={1749}
-                  sizes="(min-width: 768px) 38vw, 100vw"
-                  alt="An airliner on final approach beneath heavy overcast."
-                  figure="Fig. 08"
-                  caption="Thirty years of arrivals and departures, from the operating side."
-                  className="mt-10"
-                />
-              </div>
-
-              <ol className="border-t border-rule">
-                {CAREER.map((job) => (
-                  <li key={job.period} className="border-b border-rule py-6">
-                    <p className="eyebrow text-ink/50">{job.period}</p>
-                    <h3 className="mt-2 font-display text-[1.0625rem] font-bold tracking-tight text-ink">
-                      {job.role}
-                    </h3>
-                    <p className="mt-2 max-w-prose leading-relaxed text-ink/60">
-                      {job.detail}
-                    </p>
-                  </li>
-                ))}
-              </ol>
+        <section className="section shell">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">The people behind Fulcrum</p>
+              <h2>
+                One team.
+                <br />
+                Complementary perspectives.
+              </h2>
             </div>
-          </div>
-        </section>
-
-        {/* ---------------- Team ---------------- */}
-        <section className="border-t border-rule py-20 sm:py-24">
-          <div className="mx-auto max-w-5xl px-6">
-            <p className="eyebrow text-ink/65">The team</p>
-            <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
-              Three disciplines, one screen.
-            </h2>
-            <div className="mt-12 grid gap-x-12 gap-y-14 border-t border-rule pt-12 sm:grid-cols-3">
-              {TEAM.map((p) => (
-                <div key={p.name}>
-                  <h3 className="font-display text-[1.0625rem] font-bold tracking-tight text-ink">
-                    {p.name}
-                  </h3>
-                  <p className="eyebrow mt-2 text-advisory-panel">{p.role}</p>
-                  <p className="mt-4 leading-relaxed text-ink/70">
-                    {p.summary}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ---------------- Disclosure ---------------- */}
-        <section className="border-t border-rule py-20 sm:py-24">
-          <div className="mx-auto max-w-5xl px-6">
-            <p className="eyebrow text-caution-panel">Disclosure</p>
-            <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
-              Where we came from, and what we do about it.
-            </h2>
-
-            <div className="mt-10 record-panel">
-              <div className="grid gap-x-12 gap-y-8 px-6 py-8 sm:px-8 lg:grid-cols-2">
-                <div className="space-y-5 leading-relaxed text-panel-ink/80">
-                  <p>
-                    Our founding principal spent three decades at a
-                    state-owned flag carrier and left it in 2019. We would
-                    rather you read that here than find it later.
-                  </p>
-                  <p>
-                    That history is why the compliance position on this site
-                    exists in the detail it does. Someone who has watched a
-                    national airline&rsquo;s procurement from the inside knows
-                    exactly how an intermediary can be misused, and exactly
-                    what it costs an institution when one is.
-                  </p>
-                </div>
-                <ul className="space-y-4 border-t border-panel-ink/15 pt-6 lg:border-t-0 lg:border-l lg:border-panel-ink/15 lg:pt-0 lg:pl-12">
-                  {[
-                    "We act for aircraft owners and lessors. We do not act for airlines, and we do not accept a fee from both sides of a transaction.",
-                    "Our principal takes no part in any mandate involving his former employer. That recusal is written into our engagement terms, not left to judgement.",
-                    "Where a counterparty is state-owned, we use published tender channels only. No introductions, no informal approaches, at any stage.",
-                    "Every mandate is documented before work begins, and our agency is disclosed to both sides.",
-                  ].map((line) => (
-                    <li
-                      key={line}
-                      className="leading-relaxed text-panel-ink/80"
-                    >
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-rule py-20 sm:py-24">
-          <div className="mx-auto max-w-5xl px-6">
-            <p className="eyebrow text-ink/65">Building the bench</p>
-            <h2 className="mt-5 max-w-3xl font-display text-title font-extrabold text-ink">
-              We are hiring the technical side.
-            </h2>
-            <p className="mt-8 max-w-prose leading-relaxed text-ink/70">
-              Screening at gate 04 and gate 05 needs someone who reads
-              borescope reports, life-limited part traces and shop visit
-              records for a living. We are adding that capability rather than
-              claiming it. If that is your background, we would like to hear
-              from you.
+            <p className="section-note">
+              Get to know the experience behind the work.
             </p>
-            <Plate
-              src="/img/structure-1200.webp"
-              width={1200}
-              height={974}
-              sizes="(min-width: 1024px) 55vw, 100vw"
-              alt="An airliner wing in cruise, flap track fairings and upper surface in daylight."
-              figure="Fig. 09"
-              caption="This is the capability we are adding, not the one we are claiming."
-              className="mt-12 max-w-2xl"
-            />
-            <a
-              href="mailto:operations@fulcrumtriad.com"
-              className="mt-8 inline-block cursor-pointer font-mono text-lede text-advisory-panel transition-opacity duration-200 hover:opacity-70"
-            >
-              operations@fulcrumtriad.com
-            </a>
+          </div>
+          <div className="people-grid">
+            {PEOPLE.map((person, index) => (
+              <article className="person-card" key={person.name}>
+                <div className="person-top">
+                  <span className="person-monogram" aria-hidden="true">
+                    {person.initials}
+                  </span>
+                  <span className="person-index" aria-hidden="true">
+                    0{index + 1}
+                  </span>
+                </div>
+                <div className="person-title">
+                  <p className="eyebrow">{person.role}</p>
+                  <h3>{person.name}</h3>
+                </div>
+                <p className="person-summary">{person.summary}</p>
+                <p className="person-expertise">{person.expertise}</p>
+                <details className="person-bio">
+                  <summary>
+                    More about {person.name.split(" ")[0]}
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <div>
+                    <p>{person.bio}</p>
+                    {person.email && (
+                      <a href={`mailto:${person.email}`}>{person.email} ↗</a>
+                    )}
+                  </div>
+                </details>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="section detail-note">
+          <div className="shell">
+            <div>
+              <p className="eyebrow">Our foundation</p>
+              <h2>
+                Experience with
+                <br />
+                operational depth.
+              </h2>
+              <p className="foundation-intro">
+                Our founding principal’s career provides a perspective across
+                the many businesses inside an airline.
+              </p>
+            </div>
+            <div className="career-disclosures">
+              <details>
+                <summary>
+                  Khan Hussein’s career & background{" "}
+                  <span aria-hidden="true">+</span>
+                </summary>
+                <div className="career-content">
+                  <ol>
+                    {CAREER.map((job) => (
+                      <li key={job.period}>
+                        <p className="eyebrow">{job.period}</p>
+                        <h3>{job.role}</h3>
+                        <p>{job.detail}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </details>
+              <details>
+                <summary>
+                  How we manage representation <span aria-hidden="true">+</span>
+                </summary>
+                <div className="career-content">
+                  <p>
+                    Representation, responsibilities and potential conflicts are
+                    addressed when an engagement is scoped.
+                  </p>
+                  <p>
+                    Our mandates and agency are documented, and representation
+                    and compensation are disclosed. Government, defense and
+                    state-owned assignments proceed through authorized channels
+                    and the controls relevant to the engagement.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+        <section className="section shell people-preview">
+          <div>
+            <p className="eyebrow">A wider circle of expertise</p>
+            <h2>
+              The assignment
+              <br />
+              shapes the team.
+            </h2>
+          </div>
+          <div>
+            <p>
+              Engineering, inspection, legal, regulatory, logistics and market
+              expertise are coordinated as the work requires. We bring the
+              appropriate specialists into a clearly defined assignment.
+            </p>
+            <Link className="text-link" href="/contact">
+              Connect with Fulcrum <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
           </div>
         </section>
       </main>
