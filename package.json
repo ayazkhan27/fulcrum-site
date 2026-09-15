@@ -10,6 +10,7 @@
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
+    "test:site": "node --experimental-strip-types --test scripts/site-structure.test.mjs",
     "test:flight": "node --experimental-strip-types --test scripts/paper-plane.test.mjs",
     "audit:ux": "python3 scripts/ux-audit.py"
   },

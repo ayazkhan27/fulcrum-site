@@ -30,19 +30,19 @@
 }
 .opening-bottom {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: end;
-  margin-top: 34px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  justify-items: start;
+  margin-top: 24px;
 }
-.opening-bottom > p:first-child {
+.opening-principles {
   font-family: var(--font-editorial);
   font-size: 1.25rem;
   line-height: 1.3;
   letter-spacing: -0.03em;
 }
-.opening-bottom > p:last-child {
-  max-width: 540px;
+.opening-description {
+  max-width: 70ch;
   font-size: 0.91rem;
   color: #52677c;
   line-height: 1.65;
@@ -368,13 +368,10 @@
   .editorial-opening {
     padding-block: 30px 40px;
   }
-  .opening-bottom {
-    gap: 30px;
-  }
-  .opening-bottom > p:first-child {
+  .opening-principles {
     font-size: 1.05rem;
   }
-  .opening-bottom > p:last-child {
+  .opening-description {
     font-size: 0.85rem;
   }
   .positioning-section,
@@ -419,11 +416,7 @@
   .desktop-break {
     display: none;
   }
-  .opening-bottom {
-    grid-template-columns: 1fr;
-    gap: 23px;
-  }
-  .opening-bottom > p:first-child {
+  .opening-principles {
     display: none;
   }
   .opening-meta .eyebrow {

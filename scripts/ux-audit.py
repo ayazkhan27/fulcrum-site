@@ -11,11 +11,22 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:3000").rstrip("/")
-PAGES = ["/", "/aviation", "/energy", "/consulting", "/brokerage",
-         "/services", "/people", "/contact", "/aviation/aircraft-engine-transactions"]
+PAGES = ["/", "/mission", "/aviation", "/equipment", "/energy",
+         "/sectors/textiles", "/sectors/commodities", "/people", "/contact"]
+REDIRECTS = {
+    "/services": "/mission#capabilities",
+    "/consulting": "/mission#consulting",
+    "/brokerage": "/mission#brokerage",
+    "/method": "/aviation#aircraft-engine-transactions",
+    "/aviation/aircraft-engine-transactions": "/aviation#aircraft-engine-transactions",
+    "/sectors/industrial": "/equipment#industrial",
+    "/sectors/healthcare": "/equipment#healthcare",
+    "/sectors/defense": "/equipment#defense",
+}
 # Explicitly sampled solid-surface pairs from the shipped editorial system.
 # Not a claim about every style or text over images.
 PAIRS = [
@@ -37,12 +48,18 @@ class Page(HTMLParser):
         self.headings, self.images, self.links, self.ids = [], [], [], set()
         self.tags, self.meta, self.lang, self.title = set(), {}, "", ""
         self.in_title = False
+        self.duplicate_ids = set()
+        self.canonical = ""
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         self.tags.add(tag)
         if a.get("id"):
+            if a["id"] in self.ids:
+                self.duplicate_ids.add(a["id"])
             self.ids.add(a["id"])
+        if tag == "link" and a.get("rel") == "canonical":
+            self.canonical = a.get("href", "")
         if re.fullmatch(r"h[1-6]", tag):
             self.headings.append(int(tag[1]))
         if tag == "img":
@@ -79,6 +96,7 @@ def main():
         check(fg in css and bg in css and ratio >= 4.5, f"{label}: {ratio:.2f}:1")
 
     print("\nROUTES AND SERVER-RENDERED STRUCTURE")
+    parsed_pages = {}
     for path in PAGES:
         try:
             with urllib.request.urlopen(BASE + path, timeout=30) as response:
@@ -89,6 +107,11 @@ def main():
             continue
         page = Page()
         page.feed(html)
+        parsed_pages[path] = page
+        check(not page.duplicate_ids, path + " has unique IDs")
+        canonical = urlsplit(page.canonical)
+        check(bool(canonical.netloc) and (canonical.path or "/") == path,
+              path + " has its own canonical URL")
         check(page.headings.count(1) == 1, path + " has one H1")
         check(not any(b > a + 1 for a, b in zip(page.headings, page.headings[1:])),
               path + " has ordered headings")
@@ -108,15 +131,34 @@ def main():
         check("\u2014" not in re.sub(r"<script\b.*?</script>", "", html, flags=re.S),
               path + " has no em dashes")
 
-    try:
-        with urllib.request.urlopen(BASE + "/method", timeout=30) as response:
-            check(response.url.endswith("/aviation/aircraft-engine-transactions"),
-                  "legacy method URL redirects to transactions")
-    except urllib.error.HTTPError as error:
-        check(error.code == 308 and error.headers.get("Location", "").endswith(
-              "/aviation/aircraft-engine-transactions"), "legacy method URL has a permanent redirect")
-    except (urllib.error.URLError, TimeoutError) as error:
-        check(False, "legacy method redirect: " + str(error))
+    for path, page in parsed_pages.items():
+        for href in sorted(set(page.links)):
+            if not href.startswith("/") or href.startswith("//"):
+                continue
+            target = urlsplit(href)
+            check(target.path in parsed_pages, path + " links directly to " + target.path)
+            if target.fragment and target.path in parsed_pages:
+                check(target.fragment in parsed_pages[target.path].ids, path + " resolves " + href)
+
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            return None
+    redirect_opener = urllib.request.build_opener(NoRedirect())
+    for source, destination in REDIRECTS.items():
+        try:
+            redirect_opener.open(BASE + source, timeout=30)
+            check(False, source + " must redirect, not render an extra page")
+        except urllib.error.HTTPError as error:
+            location = error.headers.get("Location", "")
+            check(error.code == 308 and location.removeprefix(BASE) == destination,
+                  source + " redirects to " + destination)
+        except (urllib.error.URLError, TimeoutError) as error:
+            check(False, source + " redirect: " + str(error))
+
+    with urllib.request.urlopen(BASE + "/sitemap.xml", timeout=30) as response:
+        sitemap = response.read().decode("utf-8")
+    sitemap_paths = [urlsplit(url).path for url in re.findall(r"<loc>(.*?)</loc>", sitemap)]
+    check(sorted(sitemap_paths) == sorted(PAGES), "sitemap lists exactly the nine approved pages")
 
     print("\nSOURCE SAFEGUARDS")
     check("prefers-reduced-motion" in css, "reduced-motion CSS exists")
@@ -125,8 +167,8 @@ def main():
         small = [m.group(1) for m in re.finditer(r"font-size:\s*(0\.\d+)rem", source.read_text())
                  if float(m.group(1)) < .75]
         check(not small, str(source.relative_to(ROOT)) + " explicit text sizes at least 12px")
-    check((ROOT / "app/aviation/aircraft-engine-transactions/page.tsx").is_file(),
-          "transaction source exists")
+    check((ROOT / "components/site/aircraft-transactions.tsx").is_file(),
+          "transaction source is preserved inside Aviation")
     print("\n" + (str(len(failures)) + " failure(s)." if failures else "All scoped checks passed."))
     print("Still requires visual, keyboard, reduced-motion and image-contrast review.")
     return int(bool(failures))

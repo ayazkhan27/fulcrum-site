@@ -6,7 +6,8 @@ import {
   flightTransform,
   cameraDistance,
   cameraFov,
-  paperColor,
+  cameraNear,
+  paperFaceColor,
   shadowStrength,
 } from "./paper-plane-model"
 
@@ -22,22 +23,28 @@ export function createPaperScene(canvas: HTMLCanvasElement, lost: () => void) {
   renderer.setClearColor(0x000000, 0)
   renderer.outputColorSpace = THREE.SRGBColorSpace
   const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(cameraFov, 1, 0.1, 100)
+  const camera = new THREE.PerspectiveCamera(cameraFov, 1, cameraNear, 100)
   camera.position.z = cameraDistance
   const model = new THREE.Group()
   model.rotation.set(flightPose.pitch, flightPose.yaw, flightPose.bank, "XYZ")
   const positions: number[] = []
-  faces.forEach((face) =>
-    face.forEach((index) => positions.push(...vertices[index]))
-  )
+  const colors: number[] = []
+  faces.forEach((face, faceIndex) => {
+    const color = new THREE.Color(`rgb(${paperFaceColor(faceIndex).join(",")})`)
+    face.forEach((index) => {
+      positions.push(...vertices[index])
+      colors.push(color.r, color.g, color.b)
+    })
+  })
   const geometry = new THREE.BufferGeometry()
   geometry.setAttribute(
     "position",
     new THREE.Float32BufferAttribute(positions, 3)
   )
   geometry.computeVertexNormals()
+  geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3))
   const material = new THREE.MeshStandardMaterial({
-    color: `rgb(${paperColor.join(",")})`,
+    vertexColors: true,
     roughness: 0.86,
     metalness: 0,
     side: THREE.DoubleSide,
@@ -55,21 +62,11 @@ export function createPaperScene(canvas: HTMLCanvasElement, lost: () => void) {
   let width = 1,
     height = 1
   const draw = (p: number, time = 0) => {
-    const pose = flightTransform(width, height, p)
-    model.position.set(
-      pose.x + 0.035 * Math.sin(time * 0.37),
-      pose.y + 0.13 * Math.sin(time * 0.73),
-      pose.z + 0.04 * Math.sin(time * 0.51)
-    )
-    // Small buoyant movements, never the former turning or diving sequence.
-    model.rotation.set(
-      flightPose.pitch + 0.018 * Math.sin(time * 0.62),
-      flightPose.yaw,
-      flightPose.bank + 0.018 * Math.sin(time * 0.51),
-      "XYZ"
-    )
+    const pose = flightTransform(width, height, p, time)
+    model.position.set(pose.x, pose.y, pose.z)
+    model.rotation.set(pose.pitch, pose.yaw, pose.bank, "XYZ")
+    mesh.rotation.z = pose.roll
     model.scale.setScalar(pose.scale)
-    model.visible = p < 0.995
     renderer.render(scene, camera)
   }
   const resize = (w: number, h: number) => {

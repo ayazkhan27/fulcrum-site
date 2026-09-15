@@ -1,25 +1,71 @@
 "use client"
 import { useState, type FormEvent } from "react"
 import { ArrowUpRight } from "lucide-react"
-export function EnquiryForm() {
-  const [draft, setDraft] = useState<string | null>(null)
+import {
+  buildEnquiryMailto,
+  enquiryServices,
+  type EnquiryServiceChoice,
+} from "@/lib/enquiry-services"
+
+export function EnquiryForm({
+  service,
+  onServiceChange,
+}: {
+  service: EnquiryServiceChoice
+  onServiceChange: (service: EnquiryServiceChoice) => void
+}) {
+  const [prepared, setPrepared] = useState<{
+    service: EnquiryServiceChoice
+    url: string
+  } | null>(null)
+  const draft = prepared?.service === service ? prepared.url : null
   function prepare(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    const subject = `Fulcrum enquiry, ${data.get("sector")}`
-    const body = `Name: ${data.get("name")}\nOrganization: ${data.get("organization")}\nEmail: ${data.get("email")}\nArea: ${data.get("sector")}\n\n${data.get("requirement")}`
-    setDraft(
-      `mailto:infobd@fulcrumtriad.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    )
+    setPrepared({
+      service,
+      url: buildEnquiryMailto({
+        name: String(data.get("name") ?? ""),
+        organization: String(data.get("organization") ?? ""),
+        email: String(data.get("email") ?? ""),
+        sector: String(data.get("sector") ?? ""),
+        service,
+        requirement: String(data.get("requirement") ?? ""),
+      }),
+    })
   }
   return (
     <form
       className="enquiry-form"
+      id="enquiry-form"
+      tabIndex={-1}
+      aria-labelledby="enquiry-form-title"
       onSubmit={prepare}
-      onChange={() => setDraft(null)}
+      onChange={() => setPrepared(null)}
     >
-      <h2>Tell us what you have in mind.</h2>
+      <h2 id="enquiry-form-title">Tell us what you have in mind.</h2>
       <p>Prepare an enquiry, then send it from your email app.</p>
+      <label>
+        Service needed
+        <select
+          name="service"
+          required
+          value={service}
+          onChange={(event) =>
+            onServiceChange(event.target.value as EnquiryServiceChoice)
+          }
+        >
+          <option value="" disabled>
+            Select a service
+          </option>
+          {enquiryServices.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.name}
+            </option>
+          ))}
+          <option value="guidance">I would like guidance</option>
+        </select>
+      </label>
       <div className="form-grid">
         <label>
           Your name
@@ -50,10 +96,11 @@ export function EnquiryForm() {
             <option value="" disabled>
               Select an area
             </option>
-            <option>Aviation</option>
+            <option>Aviation & airports</option>
             <option>Energy, petroleum & LNG</option>
             <option>Textiles, cotton & mill supply</option>
             <option>Edible oils & commodities</option>
+            <option>Spares & equipment</option>
             <option>Industrial equipment</option>
             <option>Medical equipment</option>
             <option>Government & defense procurement</option>

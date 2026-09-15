@@ -1,19 +1,21 @@
 import type { Metadata } from "next"
+import "./aviation.css"
 import {
   CapabilityPage,
   type CapabilityContent,
 } from "@/components/site/capability-page"
 export const metadata: Metadata = {
-  title: "Aviation | Fulcrum",
+  title: "Aviation & Airports | Fulcrum",
   description:
     "Aircraft, engine and spare-parts sourcing, MRO partnerships and airport equipment representation for Bangladesh and international markets.",
   alternates: { canonical: "/aviation" },
 }
 const content: CapabilityContent = {
   label: "Aviation",
+  pageLabel: "Aviation & Airports",
   title: "From terminal to tarmac.",
   intro:
-    "Connecting airlines and airports with aircraft, engines, parts and the partners that keep operations moving. We coordinate sourcing, supplier representation and transactions for Bangladesh and international markets.",
+    "From terminal to tarmac. Assisting airlines and airports with aircraft and engine leasing, sourcing spare parts and essential equipment, and finding maintenance, repair and overhaul (MRO) partners to keep their operations running smoothly. We coordinate sourcing, supplier representation and transactions for Bangladesh and international markets.",
   heading: "Expertise across assets, infrastructure and operations.",
   items: [
     [
@@ -43,7 +45,7 @@ const content: CapabilityContent = {
   ],
   noteTitle: "The whole operation comes into view.",
   note: "An aircraft is one part of a much wider system. We consider the commercial requirement alongside maintenance, equipment and operational dependencies. Civil and military assignments are scoped around the relevant technical, regulatory and end-user requirements.",
-  related: "/aviation/aircraft-engine-transactions",
+  related: "/aviation#aircraft-engine-transactions",
   relatedLabel: "Explore aircraft & engine transactions",
 }
 export default function Page() {

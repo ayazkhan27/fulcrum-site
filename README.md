@@ -1,21 +1,63 @@
-# Next.js template
+# Fulcrum website
 
-This is a Next.js template with shadcn/ui.
+Fulcrum's nine-page website, built with Next.js. The approved sky, paper-plane
+animation and shared brand artwork remain part of the existing design.
 
-## Adding components
+## Local preview
 
-To add components to your app, run the following command:
+Install dependencies using the existing lockfile, then start the development server:
 
 ```bash
-npx shadcn@latest add button
+pnpm install --frozen-lockfile
+pnpm dev --hostname 127.0.0.1 --port 3000
 ```
 
-This will place the ui components in the `components` directory.
+Open http://127.0.0.1:3000/. This local preview is not the deployed website.
 
-## Using components
+## Page structure
 
-To use the components in your app, import them as follows:
+The canonical navigation order is maintained in `lib/site-pages.ts`:
 
-```tsx
-import { Button } from "@/components/ui/button";
+1. Home
+2. Mission
+3. Aviation and Airports
+4. Equipment and Procurement
+5. Energy & Petroleum
+6. Textile and Mill Supply
+7. Edible Oil and Commodities
+8. Our People
+9. Contact
+
+Consulting and brokerage are sections of Mission. Aircraft and engine
+transactions are within Aviation and Airports. Industrial, medical and
+government/defense procurement remain separate sections within Equipment and
+Procurement. Retired page URLs redirect to these sections.
+
+See [the structure notes](research/NINE-PAGE-STRUCTURE.md) for routes and content
+locations. Error responses and SEO utility files are not extra content pages.
+
+## Checks
+
+```bash
+pnpm test:site
+pnpm test:flight
+pnpm lint
+pnpm build
+# With the local preview running:
+pnpm audit:ux
 ```
+
+The site tests protect the exact page count, ordering, redirects and retained
+content. The HTTP audit checks all nine pages, internal anchors, canonical URLs
+and sitemap entries. Visual review is still required for design changes.
+
+## Contact and publication
+
+The contact form prepares a `mailto:` draft in the visitor's email app. It does
+not submit to a server or confirm delivery. No form message is sent until the
+visitor sends it through their email app.
+
+Keep work on the design branch for review. The owner's deployment workflow
+publishes changes through Vercel when they reach `main`; merging or pushing to
+`main` requires the owner's explicit approval. Before launch, confirm the contact
+mailboxes, business copy, image permissions and font licenses.

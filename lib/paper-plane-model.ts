@@ -19,31 +19,56 @@ export const vertices = [
   [-0.8677208, 0.347334, -2.053318],
 ] as const
 
-// Shallow three-quarter nose-right framing, fixed throughout the pass.
+// Restore the original paper-plane presentation independently of its flight.
 export const flightPose = { pitch: 0.42, yaw: 1.03, bank: 0 }
 export const cameraDistance = 12
 export const cameraFov = 36
-// Sterling silver, shared by the live scene and reduced-motion fallback.
-export const paperColor = [192, 196, 200] as const
+export const cameraNear = 0.1
+// Aluminium silver wings and deeper blue folds, shared by the scene and fallback.
+export const paperColor = [210, 215, 219] as const
+export const cobaltColor = [38, 94, 166] as const
+export const paperFaceColor = (index: number) => index < 8 ? cobaltColor : paperColor
 export const shadowStrength = 0.8
 
-// A single flight path shared by WebGL and the lightweight SVG fallback.
-// Scroll never changes the attitude or stretches the mesh. Perspective creates
-// the approach; the WebGL scene adds a separate, very small idle float.
+// Reconstructed camera-relative flight, observed at flyhyer.com on 2026-09-10.
+// Travel is linear in native scroll pixels. Perspective, not a scale tween,
+// creates acceleration toward the viewer. Local axial roll never turns the nose.
+// See research/FLY-PAST-MOTION.md for the reference measurements and adaptations.
 export function flightTransform(
   width: number,
   height: number,
-  progress: number
+  progress: number,
+  time = 0
 ) {
   const p = Math.max(0, Math.min(1, progress))
-  const narrow = width < 700
   const viewHeight = 2 * cameraDistance * Math.tan((cameraFov * Math.PI) / 360)
   const viewWidth = (viewHeight * width) / height
+  const scale = Math.min(1.25, (width / height) * 0.95) * 0.9
+  const rigScale = Math.min(1.5, (width / height) * 1.06) / 1.5
+  // Re-express the same reference motion in the original camera's units.
+  // This preserves the approach's relative depth and screen-space travel
+  // without replacing the original lens, framing or folded-wing presentation.
+  const lateralUnits = viewHeight / (2 * 5.8 * Math.tan(75 * Math.PI / 360))
+  const depthUnits = cameraDistance / 5.8
+  const responsiveness = 0.7 * Math.min(4, 1280 / width)
+  const scroll = p * height
+  const travel = (scroll * responsiveness * rigScale) / 160
+  const lift = travel * 0.16
   return {
-    scale: Math.min(1.25, (width / height) * 0.95),
-    x: viewWidth * (narrow ? -0.02 : 0) + 5.2 * p ** 3,
-    y: viewHeight * (narrow ? -0.03 : -0.06) + 0.25 * p,
-    z: 7 * p ** 1.25,
+    scale,
+    x: viewWidth * (width < 700 ? -0.02 : 0)
+      + lateralUnits * (travel * 0.7364721654 - lift * 0.0368543253)
+      + 0.035 * Math.sin(time * 0.37),
+    y: viewHeight * (width < 700 ? -0.03 : -0.06)
+      + lateralUnits * (-travel * 0.0850431973 + lift * 0.9855486454)
+      + 0.13 * Math.sin(time * 0.73),
+    z: depthUnits * (travel * 0.6711008897 + lift * 0.1653348914)
+      + 0.04 * Math.sin(time * 0.51),
+    pitch: flightPose.pitch,
+    yaw: flightPose.yaw,
+    bank: flightPose.bank + 0.018 * Math.sin(time * 0.51),
+    // No added starting tilt. Retain only the fly-past's gradual axial bank.
+    roll: -(scroll * responsiveness) / 1200,
   }
 }
 export const faces = [
@@ -71,23 +96,22 @@ export function projectPaperPlane(
   progress: number
 ) {
   const p = Math.max(0, Math.min(1, progress))
-  const { pitch, yaw, bank } = flightPose
   const transform = flightTransform(width, height, p)
+  const { pitch, yaw, bank, roll } = transform
   const focal = height / (2 * Math.tan((cameraFov * Math.PI) / 360))
   const points = vertices.map(([x, y, z]) => {
-    const x0 = x * Math.cos(bank) - y * Math.sin(bank),
-      y0 = x * Math.sin(bank) + y * Math.cos(bank)
+    const xr = x * Math.cos(roll) - y * Math.sin(roll),
+      yr = x * Math.sin(roll) + y * Math.cos(roll)
+    const x0 = xr * Math.cos(bank) - yr * Math.sin(bank),
+      y0 = xr * Math.sin(bank) + yr * Math.cos(bank)
     const x3 = x0 * Math.cos(yaw) + z * Math.sin(yaw),
       z1 = -x0 * Math.sin(yaw) + z * Math.cos(yaw)
     const y3 = y0 * Math.cos(pitch) - z1 * Math.sin(pitch),
       z2 = y0 * Math.sin(pitch) + z1 * Math.cos(pitch)
-    const depth = Math.max(
-      0.3,
-      cameraDistance - transform.z - z2 * transform.scale
-    )
     return {
-      x: width / 2 + ((x3 * transform.scale + transform.x) * focal) / depth,
-      y: height / 2 - ((y3 * transform.scale + transform.y) * focal) / depth,
+      x: x3 * transform.scale + transform.x,
+      y: y3 * transform.scale + transform.y,
+      depth: cameraDistance - transform.z - z2 * transform.scale,
       z: z2,
       world: [x3, y3, z2],
     }
@@ -95,6 +119,25 @@ export function projectPaperPlane(
   return faces
     .map((face, index) => {
       const [a, b, c] = face.map((i) => points[i])
+      // Clip against the same near plane as WebGL. A close fly-past can cross
+      // the camera; clamping individual depths would distort a fallback wing.
+      const polygon: { x: number; y: number; depth: number }[] = []
+      const source = [a, b, c]
+      for (let i = 0; i < source.length; i++) {
+        const current = source[i]
+        const previous = source[(i + source.length - 1) % source.length]
+        const inside = current.depth >= cameraNear
+        const previousInside = previous.depth >= cameraNear
+        if (inside !== previousInside) {
+          const t = (cameraNear - previous.depth) / (current.depth - previous.depth)
+          polygon.push({
+            x: previous.x + (current.x - previous.x) * t,
+            y: previous.y + (current.y - previous.y) * t,
+            depth: cameraNear,
+          })
+        }
+        if (inside) polygon.push(current)
+      }
       const u = b.world.map((v, i) => v - a.world[i]),
         v = c.world.map((n, i) => n - a.world[i])
       const normal = [
@@ -111,10 +154,12 @@ export function projectPaperPlane(
           )
       const shade = 1 - (1 - light * (index === 1 || index === 2 ? 0.87 : 1)) * shadowStrength
       return {
-        points: face
-          .map((i) => `${points[i].x.toFixed(2)},${points[i].y.toFixed(2)}`)
+        points: polygon
+          .map(({ x, y, depth }) =>
+            `${(width / 2 + x * focal / depth).toFixed(2)},${(height / 2 - y * focal / depth).toFixed(2)}`
+          )
           .join(" "),
-        fill: `rgb(${paperColor.map((c) => Math.round(c * shade)).join(",")})`,
+        fill: `rgb(${paperFaceColor(index).map((c) => Math.round(c * shade)).join(",")})`,
         depth: (a.z + b.z + c.z) / 3,
       }
     })

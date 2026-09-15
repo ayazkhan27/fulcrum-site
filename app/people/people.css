@@ -1,0 +1,97 @@
+.detail-hero.people-hero {
+  background: #e5e7e9;
+  color: #000000;
+  margin-top: 0;
+  border-top: 12px solid #e5e7e9;
+  padding-bottom: 42px;
+}
+.detail-hero.people-hero .detail-intro {
+  transform: translateY(-36px);
+  color: #000000;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  max-width: 740px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  hyphens: auto;
+  margin-inline: auto;
+  text-align: justify;
+  text-align-last: left;
+}
+.detail-hero.people-hero > .shell {
+  margin-inline: auto;
+}
+.detail-hero.people-hero h1 {
+  transform: translateY(-36px);
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.1rem, 5.5vw, 5.28rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-inline: auto;
+  text-align: center;
+  color: #000000;
+}
+.detail-hero.people-hero .eyebrow {
+  color: #000000;
+  text-align: left;
+  transform: translateY(-16px);
+}
+
+.people-hero + .section.shell {
+  padding-top: 24px;
+}
+
+.people-hero + .section .person-card {
+  background: #e6edf4;
+}
+
+.people-hero + .section .person-card:hover {
+  background: #dfe8f1;
+}
+
+.people-team-note {
+  align-self: center;
+  padding: 36px;
+}
+
+.people-team-note h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: #174572;
+}
+
+.person-title h2 {
+  font-family: inherit;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.people-team-note .section-note {
+  color: #000000;
+}
+
+.people-team-note .section-note {
+  transform: translateY(48px);
+  font-size: 20px;
+  width: fit-content;
+  max-width: 100%;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.people-team-note .section-note::before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #b2c9da;
+}
+
+@media (max-width: 520px) {
+  .person-title h2 {
+    font-size: 1.7rem;
+  }
+}

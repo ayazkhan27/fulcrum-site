@@ -91,10 +91,52 @@ The Explore Fulcrum link bypasses the sequence. No scroll events are intercepted
 
 The owner supplied `fulcrum-logo-shadow-rivet.svg` to replace the earlier masthead.
 The source is preserved byte-for-byte as `public/fulcrum-logo-shadow-rivet-original.svg`.
-`public/fulcrum-logo-shadow-rivet-light.svg` is a web derivative with transparent
-background, cropped whitespace and white primary lettering/mountain for navy
-surfaces. Geometry, Helvetica wordmark and silver rivet details are retained.
-Header and footer share this asset. The old masthead is no longer used in social
+The homepage uses `public/fulcrum-logo-shadow-dark.svg`; interior headers and
+footers use `public/fulcrum-logo-shadow-rivet-light.svg`. At the owner's request,
+the website has returned to its earlier mixed-case Helvetica `Fulcrum` masthead,
+with the two mountains and their approved proportions and gap. The site master
+is `assets/brand/fulcrum-website-master.svg`; dark and white variants adapt its
+colors for contrast. There is no under-logo slogan in the page headers. The
+footer reuses the bus's exact outlined italic `Precision in motion.` signature
+and three speed strokes via `public/fulcrum-signature-white.svg`, replacing the
+previous plain-text tagline. The former `Global sourcing and representation.
+Bangladesh and beyond.` description now opens the lower footer scope paragraph,
+not the logo block. The signature is right-aligned beneath the final `m` of its mixed-case
+name. The footer logo is 10% larger (264px desktop, 220px below 1100px), while its
+visible mountain edge still aligns with `Let's move forward.` above. Page headers
+are unchanged. The uppercase name remains reserved for the bus/livery version.
+All variants have transparent backgrounds and no rivet details.
+After approving the restored website masthead, the owner moved only its mountain
+group one step left, then 8px right. Its current translation is 9 SVG units,
+approximately 8px right of the previous placement at the 884px preview width.
+The Helvetica name, mountain geometry and gap, and bus master remain unchanged.
+On 2026-09-13 the owner supplied `exec-c1f1bf91-ddac-4de4-94be-3c930825edec.png`
+as the reference for the mountains: the diagonal separation is essential and
+must remain transparent negative space, never overlapping shapes or a painted
+separator. All active SVG variants share this separated geometry.
+The owner's follow-up enlarges the smaller mountain uniformly by 5%, anchored
+at its bottom-right corner. This keeps the baseline and lettering clearance
+unchanged, narrowing the gap at the baseline from 5 to 3.175 SVG units.
+The next requested 5% enlargement compounds to 10.25% over the initial size.
+This second adjustment is anchored at the inner baseline corner to preserve
+the 3.175-unit gap rather than reducing it to a fragile hairline. Lettering,
+the larger mountain and the overall logo placement remain unchanged.
+The bus/livery master is `assets/brand/fulcrum-master.svg`. Its name and signature
+outlines were traced deterministically from the owner's supplied reference
+lettering using [Potrace](https://github.com/tooolbox/node-potrace). They are
+actual vector paths, not substitute fonts, embedded bitmaps or generated imagery.
+Tracing was a one-off asset-preparation step outside the app dependencies.
+`public/fulcrum-logo-white.svg` provides the same complete lockup in white for
+livery and other colored surfaces. The bus version uses the same approved
+mountains and reference lettering; front branding is intentionally absent.
+Keep website and bus lettering separate. After editing the appropriate master, run
+`node scripts/build-brand-assets.mjs`, then `node --test scripts/brand-mark.test.mjs`.
+The shared `Wordmark` component serves all page headers and footers with the
+restored 595 by 112 canvas. The approved mountain sizes and diagonal separation
+are retained, and standalone hero copy is unchanged. Legacy SVG filenames are
+retained so existing asset URLs keep working.
+The original supplied SVG above remains an unmodified archive, not a live asset.
+The old masthead is no longer used in social
 metadata, which uses illustrative aviation imagery instead (SVG sharing support
 varies). Earlier masthead-preservation notes below describe the previous version.
 

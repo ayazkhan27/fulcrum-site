@@ -15,9 +15,25 @@
   border: 0;
 }
 .home-header .brand-link {
+  transform: translateX(16px);
   width: min(57.2vw, 858px);
   max-width: 100%;
   min-width: 0;
+}
+.home-header .masthead-art {
+  transform: scale(1.05);
+  transform-origin: left bottom;
+}
+@media (min-width: 700px) {
+  .home-header .brand-link {
+    /* Reserve room for the enlarged artwork beside the navigation. */
+    max-width: calc(100% - 56px);
+  }
+}
+@media (max-width: 699px) {
+  .home-header .masthead-art {
+    transform-origin: right bottom;
+  }
 }
 .editorial-quicklinks {
   display: flex;
@@ -62,12 +78,12 @@
   background: #88b5de;
 }
 .paper-flight[data-motion="active"] {
-  height: 130svh;
+  height: auto;
 }
 .flight-stage {
   height: 100svh;
   min-height: 520px;
-  position: sticky;
+  position: relative;
   top: 0;
   overflow: clip;
   isolation: isolate;
@@ -81,22 +97,51 @@
 .flight-horizon img {
   object-fit: cover;
   object-position: 50% 50%;
-  filter: saturate(1.15) brightness(1.12) contrast(0.94);
+  /* Preserve the photograph's cloud detail instead of clipping highlights. */
+  filter: saturate(0.92) brightness(1.02) contrast(0.98);
   opacity: 1;
-  animation: sky-drift 48s ease-in-out infinite alternate;
+  animation: sky-drift 38s ease-in-out infinite alternate;
+  animation-delay: -10s;
+  will-change: transform;
 }
 .flight-horizon::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(#8cbeed12, #bedaf133 38%, #fafbfbd0 85%, #fafbfc);
+  background: linear-gradient(
+    180deg,
+    rgb(240 246 252 / 24%) 0%,
+    rgb(240 246 252 / 18%) 42%,
+    rgb(250 251 252 / 36%) 66%,
+    rgb(250 251 252 / 78%) 88%,
+    #fafbfc 100%
+  );
+}
+/* User-supplied sky trial: retain its natural color and the soft page transition.
+   The original photo treatment above stays intact for an easy comparison. */
+.flight-horizon-trial img {
+  filter: none;
+  /* Lower the cloud within the existing overscan, keeping every edge covered.
+     The base scale also preserves coverage when reduced motion stops drift. */
+  --flight-sky-offset: 5%;
+  transform: scale(1.22) translateY(var(--flight-sky-offset));
+}
+.flight-horizon-trial::after {
+  background: linear-gradient(
+    180deg,
+    rgb(240 246 252 / 8%) 0%,
+    rgb(240 246 252 / 6%) 42%,
+    rgb(250 251 252 / 22%) 66%,
+    rgb(250 251 252 / 72%) 88%,
+    #fafbfc 100%
+  );
 }
 .flight-cloud {
   position: absolute;
   width: 100%;
   height: 60%;
   pointer-events: none;
-  opacity: 0.28;
+  opacity: 0.08;
   background:
     radial-gradient(ellipse 30% 13% at 20% 50%, #fff9, transparent 75%),
     radial-gradient(ellipse 25% 8% at 45% 47%, #fff6, transparent 80%);
@@ -105,28 +150,32 @@
 .flight-cloud-near {
   left: -35%;
   top: 28%;
-  animation: cloud-drift 32s ease-in-out infinite alternate;
+  animation: cloud-drift 26s ease-in-out infinite alternate;
+  animation-delay: -8s;
 }
 .flight-cloud-far {
   right: -35%;
   bottom: 0;
-  opacity: 0.2;
-  animation: cloud-drift 54s ease-in-out infinite alternate-reverse;
+  opacity: 0.05;
+  animation: cloud-drift 43s ease-in-out infinite alternate-reverse;
+  animation-delay: -15s;
 }
 @keyframes sky-drift {
   from {
-    transform: scale(1.08) translateX(-1%);
+    transform: scale(1.22)
+      translate3d(-6%, calc(-2% + var(--flight-sky-offset, 0%)), 0);
   }
   to {
-    transform: scale(1.13) translateX(1%);
+    transform: scale(1.22)
+      translate3d(6%, calc(2% + var(--flight-sky-offset, 0%)), 0);
   }
 }
 @keyframes cloud-drift {
   from {
-    transform: translate3d(-6%, 0, 0);
+    transform: translate3d(-18%, 4%, 0);
   }
   to {
-    transform: translate3d(15%, -4%, 0);
+    transform: translate3d(28%, -7%, 0);
   }
 }
 .paper-flight[data-paused="true"] .flight-horizon *,
@@ -173,10 +222,15 @@
   top: calc(40% - 12px);
   width: max-content;
   max-width: 470px;
+  transform: translate(-80px, 16px);
   opacity: var(--flight-tagline-opacity, 1);
   filter: blur(calc((1 - var(--flight-tagline-opacity, 1)) * 5px));
 }
 .flight-intro h1 {
+  margin: 0;
+  text-align: left;
+  transform: scale(1.05);
+  transform-origin: top left;
   font-size: clamp(2.25rem, 3.6vw, 3.8rem);
   font-weight: 700;
   line-height: 1.01;
@@ -437,9 +491,10 @@
   align-items: center;
 }
 .home-header .menu-toggle {
-  background: transparent;
-  color: #101f26;
-  border-color: #101f2633;
+  background: #101f26;
+  color: #ffffff;
+  border-color: #101f26;
+  transform: scale(0.81);
 }
 .home-header .primary-nav {
   top: calc(100% + 16px);
@@ -480,5 +535,19 @@
   }
   .flight-intro {
     top: 32%;
+  }
+}
+
+@media (min-width: 700px) {
+  .home-header .editorial-quicklinks {
+    align-self: end;
+    line-height: 1;
+    margin-bottom: clamp(6px, calc(1.154vw - 2px), 15px);
+    transform: translateX(-16px);
+  }
+  .home-header .menu-toggle {
+    align-self: end;
+    margin-bottom: clamp(8px, 1.154vw, 17px);
+    transform: translate(-16px, 20px) scale(0.81);
   }
 }

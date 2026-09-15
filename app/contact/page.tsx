@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
 import { Header, Footer } from "@/components/site/chrome"
-import { EnquiryForm } from "@/components/site/enquiry-form"
+import { ServiceEnquiry } from "@/components/site/service-enquiry"
+import "./contact.css"
 export const metadata: Metadata = {
-  title: "Contact | Fulcrum",
+  title: "Contact Us | Fulcrum",
   description:
     "Discuss sourcing, manufacturer representation or procurement across aviation, energy, textiles, commodities, industrial and medical equipment.",
   alternates: { canonical: "/contact" },
@@ -11,21 +12,12 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main id="main">
-        <section className="detail-hero">
-          <div className="shell">
-            <p className="eyebrow">Fulcrum / Contact</p>
-            <h1>
-              A conversation.
-              <br />A clearer way forward.
-            </h1>
-            <p className="detail-intro">
-              Tell us what needs to be sourced, evaluated or solved. We will
-              help define the next step.
-            </p>
-          </div>
-        </section>
-        <section className="section shell contact-layout">
+      <main id="main" className="contact-page">
+        <h1 className="sr-only">Contact Us</h1>
+        <div className="shell contact-page-label">
+          <p className="eyebrow">Fulcrum / Contact Us</p>
+        </div>
+        <ServiceEnquiry>
           <div>
             <p className="eyebrow">Connect with Fulcrum</p>
             <h2>
@@ -33,11 +25,17 @@ export default function ContactPage() {
               <br />A direct connection.
             </h2>
             <dl className="contact-addresses">
+              <div>
+                <dt>Visit our website</dt>
+                <dd>
+                  <a href="https://fulcrumtriad.com">www.fulcrumtriad.com</a>
+                </dd>
+              </div>
               {[
                 ["General enquiries", "infobd@fulcrumtriad.com"],
                 ["Operations & partnerships", "operations@fulcrumtriad.com"],
                 [
-                  "Khan Musharraf Hussein · Founding principal",
+                  "Chief Executive Office",
                   "khanhussein@fulcrumtriad.com",
                 ],
               ].map(([label, email]) => (
@@ -53,43 +51,9 @@ export default function ContactPage() {
               Based in New York. Working across borders.
             </p>
           </div>
-          <EnquiryForm />
-        </section>
-        <section className="section detail-note">
-          <div className="shell">
-            <div>
-              <p className="eyebrow">Before we begin</p>
-              <h2>
-                A little context
-                <br />
-                goes a long way.
-              </h2>
-            </div>
-            <div className="faq-list">
-              {[
-                [
-                  "What should I include in an enquiry?",
-                  "Describe the asset, product, service or business question, the relevant market or location, and your indicative timeline. A concise outline is enough to start.",
-                ],
-                [
-                  "Do you work beyond aviation?",
-                  "Yes. Our scope includes energy and petroleum, edible oils, cotton and textiles, industrial and medical equipment, and government procurement. We connect buyers and suppliers and coordinate the commercial work around a defined requirement.",
-                ],
-                [
-                  "How does an engagement begin?",
-                  "We first clarify the requirement and our potential role. Scope, representation, responsibilities and fees or commissions are documented before an assignment begins.",
-                ],
-              ].map(([question, answer]) => (
-                <details key={question}>
-                  <summary>{question}</summary>
-                  <p>{answer}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+        </ServiceEnquiry>
       </main>
-      <Footer />
+      <Footer closing />
     </>
   )
 }

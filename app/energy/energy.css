@@ -1,0 +1,61 @@
+body:has(.vertical-hero-energy) .footer-tagline {
+  margin-top: 0;
+  width: 53.5%;
+}
+
+.vertical-hero-energy .detail-tagline {
+  margin-top: 24px;
+  font-weight: 700;
+  color: #43512d;
+}
+
+.vertical-hero-energy > .detail-hero-grid > div:first-child {
+  transform: translateY(-48px);
+}
+
+.vertical-hero-energy .energy-image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 16px;
+  min-width: 0;
+}
+
+.vertical-hero-energy .energy-image-pair > * {
+  min-width: 0;
+}
+
+.vertical-hero-energy .energy-image-pair .asset-image img {
+  padding: 0;
+  object-fit: cover;
+  object-position: 60% 50%;
+  transform: translateY(20px) scale(1.4);
+}
+
+.vertical-hero-energy .energy-image-pair .asset-image {
+  height: 220px;
+  min-height: 0;
+}
+
+.vertical-hero-energy .energy-lng-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.vertical-hero-energy .energy-lng-image img {
+  object-fit: cover;
+  object-position: 67% 60%;
+}
+
+.vertical-hero-energy .energy-lng-photo figcaption {
+  margin-top: 8px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #445a6b;
+}
+
+.vertical-hero-energy .energy-lng-photo a {
+  text-decoration: underline;
+}

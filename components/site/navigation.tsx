@@ -3,18 +3,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight, Menu, X } from "lucide-react"
-const links = [
-  ["/aviation", "Aviation"],
-  ["/energy", "Energy"],
-  ["/sectors/textiles", "Textiles & mill supply"],
-  ["/sectors/commodities", "Edible oils & commodities"],
-  ["/sectors/industrial", "Industrial equipment"],
-  ["/sectors/healthcare", "Medical equipment"],
-  ["/sectors/defense", "Government & defense"],
-  ["/consulting", "Consulting"],
-  ["/brokerage", "Brokerage"],
-  ["/people", "People"],
-]
+import { sitePages } from "@/lib/site-pages"
+const links = sitePages.filter((page) => page.href !== "/contact")
 export function Navigation({ editorial = false }: { editorial?: boolean }) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
@@ -34,8 +24,8 @@ export function Navigation({ editorial = false }: { editorial?: boolean }) {
     <>
       {editorial && (
         <nav className="editorial-quicklinks" aria-label="Featured">
-          <Link href="/#overview">About</Link>
-          <Link href="/services">Services</Link>
+          <Link href="/">Home</Link>
+          <Link href="/mission">Mission</Link>
           <Link href="/contact">Contact</Link>
         </nav>
       )}
@@ -55,7 +45,7 @@ export function Navigation({ editorial = false }: { editorial?: boolean }) {
         aria-label="Primary"
         className={`primary-nav ${open ? "is-open" : ""}`}
       >
-        {links.map(([href, label]) => (
+        {links.map(({ href, label }) => (
           <Link
             key={href}
             href={href}

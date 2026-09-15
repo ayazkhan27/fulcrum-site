@@ -1,16 +1,21 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { Header, Footer } from "@/components/site/chrome"
-import { AviationExplorer } from "@/components/site/aviation-explorer"
 import { CapabilityIcon } from "@/components/site/technical-artwork"
 import { AssetVisual } from "@/components/site/asset-visual"
 import { sectors } from "@/lib/sectors"
 import type { AssetKey } from "@/lib/asset-library"
 import { suppliedAssets } from "@/lib/asset-library"
+import { AircraftTransactions } from "@/components/site/aircraft-transactions"
+import { EngagementDisclosure } from "@/components/site/engagement-disclosure"
+import { EdibleOilVisual } from "@/components/site/edible-oil-visual"
 export type CapabilityContent = {
   label: string
+  pageLabel?: string
   title: string
   intro: string
+  tagline?: string
   heading: string
   items: [string, string][]
   noteTitle: string
@@ -38,29 +43,103 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
       <Header />
       <main id="main">
         <section
-          className={["detail-hero", sector ? `vertical-hero vertical-hero-${content.label.toLowerCase()}` : ""].join(" ")}
+          className={[
+            "detail-hero",
+            sector
+              ? `vertical-hero vertical-hero-${content.label.toLowerCase()}`
+              : "",
+          ].join(" ")}
         >
           <div className="shell detail-hero-grid">
             <div>
-              <p className="eyebrow">Fulcrum / {content.label}</p>
-              <h1>{content.title}</h1>
+              <p className="eyebrow">
+                Fulcrum / {content.pageLabel ?? content.label}
+              </p>
+              <h1>{content.pageLabel ?? content.label}</h1>
               <p className="detail-intro">{content.intro}</p>
+              {content.tagline && (
+                <p className="detail-tagline"><strong>{content.tagline}</strong></p>
+              )}
               <Link href="/contact" className="text-link">
                 Discuss your requirement{" "}
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             </div>
-            {content.label === "Medical equipment" ? (
+            {content.label === "Aviation" ? (
+              <div className="aviation-image-stack">
+                <div className="aviation-image-box">
+                  <Image
+                    src="/aviation-boeing-curated.svg"
+                    alt="Rear view line drawing of a Boeing aircraft with its full wingspan"
+                    fill
+                    sizes="(max-width: 700px) 100vw, 50vw"
+                  />
+                </div>
+                <figure className="asset-visual asset-photo aviation-lower-image">
+                  <div className="asset-image">
+                    <Image
+                      src="/assets/madrid-barajas-terminal-4-diego-delso.jpg"
+                      alt="Interior of Madrid-Barajas Airport Terminal 4 with its sweeping roof and structural columns"
+                      fill
+                      sizes="(max-width: 700px) 100vw, 50vw"
+                      preload
+                    />
+                  </div>
+                  <figcaption>
+                    Madrid-Barajas Terminal 4 · Illustrative imagery<br />
+                    Photo: <a href="https://commons.wikimedia.org/wiki/File:Terminal_4_del_aeropuerto_de_Madrid-Barajas,_Espa%C3%B1a,_2013-01-09,_DD_01.jpg">Diego Delso</a>
+                    {", "}<a href="https://delso.photo">delso.photo</a>
+                    {" · "}<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>
+                    {" · Cropped to fit"}
+                  </figcaption>
+                </figure>
+              </div>
+            ) : content.label === "Textile & Mill Supply" ? (
+              <div className="textile-image-stack">
+                <AssetVisual asset="cottonBlack" priority />
+                <AssetVisual asset="fabricFolds" priority />
+              </div>
+            ) : content.label === "Medical equipment" ? (
               <div className="medical-hero">
                 <span aria-hidden="true">M+</span>
                 <p>Equipment. Specifications. Coordination.</p>
               </div>
             ) : suppliedAssets[heroAsset].treatment === "object" ? (
               <div className="hero-object-panel">
-                <AssetVisual asset={heroAsset} className="detail-asset" priority />
+                {content.label === "Energy" ? (
+                  <div className="energy-image-pair">
+                    <AssetVisual asset={heroAsset} className="detail-asset" priority />
+                    <figure className="energy-lng-photo">
+                      <div className="energy-lng-image">
+                        <Image
+                          src="/assets/lng-carrier-fuji-ken-hodge.jpg"
+                          alt="Fuji LNG carrier with spherical gas tanks at a terminal"
+                          fill
+                          sizes="(max-width: 700px) 60vw, 25vw"
+                        />
+                      </div>
+                      <figcaption>
+                        LNG carrier · <a href="https://commons.wikimedia.org/wiki/File:LNG_Carrier_Fuji_Lng.jpg">Ken Hodge</a>
+                        {" · "}<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>
+                      </figcaption>
+                    </figure>
+                  </div>
+                ) : content.label === "Edible Oil & Commodities" ? (
+                  <EdibleOilVisual />
+                ) : (
+                <AssetVisual
+                  asset={heroAsset}
+                  className="detail-asset"
+                  priority
+                />
+                )}
                 <div className="hero-object-scope">
                   <p className="eyebrow">In focus</p>
-                  <ul>{content.items.slice(0, 3).map(([name]) => <li key={name}>{name}</li>)}</ul>
+                  <ul>
+                    {content.items.slice(0, 3).map(([name]) => (
+                      <li key={name}>{name}</li>
+                    ))}
+                  </ul>
                   <span>Illustrative imagery</span>
                 </div>
               </div>
@@ -82,7 +161,7 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
             <Link
               href={
                 content.label === "Aviation"
-                  ? "/aviation/aircraft-engine-transactions"
+                  ? "/aviation#aircraft-engine-transactions"
                   : "/energy#role"
               }
             >
@@ -93,7 +172,6 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
             </Link>
           </div>
         )}
-        {content.label === "Aviation" && <AviationExplorer />}
         {content.label === "Capabilities" && (
           <section
             className="shell service-directory"
@@ -107,7 +185,7 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
             ))}
           </section>
         )}
-        {content.label === "Textiles & mill supply" && (
+        {content.label === "Textile & Mill Supply" && (
           <div className="shell textile-materials">
             <AssetVisual asset="cotton" caption="Cotton & raw materials" />
             <AssetVisual asset="fibre" caption="Fibres & mill inputs" />
@@ -140,35 +218,7 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
             <div>
               <p>{content.note}</p>
               {(content.label === "Energy" ||
-                content.label === "Brokerage") && (
-                <details className="role-disclosure">
-                  <summary>
-                    Representation, fees and transaction boundaries
-                  </summary>
-                  <p>
-                    Buyer or seller representation, authority to negotiate,
-                    documentation and delivery coordination are potential
-                    engagement scopes, not implied standing mandates. The
-                    parties, responsibilities and remuneration are agreed in
-                    writing for each assignment.
-                  </p>
-                  <p>
-                    Fees may be structured for advisory work or linked to agreed
-                    success milestones. No universal fee arrangement is
-                    represented here. Introductions remain subject to
-                    appropriate review; an introduction is not a guarantee of
-                    counterparty performance.
-                  </p>
-                  <p>
-                    The services described here are advisory and intermediary
-                    services. Any proposal involving commodity ownership or
-                    principal trading requires separate authority, arrangements
-                    and professional review. Legal, engineering, inspection,
-                    financing and regulatory conclusions remain with qualified
-                    parties.
-                  </p>
-                </details>
-              )}
+                content.label === "Brokerage") && <EngagementDisclosure />}
               <Link href={content.related} className="text-link">
                 {content.relatedLabel}{" "}
                 <ArrowUpRight size={18} aria-hidden="true" />
@@ -176,6 +226,7 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
             </div>
           </div>
         </section>
+        {content.label === "Aviation" && <AircraftTransactions />}
       </main>
       <Footer />
     </>

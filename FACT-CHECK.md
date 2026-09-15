@@ -1,5 +1,15 @@
 # Fulcrum copy review
 
+## Owner launch confirmation, 15 September 2026
+
+In response to a direct launch-check question, the owner confirmed that the
+listed mailboxes work, website-use rights cover the supplied images and Avenir
+fonts, and the listed team qualifications and experience are accurate. This
+is owner confirmation, not an independent documentary verification or an email
+delivery test by the agent. Existing public-source evidence and limitations
+below remain applicable; no additional credentials or commercial achievements
+are implied.
+
 ## Nascent energy practice clarification, 9 September 2026
 
 The owner requested broad scope but confirmed the business is nascent and will

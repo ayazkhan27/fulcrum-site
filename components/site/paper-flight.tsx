@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
-import { advanceFlightSpring } from "@/lib/flight-motion"
 import { projectPaperPlane } from "@/lib/paper-plane-model"
 import type { createPaperScene } from "@/lib/paper-plane-scene"
 
@@ -19,7 +18,6 @@ export function PaperFlight() {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)")
     let frame = 0,
       position = 0,
-      velocity = 0,
       target = 0,
       last = 0
     let width = section.clientWidth,
@@ -36,7 +34,7 @@ export function PaperFlight() {
       section.getBoundingClientRect().top < innerHeight
     const progress = () => {
       const r = section.getBoundingClientRect()
-      return clamp(-r.top / Math.max(1, r.height - innerHeight))
+      return clamp(-r.top / height)
     }
     const draw = () => {
       const p = clamp(position)
@@ -44,16 +42,16 @@ export function PaperFlight() {
       object.dataset.elapsed = ambientTime.toFixed(2)
       section.style.setProperty(
         "--flight-tagline-opacity",
-        String(1 - clamp((p - 0.3) / 0.3))
+        "1"
       )
-      // Keep the aircraft in view until the stage scrolls out with the document.
-      const approach = p * 0.42
-      if (scene) scene.draw(approach, ambientTime)
+      // Native document scroll drives the approach, without a pinned stage,
+      // artificial sideways exit, or an independently delayed scroll spring.
+      if (scene) scene.draw(p, ambientTime)
       else {
         object
           .querySelector("svg")!
           .setAttribute("viewBox", [0, 0, width, height].join(" "))
-        projectPaperPlane(width, height, approach).forEach((face, i) => {
+        projectPaperPlane(width, height, p).forEach((face, i) => {
           polygons[i].setAttribute("points", face.points)
           polygons[i].setAttribute("fill", face.fill)
           polygons[i].setAttribute("stroke", face.fill)
@@ -94,12 +92,8 @@ export function PaperFlight() {
       const dt = Math.min((time - (last || time - 16)) / 1000, 0.032)
       last = time
       if (!pausedRef.current && !reduced.matches) ambientTime += dt
-      // Damped spring follows natural scrolling without intercepting it.
-      const next = advanceFlightSpring(position, velocity, target, dt)
-      position = next.position
-      velocity = next.velocity
-      const moving =
-        Math.abs(target - position) > 0.0001 || Math.abs(velocity) > 0.0001
+      const moving = Math.abs(target - position) > 0.0001
+      position = target
       if (moving || time - lastDraw >= 32) {
         draw()
         lastDraw = time
@@ -128,7 +122,6 @@ export function PaperFlight() {
       cancelAnimationFrame(frame)
       frame = 0
       last = 0
-      velocity = 0
       section.dataset.motion = reduced.matches ? "static" : "active"
       width = Math.max(1, section.clientWidth)
       height = Math.max(1, section.querySelector(".flight-stage")!.clientHeight)
@@ -178,9 +171,10 @@ export function PaperFlight() {
         data-paused={paused}
       >
         <div className="flight-stage">
-          <div className="flight-horizon" aria-hidden="true">
+          <div className="flight-horizon flight-horizon-trial" aria-hidden="true">
+            {/* Trial sky. Previous photograph: /sky-nika-akin-trial.webp. */}
             <Image
-              src="/sky-johann-piber.jpg"
+              src="/sky-padrinan-trial.jpg"
               alt=""
               fill
               sizes="100vw"
@@ -193,7 +187,7 @@ export function PaperFlight() {
             <div className="flight-intro">
               <h1 id="home-title">
                 <span>Precision</span>
-                <span>in Motion.</span>
+                <span>in motion</span>
               </h1>
             </div>
           </div>

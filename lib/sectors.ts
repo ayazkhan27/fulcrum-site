@@ -11,7 +11,7 @@ export type Sector = {
 export const sectors: Sector[] = [
   {
     slug: "aviation",
-    name: "Aviation & airports",
+    name: "Aviation & Airports",
     short: "From terminal to tarmac.",
     href: "/aviation",
     asset: "terminal",
@@ -26,7 +26,7 @@ export const sectors: Sector[] = [
   },
   {
     slug: "energy",
-    name: "Energy & petroleum",
+    name: "Energy & Petroleum",
     short: "Supply that moves economies.",
     href: "/energy",
     asset: "petroleum",
@@ -41,7 +41,7 @@ export const sectors: Sector[] = [
   },
   {
     slug: "textiles",
-    name: "Textiles & mill supply",
+    name: "Textile & Mill Supply",
     short: "From fibre to finished fabric.",
     href: "/sectors/textiles",
     asset: "fabric",
@@ -56,14 +56,14 @@ export const sectors: Sector[] = [
   },
   {
     slug: "commodities",
-    name: "Edible oils & commodities",
+    name: "Edible Oil & Commodities",
     short: "The right source. The right specification.",
     href: "/sectors/commodities",
     asset: "edibleOil",
     intro:
       "Commercial sourcing for edible oils and commodity requirements, connecting purchasers with suitable supply.",
     scope: [
-      "Edible oils & related commodities",
+      "Edible oils, primarily soybean and corn oil, crude or refined",
       "Supplier identification & buyer representation",
       "Specifications, quantities & packaging",
       "Commercial terms & shipment coordination",
@@ -73,7 +73,7 @@ export const sectors: Sector[] = [
     slug: "industrial",
     name: "Industrial equipment",
     short: "Keep the operation moving.",
-    href: "/sectors/industrial",
+    href: "/equipment#industrial",
     asset: "cogwheel",
     intro:
       "From a replacement bearing to equipment for a warehouse or production line, we coordinate the commercial detail.",
@@ -88,7 +88,7 @@ export const sectors: Sector[] = [
     slug: "healthcare",
     name: "Medical equipment",
     short: "Clear requirements. Considered sourcing.",
-    href: "/sectors/healthcare",
+    href: "/equipment#healthcare",
     intro:
       "Connecting medical equipment buyers with manufacturers and suppliers around a clearly defined procurement need.",
     scope: [
@@ -102,7 +102,7 @@ export const sectors: Sector[] = [
     slug: "defense",
     name: "Government & defense",
     short: "Representation with responsibility.",
-    href: "/sectors/defense",
+    href: "/equipment#defense",
     asset: "aircraft",
     intro:
       "Commercial representation and supplier coordination for government and defense procurement in Bangladesh.",

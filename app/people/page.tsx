@@ -2,68 +2,19 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { Footer, Header } from "@/components/site/chrome"
+import "./people.css"
 
 export const metadata: Metadata = {
-  title: "Our people | Fulcrum",
+  title: "Our People | Fulcrum",
   description:
     "Meet the operating, analytical and commercial experience behind Fulcrum.",
   alternates: { canonical: "/people" },
 }
-const CAREER = [
-  {
-    period: "2016 – 2019",
-    role: "General Manager, Printing & Publications",
-    detail:
-      "Managed the carrier’s in-house print operation across publications, production and supporting functions.",
-  },
-  {
-    period: "2014 – 2016",
-    role: "General Manager, Biman Flight Catering Centre",
-    detail:
-      "Led the flight catering operation, with responsibility for people, service delivery and facility development.",
-  },
-  {
-    period: "2011 – 2016",
-    role: "General Manager, Public Relations",
-    detail:
-      "Served as the airline’s spokesperson and led public relations, branding, events and publications.",
-  },
-  {
-    period: "2010 – 2011",
-    role: "Deputy General Manager, Motor Transport",
-    detail: "Managed transport operations and supported vehicle procurement.",
-  },
-  {
-    period: "2009 – 2010",
-    role: "Deputy General Manager, Security",
-    detail:
-      "Head of Security: overall security policy for senior management approval, company-wide standards, and risk analysis and threat assessment capability. Established an Emergency Response Centre near the international airport.",
-  },
-  {
-    period: "2004 – 2009",
-    role: "Deputy General Manager, Public Relations",
-    detail:
-      "Worked on communications, public information and airline branding.",
-  },
-  {
-    period: "2000 – 2004",
-    role: "Deputy Chief Instructor, Airlines Training Centre",
-    detail:
-      "Training administration and course design, including a new course introduced under the title 'Towards a Paperless Office'.",
-  },
-  {
-    period: "1989 – 2000",
-    role: "Manager and Public Relations Officer",
-    detail:
-      "Press, publications and marketing communications. Assistant Editor of the in-flight magazine for twelve years, and coordinator of the month-long Bangladesh Festival in London in 1999.",
-  },
-]
-
 const PEOPLE = [
   {
-    name: "Khan Musharraf Hussein",
+    name: "Khan M Hussein",
     initials: "KH",
-    role: "Founding principal",
+    role: "Chief Executive Officer",
     summary:
       "Three decades inside Biman Bangladesh Airlines, bringing an operator’s perspective to commercial decisions.",
     expertise: "Leadership · Airline operations · Commercial strategy",
@@ -71,22 +22,22 @@ const PEOPLE = [
     email: "khanhussein@fulcrumtriad.com",
   },
   {
-    name: "Muhammad Abdul Wadud",
+    name: "Captain S A Masum",
+    initials: "SM",
+    role: "Chief Operating Officer–Bangladesh",
+    summary:
+      "Thirty years as a sea captain, bringing maritime leadership and operational experience to Fulcrum’s Bangladesh office.",
+    expertise: "Energy · Maritime operations · Logistics",
+    bio: "Captain S A Masum oversees energy, maritime activities and logistics as Chief Operating Officer of Fulcrum’s Bangladesh office. He served as a sea captain for 30 years and holds an MBA from London School of Business.",
+  },
+  {
+    name: "Engineer M A Wadud",
     initials: "AW",
     role: "Safety & compliance",
     summary:
       "Extensive airline safety, quality and regulatory experience, with a focus on documentation and operational standards.",
     expertise: "Safety · Quality systems · Regulatory review",
     bio: "His background includes corporate quality and risk management at Biman Bangladesh Airlines and participation in Bangladesh’s State Safety Programme coordination work. At Fulcrum, his focus is safety documentation, quality systems and review coordination.",
-  },
-  {
-    name: "Ayaz Khan",
-    initials: "AK",
-    role: "Data & scoring",
-    summary:
-      "Statistical thinking and analytical discipline that turn complex requirements into clear, auditable decisions.",
-    expertise: "Statistics · Evaluation · Decision support",
-    bio: "A recipient of the National Science Foundation Graduate Research Fellowship, Ayaz works on statistical analysis, data models and decision support. At Fulcrum, he applies that discipline to evaluation and scoring, making the reasoning behind a recommendation easier to inspect.",
   },
   {
     name: "Fatin Khan",
@@ -97,6 +48,15 @@ const PEOPLE = [
     expertise: "Coordination · Vendors · Execution",
     bio: "Fatin’s focus is vendor coordination and translating requirements into practical work plans. At Fulcrum, he coordinates information, submission logistics and deadlines across the assignment.",
   },
+  {
+    name: "Ayaz Khan",
+    initials: "AK",
+    role: "Data & scoring",
+    summary:
+      "Statistical thinking and analytical discipline that turn complex requirements into clear, auditable decisions.",
+    expertise: "Statistics · Evaluation · Decision support",
+    bio: "A recipient of the National Science Foundation Graduate Research Fellowship, Ayaz works on statistical analysis, data models and decision support. At Fulcrum, he applies that discipline to evaluation and scoring, making the reasoning behind a recommendation easier to inspect.",
+  },
 ]
 
 export default function PeoplePage() {
@@ -106,32 +66,21 @@ export default function PeoplePage() {
       <main id="main">
         <section className="detail-hero people-hero">
           <div className="shell">
-            <p className="eyebrow">Fulcrum / Our people</p>
-            <h1>
-              Perspective earned.
-              <br />
-              Expertise connected.
-            </h1>
+            <p className="eyebrow">Fulcrum / Our People</p>
+            <h1>Our People</h1>
             <p className="detail-intro">
-              Operating experience. Analytical discipline. Commercial judgment.
-              Different strengths, brought together around your assignment.
+              At the core of Fulcrum Triad is a team of highly experienced and educated
+              professionals. Three members each bring a three-decade track record,
+              with expertise across aviation and maritime operations. Their
+              academic backgrounds span the University of Dhaka, Bangladesh
+              University of Engineering and Technology, Bangladesh Marine Academy,
+              London School of Business and Columbia University, the elite Ivy League
+              institution. Together, they bring complementary knowledge and
+              practical experience to the work we undertake.
             </p>
           </div>
         </section>
         <section className="section shell">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">The people behind Fulcrum</p>
-              <h2>
-                One team.
-                <br />
-                Complementary perspectives.
-              </h2>
-            </div>
-            <p className="section-note">
-              Get to know the experience behind the work.
-            </p>
-          </div>
           <div className="people-grid">
             {PEOPLE.map((person, index) => (
               <article className="person-card" key={person.name}>
@@ -145,7 +94,7 @@ export default function PeoplePage() {
                 </div>
                 <div className="person-title">
                   <p className="eyebrow">{person.role}</p>
-                  <h3>{person.name}</h3>
+                  <h2>{person.name}</h2>
                 </div>
                 <p className="person-summary">{person.summary}</p>
                 <p className="person-expertise">{person.expertise}</p>
@@ -163,57 +112,15 @@ export default function PeoplePage() {
                 </details>
               </article>
             ))}
-          </div>
-        </section>
-        <section className="section detail-note">
-          <div className="shell">
-            <div>
-              <p className="eyebrow">Our foundation</p>
+            <div className="people-team-note">
               <h2>
-                Experience with
+                One team.
                 <br />
-                operational depth.
+                Complementary perspectives.
               </h2>
-              <p className="foundation-intro">
-                Our founding principal’s career provides a perspective across
-                the many businesses inside an airline.
+              <p className="section-note">
+                Operating, analytical and commercial perspectives meet around the work.
               </p>
-            </div>
-            <div className="career-disclosures">
-              <details>
-                <summary>
-                  Khan Hussein’s career & background{" "}
-                  <span aria-hidden="true">+</span>
-                </summary>
-                <div className="career-content">
-                  <ol>
-                    {CAREER.map((job) => (
-                      <li key={job.period}>
-                        <p className="eyebrow">{job.period}</p>
-                        <h3>{job.role}</h3>
-                        <p>{job.detail}</p>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </details>
-              <details>
-                <summary>
-                  How we manage representation <span aria-hidden="true">+</span>
-                </summary>
-                <div className="career-content">
-                  <p>
-                    Representation, responsibilities and potential conflicts are
-                    addressed when an engagement is scoped.
-                  </p>
-                  <p>
-                    Our mandates and agency are documented, and representation
-                    and compensation are disclosed. Government, defense and
-                    state-owned assignments proceed through authorized channels
-                    and the controls relevant to the engagement.
-                  </p>
-                </div>
-              </details>
             </div>
           </div>
         </section>

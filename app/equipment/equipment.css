@@ -1,0 +1,65 @@
+.equipment-hero {
+  background: var(--color-sterling, #cbd4df);
+}
+
+.equipment-hero .detail-hero-grid > div:first-child > .eyebrow,
+.equipment-hero .detail-intro {
+  color: #3f566c;
+}
+
+.equipment-hero .hero-object-panel {
+  background: #000000;
+  color: #eef1f5;
+}
+
+.equipment-hero .hero-object-scope {
+  border-color: #55616d;
+}
+
+.equipment-hero .hero-object-scope .eyebrow {
+  color: #cbd4df;
+}
+
+.equipment-hero .hero-object-scope > span {
+  color: #b3beca;
+}
+
+/* Keep the section label aligned with the approved sector pages. */
+.equipment-hero .detail-hero-grid > div:first-child {
+  padding-top: 1.125rem;
+}
+
+.equipment-hero .detail-hero-grid > div:first-child > .eyebrow {
+  position: absolute;
+  top: -5px;
+  left: 0;
+}
+
+.equipment-hero .asset-avonCutaway {
+  max-width: none;
+}
+
+.equipment-hero .asset-avonCutaway img {
+  object-fit: contain;
+  filter: none;
+}
+
+.equipment-hero .equipment-photo-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 800px) {
+  .equipment-hero {
+    padding-top: 42px;
+  }
+
+  .equipment-hero .detail-hero-grid > div:first-child {
+    padding-top: 0;
+  }
+
+  .equipment-hero .detail-hero-grid > div:first-child > .eyebrow {
+    position: static;
+  }
+}

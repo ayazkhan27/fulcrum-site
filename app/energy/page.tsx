@@ -1,24 +1,27 @@
 import type { Metadata } from "next"
+import "./energy.css"
 import {
   CapabilityPage,
   type CapabilityContent,
 } from "@/components/site/capability-page"
 export const metadata: Metadata = {
-  title: "Energy | Fulcrum",
+  title: "Energy & Petroleum | Fulcrum",
   description:
     "Petroleum products, fossil fuels and LNG sourcing, supplier representation and transaction coordination for Bangladesh and international markets.",
   alternates: { canonical: "/energy" },
 }
 const content: CapabilityContent = {
   label: "Energy",
+  pageLabel: "Energy & Petroleum",
   title: "A clearer path through energy markets.",
   intro:
     "Connecting energy requirements with producers, suppliers and commercial partners. We support petroleum products, fossil fuels and LNG assignments for commercial buyers, public-sector procurement and infrastructure projects in Bangladesh and international markets.",
   heading: "Commercial clarity across the energy value chain.",
+  tagline: "We move heaven and earth to ease your burden.",
   items: [
     [
       "Petroleum products",
-      "Sourcing and commercial coordination for petroleum products and fossil oils. Product specification, quantity, origin and delivery requirements shape the supplier search.",
+      "Sourcing and commercial coordination for petroleum products and fossil fuels. Product specification, quantity, origin and delivery requirements shape the supplier search.",
     ],
     [
       "Liquefied natural gas",
@@ -43,7 +46,7 @@ const content: CapabilityContent = {
   ],
   noteTitle: "A clear role. A defined requirement.",
   note: "Our starting role is independent advisor and transaction intermediary. An initial discussion establishes the product, origin, destination, counterparties, delivery expectations and work required. Any assignment proceeds only with an agreed scope, responsibilities and appropriate review.",
-  related: "/brokerage",
+  related: "/mission#brokerage",
   relatedLabel: "How our brokerage mandates work",
 }
 export default function Page() {

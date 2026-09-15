@@ -1,0 +1,9 @@
+<svg width="595" height="112" viewBox="80 140 595 112" fill="#101f26" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Fulcrum</title>
+  <desc>Two mountains separated by a transparent diagonal gap beside the bold Fulcrum wordmark.</desc>
+  <g transform="translate(9 0)">
+    <polygon id="mountain-secondary" points="199.43125,177.48825 236.91625,240 196.675,240 179.58625,210.2325" fill="#3f505c" opacity="0.6375"/>
+    <polygon id="mountain-primary" points="143,155 193.5,240 90,240" fill="#000000"/>
+  </g>
+  <text x="255" y="240" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="100" letter-spacing="1">Fulcrum</text>
+</svg>

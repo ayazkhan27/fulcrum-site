@@ -1,0 +1,112 @@
+/* Scoped layout for the approved Mission and Equipment pages. */
+.page-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  padding-block: 24px;
+  border-bottom: 1px solid #c7d4e1;
+  color: #174d86;
+  font-size: 0.85rem;
+}
+.page-section-nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.mission-hero .connection-diagram {
+  width: 100%;
+  margin: 0;
+}
+.mission-purpose,
+.mission-advisory-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 7vw, 100px);
+}
+.mission-purpose .section-note,
+.mission-advisory-grid .section-note {
+  margin-top: 28px;
+}
+.mission-principles article {
+  padding-block: 24px;
+  border-top: 1px solid #c7d4e1;
+}
+.mission-principles h3,
+.advisory-note h3 {
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+}
+.mission-principles p,
+.advisory-note p {
+  color: #52677c;
+}
+.mission-advisory-grid > section {
+  min-width: 0;
+}
+.mission-advisory-grid h2 {
+  font-size: clamp(2.1rem, 3vw, 3rem);
+}
+.advisory-subheading {
+  font-size: 1.2rem;
+  margin-block: 32px 20px;
+}
+.advisory-note {
+  margin-top: 30px;
+}
+.mission-advisory-grid .text-link {
+  margin-top: 30px;
+}
+.equipment-group + .equipment-group {
+  border-top: 1px solid #c7d4e1;
+}
+.equipment-group-heading {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 35px;
+}
+.equipment-group-heading .section-note {
+  margin-top: 24px;
+}
+.equipment-group-heading .asset-image {
+  height: 230px;
+  min-height: 0;
+}
+.equipment-group-heading .medical-hero {
+  padding: 26px;
+}
+.equipment-group-heading .medical-hero > span {
+  font-size: 6rem;
+}
+.equipment-group-heading .medical-hero p {
+  font-size: 0.85rem;
+  margin-top: 15px;
+}
+.procurement-boundary {
+  margin-top: 28px;
+  max-width: 800px;
+}
+.mission-purpose,
+.mission-advisory-grid > section,
+.equipment-group {
+  scroll-margin-top: 28px;
+}
+@media (max-width: 800px) {
+  .mission-purpose,
+  .mission-advisory-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .equipment-group-heading {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .equipment-group-heading > figure,
+  .equipment-group-heading > .medical-hero {
+    max-width: 360px;
+    width: 100%;
+  }
+  .page-section-nav {
+    gap: 14px 24px;
+  }
+}

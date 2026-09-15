@@ -43,19 +43,21 @@ test("CC0 stock mesh is a long folded dart, exported without drift", () => {
   assert.deepEqual(exported, vertices)
 })
 
-test("flight approaches without diving, turning, or stretching", () => {
+test("flight follows a linear camera approach without yawing, diving, or stretching", () => {
   for (const [width, height] of [
     [1280, 720],
     [390, 844],
     [320, 568],
     [844, 390],
   ]) {
-    let previousZ = 0
+    let previousZ = flightTransform(width, height, 0).z
     for (let step = 0; step <= 100; step++) {
       const p = step / 100
       const pose = flightTransform(width, height, p)
       assert.ok(Object.values(pose).every(Number.isFinite))
       assert.equal(pose.scale, flightTransform(width, height, 0).scale)
+      assert.equal(pose.pitch, flightPose.pitch)
+      assert.equal(pose.yaw, flightPose.yaw)
       assert.ok(
         pose.y >= flightTransform(width, height, 0).y,
         "no downward dive"
@@ -68,11 +70,33 @@ test("flight approaches without diving, turning, or stretching", () => {
         )
       )
     }
-    assert.ok(flightTransform(width, height, 0.45).z > 2.5)
+    const start = flightTransform(width, height, 0)
+    const middle = flightTransform(width, height, 0.5)
+    const end = flightTransform(width, height, 1)
+    for (const axis of ["x", "y", "z", "roll"]) {
+      assert.ok(Math.abs(middle[axis] - (start[axis] + end[axis]) / 2) < 1e-10)
+    }
+    assert.ok(end.z > start.z + 1)
+    assert.ok(end.roll < start.roll, "bank is about the longitudinal axis")
   }
 })
 
-test("SVG fallback uses exactly the same camera and fixed attitude as WebGL", () => {
+test("opening preserves the original paper-plane lens, framing and attitude", () => {
+  assert.equal(cameraDistance, 12)
+  assert.equal(cameraFov, 36)
+  assert.deepEqual(flightPose, { pitch: 0.42, yaw: 1.03, bank: 0 })
+  for (const [width, height] of [[1280, 720], [884, 788], [390, 844]]) {
+    const pose = flightTransform(width, height, 0)
+    const viewHeight = 24 * Math.tan(18 * Math.PI / 180)
+    assert.equal(pose.scale, Math.min(1.25, width / height * 0.95) * 0.9)
+    assert.equal(pose.x, viewHeight * width / height * (width < 700 ? -0.02 : 0))
+    assert.equal(pose.y, viewHeight * (width < 700 ? -0.03 : -0.06))
+    assert.equal(pose.z, 0)
+    assert.ok(pose.roll === 0, "no added tilt at the start")
+  }
+})
+
+test("SVG fallback matches the WebGL camera, axial bank and translation", () => {
   const width = 1280,
     height = 720
   const camera = new THREE.PerspectiveCamera(
@@ -83,16 +107,17 @@ test("SVG fallback uses exactly the same camera and fixed attitude as WebGL", ()
   )
   camera.position.z = cameraDistance
   camera.updateMatrixWorld()
-  for (const p of [0, 0.25, 0.5, 0.75]) {
+  for (const p of [0, 0.25, 0.5, 0.75, 1]) {
     const pose = flightTransform(width, height, p)
     const euler = new THREE.Euler(
-      flightPose.pitch,
-      flightPose.yaw,
-      flightPose.bank,
+      pose.pitch,
+      pose.yaw,
+      pose.bank,
       "XYZ"
     )
     const expected = vertices.map((v) => {
       const point = new THREE.Vector3(...v)
+        .applyAxisAngle(new THREE.Vector3(0, 0, 1), pose.roll)
         .applyEuler(euler)
         .multiplyScalar(pose.scale)
         .add(new THREE.Vector3(pose.x, pose.y, pose.z))
@@ -120,6 +145,24 @@ test("spring settles in either direction across frame rates and interrupted fram
         state = advanceFlightSpring(state.position, state.velocity, target, dt)
       assert.ok(Math.abs(state.position - target) < 0.0001)
       assert.ok(Math.abs(state.velocity) < 0.0001)
+    }
+  }
+})
+
+test("idle motion is bounded and does not change the scroll path or mesh scale", () => {
+  for (const [width, height] of [[1280, 720], [884, 788], [390, 844]]) {
+    for (const progress of [0, 0.35, 0.6, 1]) {
+      const base = flightTransform(width, height, progress)
+      for (let time = 0; time <= 120; time += 0.5) {
+        const pose = flightTransform(width, height, progress, time)
+        assert.equal(pose.scale, base.scale)
+        assert.equal(pose.pitch, base.pitch)
+        assert.ok(Math.abs(pose.yaw - base.yaw) <= 0.0081)
+        assert.ok(Math.abs(pose.roll - base.roll) <= 0.0601)
+        assert.ok(Math.abs(pose.x - base.x) <= 0.1201)
+        assert.ok(Math.abs(pose.y - base.y) <= 0.3001)
+        assert.ok(Math.abs(pose.z - base.z) <= 0.1201)
+      }
     }
   }
 })

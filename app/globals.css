@@ -650,23 +650,32 @@
   gap: 35px;
   padding-block: 60px;
 }
+.footer-identity {
+  --footer-brand-width: 264px;
+  width: var(--footer-brand-width);
+}
 .footer-brand {
   display: block;
-  width: 240px;
+  width: var(--footer-brand-width);
   margin-top: -20px;
-  margin-left: -15px;
+  /* Compensate for 19 units of transparent left inset in the 595-unit SVG.
+     The visible mountain edge then aligns with the invitation above. */
+  margin-left: calc(var(--footer-brand-width) * -0.0319327731);
 }
-.footer-description {
-  font-size: 0.8rem;
-  line-height: 1.75;
-  color: #aabcce;
+.footer-tagline {
+  display: block;
+  width: 59.4%;
+  height: auto;
+  /* The final m ends 26 SVG units before the canvas edge. Include the
+     logo's 19-unit optical left shift to align the signature with that m. */
+  margin: 8px calc(var(--footer-brand-width) * 0.0756302521) 0 auto;
 }
 .footer-grid > div > .eyebrow {
   color: #91a9c4;
   margin-bottom: 22px;
 }
 .footer-grid > div > a:not(.footer-brand),
-.footer-grid > div > p:not(.eyebrow) {
+.footer-grid > div > p:not(.eyebrow):not(.footer-tagline) {
   display: block;
   font-size: 0.8rem;
   margin-block: 10px;
@@ -1761,8 +1770,8 @@
     grid-template-columns: 1.2fr 0.7fr 0.7fr 1fr;
     gap: 22px;
   }
-  .footer-brand {
-    width: 200px;
+  .footer-identity {
+    --footer-brand-width: 220px;
   }
 }
 @media (max-width: 800px) {
