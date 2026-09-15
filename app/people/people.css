@@ -1,8 +1,8 @@
 .detail-hero.people-hero {
-  background: #e5e7e9;
+  background: #cbe3f2;
   color: #000000;
   margin-top: 0;
-  border-top: 12px solid #e5e7e9;
+  border-top: 12px solid #cbe3f2;
   padding-bottom: 42px;
 }
 .detail-hero.people-hero .detail-intro {
@@ -31,7 +31,7 @@
   letter-spacing: -0.025em;
   margin-inline: auto;
   text-align: center;
-  color: #000000;
+  color: #174572;
 }
 .detail-hero.people-hero .eyebrow {
   color: #000000;

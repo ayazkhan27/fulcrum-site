@@ -46,7 +46,7 @@
 
 .contact-page .contact-section {
   background: #e8edf3;
-  border-top: 20px solid #fff;
+  border-top: 0;
 }
 
 .contact-page .service-explorer {
@@ -55,6 +55,10 @@
 
 .contact-page .contact-layout {
   padding-top: 40px;
+}
+
+.contact-page .contact-layout > div:first-child > h2 {
+  color: #174572;
 }
 
 .contact-page #enquiry-form {
@@ -69,7 +73,8 @@
 }
 
 .contact-closing {
-  background: transparent;
+  background: #eef3f8;
+  border-top: 1px solid #b2c9da;
   color: #122b43;
   min-height: auto;
   display: flex;
@@ -166,6 +171,8 @@
   width: 100%;
   height: auto;
   object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: brightness(1.06);
 }
 
 @media (max-width: 800px) {
@@ -223,6 +230,9 @@
 
 .contact-closing .footer-tagline {
   filter: brightness(0);
+  transform: translateY(-4px);
+  /* Match the visible right edge of the wordmark after its 1.05 scale. */
+  margin-right: calc(var(--footer-brand-width) * 0.0294117647);
 }
 
 .contact-closing a:hover {

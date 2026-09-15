@@ -1,6 +1,10 @@
-body:has(.vertical-hero-energy) .footer-tagline {
+body:has(> main .vertical-hero-energy) .footer-tagline {
   margin-top: 0;
   width: 53.5%;
+}
+
+.vertical-hero-energy h1 {
+  color: #174572;
 }
 
 .vertical-hero-energy .detail-tagline {

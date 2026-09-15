@@ -1,9 +1,11 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import { SiteMotion } from "@/components/site/site-motion"
+import { PageSequence } from "@/components/site/page-sequence"
 
 import "./globals.css"
 import "./editorial.css"
+import "./page-sequence.css"
 
 // Avenir stays local for body copy. Editorial headings use the system
 // Helvetica stack; no third-party font files are copied or remotely fetched.
@@ -59,6 +61,7 @@ export default function RootLayout({
     <html lang="en" className={avenir.variable}>
       <body id="top">
         {children}
+        <PageSequence />
         <SiteMotion />
       </body>
     </html>

@@ -23,7 +23,8 @@ export type CapabilityContent = {
   related: string
   relatedLabel: string
 }
-export function CapabilityPage({ content }: { content: CapabilityContent }) {
+export function CapabilityPage({ content, heroOnly = false, embedded = false }: { content: CapabilityContent; heroOnly?: boolean; embedded?: boolean }) {
+  const Container = embedded ? "div" : "main"
   const sector = content.label === "Aviation" || content.label === "Energy"
   const match = sectors.find((s) => s.name === content.label)
   const heroAsset: AssetKey =
@@ -40,9 +41,10 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
     "terminal"
   return (
     <>
-      <Header />
-      <main id="main">
+      {!embedded && <Header />}
+      <Container id={embedded ? undefined : "main"}>
         <section
+          id={heroOnly && content.label === "Aviation" ? "aircraft-engine-transactions" : undefined}
           className={[
             "detail-hero",
             sector
@@ -153,6 +155,7 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
             )}
           </div>
         </section>
+        {!heroOnly && <>
         {sector && (
           <div className="sector-subnav shell">
             <a href="#execution">
@@ -227,8 +230,9 @@ export function CapabilityPage({ content }: { content: CapabilityContent }) {
           </div>
         </section>
         {content.label === "Aviation" && <AircraftTransactions />}
-      </main>
-      <Footer />
+        </>}
+      </Container>
+      {!heroOnly && <Footer />}
     </>
   )
 }

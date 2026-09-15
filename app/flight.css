@@ -73,6 +73,12 @@
 .home-header .primary-nav > a:hover {
   color: #0047ab;
 }
+.home-header .primary-nav > a[href="/"] {
+  color: #53a1b5;
+}
+.home-header .primary-nav > a.nav-contact {
+  color: #0047ab;
+}
 .paper-flight {
   position: relative;
   background: #88b5de;
@@ -491,9 +497,9 @@
   align-items: center;
 }
 .home-header .menu-toggle {
-  background: #101f26;
+  background: #24647d;
   color: #ffffff;
-  border-color: #101f26;
+  border-color: #24647d;
   transform: scale(0.81);
 }
 .home-header .primary-nav {

@@ -64,6 +64,11 @@ also preserve its approved appearance.
 
 ## Approved Aviation & Airports page — preserve
 
+Latest owner change: keep only the approved Aviation hero and header, with
+nothing below the hero (no subnavigation, capability sections, transaction
+sections or footer). Preserve both hero images, attribution and contact link.
+The former transaction fragment resolves to the hero for legacy links.
+
 The owner approved the current Aviation & Airports page as final on 2026-09-13.
 Preserve its copy, typography, colors, spacing and two-box image layout unless
 the owner requests changes to this page. This includes app/aviation/page.tsx,

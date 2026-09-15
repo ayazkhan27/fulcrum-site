@@ -211,7 +211,7 @@ export function PaperFlight() {
       </section>
       <div className="post-flight-navigation">
         <div className="shell post-flight-controls">
-          <a className="flight-skip" href="#overview">
+          <a className="flight-skip" href="#page-mission">
             Explore Fulcrum <span aria-hidden="true">↓</span>
           </a>
           <button

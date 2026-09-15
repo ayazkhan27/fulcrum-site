@@ -3,7 +3,7 @@
   font-weight: 800;
 }
 .mission-statement #mission-title {
-  color: #000000;
+  color: #174572;
 }
 body:has(.mission-statement) > .site-header:not(.home-header) {
   background: #000000;
@@ -62,10 +62,10 @@ body:has(.mission-statement) > .site-header:not(.home-header) {
 .mission-lead {
   margin-top: 28px;
   max-width: 42ch;
-  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  font-size: clamp(1rem, 1.45vw, 1.125rem);
   line-height: 1.7;
   font-weight: 600;
-  color: #000000;
+  color: #174572;
 }
 .mission-statement .shell > .text-link {
   display: flex;

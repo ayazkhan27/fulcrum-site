@@ -55,32 +55,28 @@ test('Retired URLs redirect directly to the appropriate sections without loops',
   for (const sector of sectors) assert.ok(canonical.has(sector.href.split('#')[0]));
 });
 
-test('The relocated advisory, specialist and aircraft content remains available', async () => {
-  const mission = await read('app/mission/page.tsx');
-  assert.match(mission, /id="capabilities"/);
-  assert.match(mission, /id: "consulting"/);
-  assert.match(mission, /id: "brokerage"/);
-  assert.match(mission, /<EngagementDisclosure \/>/);
-  const equipment = await read('app/equipment/page.tsx');
-  assert.match(equipment, /sectorDetails\[sector.slug\]\[i\]/);
-  assert.deepEqual(sectors.filter((sector) => sector.href.startsWith('/equipment#')).map((sector) => sector.slug), ['industrial', 'healthcare', 'defense']);
-  const transactions = await read('components/site/aircraft-transactions.tsx');
-  assert.match(transactions, /id="aircraft-engine-transactions"/);
-  assert.match(transactions, /<GateList detailed \/>/);
-  assert.match(transactions, /Airworthiness determinations, inspections/);
-  assert.match(await read('components/site/capability-page.tsx'), /<AircraftTransactions \/>/);
+test('Approved pages retain their hero-only presentation', async () => {
+  const mission = await read('components/site/pages/mission.tsx');
+  assert.match(mission, /id="purpose"/);
+  assert.doesNotMatch(mission, /<SharedCapabilities|page-section-nav/);
+  const aviation = await read('components/site/pages/aviation.tsx');
+  assert.match(aviation, /heroOnly/);
+  assert.match(await read('components/site/pages/energy.tsx'), /heroOnly/);
+  assert.match(await read('components/site/capability-page.tsx'), /!heroOnly && <Footer/);
 });
 
-test('Home summarizes capabilities and presents sectors in canonical order', async () => {
+test('Home presents the approved pages in scroll order', async () => {
   const home = await read('app/page.tsx');
-  assert.doesNotMatch(home, /SharedCapabilities/);
-  assert.match(home, /\[sectors\[0\], sectors\[1\]\]/);
-  assert.match(home, /sectors\.slice\(2\)/);
-  assert.match(await read('app/mission/page.tsx'), /<SharedCapabilities \/>/);
+  assert.deepEqual([...home.matchAll(/<section id="(page-[^"]+)"/g)].map(match => match[1]), [
+    'page-mission', 'page-people', 'page-aviation', 'page-energy',
+    'page-textiles', 'page-commodities', 'page-equipment', 'page-contact',
+  ]);
+  assert.equal((home.match(/ embedded/g) || []).length, 8);
+  assert.match(home, /<PaperFlight/);
 });
 
 test('People has ordered person headings and no repeated team-note sentence', async () => {
-  const people = await read('app/people/page.tsx');
+  const people = await read('components/site/pages/people.tsx');
   assert.match(people, /<h2>\{person\.name\}<\/h2>/);
   assert.doesNotMatch(people, /<h3>\{person\.name\}/);
   assert.doesNotMatch(people, /The assignment shapes the team\./);

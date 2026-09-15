@@ -4,10 +4,11 @@
 
 .vertical-hero-aviation > .detail-hero-grid > div:first-child > h1 {
   transform: translateY(-16px);
+  color: #174572;
 }
 
 .vertical-hero-aviation .detail-intro {
-  color: #000000;
+  color: #174572;
   font-size: 15px;
   margin-top: 14px;
 }

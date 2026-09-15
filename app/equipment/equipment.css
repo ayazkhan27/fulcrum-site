@@ -2,6 +2,10 @@
   background: var(--color-sterling, #cbd4df);
 }
 
+.equipment-hero h1 {
+  color: #174572;
+}
+
 .equipment-hero .detail-hero-grid > div:first-child > .eyebrow,
 .equipment-hero .detail-intro {
   color: #3f566c;

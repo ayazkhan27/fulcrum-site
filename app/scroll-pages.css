@@ -1,0 +1,57 @@
+/* Rhythm for the continuous homepage; standalone pages retain their layouts. */
+#page-mission .detail-hero,
+#page-aviation .detail-hero,
+#page-energy .detail-hero,
+#page-textiles .detail-hero,
+#page-commodities .detail-hero,
+#page-equipment .detail-hero {
+  padding-block: clamp(48px, 5.2vw, 72px);
+}
+
+#page-people .people-hero {
+  padding-top: clamp(48px, 5.2vw, 72px);
+}
+
+#page-people .people-hero + .section.shell {
+  padding-bottom: clamp(48px, 5.2vw, 72px);
+}
+
+#page-aviation .aviation-image-box {
+  height: auto;
+  aspect-ratio: 2.5;
+}
+
+#page-aviation .aviation-lower-image .asset-image {
+  height: auto;
+  aspect-ratio: 1.65;
+}
+
+#page-textiles .textile-image-stack {
+  margin-top: 0;
+}
+
+#page-textiles .textile-image-stack .asset-image {
+  height: auto;
+  aspect-ratio: 1.75;
+}
+
+@media (max-width: 800px) {
+  #page-energy .detail-hero-grid > div:first-child {
+    transform: none;
+  }
+
+  #page-energy .energy-image-pair .asset-image,
+  #page-energy .energy-lng-image {
+    height: clamp(160px, 32vw, 220px);
+  }
+
+  #page-aviation .aviation-image-box {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 699px) {
+  #page-mission .mission-opening-copy {
+    transform: none;
+  }
+}
