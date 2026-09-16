@@ -67,7 +67,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
               with expertise across aviation and maritime operations. Their
               academic backgrounds span the University of Dhaka, Bangladesh
               University of Engineering and Technology, Bangladesh Marine Academy,
-              London School of Business and Columbia University, the elite Ivy League
+              London School of Business and Columbia University, an Ivy League
               institution. Together, they bring complementary knowledge and
               practical experience to the work we undertake.
             </p>
