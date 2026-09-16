@@ -60,7 +60,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
         <section className="detail-hero people-hero">
           <div className="shell">
             <p className="eyebrow">Fulcrum / Our People</p>
-            <h1>Our People</h1>
+            <h1>The People Behind the Motion</h1>
             <p className="detail-intro">
               At the core of Fulcrum Triad is a team of highly experienced and educated
               professionals. Three members each bring a three-decade track record,

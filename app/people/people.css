@@ -6,7 +6,7 @@
   padding-bottom: 42px;
 }
 .detail-hero.people-hero .detail-intro {
-  transform: translateY(-36px);
+  transform: translateY(-28px);
   color: #000000;
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
@@ -23,10 +23,10 @@
   margin-inline: auto;
 }
 .detail-hero.people-hero h1 {
-  transform: translateY(-36px);
+  transform: translateY(-24px);
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
-  font-size: clamp(3.1rem, 5.5vw, 5.28rem);
+  font-size: clamp(2.25rem, 4vw, 3.8rem);
   line-height: 1.1;
   letter-spacing: -0.025em;
   margin-inline: auto;
