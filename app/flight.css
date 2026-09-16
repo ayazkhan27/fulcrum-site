@@ -234,7 +234,7 @@
 }
 .flight-intro h1 {
   margin: 0;
-  text-align: left;
+  text-align: right;
   transform: scale(1.05);
   transform-origin: top left;
   font-size: clamp(2.25rem, 3.6vw, 3.8rem);
