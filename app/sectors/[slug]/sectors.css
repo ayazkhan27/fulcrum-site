@@ -118,7 +118,7 @@
 
 .detail-hero:has(.edible-oil-visual) .detail-hero-grid > div:first-child > .eyebrow {
   position: absolute;
-  top: -32px;
+  top: 0;
   left: 0;
 }
 
