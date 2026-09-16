@@ -1,13 +1,13 @@
 .detail-hero.people-hero {
   background: #53a1b5;
-  color: #ffffff;
+  color: #000000;
   margin-top: 0;
   border-top: 12px solid #53a1b5;
   padding-bottom: 42px;
 }
 .detail-hero.people-hero .detail-intro {
   transform: translateY(-36px);
-  color: #ffffff;
+  color: #000000;
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -31,10 +31,10 @@
   letter-spacing: -0.025em;
   margin-inline: auto;
   text-align: center;
-  color: #ffffff;
+  color: #000000;
 }
 .detail-hero.people-hero .eyebrow {
-  color: #ffffff;
+  color: #000000;
   text-align: left;
   transform: translateY(-16px);
 }
