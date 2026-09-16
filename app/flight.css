@@ -246,6 +246,9 @@
   display: block;
   white-space: nowrap;
 }
+.flight-intro h1 span:last-child {
+  font-size: 0.95em;
+}
 .flight-links {
   display: flex;
   gap: 12px;
