@@ -54,7 +54,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 We are Fulcrum. We make it easy for you, on land, at sea and in
                 the air.
                 <br />
-                The hallmark of our existence is precision in motion.
+                The hallmark of our existence is precision. In motion.
                 Everywhere.
               </p>
             </div>
