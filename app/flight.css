@@ -21,7 +21,7 @@
   min-width: 0;
 }
 .home-header .masthead-art {
-  transform: scale(1.05);
+  transform: scale(0.9975);
   transform-origin: left bottom;
 }
 @media (min-width: 700px) {
@@ -235,7 +235,7 @@
 .flight-intro h1 {
   margin: 0;
   text-align: right;
-  transform: scale(1.05);
+  transform: scale(1.0185);
   transform-origin: top left;
   font-size: clamp(2.25rem, 3.6vw, 3.8rem);
   font-weight: 700;
