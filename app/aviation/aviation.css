@@ -5,6 +5,15 @@
 .vertical-hero-aviation > .detail-hero-grid > div:first-child > h1 {
   transform: translateY(-16px);
   color: #174572;
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: var(--section-title-size);
+}
+
+@media (max-width: 520px) {
+  .vertical-hero-aviation > .detail-hero-grid > div:first-child > h1 {
+    font-size: var(--section-title-size);
+  }
 }
 
 .vertical-hero-aviation .detail-intro {

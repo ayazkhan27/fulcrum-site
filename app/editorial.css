@@ -4,6 +4,7 @@
   --surface-silver: #eaf0f5;
   --surface-navy: #05254a;
   --font-editorial: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  --section-title-size: clamp(2.193408rem, 3.368448vw, 3.446784rem);
 }
 body {
   background: #fafbfc;
@@ -19,7 +20,7 @@ h6,
   font-weight: 700;
 }
 .shell {
-  width: min(1360px, calc(100% - 112px));
+  width: min(1600px, calc(100% - 48px));
 }
 .section {
   padding-block: 108px;
@@ -64,6 +65,7 @@ h6,
   padding: 10px 18px;
 }
 .detail-hero h1 {
+  font-size: var(--section-title-size);
   font-weight: 700;
   line-height: 1.04;
   letter-spacing: -0.055em;
@@ -99,7 +101,7 @@ h6,
   align-items: center;
 }
 .vertical-hero h1 {
-  font-size: clamp(2.8rem, 4.3vw, 4.4rem);
+  font-size: var(--section-title-size);
 }
 .vertical-hero-energy {
   background: var(--surface-silver);
@@ -345,6 +347,9 @@ h6,
   }
 }
 @media (max-width: 520px) {
+  :root {
+    --section-title-size: 2.232576rem;
+  }
   .header-inner {
     min-height: 88px;
   }
@@ -358,7 +363,7 @@ h6,
     padding-block: 55px;
   }
   .detail-hero h1 {
-    font-size: 2.85rem;
+    font-size: var(--section-title-size);
   }
   .sector-hero-photo {
     height: 360px;

@@ -24,10 +24,10 @@
 }
 .detail-hero.people-hero h1 {
   transform: translateY(-24px);
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-condensed);
   font-weight: 700;
-  font-size: clamp(2.25rem, 4vw, 3.8rem);
-  line-height: 1.1;
+  font-size: var(--section-title-size);
+  line-height: 1.04;
   letter-spacing: -0.025em;
   margin-inline: auto;
   text-align: center;
