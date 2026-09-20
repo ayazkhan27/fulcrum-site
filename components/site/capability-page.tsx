@@ -57,7 +57,21 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               <p className="eyebrow">
                 Fulcrum / {content.pageLabel ?? content.label}
               </p>
-              <h1>{content.pageLabel ?? content.label}</h1>
+              {content.label === "Energy" ? (
+                <div className="energy-heading-group">
+                  <Image
+                    className="energy-heading-cylinder"
+                    src="/assets/openclipart-vectors-gas-container-160416.png"
+                    alt="Red gas cylinder"
+                    width={974}
+                    height={1921}
+                    sizes="88px"
+                  />
+                  <h1>{content.pageLabel ?? content.label}</h1>
+                </div>
+              ) : (
+                <h1>{content.pageLabel ?? content.label}</h1>
+              )}
               <p className="detail-intro">{content.intro}</p>
               {content.tagline && (
                 <p className="detail-tagline"><strong>{content.tagline}</strong></p>
