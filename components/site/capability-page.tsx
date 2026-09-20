@@ -57,21 +57,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               <p className="eyebrow">
                 Fulcrum / {content.pageLabel ?? content.label}
               </p>
-              {content.label === "Energy" ? (
-                <div className="energy-heading-group">
-                  <Image
-                    className="energy-heading-cylinder"
-                    src="/assets/openclipart-vectors-gas-container-160416.png"
-                    alt="Red gas cylinder"
-                    width={974}
-                    height={1921}
-                    sizes="88px"
-                  />
-                  <h1>{content.pageLabel ?? content.label}</h1>
-                </div>
-              ) : (
-                <h1>{content.pageLabel ?? content.label}</h1>
-              )}
+              <h1>{content.pageLabel ?? content.label}</h1>
               <p className="detail-intro">{content.intro}</p>
               {content.tagline && (
                 <p className="detail-tagline"><strong>{content.tagline}</strong></p>
@@ -125,7 +111,6 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               <div className="hero-object-panel">
                 {content.label === "Energy" ? (
                   <div className="energy-image-pair">
-                    <AssetVisual asset={heroAsset} className="detail-asset" priority />
                     <figure className="energy-lng-photo">
                       <div className="energy-lng-image">
                         <Image
@@ -140,6 +125,15 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                         {" · "}<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>
                       </figcaption>
                     </figure>
+                    <AssetVisual asset={heroAsset} className="detail-asset" priority />
+                    <div className="energy-cylinder-panel">
+                      <Image
+                        src="/assets/openclipart-vectors-gas-container-160416.png"
+                        alt="Red gas cylinder"
+                        fill
+                        sizes="(max-width: 800px) 30vw, 15vw"
+                      />
+                    </div>
                   </div>
                 ) : content.label === "Edible Oil & Commodities" ? (
                   <EdibleOilVisual />

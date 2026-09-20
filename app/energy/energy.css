@@ -7,56 +7,17 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   color: #174572;
 }
 
-.vertical-hero-energy .energy-heading-group h1,
-.vertical-hero-energy .detail-intro,
-.vertical-hero-energy .detail-tagline,
-.vertical-hero-energy .detail-hero-grid > div:first-child > .text-link {
-  position: relative;
-  top: 32px;
-}
-
-.vertical-hero-energy .energy-heading-group {
-  width: fit-content;
-  max-width: 100%;
-}
-
-.vertical-hero-energy .energy-heading-cylinder {
-  display: block;
-  width: 80px;
-  height: auto;
-  margin: 0 auto 20px;
-  object-fit: contain;
-  transform: translateY(0) scale(1.1);
-  transform-origin: center top;
-}
-
 .vertical-hero-energy .detail-tagline {
   margin-top: 24px;
   font-weight: 700;
   color: #43512d;
 }
 
-.vertical-hero-energy > .detail-hero-grid > div:first-child {
-  transform: translateY(-48px);
-}
-
-@media (min-width: 801px) {
-  .vertical-hero-energy > .detail-hero-grid > div:first-child {
-    align-self: start;
-    padding-top: 14px;
-    transform: none;
-  }
-
-  .vertical-hero-energy .energy-heading-cylinder {
-    transform: translateY(calc(220px - 80px * 1921 / 974 - 32px)) scale(1.1);
-  }
-}
-
 .vertical-hero-energy .energy-image-pair {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
-  gap: 16px;
+  gap: 8px;
   min-width: 0;
 }
 
@@ -64,16 +25,22 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   min-width: 0;
 }
 
+.vertical-hero-energy .energy-image-pair .asset-visual {
+  mix-blend-mode: multiply;
+}
+
 .vertical-hero-energy .energy-image-pair .asset-image img {
   padding: 0;
+  mix-blend-mode: multiply;
   object-fit: cover;
   object-position: 60% 50%;
-  transform: translateY(7px) scale(1.6);
+  transform: translateY(17px) scale(1.45);
 }
 
 .vertical-hero-energy .energy-image-pair .asset-image {
   height: 220px;
   min-height: 0;
+  background: #eaf0f5;
 }
 
 .vertical-hero-energy .energy-lng-image {
@@ -97,4 +64,31 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
 
 .vertical-hero-energy .energy-lng-photo a {
   text-decoration: underline;
+}
+
+.vertical-hero-energy .energy-cylinder-panel {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: transparent;
+}
+
+.vertical-hero-energy .energy-cylinder-panel img {
+  object-fit: contain;
+  padding: 12px 8px 0;
+  object-position: left bottom;
+}
+
+.vertical-hero-energy .hero-object-panel {
+  padding: 24px;
+  background: transparent;
+}
+
+@media (max-width: 520px) {
+  .vertical-hero-energy .energy-cylinder-panel,
+  .vertical-hero-energy .energy-image-pair .asset-image,
+  .vertical-hero-energy .energy-lng-image {
+    height: 160px;
+  }
 }
