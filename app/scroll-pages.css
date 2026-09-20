@@ -16,11 +16,6 @@
   padding-bottom: clamp(48px, 5.2vw, 72px);
 }
 
-#page-aviation .aviation-image-box {
-  height: auto;
-  aspect-ratio: 2.5;
-}
-
 #page-aviation .aviation-lower-image .asset-image {
   height: auto;
   aspect-ratio: 1.65;
@@ -45,9 +40,6 @@
     height: clamp(160px, 32vw, 220px);
   }
 
-  #page-aviation .aviation-image-box {
-    min-height: 150px;
-  }
 }
 
 @media (max-width: 699px) {
