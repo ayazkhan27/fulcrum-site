@@ -4,10 +4,10 @@ export const sitePages = [
   { href: "/mission", label: "Mission" },
   { href: "/people", label: "Our People" },
   { href: "/aviation", label: "Aviation & Airports" },
+  { href: "/equipment", label: "Equipment" },
   { href: "/energy", label: "Energy & Petroleum" },
   { href: "/sectors/textiles", label: "Textile & Mill Supply" },
   { href: "/sectors/commodities", label: "Edible Oil & Commodities" },
-  { href: "/equipment", label: "Equipment" },
   { href: "/contact", label: "Contact" },
 ] as const
 

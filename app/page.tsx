@@ -30,10 +30,10 @@ export default function Page() {
     <section id="page-mission" aria-label="Mission"><MissionContent embedded /></section>
     <section id="page-people" aria-label="Our People"><PeopleContent embedded /></section>
     <section id="page-aviation" aria-label="Aviation & Airports"><AviationContent embedded /></section>
+    <section id="page-equipment" aria-label="Equipment"><EquipmentContent embedded /></section>
     <section id="page-energy" aria-label="Energy & Petroleum"><EnergyContent embedded /></section>
     <section id="page-textiles" aria-label="Textile & Mill Supply"><SectorContent slug="textiles" embedded /></section>
     <section id="page-commodities" aria-label="Edible Oil & Commodities"><SectorContent slug="commodities" embedded /></section>
-    <section id="page-equipment" aria-label="Equipment"><EquipmentContent embedded /></section>
     <section id="page-contact" aria-label="Contact"><ContactContent embedded /></section>
     </>
   )

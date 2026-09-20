@@ -9,9 +9,9 @@ const read = (file) => readFile(new URL(file, root), 'utf8');
 
 test('The site has exactly the nine pages approved by the owner, in order', () => {
   assert.deepEqual(sitePages.map((page) => page.label), [
-    'Home', 'Mission', 'Our People', 'Aviation & Airports',
+    'Home', 'Mission', 'Our People', 'Aviation & Airports', 'Equipment',
     'Energy & Petroleum', 'Textile & Mill Supply', 'Edible Oil & Commodities',
-    'Equipment', 'Contact',
+    'Contact',
   ]);
   assert.equal(new Set(sitePages.map((page) => page.href)).size, 9);
 });
@@ -68,8 +68,8 @@ test('Approved pages retain their hero-only presentation', async () => {
 test('Home presents the approved pages in scroll order', async () => {
   const home = await read('app/page.tsx');
   assert.deepEqual([...home.matchAll(/<section id="(page-[^"]+)"/g)].map(match => match[1]), [
-    'page-mission', 'page-people', 'page-aviation', 'page-energy',
-    'page-textiles', 'page-commodities', 'page-equipment', 'page-contact',
+    'page-mission', 'page-people', 'page-aviation', 'page-equipment', 'page-energy',
+    'page-textiles', 'page-commodities', 'page-contact',
   ]);
   assert.equal((home.match(/ embedded/g) || []).length, 8);
   assert.match(home, /<PaperFlight/);

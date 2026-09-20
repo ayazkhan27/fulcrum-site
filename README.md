@@ -20,12 +20,12 @@ The canonical navigation order is maintained in `lib/site-pages.ts`:
 
 1. Home
 2. Mission
-3. Aviation and Airports
-4. Equipment and Procurement
-5. Energy & Petroleum
-6. Textile and Mill Supply
-7. Edible Oil and Commodities
-8. Our People
+3. Our People
+4. Aviation & Airports
+5. Equipment
+6. Energy & Petroleum
+7. Textile & Mill Supply
+8. Edible Oil & Commodities
 9. Contact
 
 Consulting and brokerage are sections of Mission. Aircraft and engine
