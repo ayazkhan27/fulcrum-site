@@ -75,7 +75,10 @@
   max-width: none;
 }
 
-.equipment-hero .asset-jetEngine .asset-image,
+.equipment-hero .asset-jetEngine .asset-image {
+  height: 415.44px;
+}
+
 .equipment-hero .equipment-image-spacer {
   height: 319.44px;
 }
@@ -92,9 +95,6 @@
 .equipment-hero .asset-jetEngine img {
   object-fit: contain;
   filter: none;
-  height: calc(100% + 96px) !important;
-  top: auto !important;
-  bottom: 0;
 }
 
 .equipment-hero .asset-jetEngine .asset-image {
@@ -145,7 +145,10 @@
     height: 252.89px;
   }
 
-  .equipment-hero .asset-jetEngine .asset-image,
+  .equipment-hero .asset-jetEngine .asset-image {
+    height: 348.89px;
+  }
+
   .equipment-hero .equipment-image-spacer {
     height: 252.89px;
   }
