@@ -126,6 +126,13 @@
   color: #174572;
 }
 
+@media (min-width: 801px) {
+  .detail-hero:has(.edible-oil-visual) .detail-hero-grid {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 48px;
+  }
+}
+
 .detail-hero:has(.edible-oil-visual) h1,
 .detail-hero:has(.edible-oil-visual) .detail-intro {
   position: relative;
@@ -166,7 +173,7 @@
 }
 
 .hero-object-panel:has(.edible-oil-visual) {
-  background: #ffffff;
+  background: transparent;
 }
 
 .hero-object-panel:has(.edible-oil-visual) .hero-object-scope li {
@@ -174,21 +181,69 @@
 }
 
 .edible-oil-visual {
-  height: 264px;
-  max-width: 310px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  grid-template-rows: 160px 160px;
+  gap: 8px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
+}
+
+.edible-oil-visual figure {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 3px;
+}
+
+.edible-oil-feature {
+  grid-row: 1 / 3;
+  background: #f8f1df;
+}
+
+.edible-oil-soybean {
+  background: #eef2e7;
+}
+
+.edible-oil-corn {
+  background: #fff6d9;
+}
+
+.edible-oil-visual figcaption {
+  margin-top: 10px;
+  color: #4b3621;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.edible-oil-crop img {
+  width: 100%;
+  height: 104px;
+  object-fit: contain;
 }
 
 .edible-oil-bottle {
   width: 100%;
-  height: 100%;
+  height: 248px;
   object-fit: contain;
   object-position: center;
 }
 
 @media (max-width: 700px) {
   .edible-oil-visual {
-    height: 209px;
+    grid-template-rows: 145px 145px;
+  }
+
+  .edible-oil-bottle {
+    height: 218px;
+  }
+
+  .edible-oil-crop img {
+    height: 90px;
   }
 }
