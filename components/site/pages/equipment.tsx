@@ -26,26 +26,22 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 manage commercial follow-up from the initial brief through
                 agreed delivery milestones.
               </p>
-              <Link href="/contact" className="text-link">
-                Discuss your requirement{" "}
-                <ArrowUpRight size={18} aria-hidden="true" />
-              </Link>
-            </div>
-            <div className="hero-object-panel">
-              <AssetVisual asset="avonCutaway" className="detail-asset" priority />
-              <div className="hero-object-scope">
+              <div className="hero-object-scope equipment-focus">
                 <p className="eyebrow">In focus</p>
                 <ul>
                   <li>Aircraft engines &amp; spares</li>
                   <li>Ground support equipment</li>
                   <li>Government &amp; defense procurement</li>
                 </ul>
-                <span className="equipment-photo-credit">
-                  Illustrative imagery<br />
-                  Photo: <a href="https://commons.wikimedia.org/wiki/File:Jet_engine,_cutaway_(27441073466).jpg">Andrew Basterfield</a>
-                  {" · "}<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>
-                </span>
               </div>
+              <Link href="/contact" className="text-link">
+                Discuss your requirement{" "}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="hero-object-panel">
+              <AssetVisual asset="jetEngine" className="detail-asset" priority />
+              <AssetVisual asset="roadRoller" className="detail-asset" />
             </div>
           </div>
         </section>

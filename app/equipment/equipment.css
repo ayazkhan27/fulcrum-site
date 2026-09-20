@@ -12,8 +12,10 @@
 }
 
 .equipment-hero .hero-object-panel {
-  background: #000000;
-  color: #eef1f5;
+  background: transparent;
+  color: #3f566c;
+  align-self: start;
+  padding-top: 24px;
 }
 
 .equipment-hero .hero-object-scope {
@@ -21,7 +23,37 @@
 }
 
 .equipment-hero .hero-object-scope .eyebrow {
-  color: #cbd4df;
+  color: #3f566c;
+}
+
+.equipment-hero .equipment-focus {
+  color: #000;
+  margin-top: 24px;
+  transform: translateY(64px);
+  position: relative;
+  border-top-color: transparent;
+}
+
+.equipment-hero .equipment-focus::before {
+  content: "";
+  position: absolute;
+  top: -32px;
+  left: 0;
+  width: calc(100% - 22px);
+  border-top: 1px solid #55616d;
+}
+
+.equipment-hero .equipment-focus + .text-link {
+  transform: translateY(32px);
+}
+
+.equipment-hero .equipment-photo-credit {
+  display: block;
+  min-height: 19.2px;
+  color: #3f566c;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 16px;
 }
 
 .equipment-hero .hero-object-scope > span {
@@ -39,11 +71,47 @@
   left: 0;
 }
 
-.equipment-hero .asset-avonCutaway {
+.equipment-hero .asset-jetEngine {
   max-width: none;
 }
 
-.equipment-hero .asset-avonCutaway img {
+.equipment-hero .asset-jetEngine .asset-image,
+.equipment-hero .equipment-image-spacer {
+  height: 319.44px;
+}
+
+.equipment-hero .asset-equipmentTruck .asset-image {
+  height: 200px;
+}
+
+.equipment-hero .asset-equipmentTruck img {
+  object-fit: contain;
+  filter: none;
+}
+
+.equipment-hero .asset-jetEngine img {
+  object-fit: contain;
+  filter: none;
+  height: calc(100% + 96px) !important;
+  top: auto !important;
+  bottom: 0;
+}
+
+.equipment-hero .asset-jetEngine .asset-image {
+  overflow: hidden;
+}
+
+.equipment-hero .asset-roadRoller {
+  max-width: min(100%, 310.85px);
+  transform: translateY(-16px) scale(1.1);
+}
+
+.equipment-hero .asset-roadRoller .asset-image {
+  height: 319.44px;
+  background: transparent;
+}
+
+.equipment-hero .asset-roadRoller img {
   object-fit: contain;
   filter: none;
 }
@@ -65,5 +133,20 @@
 
   .equipment-hero .detail-hero-grid > div:first-child > .eyebrow {
     position: static;
+  }
+}
+
+@media (max-width: 700px) {
+  .equipment-hero .asset-roadRoller {
+    max-width: min(100%, 261.06px);
+  }
+
+  .equipment-hero .asset-roadRoller .asset-image {
+    height: 252.89px;
+  }
+
+  .equipment-hero .asset-jetEngine .asset-image,
+  .equipment-hero .equipment-image-spacer {
+    height: 252.89px;
   }
 }

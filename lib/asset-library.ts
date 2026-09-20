@@ -65,6 +65,16 @@ export const suppliedAssets = {
     alt: "Rolls-Royce Avon jet engine cutaway showing its compressor blades and internal components",
     treatment: "photo",
   },
+  jetEngine: {
+    src: "/assets/wikimediaimages-airbus-872468.jpg",
+    alt: "Aircraft engines and maintenance equipment inside an Airbus assembly facility",
+    treatment: "photo",
+  },
+  roadRoller: {
+    src: "/assets/road-roller-transparent.png",
+    alt: "Yellow road roller with an operator wearing a hard hat",
+    treatment: "photo",
+  },
   paperPlane: {
     src: "/assets/6034354-airline-3807267_1920.png",
     alt: "Teal paper-plane illustration",
