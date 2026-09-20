@@ -83,6 +83,25 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
             </div>
             {content.label === "Aviation" ? (
               <div className="aviation-image-stack">
+                <figure className="asset-visual asset-photo aviation-lower-image">
+                  <div className="asset-image">
+                    <Image
+                      src="/assets/zhai-ken-airplane-6674689.jpg"
+                      alt="Airplane flying between two modern buildings against a blue sky"
+                      fill
+                      sizes="(max-width: 700px) 100vw, 50vw"
+                      preload
+                    />
+                  </div>
+                </figure>
+                <div className="aviation-airport-photo">
+                  <Image
+                    src="/assets/stocksnap-building-2603781.jpg"
+                    alt="Airport check-in hall with baggage conveyors and passengers"
+                    fill
+                    sizes="(max-width: 800px) 100vw, 50vw"
+                  />
+                </div>
                 <div className="aviation-image-box">
                   <Image
                     src="/aviation-boeing-curated.svg"
@@ -91,24 +110,6 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                     sizes="(max-width: 700px) 100vw, 50vw"
                   />
                 </div>
-                <figure className="asset-visual asset-photo aviation-lower-image">
-                  <div className="asset-image">
-                    <Image
-                      src="/assets/madrid-barajas-terminal-4-diego-delso.jpg"
-                      alt="Interior of Madrid-Barajas Airport Terminal 4 with its sweeping roof and structural columns"
-                      fill
-                      sizes="(max-width: 700px) 100vw, 50vw"
-                      preload
-                    />
-                  </div>
-                  <figcaption>
-                    Madrid-Barajas Terminal 4 · Illustrative imagery<br />
-                    Photo: <a href="https://commons.wikimedia.org/wiki/File:Terminal_4_del_aeropuerto_de_Madrid-Barajas,_Espa%C3%B1a,_2013-01-09,_DD_01.jpg">Diego Delso</a>
-                    {", "}<a href="https://delso.photo">delso.photo</a>
-                    {" · "}<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>
-                    {" · Cropped to fit"}
-                  </figcaption>
-                </figure>
               </div>
             ) : content.label === "Textile & Mill Supply" ? (
               <div className="textile-image-stack">
