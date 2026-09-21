@@ -33,8 +33,8 @@ const avenir = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://fulcrumtriad.com"),
   icons: {
-    icon: [{ url: "/fulcrum-site-icon.png?v=masthead-4a99b5", sizes: "192x192", type: "image/png" }],
-    apple: [{ url: "/apple-touch-icon.png?v=masthead-4a99b5", sizes: "180x180", type: "image/png" }],
+    icon: [{ url: "/fulcrum-site-icon.png?v=masthead-fulcrum-name-v2", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png?v=masthead-fulcrum-name-v2", sizes: "180x180", type: "image/png" }],
   },
   title: "Fulcrum | Global sourcing & representation",
   description:

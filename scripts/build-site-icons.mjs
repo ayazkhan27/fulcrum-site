@@ -5,11 +5,15 @@ const require = createRequire(import.meta.url);
 const sharp = createRequire(require.resolve('next/package.json'))('sharp');
 const root = new URL('../', import.meta.url);
 const master = await readFile(new URL('assets/brand/fulcrum-website-master.svg', root), 'utf8');
-// Preserve the approved mountain geometry; omit lettering at favicon sizes.
-const icon = master
-  .replace('width="595" height="112" viewBox="80 140 595 112"', 'width="256" height="256" viewBox="80 105 185 185"')
-  .replace(/<text\b[\s\S]*?<\/text>/, '')
-  .replace(/<desc>[\s\S]*?<\/desc>/, '<desc>Fulcrum twin-mountain mark.</desc>');
+// Preserve the approved mountain geometry and raise it above the brand name.
+const mountains = master.match(/<g transform="translate\(9 0\)">([\s\S]*?)<\/g>/)?.[1];
+if (!mountains) throw new Error('Canonical mountain artwork is missing');
+const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>Fulcrum</title>
+  <desc>Approved twin-mountain mark above the Fulcrum name.</desc>
+  <g transform="translate(32 40) scale(1.307) translate(-90 -155)">${mountains}</g>
+  <text x="128" y="211" text-anchor="middle" fill="#101f26" font-family="Helvetica, Arial, sans-serif" font-size="46" font-weight="700">Fulcrum</text>
+</svg>`;
 // Sampled beneath the homepage masthead from sky-padrinan-trial.jpg,
 // including the homepage's translucent light overlay.
 const render = (size) => sharp(Buffer.from(icon)).resize(size, size).flatten({ background: '#4a99b5' }).png().toBuffer();
