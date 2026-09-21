@@ -14,7 +14,9 @@ const render = (size) => sharp(Buffer.from(icon)).resize(size, size).flatten({ b
 await writeFile(new URL('public/fulcrum-site-icon.png', root), await render(192));
 await writeFile(new URL('app/apple-icon.png', root), await render(180));
 const sizes = [16, 32, 48, 256];
-const images = await Promise.all(sizes.map(render));
+const images = await Promise.all(sizes.map(async (size) =>
+  sharp(await render(size)).ensureAlpha().png().toBuffer(),
+));
 const header = Buffer.alloc(6 + 16 * sizes.length);
 header.writeUInt16LE(1, 2);
 header.writeUInt16LE(sizes.length, 4);
