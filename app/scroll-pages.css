@@ -1,4 +1,8 @@
 /* Rhythm for the continuous homepage; standalone pages retain their layouts. */
+#page-commodities {
+  border-bottom: 1px solid #c4d3e1;
+}
+
 #page-mission .detail-hero,
 #page-aviation .detail-hero,
 #page-energy .detail-hero,
