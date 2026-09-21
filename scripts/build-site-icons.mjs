@@ -13,6 +13,7 @@ const icon = master
 const render = (size) => sharp(Buffer.from(icon)).resize(size, size).flatten({ background: '#ffffff' }).png().toBuffer();
 await writeFile(new URL('public/fulcrum-site-icon.png', root), await render(192));
 await writeFile(new URL('app/apple-icon.png', root), await render(180));
+await writeFile(new URL('public/apple-touch-icon.png', root), await render(180));
 const sizes = [16, 32, 48, 256];
 const images = await Promise.all(sizes.map(async (size) =>
   sharp(await render(size)).ensureAlpha().png().toBuffer(),

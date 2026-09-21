@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://fulcrumtriad.com"),
   icons: {
     icon: [{ url: "/fulcrum-site-icon.png", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   title: "Fulcrum | Global sourcing & representation",
   description:
