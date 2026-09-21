@@ -32,6 +32,9 @@ const avenir = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fulcrumtriad.com"),
+  icons: {
+    icon: [{ url: "/fulcrum-site-icon.png", sizes: "192x192", type: "image/png" }],
+  },
   title: "Fulcrum | Global sourcing & representation",
   description:
     "Sourcing, supplier representation and commercial coordination across aviation, energy, textiles, industrial equipment and healthcare. Bangladesh connections, global reach.",
