@@ -151,7 +151,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                       <li key={name}>{name}</li>
                     ))}
                   </ul>
-                  <span>Illustrative imagery</span>
+                  {content.label !== "Edible Oil & Commodities" && <span>Illustrative imagery</span>}
                 </div>
               </div>
             ) : (

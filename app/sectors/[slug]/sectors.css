@@ -200,9 +200,10 @@
   border-radius: 3px;
 }
 
-.edible-oil-feature {
+.edible-oil-visual .edible-oil-feature {
   grid-row: 1 / 3;
   background: #fcf6e9;
+  padding: 12px;
 }
 
 .edible-oil-soybean {
@@ -229,9 +230,13 @@
 
 .edible-oil-bottle {
   width: 100%;
-  height: 248px;
+  height: 272.8px;
+  flex-shrink: 0;
   object-fit: contain;
   object-position: center;
+}
+
+.edible-oil-corn img {
   transform: scale(1.1);
   transform-origin: center bottom;
 }
@@ -242,7 +247,7 @@
   }
 
   .edible-oil-bottle {
-    height: 218px;
+    height: 239.8px;
   }
 
   .edible-oil-crop img {
