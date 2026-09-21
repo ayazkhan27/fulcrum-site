@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     siteName: "Fulcrum",
     images: [
       {
-        url: "/assets/su-jun-mega-projects-8020883_1920.png",
-        width: 1920,
-        height: 1250,
-        alt: "Terminal architecture. Fulcrum sourcing and representation.",
+        url: "/fulcrum-masthead-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Fulcrum masthead with its twin-mountain logo.",
       },
     ],
   },
