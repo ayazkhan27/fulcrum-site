@@ -35,7 +35,7 @@ body:has(.mission-statement) > .site-header:not(.home-header) {
   margin: 0 0 1.4em;
 }
 .mission-statement-copy p:last-child {
-  color: #000000;
+  color: #53a1b5;
   font-weight: 800;
   text-align: center;
 }
