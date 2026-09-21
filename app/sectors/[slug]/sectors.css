@@ -234,10 +234,11 @@
   flex-shrink: 0;
   object-fit: contain;
   object-position: center;
+  transform: translateY(6px);
 }
 
 .edible-oil-corn img {
-  transform: scale(1.1);
+  transform: translateY(6px) scale(1.1);
   transform-origin: center bottom;
 }
 
