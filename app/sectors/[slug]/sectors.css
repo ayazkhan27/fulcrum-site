@@ -212,6 +212,7 @@
 
 .edible-oil-corn {
   background: #fcf6e9;
+  position: relative;
 }
 
 .edible-oil-visual figcaption {
@@ -238,8 +239,18 @@
 }
 
 .edible-oil-corn img {
-  transform: translateY(6px) scale(1.1);
-  transform-origin: center bottom;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 32px);
+  transform: translate(-50%, -50%) scale(1.1);
+  transform-origin: center;
+}
+
+.edible-oil-corn figcaption {
+  position: absolute;
+  bottom: 2px;
+  margin-top: 0;
 }
 
 @media (max-width: 700px) {
