@@ -10,7 +10,9 @@ const icon = master
   .replace('width="595" height="112" viewBox="80 140 595 112"', 'width="256" height="256" viewBox="80 105 185 185"')
   .replace(/<text\b[\s\S]*?<\/text>/, '')
   .replace(/<desc>[\s\S]*?<\/desc>/, '<desc>Fulcrum twin-mountain mark.</desc>');
-const render = (size) => sharp(Buffer.from(icon)).resize(size, size).flatten({ background: '#88b5de' }).png().toBuffer();
+// Sampled beneath the homepage masthead from sky-padrinan-trial.jpg,
+// including the homepage's translucent light overlay.
+const render = (size) => sharp(Buffer.from(icon)).resize(size, size).flatten({ background: '#4a99b5' }).png().toBuffer();
 await writeFile(new URL('public/fulcrum-site-icon.png', root), await render(192));
 await writeFile(new URL('app/apple-icon.png', root), await render(180));
 await writeFile(new URL('public/apple-touch-icon.png', root), await render(180));
