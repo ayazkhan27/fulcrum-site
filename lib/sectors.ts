@@ -107,10 +107,10 @@ export const sectors: Sector[] = [
     intro:
       "Commercial representation and supplier coordination for government and defense procurement in Bangladesh.",
     scope: [
-      "Manufacturer & supplier representation",
-      "Equipment and vehicle procurement coordination",
-      "Tender documentation & submission milestones",
-      "End-user requirements & specialist review coordination",
+      "Supplier representation",
+      "Equipment & vehicles",
+      "Tender coordination",
+      "End-user requirements",
     ],
   },
 ]

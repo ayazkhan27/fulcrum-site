@@ -1,3 +1,91 @@
+.equipment-defense {
+  padding: 80px 0;
+  background: #f3f5f7;
+  border-top: 1px solid #8b936c;
+  color: #174572;
+  scroll-margin-top: 100px;
+}
+
+.equipment-defense h2 {
+  margin: 16px 0 24px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+}
+
+.equipment-defense-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 62% minmax(0, 1fr);
+  column-gap: 6%;
+  row-gap: 0;
+  align-items: center;
+}
+
+.equipment-defense-copy { grid-column: 1; grid-row: 1; align-self: start; padding-top: 48px; }
+.equipment-defense-copy > .eyebrow {
+  position: absolute;
+  top: -5px;
+  left: 0;
+}
+.equipment-defense-photo {
+  margin: 0;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  width: calc((100% - 56px) / 2);
+  justify-self: end;
+}
+.equipment-defense-layout > .text-link { grid-column: 1 / -1; justify-self: start; color: #704626; }
+.equipment-defense-photo img {
+  display: block;
+  width: 100%;
+  height: 294px;
+  object-fit: contain;
+}
+
+.equipment-defense-intro {
+  width: 100%;
+  max-width: 640px;
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.6;
+  text-wrap: balance;
+}
+
+.equipment-defense-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px 56px;
+  margin: 40px 0;
+}
+
+.equipment-defense-grid article {
+  border-top: 1px solid #b8c5d0;
+  padding-top: 24px;
+}
+
+.equipment-defense-grid h3 {
+  color: #704626;
+  font-size: 21px;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.equipment-defense-grid p {
+  color: #3f566c;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .equipment-defense { padding: 48px 0; }
+  .equipment-defense-layout { grid-template-columns: 1fr; gap: 40px; }
+  .equipment-defense-copy { padding-top: 0; }
+  .equipment-defense-copy > .eyebrow { position: static; }
+  .equipment-defense-photo { grid-column: 1; grid-row: 2; width: 100%; max-width: 300px; margin: 0 auto; transform: none; }
+  .equipment-defense-photo img { height: 252px; }
+  .equipment-defense-intro { width: 100%; }
+  .equipment-defense-grid { grid-template-columns: 1fr; }
+}
+
 .equipment-hero {
   background: var(--color-sterling, #cbd4df);
 }
@@ -21,6 +109,12 @@
 .equipment-hero .detail-intro {
   text-align: justify;
   text-align-last: left;
+}
+
+.equipment-hero .hero-object-scope li a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .equipment-hero .hero-object-scope {

@@ -1,13 +1,17 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { Header } from "@/components/site/chrome"
 import { AssetVisual } from "@/components/site/asset-visual"
+import { sectors } from "@/lib/sectors"
+import { sectorDetails } from "@/lib/sector-details"
 import "@/app/structure.css"
 import "@/app/equipment/equipment.css"
 
 
 export default function PageContent({ embedded = false }: { embedded?: boolean }) {
   const Container = embedded ? "div" : "main"
+  const defense = sectors.find((sector) => sector.slug === "defense")!
   return (
     <>
       {!embedded && <Header />}
@@ -31,7 +35,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 <ul>
                   <li>Aircraft engines &amp; spares</li>
                   <li>Ground support equipment</li>
-                  <li>Government &amp; defense procurement</li>
+                  <li><a href="#defense">Government &amp; defense procurement</a></li>
                 </ul>
               </div>
               <Link href="/contact" className="text-link">
@@ -43,6 +47,30 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
               <AssetVisual asset="jetEngine" className="detail-asset" priority />
               <AssetVisual asset="roadRoller" className="detail-asset" />
             </div>
+          </div>
+        </section>
+        <section id="defense" className="equipment-defense" aria-labelledby="defense-title">
+          <div className="shell equipment-defense-layout">
+            <div className="equipment-defense-copy">
+            <p className="eyebrow">Fulcrum / Government &amp; defense</p>
+            <h2 id="defense-title">Defense Supply</h2>
+            <p className="equipment-defense-intro">{defense.intro}</p>
+            </div>
+            <div className="equipment-defense-grid">
+              {defense.scope.map((heading, index) => (
+                <article key={heading}>
+                  <h3>{heading}</h3>
+                  <p>{sectorDetails.defense[index]}</p>
+                </article>
+              ))}
+            </div>
+            <Link href="/contact" className="text-link">
+              Discuss your defense supply requirement{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+            <figure className="equipment-defense-photo">
+              <Image src="/assets/defense-shield.png" width={1284} height={1920} sizes="(max-width: 800px) 85vw, 45vw" alt="Illustrated wooden shield with metal studs" />
+            </figure>
           </div>
         </section>
       </Container>
