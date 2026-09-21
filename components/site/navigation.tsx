@@ -51,8 +51,10 @@ export function Navigation({ editorial = false }: { editorial?: boolean }) {
         aria-label="Primary"
         className={`primary-nav ${open ? "is-open" : ""}`}
       >
-        {links.map(({ href, label }) => (
-          <Link
+        {links.map(({ href, label }) => {
+          const NavLink = href.includes("#") ? "a" : Link
+          return (
+          <NavLink
             key={href}
             href={href}
             aria-current={
@@ -63,8 +65,9 @@ export function Navigation({ editorial = false }: { editorial?: boolean }) {
             onClick={() => setOpen(false)}
           >
             {label}
-          </Link>
-        ))}
+          </NavLink>
+          )
+        })}
         <Link
           href="/contact"
           className="nav-contact"
