@@ -172,16 +172,15 @@ export function PaperFlight() {
       >
         <div className="flight-stage">
           <div className="flight-horizon flight-horizon-trial" aria-hidden="true">
-            {/* Trial sky. Previous photograph: /sky-nika-akin-trial.webp. */}
+            {/* Original supplied sky, without image processing or overlays. */}
             <Image
               src="/sky-padrinan-trial.jpg"
+              unoptimized
               alt=""
               fill
               sizes="100vw"
               preload
             />
-            <div className="flight-cloud flight-cloud-near" />
-            <div className="flight-cloud flight-cloud-far" />
           </div>
           <div className="flight-caption shell">
             <div className="flight-intro">

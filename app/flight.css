@@ -123,24 +123,15 @@
     #fafbfc 100%
   );
 }
-/* User-supplied sky trial: retain its natural color and the soft page transition.
-   The original photo treatment above stays intact for an easy comparison. */
+/* Display the supplied sky without visual treatments. */
 .flight-horizon-trial img {
   filter: none;
-  /* Lower the cloud within the existing overscan, keeping every edge covered.
-     The base scale also preserves coverage when reduced motion stops drift. */
-  --flight-sky-offset: 5%;
-  transform: scale(1.22) translateY(var(--flight-sky-offset));
+  animation: none;
+  transform: none;
+  will-change: auto;
 }
 .flight-horizon-trial::after {
-  background: linear-gradient(
-    180deg,
-    rgb(240 246 252 / 8%) 0%,
-    rgb(240 246 252 / 6%) 42%,
-    rgb(250 251 252 / 22%) 66%,
-    rgb(250 251 252 / 72%) 88%,
-    #fafbfc 100%
-  );
+  content: none;
 }
 .flight-cloud {
   position: absolute;
