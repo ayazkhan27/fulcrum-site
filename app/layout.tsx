@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
+import { VisitorAnalytics } from "@/components/site/visitor-analytics"
 import { SiteMotion } from "@/components/site/site-motion"
 import { PageSequence } from "@/components/site/page-sequence"
 
@@ -31,6 +32,7 @@ const avenir = localFont({
 })
 
 export const metadata: Metadata = {
+  verification: { google: "Dzv0rqF46y0VLNYkl_z-pbzpPwc_xjtmsnsp2w-d0xw" },
   metadataBase: new URL("https://fulcrumtriad.com"),
   icons: {
     icon: [{ url: "/fulcrum-site-icon.png?v=masthead-fulcrum-name-v2", sizes: "192x192", type: "image/png" }],
@@ -67,6 +69,7 @@ export default function RootLayout({
         {children}
         <PageSequence />
         <SiteMotion />
+        <VisitorAnalytics />
       </body>
     </html>
   )
