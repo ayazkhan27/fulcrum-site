@@ -120,25 +120,9 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
             ) : suppliedAssets[heroAsset].treatment === "object" ? (
               <div className="hero-object-panel">
                 {content.label === "Energy" ? (
-                  <div className="energy-image-pair">
-                    <div className="energy-truck-panel">
-                      <Image
-                        src="/assets/clker-free-vector-images-truck-307987_1920.png"
-                        alt="Black petroleum tanker truck"
-                        fill
-                        sizes="(max-width: 800px) 60vw, 30vw"
-                        priority
-                      />
-                    </div>
-                    <div className="energy-cylinder-panel">
-                      <Image
-                        src="/assets/openclipart-vectors-gas-container-160416.png"
-                        alt="Red gas cylinder"
-                        fill
-                        sizes="(max-width: 800px) 30vw, 15vw"
-                      />
-                    </div>
-                  </div>
+                  <figure className="energy-editorial-visual">
+                    <Image src="/assets/energy-editorial-v2.png" alt="Illustrative tanker truck at an energy terminal" width={1536} height={1024} sizes="(max-width: 800px) 90vw, 45vw" priority />
+                  </figure>
                 ) : content.label === "Edible Oil & Commodities" ? (
                   <EdibleOilVisual />
                 ) : (

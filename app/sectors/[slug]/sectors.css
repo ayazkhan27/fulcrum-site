@@ -325,3 +325,12 @@
     top: auto;
   }
 }
+
+.edible-oil-visual.edible-oil-editorial { display: block; }
+.edible-oil-editorial img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.hero-object-panel:has(.edible-oil-editorial) { align-self: center; }
+
+.detail-hero:has(.edible-oil-editorial) .detail-hero-grid > div:first-child > :not(.eyebrow) { translate: none; }
+.detail-hero:has(.edible-oil-editorial) h1,
+.detail-hero:has(.edible-oil-editorial) .detail-intro { top: auto; }
+.detail-hero:has(.edible-oil-editorial) .detail-hero-grid > div:first-child > .eyebrow { position: static; }

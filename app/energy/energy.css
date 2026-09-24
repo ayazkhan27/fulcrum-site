@@ -126,3 +126,6 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   text-align: left;
   hyphens: none;
 }
+
+.energy-editorial-visual { margin: 0; }
+.energy-editorial-visual img { display: block; width: 100%; height: auto; border-radius: 3px; }
