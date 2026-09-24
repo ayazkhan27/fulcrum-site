@@ -295,12 +295,12 @@
   max-width: 360px;
   margin-inline: auto;
   padding-block: 20px;
-  background: #fcf6e9;
+  background: transparent;
 }
 
 .edible-oil-visual-single .edible-oil-bottle-panel img {
-  width: 50%;
-  max-width: 180px;
+  width: 55%;
+  max-width: 198px;
 }
 
 .edible-oil-visual-single > img:first-child {
