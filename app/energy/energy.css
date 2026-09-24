@@ -86,6 +86,7 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
 }
 
 .vertical-hero-energy .energy-cylinder-panel {
+  translate: 16px 0;
   position: relative;
   height: 220px;
   overflow: hidden;
