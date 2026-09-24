@@ -1,5 +1,6 @@
 "use client"
 import { useState, type FormEvent } from "react"
+import { track } from "@vercel/analytics"
 import { ArrowUpRight } from "lucide-react"
 import {
   buildEnquiryMailto,
@@ -33,6 +34,7 @@ export function EnquiryForm({
         requirement: String(data.get("requirement") ?? ""),
       }),
     })
+    track("Enquiry prepared")
   }
   return (
     <form
