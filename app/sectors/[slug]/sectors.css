@@ -306,3 +306,22 @@
 .edible-oil-visual-single > img:first-child {
   translate: 0 -16px;
 }
+
+.textile-page .detail-hero .detail-intro,
+.detail-hero:has(.edible-oil-visual) .detail-intro {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: left;
+  hyphens: none;
+}
+
+@media (max-width: 800px) {
+  .detail-hero:has(.edible-oil-visual) .detail-hero-grid > div:first-child > :not(.eyebrow) {
+    translate: none;
+  }
+  .detail-hero:has(.edible-oil-visual) h1,
+  .detail-hero:has(.edible-oil-visual) .detail-intro {
+    top: auto;
+  }
+}

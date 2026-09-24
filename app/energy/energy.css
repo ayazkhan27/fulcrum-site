@@ -10,14 +10,14 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
 .vertical-hero-energy .detail-tagline {
   margin-top: 24px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 30px;
   line-height: 1.35;
   color: #102f4c;
 }
 
 .vertical-hero-energy .detail-tagline strong {
-  font-weight: 100;
+  font-weight: 300;
 }
 
 .vertical-hero-energy .energy-image-pair {
@@ -105,9 +105,8 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   background: transparent;
 }
 
-.vertical-hero-energy .hero-object-scope ul,
-.vertical-hero-energy .hero-object-scope > .eyebrow {
-  translate: 0 32px;
+.vertical-hero-energy .hero-object-scope {
+  padding-top: 54px;
 }
 
 @media (max-width: 520px) {
@@ -117,4 +116,12 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   .vertical-hero-energy .energy-lng-image {
     height: 160px;
   }
+}
+
+.vertical-hero-energy .detail-intro {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: left;
+  hyphens: none;
 }
