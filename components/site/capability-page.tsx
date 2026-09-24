@@ -62,6 +62,16 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               {content.tagline && (
                 <p className="detail-tagline"><strong>{content.tagline}</strong></p>
               )}
+              {content.label === "Edible Oil & Commodities" && (
+                <div className="hero-object-scope">
+                  <p className="eyebrow">In focus</p>
+                  <ul>
+                    {content.items.slice(0, 3).map(([name]) => (
+                      <li key={name}>{name}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <Link href="/contact" className="text-link">
                 Discuss your requirement{" "}
                 <ArrowUpRight size={18} aria-hidden="true" />
@@ -111,21 +121,15 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               <div className="hero-object-panel">
                 {content.label === "Energy" ? (
                   <div className="energy-image-pair">
-                    <figure className="energy-lng-photo">
-                      <div className="energy-lng-image">
-                        <Image
-                          src="/assets/lng-carrier-fuji-ken-hodge.jpg"
-                          alt="Fuji LNG carrier with spherical gas tanks at a terminal"
-                          fill
-                          sizes="(max-width: 700px) 60vw, 25vw"
-                        />
-                      </div>
-                      <figcaption>
-                        LNG carrier · <a href="https://commons.wikimedia.org/wiki/File:LNG_Carrier_Fuji_Lng.jpg">Ken Hodge</a>
-                        {" · "}<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>
-                      </figcaption>
-                    </figure>
-                    <AssetVisual asset={heroAsset} className="detail-asset" priority />
+                    <div className="energy-truck-panel">
+                      <Image
+                        src="/assets/clker-free-vector-images-truck-307987_1920.png"
+                        alt="Black petroleum tanker truck"
+                        fill
+                        sizes="(max-width: 800px) 60vw, 30vw"
+                        priority
+                      />
+                    </div>
                     <div className="energy-cylinder-panel">
                       <Image
                         src="/assets/openclipart-vectors-gas-container-160416.png"
@@ -144,15 +148,15 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                   priority
                 />
                 )}
-                <div className="hero-object-scope">
+                {content.label !== "Edible Oil & Commodities" && <div className="hero-object-scope">
                   <p className="eyebrow">In focus</p>
                   <ul>
                     {content.items.slice(0, 3).map(([name]) => (
                       <li key={name}>{name}</li>
                     ))}
                   </ul>
-                  {content.label !== "Edible Oil & Commodities" && <span>Illustrative imagery</span>}
-                </div>
+                  <span>Illustrative imagery</span>
+                </div>}
               </div>
             ) : (
               <AssetVisual

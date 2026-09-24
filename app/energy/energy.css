@@ -9,8 +9,15 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
 
 .vertical-hero-energy .detail-tagline {
   margin-top: 24px;
-  font-weight: 700;
-  color: #43512d;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 30px;
+  line-height: 1.35;
+  color: #102f4c;
+}
+
+.vertical-hero-energy .detail-tagline strong {
+  font-weight: 100;
 }
 
 .vertical-hero-energy .energy-image-pair {
@@ -25,7 +32,19 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   min-width: 0;
 }
 
+.vertical-hero-energy .energy-truck-panel {
+  grid-column: 1 / 3;
+  position: relative;
+  height: 220px;
+}
+
+.vertical-hero-energy .energy-truck-panel img {
+  object-fit: contain;
+  scale: 1.1;
+}
+
 .vertical-hero-energy .energy-image-pair .asset-visual {
+  grid-column: 2;
   mix-blend-mode: multiply;
 }
 
@@ -76,6 +95,7 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
 
 .vertical-hero-energy .energy-cylinder-panel img {
   object-fit: contain;
+  scale: 0.8;
   padding: 12px 8px 0;
   object-position: left bottom;
 }
@@ -85,7 +105,13 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   background: transparent;
 }
 
+.vertical-hero-energy .hero-object-scope ul,
+.vertical-hero-energy .hero-object-scope > .eyebrow {
+  translate: 0 32px;
+}
+
 @media (max-width: 520px) {
+  .vertical-hero-energy .energy-truck-panel,
   .vertical-hero-energy .energy-cylinder-panel,
   .vertical-hero-energy .energy-image-pair .asset-image,
   .vertical-hero-energy .energy-lng-image {
