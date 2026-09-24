@@ -3,8 +3,8 @@
   background: linear-gradient(
     to right,
     transparent var(--people-background-inset),
-    #53a1b5 var(--people-background-inset),
-    #53a1b5 calc(100% - var(--people-background-inset)),
+    #91adc7 var(--people-background-inset),
+    #91adc7 calc(100% - var(--people-background-inset)),
     transparent calc(100% - var(--people-background-inset))
   );
   background-origin: border-box;
@@ -24,7 +24,7 @@
   letter-spacing: -0.01em;
   hyphens: auto;
   margin-inline: auto;
-  text-align: justify;
+  text-align: left;
   text-align-last: left;
 }
 .detail-hero.people-hero > .shell {
@@ -39,7 +39,7 @@
   letter-spacing: -0.025em;
   margin-inline: auto;
   text-align: center;
-  color: #000000;
+  color: #102f4c;
 }
 .detail-hero.people-hero .eyebrow {
   color: #000000;
