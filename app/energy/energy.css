@@ -10,14 +10,14 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
 .vertical-hero-energy .detail-tagline {
   margin-top: 24px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 100;
   font-size: 30px;
   line-height: 1.35;
   color: #102f4c;
 }
 
 .vertical-hero-energy .detail-tagline strong {
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .vertical-hero-energy .energy-image-pair {
