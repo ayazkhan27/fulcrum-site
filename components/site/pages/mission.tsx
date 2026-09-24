@@ -20,10 +20,12 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 <p className="eyebrow">Fulcrum / Mission</p>
                 <h1 id="mission-title">Our Mission</h1>
                 <p className="mission-lead">
-                  Our mission is to act as a bridge between Bangladesh and the
-                  world. As a global sourcing and brokerage company, Fulcrum
-                  connects suppliers, buyers and opportunities, facilitating
-                  business in Bangladesh and beyond.
+                  Our mission is to connect Bangladesh with the world—and
+                  vice-versa. Through thoughtful sourcing, informed representation
+                  and disciplined commercial coordination, we help buyers and
+                  suppliers turn shared ambitions into workable opportunities.
+                  We aim to build lasting relationships through clear commitments,
+                  practical expertise and reliable execution.
                 </p>
               </div>
               <ConnectionDiagram />
