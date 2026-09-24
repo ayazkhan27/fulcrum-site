@@ -75,14 +75,11 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
         </section>
         <section className="section shell">
           <div className="people-grid">
-            {PEOPLE.map((person, index) => (
+            {PEOPLE.map((person) => (
               <article className="person-card" key={person.name}>
                 <div className="person-top">
                   <span className="person-monogram" aria-hidden="true">
                     {person.initials}
-                  </span>
-                  <span className="person-index" aria-hidden="true">
-                    0{index + 1}
                   </span>
                 </div>
                 <div className="person-title">
