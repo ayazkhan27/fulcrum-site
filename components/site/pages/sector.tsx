@@ -18,7 +18,7 @@ export default function SectorContent({ slug, embedded = false }: { slug: string
           : sector.intro,
     tagline:
       slug === "textiles"
-        ? "We aim to source cotton primarily from the United States to meet the needs of our buyers in Bangladesh and beyond."
+        ? "We aim to source cotton primarily from the United States, complemented by supplies from other cotton-producing countries, to serve buyers in Bangladesh and beyond."
         : undefined,
     heading:
       slug === "textiles"
