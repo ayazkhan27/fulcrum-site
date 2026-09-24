@@ -7,12 +7,17 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   color: #174572;
 }
 
+.vertical-hero-energy .detail-hero-grid > div:first-child {
+  container-type: inline-size;
+}
+
 .vertical-hero-energy .detail-tagline {
   margin-top: 24px;
+  white-space: pre-line;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 100;
-  font-size: 30px;
-  line-height: 1.35;
+  font-size: min(28px, 5.2cqw);
+  line-height: 1.45;
   color: #102f4c;
 }
 

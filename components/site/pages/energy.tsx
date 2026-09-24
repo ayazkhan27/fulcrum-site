@@ -11,7 +11,7 @@ const content: CapabilityContent = {
   intro:
     "Connecting energy requirements with producers, suppliers and commercial partners. We support petroleum products, fossil fuels and LNG assignments for commercial buyers, public-sector procurement and infrastructure projects in Bangladesh and international markets.",
   heading: "Commercial clarity across the energy value chain.",
-  tagline: "Moving heaven and earth to ease your burden",
+  tagline: "Moving heaven and earth to ease your burden.\nWith precision. Everywhere.",
   items: [
     [
       "Petroleum products",
