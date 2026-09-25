@@ -113,7 +113,7 @@
 /* Airport operations share the visual and service hierarchy with aircraft spares. */
 .equipment-visual .asset-image { height: 290px; }
 .equipment-airport-image { margin: 20px 0 0; background: transparent; }
-.equipment-airport-image > div { position: relative; height: auto; aspect-ratio: 4 / 3; }
+.equipment-airport-image > div { position: relative; height: auto; aspect-ratio: 3 / 2; }
 .equipment-airport-image img { object-fit: cover; object-position: center 65%; padding: 0; }
 .equipment-airport-image figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .equipment-airport-image figcaption { font-size: 11px; color: #435a6e; padding: 8px 0 14px; }
