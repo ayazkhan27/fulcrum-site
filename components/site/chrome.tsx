@@ -98,6 +98,7 @@ export function Footer({ closing = false }: { closing?: boolean }) {
                 alt="Red bus illustration with the Fulcrum logo and Precision in motion tagline"
                 sizes="(max-width: 800px) 90vw, 45vw"
               />
+              <p className="footer-bus-caption">Apron bus</p>
             </div>
           )}
           {!closing && (
