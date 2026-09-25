@@ -20,11 +20,11 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 <p className="eyebrow">Fulcrum / Mission</p>
                 <h1 id="mission-title">Our Mission</h1>
                 <p className="mission-lead">
-                  Our mission is to connect Bangladesh with the world—and
-                  vice-versa. Through thoughtful sourcing, informed representation
-                  and disciplined commercial coordination, we help buyers and
-                  suppliers turn shared ambitions into workable opportunities.
-                  We aim to build lasting relationships through clear commitments,
+                  Our mission is to connect Bangladesh’s needs and opportunities
+                  with the capabilities of suppliers around the world. Through
+                  dependable sourcing, informed representation and careful
+                  commercial coordination, we help buyers and suppliers build
+                  productive, lasting relationships grounded in clear commitments,
                   practical expertise and reliable execution.
                 </p>
               </div>
@@ -32,32 +32,41 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
             </div>
             <div className="mission-statement-copy">
               <p>
-                Bangladesh’s strategic location, textile and garment industries,
-                and overseas community give it a strong international reach.
-                Its need for reliable energy, essential commodities and modern
-                infrastructure makes dependable sourcing vital. We help meet
-                these needs across petroleum, LNG, edible oils, textile inputs
-                and industrial equipment.
+                With a population of more than 175 million, Bangladesh is a
+                substantial market for consumer goods, food and everyday
+                necessities. Its strategic location, established textile and
+                garment industries, and overseas community strengthen its
+                connections to international trade. For suppliers able to offer
+                consistent quality, competitive pricing and reliable delivery,
+                these strengths create significant commercial opportunities.
               </p>
               <p>
-                In aviation, we help airlines source aircraft for lease, engines,
-                spare parts, equipment and maintenance providers. We also support
-                airport procurement, including ground-support equipment and
-                systems for air navigation and air traffic management. When
-                appointed to represent bidders, we coordinate tender preparation,
-                compliance documentation and commercial requirements.
+                Fulcrum helps translate this potential into practical business
+                relationships. We support sourcing and supplier representation
+                across petroleum, LNG, edible oils, textile inputs and industrial
+                equipment, connecting international capabilities with local
+                requirements for essential supplies, energy and infrastructure.
               </p>
               <p>
-                Fulcrum brings together operating, analytical and commercial
-                perspectives across aviation and maritime operations.{" "}
+                In aviation, we help airlines identify aircraft leasing options
+                and source engines, spare parts, equipment and maintenance
+                services. We also support airport procurement, from ground
+                support equipment to air navigation and air traffic management
+                systems. When appointed to represent bidders, we coordinate
+                tender preparation, compliance documentation and commercial
+                requirements.
+              </p>
+              <p>
+                Our team combines operational experience in aviation and maritime
+                services with analytical and commercial expertise, bringing a
+                practical understanding of the industries we serve.{" "}
                 <Link href="/people">Meet the people behind the work</Link>.
               </p>
               <p>
-                We are Fulcrum. We make it easy for you, on land, at sea and in
+                We are Fulcrum. We make business easier—on land, at sea and in
                 the air.
                 <br />
-                The hallmark of our existence is precision. In motion.
-                Everywhere.
+                Precision in motion. In every connection.
               </p>
             </div>
             <Link href="/contact" className="text-link">
