@@ -1,0 +1,26 @@
+.defense-hero { background: #dbe2e8; color: #174572; }
+.defense-hero h1 { color: #174572; }
+.defense-hero .defense-copy > .eyebrow,
+.defense-hero .detail-intro { color: #3f566c; }
+.defense-hero .detail-intro { text-align: justify; text-align-last: left; }
+.defense-focus { margin-top: 32px; border-color: #a2b1be; color: #172b3c; }
+.defense-supplies { align-self: center; border-top: 1px solid #9cabb8; }
+.defense-supply { position: relative; display: grid; grid-template-columns: 116px 1fr; gap: 24px; align-items: center; padding: 36px 22px; border-bottom: 1px solid #9cabb8; }
+.defense-supply-number { position: absolute; top: 12px; right: 12px; font-size: 11px; letter-spacing: .12em; color: #52677c; }
+.defense-supply-icon { width: 92px; height: 92px; color: #174572; }
+.defense-supply h2 { font-family: var(--font-editorial); font-size: clamp(1.35rem, 2.1vw, 2rem); font-weight: 700; letter-spacing: -.03em; margin: 0 0 6px; }
+.defense-supply p { font-size: 14px; line-height: 1.5; color: #3f566c; margin: 0; }
+@media (max-width: 800px) {
+  .defense-hero .detail-hero-grid { grid-template-columns: 1fr; }
+  .defense-hero .detail-intro { text-align: left; }
+  .defense-supplies { margin-top: 12px; }
+  .defense-supply { grid-template-columns: 80px 1fr; gap: 20px; padding: 28px 12px; }
+  .defense-supply-icon { width: 68px; height: 68px; }
+}
+
+.defense-visual { align-self: center; min-width: 0; }
+.defense-shield { display: block; width: 100%; height: 294px; object-fit: contain; margin: 0 auto 24px; }
+.defense-hero h1 { color: #174572; }
+.defense-supply h2 { color: #174572; }
+.defense-supply-icon { color: #704626; }
+.defense-hero .text-link { color: #0047ab; }

@@ -102,7 +102,7 @@ export const sectors: Sector[] = [
     slug: "defense",
     name: "Government & defense",
     short: "Representation with responsibility.",
-    href: "/equipment#defense",
+    href: "/defense",
     asset: "aircraft",
     intro:
       "Commercial representation and supplier coordination for government and defense procurement in Bangladesh.",

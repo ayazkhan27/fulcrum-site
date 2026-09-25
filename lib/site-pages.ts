@@ -1,10 +1,11 @@
-// The owner's approved nine-page structure. Navigation and sitemap share it.
+// The owner's approved page structure. Navigation and sitemap share it.
 export const sitePages = [
   { href: "/", label: "Home" },
   { href: "/mission", label: "Mission" },
   { href: "/people", label: "Our People" },
   { href: "/aviation", label: "Aviation & Airports" },
   { href: "/equipment", label: "Equipment" },
+  { href: "/defense", label: "Defense Supply" },
   { href: "/energy", label: "Energy & Petroleum" },
   { href: "/sectors/textiles", label: "Textile & Mill Supply" },
   { href: "/sectors/commodities", label: "Edible Oil & Commodities" },
@@ -23,5 +24,5 @@ export const legacyRedirects = [
   },
   { source: "/sectors/industrial", destination: "/equipment#industrial" },
   { source: "/sectors/healthcare", destination: "/equipment#healthcare" },
-  { source: "/sectors/defense", destination: "/equipment#defense" },
+  { source: "/sectors/defense", destination: "/defense" },
 ] as const

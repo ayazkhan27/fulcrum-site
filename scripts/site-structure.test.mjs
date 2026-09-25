@@ -7,13 +7,13 @@ import { sectors } from '../lib/sectors.ts';
 const root = new URL('../', import.meta.url);
 const read = (file) => readFile(new URL(file, root), 'utf8');
 
-test('The site has exactly the nine pages approved by the owner, in order', () => {
+test('The site has exactly the ten pages approved by the owner, in order', () => {
   assert.deepEqual(sitePages.map((page) => page.label), [
-    'Home', 'Mission', 'Our People', 'Aviation & Airports', 'Equipment',
+    'Home', 'Mission', 'Our People', 'Aviation & Airports', 'Equipment', 'Defense Supply',
     'Energy & Petroleum', 'Textile & Mill Supply', 'Edible Oil & Commodities',
     'Contact',
   ]);
-  assert.equal(new Set(sitePages.map((page) => page.href)).size, 9);
+  assert.equal(new Set(sitePages.map((page) => page.href)).size, 10);
 });
 
 test('Only approved content routes remain, including exactly two sector pages', async () => {
@@ -26,7 +26,7 @@ test('Only approved content routes remain, including exactly two sector pages', 
   }
   assert.deepEqual((await pages('app/')).sort(), [
     'app/page.tsx', 'app/mission/page.tsx', 'app/aviation/page.tsx',
-    'app/equipment/page.tsx', 'app/energy/page.tsx', 'app/people/page.tsx',
+    'app/equipment/page.tsx', 'app/defense/page.tsx', 'app/energy/page.tsx', 'app/people/page.tsx',
     'app/contact/page.tsx', 'app/sectors/[slug]/page.tsx',
   ].sort());
   assert.deepEqual(sectors.filter((sector) => sector.href.startsWith('/sectors/')).map((sector) => sector.slug), ['textiles', 'commodities']);
@@ -68,10 +68,10 @@ test('Approved pages retain their hero-only presentation', async () => {
 test('Home presents the approved pages in scroll order', async () => {
   const home = await read('app/page.tsx');
   assert.deepEqual([...home.matchAll(/<section id="(page-[^"]+)"/g)].map(match => match[1]), [
-    'page-mission', 'page-people', 'page-aviation', 'page-equipment', 'page-energy',
+    'page-mission', 'page-people', 'page-aviation', 'page-equipment', 'page-defense', 'page-energy',
     'page-textiles', 'page-commodities', 'page-contact',
   ]);
-  assert.equal((home.match(/ embedded/g) || []).length, 8);
+  assert.equal((home.match(/ embedded/g) || []).length, 9);
   assert.match(home, /<PaperFlight/);
 });
 

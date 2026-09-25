@@ -8,7 +8,8 @@
 #page-energy .detail-hero,
 #page-textiles .detail-hero,
 #page-commodities .detail-hero,
-#page-equipment .detail-hero {
+#page-equipment .detail-hero,
+#page-defense .detail-hero {
   padding-block: clamp(48px, 5.2vw, 72px);
 }
 

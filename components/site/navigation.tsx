@@ -4,13 +4,7 @@ import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { sitePages } from "@/lib/site-pages"
-const links = sitePages
-  .filter((page) => page.href !== "/contact")
-  .flatMap<{ href: string; label: string }>((page) =>
-    page.href === "/equipment"
-      ? [page, { href: "/equipment#defense", label: "Defense Supply" }]
-      : [page],
-  )
+const links = sitePages.filter((page) => page.href !== "/contact")
 export function Navigation({ editorial = false }: { editorial?: boolean }) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()

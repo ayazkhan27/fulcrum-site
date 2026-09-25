@@ -7,6 +7,7 @@ import AviationContent from "@/components/site/pages/aviation"
 import EnergyContent from "@/components/site/pages/energy"
 import SectorContent from "@/components/site/pages/sector"
 import EquipmentContent from "@/components/site/pages/equipment"
+import DefenseContent from "@/components/site/pages/defense"
 import ContactContent from "@/components/site/pages/contact"
 import "./flight.css"
 import "./home.css"
@@ -31,6 +32,7 @@ export default function Page() {
     <section id="page-people" aria-label="Our People"><PeopleContent embedded /></section>
     <section id="page-aviation" aria-label="Aviation & Airports"><AviationContent embedded /></section>
     <section id="page-equipment" aria-label="Equipment"><EquipmentContent embedded /></section>
+    <section id="page-defense" aria-label="Defense Supply"><DefenseContent embedded /></section>
     <section id="page-energy" aria-label="Energy & Petroleum"><EnergyContent embedded /></section>
     <section id="page-textiles" aria-label="Textile & Mill Supply"><SectorContent slug="textiles" embedded /></section>
     <section id="page-commodities" aria-label="Edible Oil & Commodities"><SectorContent slug="commodities" embedded /></section>
