@@ -23,7 +23,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 <Link href="/contact" className="text-link equipment-contact">Discuss your requirement <ArrowUpRight size={18} aria-hidden="true" /></Link>
               </div>
               <div className="equipment-visual">
-                <figure className="equipment-engine-image"><Image src="/assets/engine-hangar-illustration.png" alt="AI-generated illustration of a complete turbofan engine on a maintenance stand in a hangar" width={1536} height={1024} sizes="(max-width: 600px) 100vw, 50vw" preload /></figure>
+                <figure className="equipment-engine-image"><Image src="/assets/mro-partnership.png" alt="AI-generated image of airline and MRO professionals reviewing maintenance work beside a jet engine" width={1536} height={1024} sizes="(max-width: 600px) 100vw, 50vw" preload /></figure>
                 <figure className="equipment-airport-image"><div><Image src="/assets/madrid-barajas-terminal-4-diego-delso.jpg" alt="Passenger concourse and moving walkways at Madrid-Barajas Terminal 4" fill sizes="(max-width: 600px) 100vw, 50vw" /></div></figure>
                 <div className="equipment-image-note"><span>Aircraft. Airports. Ground operations.</span><p>Sourcing shaped around your operational requirements.</p></div>
               </div>
