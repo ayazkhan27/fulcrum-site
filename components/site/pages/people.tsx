@@ -106,7 +106,9 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
               <h2>
                 One team.
                 <br />
-                Complementary perspectives.
+                Complementary
+                <br />
+                perspectives.
               </h2>
               <p className="section-note">
                 Operating, analytical and commercial perspectives meet around the work.
