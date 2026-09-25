@@ -48,7 +48,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
               {supplies.map(({ label, detail, Icon }, index) => (
                 <div className="defense-supply" key={label}>
                   <span className="defense-supply-number" aria-hidden="true">0{index + 1}</span>
-                  <Icon className="defense-supply-icon" strokeWidth={1} aria-hidden="true" />
+                  <Icon className="defense-supply-icon" strokeWidth={0.5} aria-hidden="true" />
                   <div><h2>{label}</h2><p>{detail}</p></div>
                 </div>
               ))}
