@@ -111,7 +111,11 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 perspectives.
               </h2>
               <p className="section-note">
-                Operating, analytical and commercial perspectives meet around the work.
+                Operating, analytical and
+                <br />
+                commercial perspectives meet
+                <br />
+                around the work.
               </p>
             </div>
           </div>
