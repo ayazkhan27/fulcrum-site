@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   verification: { google: "Dzv0rqF46y0VLNYkl_z-pbzpPwc_xjtmsnsp2w-d0xw" },
   metadataBase: new URL("https://fulcrumtriad.com"),
   icons: {
-    icon: [{ url: "/fulcrum-site-icon.png?v=masthead-fulcrum-name-v2", sizes: "192x192", type: "image/png" }],
-    apple: [{ url: "/apple-touch-icon.png?v=masthead-fulcrum-name-v2", sizes: "180x180", type: "image/png" }],
+    icon: [{ url: "/fulcrum-site-icon.png?v=masthead-mark-only-v3", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png?v=masthead-mark-only-v3", sizes: "180x180", type: "image/png" }],
   },
   title: "Fulcrum | Global sourcing & representation",
   description:
