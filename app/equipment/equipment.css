@@ -95,7 +95,7 @@
 .equipment-copy .equipment-contact { margin-top: 20px; color: #174572; }
 .equipment-visual { min-width: 0; }
 .equipment-visual .asset-image { height: 420px; min-height: 0; background: #ced6de; }
-.equipment-visual .asset-image img { object-fit: cover; object-position: center 63%; filter: none; }
+.equipment-visual .asset-image img { object-fit: contain; object-position: center; filter: none; }
 .equipment-image-note { background: #153650; color: #fff; padding: 23px 26px; }
 .equipment-image-note span { font-size: 18px; font-weight: 500; }
 .equipment-image-note p { font-size: 14px; line-height: 1.5; margin: 7px 0 0; color: #d9e3ed; }
