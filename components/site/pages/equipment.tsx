@@ -2,7 +2,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight, Plane, Building2, Factory } from "lucide-react"
 import { Header } from "@/components/site/chrome"
-import { AssetVisual } from "@/components/site/asset-visual"
 import { sectors } from "@/lib/sectors"
 import { sectorDetails } from "@/lib/sector-details"
 import "@/app/structure.css"
@@ -27,8 +26,8 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 <Link href="/contact" className="text-link equipment-contact">Discuss your requirement <ArrowUpRight size={18} aria-hidden="true" /></Link>
               </div>
               <div className="equipment-visual">
-                <AssetVisual asset="jetEngine" priority />
-                <figure className="equipment-airport-image"><div><Image src="/assets/madrid-barajas-terminal-4-diego-delso.jpg" alt="Passenger concourse and moving walkways at Madrid-Barajas Terminal 4" fill sizes="(max-width: 600px) 100vw, 50vw" /></div><figcaption>Madrid-Barajas Terminal 4 · <a href="https://delso.photo">Diego Delso</a> · <a href="https://commons.wikimedia.org/wiki/File:Terminal_4_del_aeropuerto_de_Madrid-Barajas,_Espa%C3%B1a,_2013-01-09,_DD_01.jpg">Source</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> · Cropped</figcaption></figure>
+                <figure className="equipment-engine-image"><Image src="/assets/engine-hangar-illustration.png" alt="AI-generated illustration of a complete turbofan engine on a maintenance stand in a hangar" width={1536} height={1024} sizes="(max-width: 600px) 100vw, 50vw" preload /></figure>
+                <figure className="equipment-airport-image"><div><Image src="/assets/madrid-barajas-terminal-4-diego-delso.jpg" alt="Passenger concourse and moving walkways at Madrid-Barajas Terminal 4" fill sizes="(max-width: 600px) 100vw, 50vw" /></div></figure>
                 <div className="equipment-image-note"><span>Aircraft. Airports. Ground operations.</span><p>Sourcing shaped around your operational requirements.</p></div>
               </div>
             </div>

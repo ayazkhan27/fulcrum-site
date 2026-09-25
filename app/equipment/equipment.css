@@ -96,7 +96,7 @@
 .equipment-visual { min-width: 0; }
 .equipment-visual .asset-image { height: 420px; min-height: 0; background: #ced6de; }
 .equipment-visual .asset-image img { object-fit: contain; object-position: center; filter: none; }
-.equipment-image-note { background: #153650; color: #fff; padding: 23px 26px; }
+.equipment-image-note { background: #153650; color: #fff; padding: 23px 26px; border-top: 3px solid #fff; }
 .equipment-image-note span { font-size: 18px; font-weight: 500; }
 .equipment-image-note p { font-size: 14px; line-height: 1.5; margin: 7px 0 0; color: #d9e3ed; }
 .equipment-image-disclaimer { font-size: 11px; margin: 9px 0 0; color: #52677c; }
@@ -112,15 +112,15 @@
 
 /* Airport operations share the visual and service hierarchy with aircraft spares. */
 .equipment-visual .asset-image { height: 290px; }
-.equipment-airport-image { margin: 12px 0 0; background: #d8e1e9; }
-.equipment-airport-image > div { position: relative; height: 190px; }
+.equipment-airport-image { margin: 20px 0 0; background: transparent; }
+.equipment-airport-image > div { position: relative; height: auto; aspect-ratio: 4 / 3; }
 .equipment-airport-image img { object-fit: cover; object-position: center 65%; padding: 0; }
 .equipment-airport-image figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
-.equipment-airport-image figcaption { font-size: 11px; color: #435a6e; padding: 8px 18px 12px; }
+.equipment-airport-image figcaption { font-size: 11px; color: #435a6e; padding: 8px 0 14px; }
 .equipment-services .equipment-airport-list { margin: 14px 0 0; padding-left: 18px; color: #435a6e; font-size: 14px; line-height: 1.6; }
 .equipment-airport-list li + li { margin-top: 8px; }
-@media(max-width: 800px) and (min-width: 601px) { .equipment-visual .asset-image { height: 330px; } .equipment-airport-image > div { height: 160px; } }
-@media(max-width: 600px) { .equipment-visual .asset-image { height: 300px; } .equipment-airport-image > div { height: 160px; } }
+@media(max-width: 800px) and (min-width: 601px) { .equipment-visual .asset-image { height: 330px; } }
+@media(max-width: 600px) { .equipment-visual .asset-image { height: 300px; } }
 
 /* Consistent service cards, scoped to this page. */
 .equipment-renewed .equipment-services {
@@ -173,3 +173,7 @@
   .equipment-services h2 { min-height: 0; }
   .equipment-service-icon { margin-bottom: 18px; }
 }
+
+.equipment-engine-image { margin: 0; }
+.equipment-engine-image img { display: block; width: 100%; height: auto; }
+.equipment-engine-image figcaption { padding: 7px 0 2px; font-size: 11px; color: #52677c; }

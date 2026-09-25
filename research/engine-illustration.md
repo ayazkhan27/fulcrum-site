@@ -1,0 +1,5 @@
+# Equipment engine illustration
+Created with the built-in image generation tool. Asset: public/assets/engine-hangar-illustration.png.
+
+Prompt:
+Create a photorealistic editorial illustration for a professional aircraft engines and airport equipment sourcing website. Landscape 3:2 composition. A complete modern high-bypass turbofan aircraft engine on a realistic low maintenance cradle in a clean aviation maintenance hangar, three-quarter view with the circular fan inlet clearly visible toward the right and the full engine body extending left. Entire engine and cradle must be within the frame, generous 12 percent clear margins on all sides so it can fit a wide website card without clipping. Engine fills about 70 percent of width, 65 percent height. Refined silver metal, detailed dark fan blades, restrained navy and cool grey background, natural soft daylight, realistic engineering textures, calm professional atmosphere. Background softly out of focus and uncluttered. No people, no aircraft, no logos, no labels, no text, no watermark, no exaggerated science fiction machinery. This is illustrative imagery, not a specific manufacturer model.
