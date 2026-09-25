@@ -118,3 +118,8 @@
   text-align: left;
   hyphens: none;
 }
+
+@media (max-width: 520px) {
+  .people-team-note { padding: 24px 20px; }
+  .people-team-note .section-note { font-size: clamp(16px, 4.6vw, 20px); }
+}
