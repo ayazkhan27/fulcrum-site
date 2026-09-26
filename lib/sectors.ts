@@ -63,7 +63,7 @@ export const sectors: Sector[] = [
     intro:
       "Commercial sourcing for edible oils and commodity requirements, connecting purchasers with suitable supply.",
     scope: [
-      "Edible oils, primarily soybean and corn oil, crude or refined",
+      "Edible oils primarily soybean, crude or refined",
       "Supplier identification & buyer representation",
       "Specifications, quantities & packaging",
       "Commercial terms & shipment coordination",
