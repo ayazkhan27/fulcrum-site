@@ -165,7 +165,7 @@
 .detail-hero:has(.edible-oil-visual) .detail-intro {
   color: #000000;
   font-size: 0.9375rem;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.3;
   letter-spacing: -0.015em;
   text-align: justify;
@@ -345,5 +345,41 @@
 }
 
 .hero-object-panel:has(.edible-oil-editorial) {
-  transform: translateY(-80px);
+  transform: none;
+}
+
+/* Anchor the photograph to the introduction rows, not a viewport-dependent offset. */
+@media (min-width: 801px) {
+  .detail-hero:has(.edible-oil-editorial) .detail-hero-grid {
+    row-gap: 0;
+    padding-top: 18px;
+  }
+  .detail-hero:has(.edible-oil-editorial) .detail-hero-grid > div:first-child {
+    display: contents;
+  }
+  .detail-hero:has(.edible-oil-editorial) .detail-hero-grid > div:first-child > * {
+    grid-column: 1;
+  }
+  .detail-hero:has(.edible-oil-editorial) .detail-hero-grid > div:first-child > .eyebrow { grid-row: 1; }
+  .detail-hero:has(.edible-oil-editorial) h1 { grid-row: 2; }
+  .detail-hero:has(.edible-oil-editorial) .detail-intro { grid-row: 3; }
+  .detail-hero:has(.edible-oil-editorial) .hero-object-scope { grid-row: 4; }
+  .detail-hero:has(.edible-oil-editorial) .text-link { grid-row: 5; justify-self: start; }
+  .hero-object-panel:has(.edible-oil-editorial) {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    align-self: stretch;
+    position: relative;
+    padding: 0;
+  }
+  .edible-oil-visual.edible-oil-editorial {
+    position: absolute;
+    inset: 0 32px 24px;
+    width: auto;
+  }
+  .edible-oil-editorial img {
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+  }
 }

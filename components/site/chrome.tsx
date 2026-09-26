@@ -29,7 +29,7 @@ export function Footer({ closing = false }: { closing?: boolean }) {
       <p className="eyebrow">{title}</p>
       {pages.map(({ href, label }) => (
         <Link key={href} href={href}>
-          {closing && href === "/sectors/commodities" ? "Edible Oil" : label}
+          {label}
         </Link>
       ))}
     </div>

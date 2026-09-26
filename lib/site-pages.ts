@@ -4,7 +4,7 @@ export const sitePages = [
   { href: "/mission", label: "Mission" },
   { href: "/people", label: "Our People" },
   { href: "/aviation", label: "Aviation & Airports" },
-  { href: "/equipment", label: "Equipment" },
+  { href: "/equipment", label: "Spares & Equipment" },
   { href: "/defense", label: "Defense Supply" },
   { href: "/energy", label: "Energy & Petroleum" },
   { href: "/sectors/textiles", label: "Textile & Mill Supply" },

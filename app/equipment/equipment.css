@@ -89,7 +89,7 @@
 .equipment-renewed { background: #e4e9ef; color: #153650; padding: 52px 0 60px; }
 .equipment-renewed .equipment-kicker { color: #52677c; margin: 0 0 34px; }
 .equipment-opening { display: grid; grid-template-columns: 1.12fr 1fr; gap: clamp(32px, 5vw, 76px); align-items: start; }
-.equipment-copy h1 { color: #174572; font-size: clamp(32px, 3.5vw, 48px); line-height: 1.12; margin: 0 0 26px; }
+.equipment-copy h1 { color: #174572; font-family: var(--font-condensed); font-weight: 700; font-size: var(--section-title-size); line-height: 1.04; letter-spacing: -0.025em; margin: 0 0 26px; }
 .equipment-copy .equipment-lead { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: clamp(29px, 3.1vw, 43px); font-weight: 300; line-height: 1.2; letter-spacing: -.025em; margin: 0 0 26px; color: #153650; }
 .equipment-copy .equipment-intro { font-size: 16px; line-height: 1.65; color: #435a6e; margin: 0 0 17px; max-width: 58ch; }
 .equipment-copy .equipment-contact { margin-top: 20px; color: #174572; }
