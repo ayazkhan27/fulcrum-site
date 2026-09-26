@@ -334,3 +334,16 @@
 .detail-hero:has(.edible-oil-editorial) h1,
 .detail-hero:has(.edible-oil-editorial) .detail-intro { top: auto; }
 .detail-hero:has(.edible-oil-editorial) .detail-hero-grid > div:first-child > .eyebrow { position: static; }
+
+.detail-hero:has(.edible-oil-visual) .detail-hero-grid > div:first-child > .eyebrow,
+.detail-hero:has(.edible-oil-visual) .detail-hero-grid > div:first-child > h1 {
+  transform: translateY(-16px);
+}
+
+.detail-hero:has(.edible-oil-visual) .detail-intro {
+  transform: translateY(-16px);
+}
+
+.hero-object-panel:has(.edible-oil-editorial) {
+  transform: translateY(-80px);
+}

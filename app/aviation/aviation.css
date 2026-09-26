@@ -38,6 +38,11 @@
   font-size: var(--section-title-size);
 }
 
+.vertical-hero-aviation > .detail-hero-grid > div:first-child > .eyebrow,
+.vertical-hero-aviation > .detail-hero-grid > div:first-child > h1 {
+  translate: 0 -16px;
+}
+
 @media (max-width: 520px) {
   .vertical-hero-aviation > .detail-hero-grid > div:first-child > h1 {
     font-size: var(--section-title-size);
