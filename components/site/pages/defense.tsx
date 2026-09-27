@@ -17,10 +17,11 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
       {!embedded && <Header />}
       <Container id={embedded ? undefined : "main"}>
         <section className="detail-hero vertical-hero defense-hero">
-          <div className="shell detail-hero-grid">
+          <div className="shell defense-layout">
             <div className="defense-copy">
               <p className="eyebrow">Fulcrum / Defense Supply</p>
               <h1>Defense Supply</h1>
+              <p className="defense-lead">Clear requirements.<br />Coordinated supply.</p>
               <p className="detail-intro">
                 We help international manufacturers and suppliers respond to
                 defense procurement requirements in Bangladesh. Our focus covers
@@ -43,7 +44,10 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
               </Link>
             </div>
             <div className="defense-visual">
-              <Image className="defense-shield" src="/assets/defense-shield.png" width={1284} height={1920} sizes="(max-width: 800px) 85vw, 40vw" alt="Illustrated wooden shield with metal studs" />
+              <figure className="defense-logistics">
+                <Image src="/assets/defense-logistics-v1.png" width={1536} height={1024} sizes="(max-width: 800px) 100vw, 50vw" alt="AI-generated illustration of uniforms, transport cases and engineering tools in an organized supply warehouse" />
+              </figure>
+            </div>
             <div className="defense-supplies" aria-label="Defense supply categories">
               {supplies.map(({ label, detail, Icon }, index) => (
                 <div className="defense-supply" key={label}>
@@ -52,7 +56,6 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                   <div><h2>{label}</h2><p>{detail}</p></div>
                 </div>
               ))}
-            </div>
             </div>
           </div>
         </section>
