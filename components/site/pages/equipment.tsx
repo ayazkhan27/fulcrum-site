@@ -18,13 +18,16 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
               <div className="equipment-copy">
                 <h1>Spares &amp; Equipment</h1>
                 <p className="equipment-lead">For aircraft. For airports.<br />For the operation ahead.</p>
-                <p className="equipment-intro">We help airlines, airport operators and ground handlers source the engines, spares and equipment that keep aircraft and airports operating. From aircraft components to passenger, baggage and ramp equipment, we coordinate suitable suppliers, specifications, quotations and delivery requirements.</p>
+                <p className="equipment-intro">We help airlines, airport operators and ground handlers source the engines, radars, spares and equipment that keep aircraft and airports operating. From aircraft components to passenger, baggage and ramp equipment, we coordinate suitable suppliers, specifications, quotations and delivery requirements.</p>
                 <p className="equipment-intro">We clarify operating capacity, compatibility, availability and documentation with buyers and suppliers. From the first enquiry to agreed delivery milestones, we keep the commercial process moving and the parties informed.</p>
                 <Link href="/contact" className="text-link equipment-contact">Discuss your requirement <ArrowUpRight size={18} aria-hidden="true" /></Link>
               </div>
               <div className="equipment-visual">
                 <figure className="equipment-engine-image"><Image src="/assets/mro-partnership.png" alt="AI-generated image of airline and MRO professionals reviewing maintenance work beside a jet engine" width={1536} height={1024} sizes="(max-width: 600px) 100vw, 50vw" preload /></figure>
-                <figure className="equipment-airport-image"><div><Image src="/assets/madrid-barajas-terminal-4-diego-delso.jpg" alt="Passenger concourse and moving walkways at Madrid-Barajas Terminal 4" fill sizes="(max-width: 600px) 100vw, 50vw" /></div></figure>
+                <figure className="equipment-airport-image equipment-airport-pair">
+                  <div><Image src="/assets/madrid-barajas-terminal-4-diego-delso.jpg" alt="Passenger concourse and moving walkways at Madrid-Barajas Terminal 4" fill sizes="(max-width: 600px) 50vw, 25vw" /></div>
+                  <div><Image src="/assets/hans-antennas-1117761.jpg" alt="Radar dome and antenna towers silhouetted against the sky" fill sizes="(max-width: 600px) 50vw, 25vw" /></div>
+                </figure>
                 <div className="equipment-image-note"><span>Aircraft. Airports. Ground operations.</span><p>Sourcing shaped around your operational requirements.</p></div>
               </div>
             </div>

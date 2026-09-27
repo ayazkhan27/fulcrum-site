@@ -115,6 +115,9 @@
 .equipment-airport-image { margin: 20px 0 0; background: transparent; }
 .equipment-airport-image > div { position: relative; height: auto; aspect-ratio: 3 / 2; }
 .equipment-airport-image img { object-fit: cover; object-position: center 65%; padding: 0; }
+.equipment-airport-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); aspect-ratio: 3 / 2; gap: 3px; background: #fff; }
+.equipment-airport-pair > div { aspect-ratio: auto; min-width: 0; }
+.equipment-airport-pair > div:last-child img { object-position: center; }
 .equipment-airport-image figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .equipment-airport-image figcaption { font-size: 11px; color: #435a6e; padding: 8px 0 14px; }
 .equipment-services .equipment-airport-list { margin: 14px 0 0; padding-left: 18px; color: #435a6e; font-size: 14px; line-height: 1.6; }
