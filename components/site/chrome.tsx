@@ -92,10 +92,10 @@ export function Footer({ closing = false }: { closing?: boolean }) {
           {closing && (
             <div className="footer-bus">
               <Image
-                src="/assets/fulcrum-branded-bus.jpg"
+                src="/assets/fulcrum-bus-slogan-only-v2.png"
                 width={1920}
                 height={986}
-                alt="Red bus illustration with the Fulcrum logo and Precision in motion tagline"
+                alt="Red bus illustration with a large Precision in motion slogan"
                 sizes="(max-width: 800px) 90vw, 45vw"
               />
             </div>
