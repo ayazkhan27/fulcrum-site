@@ -67,8 +67,8 @@ export function flightTransform(
     pitch: flightPose.pitch,
     yaw: flightPose.yaw,
     bank: flightPose.bank + 0.018 * Math.sin(time * 0.51),
-    // No added starting tilt. Retain only the fly-past's gradual axial bank.
-    roll: -(scroll * responsiveness) / 1200,
+    // A 20% stronger fly-past bank, with no change to the opening attitude.
+    roll: -(scroll * responsiveness) / 1000,
   }
 }
 export const faces = [

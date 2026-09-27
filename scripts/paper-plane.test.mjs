@@ -96,6 +96,16 @@ test("opening preserves the original paper-plane lens, framing and attitude", ()
   }
 })
 
+test("fly-past bank is modestly stronger without adding an opening tilt", () => {
+  for (const [width, height] of [[1280, 720], [390, 844]]) {
+    for (const progress of [0, 0.25, 0.5, 1]) {
+      const previousRoll = -(progress * height * 0.7 * Math.min(4, 1280 / width)) / 1200
+      const pose = flightTransform(width, height, progress)
+      assert.ok(Math.abs(pose.roll - previousRoll * 1.2) < 1e-10)
+    }
+  }
+})
+
 test("SVG fallback matches the WebGL camera, axial bank and translation", () => {
   const width = 1280,
     height = 720
