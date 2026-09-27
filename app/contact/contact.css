@@ -93,7 +93,7 @@
 }
 
 .contact-closing .footer-brand {
-  transform: scale(1.05);
+  transform: translateY(4px) scale(1.05);
   transform-origin: 3.19327731% bottom;
 }
 
@@ -231,6 +231,7 @@
 }
 
 .contact-closing .footer-tagline {
+  visibility: hidden;
   filter: brightness(0);
   transform: translateY(-4px);
   /* Match the visible right edge of the wordmark after its 1.05 scale. */
