@@ -34,11 +34,30 @@ export default function CareerContent({ embedded = false }: { embedded?: boolean
                 <li>Your relevant experience and area of interest</li>
                 <li>Your location and availability</li>
               </ul>
-              <a className="text-link" href="mailto:infobd@fulcrumtriad.com?subject=Career%20enquiry">
+              <a className="text-link" href="mailto:khanhussein@fulcrumtriad.com?subject=Career%20enquiry">
                 Email a career enquiry <ArrowUpRight size={18} aria-hidden="true" />
               </a>
-              <p className="career-email">infobd@fulcrumtriad.com</p>
+              <p className="career-email">khanhussein@fulcrumtriad.com</p>
             </aside>
+          </div>
+        </section>
+        <section className="career-opportunities shell" aria-label="Current opportunities">
+          <p className="eyebrow">Current opportunities</p>
+          <h2>Business Development Officer</h2>
+          <p className="career-opportunities-intro">We are seeking Business Development Officers in the USA, Malaysia and Bangladesh to develop business relationships, identify opportunities and coordinate discussions with prospective clients, manufacturers and suppliers.</p>
+          <div className="career-jobs">
+            {["USA", "Malaysia", "Bangladesh"].map((location) => (
+              <article className="career-job" key={location}>
+                <p className="eyebrow">{location}</p>
+                <h3>Business Development Officer</h3>
+                <p className="career-compensation">Commission-only · No base salary</p>
+                <p>This opportunity is offered on a purely commission basis. No base salary is offered at this time.</p>
+                <p>To apply, send your CV and a brief introduction outlining your relevant experience, location and business-development interests.</p>
+                <a className="text-link" href={`mailto:khanhussein@fulcrumtriad.com?subject=${encodeURIComponent(`Business Development Officer — ${location}`)}`}>
+                  Apply — {location} <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+              </article>
+            ))}
           </div>
         </section>
       </Container>
