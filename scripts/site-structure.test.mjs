@@ -7,13 +7,13 @@ import { sectors } from '../lib/sectors.ts';
 const root = new URL('../', import.meta.url);
 const read = (file) => readFile(new URL(file, root), 'utf8');
 
-test('The site has exactly the ten pages approved by the owner, in order', () => {
+test('The site has exactly the eleven pages approved by the owner, in order', () => {
   assert.deepEqual(sitePages.map((page) => page.label), [
-    'Home', 'Mission', 'Our People', 'Aviation & Airports', 'Equipment', 'Defense Supply',
+    'Home', 'Mission', 'Our People', 'Aviation & Airports', 'Spares & Equipment', 'Defense Supply',
     'Energy & Petroleum', 'Textile & Mill Supply', 'Edible Oil & Commodities',
-    'Contact',
+    'Career', 'Contact',
   ]);
-  assert.equal(new Set(sitePages.map((page) => page.href)).size, 10);
+  assert.equal(new Set(sitePages.map((page) => page.href)).size, 11);
 });
 
 test('Only approved content routes remain, including exactly two sector pages', async () => {
@@ -27,7 +27,7 @@ test('Only approved content routes remain, including exactly two sector pages', 
   assert.deepEqual((await pages('app/')).sort(), [
     'app/page.tsx', 'app/mission/page.tsx', 'app/aviation/page.tsx',
     'app/equipment/page.tsx', 'app/defense/page.tsx', 'app/energy/page.tsx', 'app/people/page.tsx',
-    'app/contact/page.tsx', 'app/sectors/[slug]/page.tsx',
+    'app/career/page.tsx', 'app/contact/page.tsx', 'app/sectors/[slug]/page.tsx',
   ].sort());
   assert.deepEqual(sectors.filter((sector) => sector.href.startsWith('/sectors/')).map((sector) => sector.slug), ['textiles', 'commodities']);
   assert.match(await read('app/sectors/[slug]/page.tsx'), /export const dynamicParams = false/);
@@ -69,9 +69,9 @@ test('Home presents the approved pages in scroll order', async () => {
   const home = await read('app/page.tsx');
   assert.deepEqual([...home.matchAll(/<section id="(page-[^"]+)"/g)].map(match => match[1]), [
     'page-mission', 'page-people', 'page-aviation', 'page-equipment', 'page-defense', 'page-energy',
-    'page-textiles', 'page-commodities', 'page-contact',
+    'page-textiles', 'page-commodities', 'page-career', 'page-contact',
   ]);
-  assert.equal((home.match(/ embedded/g) || []).length, 9);
+  assert.equal((home.match(/ embedded/g) || []).length, 10);
   assert.match(home, /<PaperFlight/);
 });
 

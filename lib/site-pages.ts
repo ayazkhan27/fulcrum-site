@@ -9,6 +9,7 @@ export const sitePages = [
   { href: "/energy", label: "Energy & Petroleum" },
   { href: "/sectors/textiles", label: "Textile & Mill Supply" },
   { href: "/sectors/commodities", label: "Edible Oil & Commodities" },
+  { href: "/career", label: "Career" },
   { href: "/contact", label: "Contact" },
 ] as const
 

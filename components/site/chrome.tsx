@@ -21,8 +21,9 @@ export function Header({ home = false }: { home?: boolean }) {
   )
 }
 export function Footer({ closing = false }: { closing?: boolean }) {
-  const explore = { title: "Explore", pages: sitePages.slice(3).filter((page) => page.href !== "/contact") }
-  const company = { title: "Fulcrum", pages: sitePages.slice(0, 3) }
+  const companyPaths = new Set<string>(["/", "/mission", "/people", "/career"])
+  const explore = { title: "Explore", pages: sitePages.filter((page) => !companyPaths.has(page.href) && page.href !== "/contact") }
+  const company = { title: "Fulcrum", pages: sitePages.filter((page) => companyPaths.has(page.href)) }
   const linkGroups = closing ? [company, explore] : [explore, company]
   const navigationGroups = linkGroups.map(({ title, pages }) => (
     <div key={title}>
