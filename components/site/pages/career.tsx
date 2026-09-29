@@ -50,9 +50,8 @@ export default function CareerContent({ embedded = false }: { embedded?: boolean
               <article className="career-job" key={location}>
                 <p className="eyebrow">{location}</p>
                 <h3>Business Development Officer</h3>
-                <p className="career-compensation">Commission-only · No base salary</p>
-                <p>This opportunity is offered on a purely commission basis. No base salary is offered at this time.</p>
                 <p>To apply, send your CV and a brief introduction outlining your relevant experience, location and business-development interests.</p>
+                <p>This is a commission-only opportunity, with no base salary.</p>
                 <a className="text-link" href={`mailto:khanhussein@fulcrumtriad.com?subject=${encodeURIComponent(`Business Development Officer — ${location}`)}`}>
                   Apply — {location} <ArrowUpRight size={18} aria-hidden="true" />
                 </a>

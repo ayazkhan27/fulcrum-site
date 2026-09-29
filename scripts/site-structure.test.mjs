@@ -69,9 +69,10 @@ test('Home presents the approved pages in scroll order', async () => {
   const home = await read('app/page.tsx');
   assert.deepEqual([...home.matchAll(/<section id="(page-[^"]+)"/g)].map(match => match[1]), [
     'page-mission', 'page-people', 'page-aviation', 'page-equipment', 'page-defense', 'page-energy',
-    'page-textiles', 'page-commodities', 'page-career', 'page-contact',
+    'page-textiles', 'page-commodities', 'page-contact',
   ]);
-  assert.equal((home.match(/ embedded/g) || []).length, 10);
+  assert.equal((home.match(/ embedded/g) || []).length, 9);
+  assert.doesNotMatch(home, /CareerContent|page-career/);
   assert.match(home, /<PaperFlight/);
 });
 
