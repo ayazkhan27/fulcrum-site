@@ -19,54 +19,46 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
               <div className="mission-opening-copy">
                 <p className="eyebrow">Fulcrum / Mission</p>
                 <h1 id="mission-title">Our Mission</h1>
+                <p className="mission-lead">Connecting needs with capabilities.</p>
                 <p className="mission-lead">
-                  Our mission is to connect Bangladesh’s needs and opportunities
-                  with the capabilities of suppliers around the world. Through
-                  dependable sourcing, informed representation and careful
-                  commercial coordination, we help buyers and suppliers build
-                  productive, lasting relationships grounded in clear commitments,
-                  practical expertise and reliable execution.
+                  Our mission is to connect businesses and institutions in Bangladesh
+                  with international suppliers, manufacturers and service providers
+                  who can meet their operational needs. Through sourcing,
+                  representation and commercial coordination, we help turn business
+                  opportunities into practical agreements and lasting relationships.
                 </p>
               </div>
               <ConnectionDiagram />
             </div>
             <div className="mission-statement-copy">
               <p>
-                With a population of more than 175 million, Bangladesh is a
-                substantial market for consumer goods, food and everyday
-                necessities. Its strategic location, established textile and
-                garment industries, and overseas community strengthen its
-                connections to international trade. For suppliers able to offer
-                consistent quality, competitive pricing and reliable delivery,
-                these strengths create significant commercial opportunities.
+                We work across aviation, maritime services, energy, commodities,
+                industrial equipment and defense supply. Our role is to understand
+                each requirement, identify suitable partners and support discussions
+                on specifications, pricing, delivery and commercial terms.
               </p>
               <p>
-                Fulcrum helps translate this potential into practical business
-                relationships. We support sourcing and supplier representation
-                across petroleum, LNG, edible oils, textile inputs and industrial
-                equipment, connecting international capabilities with local
-                requirements for essential supplies, energy and infrastructure.
+                In aviation, this includes aircraft leasing, engines and spare parts,
+                maintenance partnerships, and airport and ground support equipment.
+                Across our other sectors, we help buyers access essential products
+                and services while supporting international companies seeking
+                business opportunities in Bangladesh.
               </p>
               <p>
-                In aviation, we help airlines identify aircraft leasing options
-                and source engines, spare parts, equipment and maintenance
-                services. We also support airport procurement, from ground
-                support equipment to air navigation and air traffic management
-                systems. When appointed to represent bidders, we coordinate
-                tender preparation, compliance documentation and commercial
-                requirements.
+                Where appointed, we represent suppliers and coordinate tender
+                submissions, documentation and negotiations. We aim to keep buyers
+                and suppliers informed, clarify responsibilities and support each
+                transaction from the initial enquiry through agreed delivery milestones.
               </p>
               <p>
-                Our team combines operational experience in aviation and maritime
-                services with analytical and commercial expertise, bringing a
-                practical understanding of the industries we serve.{" "}
-                <Link href="/people">Meet the people behind the work</Link>.
+                Our approach is grounded in integrity, clear communication and
+                attention to detail. We seek to build trust through realistic
+                commitments, responsive service and a practical understanding of
+                the industries we serve.
               </p>
               <p>
                 We are Fulcrum. We make business easier—on land, at sea and in
                 the air.
-                <br />
-                Precision in motion. In every connection.
               </p>
             </div>
             <Link href="/contact" className="text-link">
