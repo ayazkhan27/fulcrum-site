@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { projectPaperPlane } from "@/lib/paper-plane-model"
+import { drawFormation, formationDuration } from "@/lib/paper-formation"
 import type { createPaperScene } from "@/lib/paper-plane-scene"
 
 const clamp = (n: number) => Math.max(0, Math.min(1, n))
@@ -9,13 +10,24 @@ export function PaperFlight() {
   const root = useRef<HTMLElement>(null)
   const plane = useRef<HTMLDivElement>(null)
   const canvas = useRef<HTMLCanvasElement>(null)
+  const formation = useRef<HTMLCanvasElement>(null)
   const [paused, setPaused] = useState(false)
   const pausedRef = useRef(false)
   const wakeRef = useRef<() => void>(() => {})
+  const replayRef = useRef<() => void>(() => {})
   useEffect(() => {
     const section = root.current!
+    const home = section.closest<HTMLElement>(".home-page")!
     const object = plane.current!
     const reduced = matchMedia("(prefers-reduced-motion: reduce)")
+    const particles = formation.current!
+    const context = particles.getContext("2d")
+    const introKey = "fulcrum-formation-seen-v1"
+    let introSeen = false
+    try { introSeen = localStorage.getItem(introKey) === "true" } catch { /* Storage may be unavailable. */ }
+    let introTime = introSeen || reduced.matches || window.scrollY > 20 ? formationDuration : 0
+    let restoreScroll: (() => void) | undefined
+    let replayFrame = 0
     let frame = 0,
       position = 0,
       target = 0,
@@ -57,7 +69,23 @@ export function PaperFlight() {
           polygons[i].setAttribute("stroke", face.fill)
         })
       }
-      object.style.opacity = "1"
+      if (reduced.matches || p > .025 || !context) introTime = formationDuration
+      const ease = (n: number) => { const t = clamp(n); return t * t * (3 - 2 * t) }
+      home.style.setProperty("--intro-sky", String(ease((introTime - 2) / .8)))
+      home.style.setProperty("--intro-brand", String(ease((introTime - 2.65) / .55)))
+      home.dataset.intro = introTime >= formationDuration ? "complete" : "playing"
+      if (introTime >= formationDuration && restoreScroll) {
+        restoreScroll()
+        restoreScroll = undefined
+      }
+      if (introTime >= formationDuration && !introSeen) {
+        introSeen = true
+        try { localStorage.setItem(introKey, "true") } catch { /* Keep the page usable without storage. */ }
+      }
+      const opacity = context ? drawFormation(context, width, height, introTime) : 1
+      object.style.opacity = String(opacity)
+      particles.style.visibility = introTime >= formationDuration ? "hidden" : "visible"
+      object.dataset.formation = introTime >= formationDuration ? "complete" : "forming"
     }
     const fallback = () => {
       failed = true
@@ -91,7 +119,10 @@ export function PaperFlight() {
       }
       const dt = Math.min((time - (last || time - 16)) / 1000, 0.032)
       last = time
-      if (!pausedRef.current && !reduced.matches) ambientTime += dt
+      if (!pausedRef.current && !reduced.matches) {
+        if (introTime < formationDuration) introTime += dt
+        else ambientTime += dt
+      }
       const moving = Math.abs(target - position) > 0.0001
       position = target
       if (moving || time - lastDraw >= 32) {
@@ -99,7 +130,7 @@ export function PaperFlight() {
         lastDraw = time
       }
       const ambient =
-        Boolean(scene) &&
+        (Boolean(scene) || introTime < formationDuration) &&
         !pausedRef.current &&
         !reduced.matches &&
         !document.hidden &&
@@ -114,10 +145,38 @@ export function PaperFlight() {
     }
     const update = () => {
       if (reduced.matches || document.hidden || !intersecting) return
-      target = progress()
+      target = introTime < formationDuration ? 0 : progress()
       if (!frame) frame = requestAnimationFrame(tick)
     }
     wakeRef.current = update
+    replayRef.current = () => {
+      // Replay deliberately, without clearing the saved first-visit preference.
+      const page = document.documentElement
+      restoreScroll?.()
+      const previousScroll = page.style.scrollBehavior
+      page.style.scrollBehavior = "auto"
+      window.scrollTo(0, 0)
+      restoreScroll = () => { page.style.scrollBehavior = previousScroll }
+      cancelAnimationFrame(replayFrame)
+      const startAtTop = () => {
+        if (disposed) return
+        if (window.scrollY > 1) {
+          window.scrollTo({ top: 0, behavior: "instant" })
+          replayFrame = requestAnimationFrame(startAtTop)
+          return
+        }
+        replayFrame = 0
+        introTime = reduced.matches ? formationDuration : 0
+        ambientTime = 0
+        position = target = 0
+        last = 0
+        intersecting = true
+        section.dataset.visible = "true"
+        draw()
+        update()
+      }
+      replayFrame = requestAnimationFrame(startAtTop)
+    }
     const configure = () => {
       cancelAnimationFrame(frame)
       frame = 0
@@ -125,8 +184,12 @@ export function PaperFlight() {
       section.dataset.motion = reduced.matches ? "static" : "active"
       width = Math.max(1, section.clientWidth)
       height = Math.max(1, section.querySelector(".flight-stage")!.clientHeight)
+      const dpr = Math.min(devicePixelRatio, 2)
+      particles.width = Math.round(width * dpr)
+      particles.height = Math.round(height * dpr)
+      context?.setTransform(dpr, 0, 0, dpr, 0, 0)
       scene?.resize(width, height)
-      position = target = reduced.matches ? 0 : progress()
+      position = target = reduced.matches || introTime < formationDuration ? 0 : progress()
       draw()
       void loadRenderer()
       update()
@@ -153,6 +216,12 @@ export function PaperFlight() {
     return () => {
       disposed = true
       wakeRef.current = () => {}
+      replayRef.current = () => {}
+      restoreScroll?.()
+      cancelAnimationFrame(replayFrame)
+      home.style.removeProperty("--intro-sky")
+      home.style.removeProperty("--intro-brand")
+      delete home.dataset.intro
       scene?.dispose()
       cancelAnimationFrame(frame)
       observer.disconnect()
@@ -164,6 +233,7 @@ export function PaperFlight() {
   }, [])
   return (
     <>
+      <noscript><style>{`.home-page .flight-horizon, .home-page .home-header, .home-page .flight-caption, .home-page .flight-plane { opacity: 1 !important; } .home-page .home-header { pointer-events: auto !important; } .flight-replay { display: none; }`}</style></noscript>
       <section
         className="paper-flight"
         ref={root}
@@ -192,7 +262,8 @@ export function PaperFlight() {
             </div>
           </div>
           <div className="flight-camera" aria-hidden="true">
-            <div className="flight-plane" ref={plane}>
+            <canvas ref={formation} className="flight-formation" />
+            <div className="flight-plane" ref={plane} style={{ opacity: 0 }}>
               <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
                 {projectPaperPlane(1200, 800, 0).map((face, i) => (
                   <polygon
@@ -214,6 +285,18 @@ export function PaperFlight() {
           <a className="flight-skip" href="#page-mission">
             Explore Fulcrum <span aria-hidden="true">↓</span>
           </a>
+          <button
+            type="button"
+            className="flight-replay"
+            onClick={(event) => {
+              event.currentTarget.blur()
+              pausedRef.current = false
+              setPaused(false)
+              requestAnimationFrame(() => replayRef.current())
+            }}
+          >
+            Replay intro <span aria-hidden="true">↻</span>
+          </button>
           <button
             type="button"
             className="flight-pause"

@@ -207,6 +207,25 @@
 .flight-plane canvas {
   visibility: hidden;
 }
+.flight-formation {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+/* Intro only: the approved photograph and masthead are revealed unchanged. */
+.home-page .flight-stage { background: #000; }
+.home-page .flight-horizon { z-index: 0; opacity: var(--intro-sky, 0); }
+.home-page .home-header { opacity: var(--intro-brand, 0); }
+.home-page .flight-caption { opacity: var(--intro-brand, 0); }
+.home-page:not([data-intro="complete"]) .home-header { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .home-page .flight-horizon,
+  .home-page .home-header,
+  .home-page .flight-caption { opacity: 1; }
+  .home-page .home-header { pointer-events: auto; }
+}
 .flight-plane[data-renderer="webgl"] canvas {
   visibility: visible;
 }
@@ -476,6 +495,17 @@
 }
 .post-flight-controls .flight-skip {
   margin-left: 0;
+}
+.flight-replay {
+  margin-left: auto;
+  margin-right: 28px;
+  padding: 15px 0;
+  font-size: .75rem;
+}
+.flight-replay span { margin-left: 8px; }
+.flight-replay:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .flight-replay { display: none; }
 }
 @media (max-width: 699px) {
   .home-header .header-inner {

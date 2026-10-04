@@ -24,10 +24,12 @@ export const flightPose = { pitch: 0.42, yaw: 1.03, bank: 0 }
 export const cameraDistance = 12
 export const cameraFov = 36
 export const cameraNear = 0.1
-// Aluminium silver wings and deeper blue folds, shared by the scene and fallback.
-export const paperColor = [210, 215, 219] as const
+// Pearl wings and icy folds echo the formation particles; narrow seams retain cobalt.
+export const paperColor = [242, 247, 252] as const
+export const iceColor = [180, 212, 237] as const
 export const cobaltColor = [38, 94, 166] as const
-export const paperFaceColor = (index: number) => index < 8 ? cobaltColor : paperColor
+export const paperFaceColor = (index: number) =>
+  index === 6 || index === 7 ? cobaltColor : index < 8 ? iceColor : paperColor
 export const shadowStrength = 0.8
 
 // Reconstructed camera-relative flight, observed at flyhyer.com on 2026-09-10.
