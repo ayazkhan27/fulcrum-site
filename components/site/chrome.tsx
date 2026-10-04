@@ -55,7 +55,14 @@ export function Footer({ closing = false }: { closing?: boolean }) {
         <div className="footer-grid">
           <div className="footer-identity">
             <Link href="/" aria-label="Fulcrum, home" className="footer-brand">
-              <Wordmark dark={closing} />
+              <Image
+                src="/fulcrum-logo-footer-cobalt.svg"
+                width={595}
+                height={112}
+                alt="Fulcrum"
+                unoptimized
+                className="masthead-art"
+              />
             </Link>
             <Image
               src="/fulcrum-signature-white.svg"
@@ -93,7 +100,7 @@ export function Footer({ closing = false }: { closing?: boolean }) {
           {closing && (
             <div className="footer-bus">
               <Image
-                src="/assets/fulcrum-bus-slogan-only-v2.png"
+                src="/assets/fulcrum-bus-slogan-only-v4.png"
                 width={1920}
                 height={986}
                 alt="Red bus illustration with a large Precision in motion slogan"
