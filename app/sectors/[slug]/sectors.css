@@ -50,12 +50,14 @@
   max-width: 630px;
   margin-top: 24px;
   padding-inline-end: 16px;
-  color: #000000;
+  color: #003d91;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: clamp(1.25rem, 1.85vw, 1.5rem);
-  font-weight: 200;
-  line-height: 1.65;
-  text-align: justify;
+  font-weight: 100;
+  font-synthesis: none;
+  line-height: 1.45;
+  text-align: left;
+  text-wrap: balance;
   text-align-last: left;
 }
 
