@@ -14,13 +14,13 @@ const PEOPLE = [
     email: "khanhussein@fulcrumtriad.com",
   },
   {
-    name: "Captain S A Masum",
+    name: "Captain SK Abul Masum",
     initials: "SM",
     role: "Chief Operating Officer–Bangladesh",
     summary:
       "Thirty years as a sea captain, bringing maritime leadership and operational experience to Fulcrum’s Bangladesh office.",
     expertise: "Energy · Maritime operations · Logistics",
-    bio: "Captain S A Masum oversees energy, maritime activities and logistics as Chief Operating Officer of Fulcrum’s Bangladesh office. He served as a sea captain for 30 years and holds an MBA from London School of Business.",
+    bio: "Captain SK Abul Masum oversees energy, maritime activities and logistics as Chief Operating Officer of Fulcrum’s Bangladesh office. He served as a sea captain for 30 years and holds an MBA from London School of Business.",
   },
   {
     name: "Engineer M A Wadud",
