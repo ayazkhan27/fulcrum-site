@@ -1,14 +1,26 @@
 import { projectPaperPlane } from "./paper-plane-model"
 
-export const formationDuration = 3.2
+export const formationDuration = 4.7
+/** Extend only the gathering phase; keep the burst and final reveal pace. */
+export function formationTimelineTime(elapsed: number) {
+  const gatherStart = .88
+  const originalGather = 1.05
+  const slowerGather = 2.55
+  if (elapsed <= gatherStart) return elapsed
+  if (elapsed < gatherStart + slowerGather) {
+    return gatherStart + (elapsed - gatherStart) * originalGather / slowerGather
+  }
+  return elapsed - (slowerGather - originalGather)
+}
 const clamp = (n: number) => Math.max(0, Math.min(1, n))
 const smooth = (n: number) => { const t = clamp(n); return t * t * (3 - 2 * t) }
 
 /** Deterministic particles converge on the actual projected paper surfaces. */
-export function drawFormation(ctx: CanvasRenderingContext2D, width: number, height: number, time: number) {
+export function drawFormation(ctx: CanvasRenderingContext2D, width: number, height: number, elapsed: number) {
   ctx.clearRect(0, 0, width, height)
+  if (elapsed >= formationDuration) return 1
+  const time = formationTimelineTime(elapsed)
   const reveal = smooth((time - 1.65) / .5)
-  if (time >= formationDuration) return 1
   const cx = width * .5, cy = height * .57
   if (time < .4) {
     ctx.fillStyle = "#ffffff"

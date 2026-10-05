@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { projectPaperPlane } from "@/lib/paper-plane-model"
-import { drawFormation, formationDuration } from "@/lib/paper-formation"
+import { drawFormation, formationDuration, formationTimelineTime } from "@/lib/paper-formation"
 import type { createPaperScene } from "@/lib/paper-plane-scene"
 
 const clamp = (n: number) => Math.max(0, Math.min(1, n))
@@ -71,8 +71,9 @@ export function PaperFlight() {
       }
       if (reduced.matches || p > .025 || !context) introTime = formationDuration
       const ease = (n: number) => { const t = clamp(n); return t * t * (3 - 2 * t) }
-      home.style.setProperty("--intro-sky", String(ease((introTime - 2) / .8)))
-      home.style.setProperty("--intro-brand", String(ease((introTime - 2.65) / .55)))
+      const revealTime = formationTimelineTime(introTime)
+      home.style.setProperty("--intro-sky", String(ease((revealTime - 2) / .8)))
+      home.style.setProperty("--intro-brand", String(ease((revealTime - 2.65) / .55)))
       home.dataset.intro = introTime >= formationDuration ? "complete" : "playing"
       if (introTime >= formationDuration && restoreScroll) {
         restoreScroll()
