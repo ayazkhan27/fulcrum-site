@@ -247,7 +247,7 @@
   top: calc(40% - 12px);
   width: max-content;
   max-width: 470px;
-  transform: translate(-80px, 16px);
+  transform: translate(-80px, 8px);
   opacity: var(--flight-tagline-opacity, 1);
   filter: blur(calc((1 - var(--flight-tagline-opacity, 1)) * 5px));
 }
@@ -266,7 +266,7 @@
   white-space: nowrap;
 }
 .flight-intro h1 span:last-child {
-  font-size: 0.95em;
+  font-size: 1em;
 }
 .flight-links {
   display: flex;

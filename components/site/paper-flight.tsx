@@ -258,7 +258,7 @@ export function PaperFlight() {
             <div className="flight-intro">
               <h1 id="home-title">
                 <span>Precision</span>
-                <span>in motion.</span>
+                <span>in motion</span>
               </h1>
             </div>
           </div>
