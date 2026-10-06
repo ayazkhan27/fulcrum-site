@@ -10,8 +10,9 @@
   align-items: start;
   gap: clamp(24px, 3.5vw, 48px);
 }
+.fashion-page .fashion-grid > div:first-child { padding-top: 18px; }
 .fashion-page .fashion-hero h1 {
-  margin: 24px 0;
+  margin: 46px 0 24px;
   font-size: clamp(2rem, 3.2vw, 3rem);
   line-height: 1.12;
   letter-spacing: -0.03em;
@@ -34,6 +35,7 @@
 .fashion-page .fashion-gallery figcaption { margin-top: 8px; font-size: 0.85rem; color: #405a70; }
 .fashion-page .fashion-image-note { margin: -8px 0 0; font-size: 0.75rem; line-height: 1.5; color: #405a70; }
 @media (max-width: 800px) {
+  .fashion-page .fashion-grid > div:first-child { padding-top: 10px; }
   .fashion-page .fashion-grid { grid-template-columns: 1fr; }
   .fashion-page .fashion-gallery { margin-top: 0; }
   .fashion-page .fashion-gallery img { height: auto; }
