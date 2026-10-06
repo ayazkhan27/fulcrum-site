@@ -8,6 +8,7 @@ export const sitePages = [
   { href: "/defense", label: "Defense Supply" },
   { href: "/energy", label: "Energy & Petroleum" },
   { href: "/sectors/textiles", label: "Textile & Mill Supply" },
+  { href: "/fashion-and-finery", label: "Fulcrum Fashion and Finery" },
   { href: "/sectors/commodities", label: "Edible Oil & Commodities" },
   { href: "/career", label: "Career" },
   { href: "/contact", label: "Contact" },
