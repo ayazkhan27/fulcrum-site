@@ -58,7 +58,7 @@ export function Navigation({ editorial = false }: { editorial?: boolean }) {
             }
             onClick={() => setOpen(false)}
           >
-            {label}
+            {href === "/fashion-and-finery" ? "Fashion and Finery" : label}
           </NavLink>
           )
         })}
