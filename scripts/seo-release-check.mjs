@@ -263,25 +263,36 @@ test("seven sector CTAs preserve the intended fixed prefill choices", async () =
   }
 })
 
-test("homepage and both guide CTAs retain sector and source attribution", async () => {
-  const links = enquiryLinks((await get("/")).html)
-  assert.equal(links.length, sectorPages.length)
-  assert.deepEqual(
-    links.map((url) => url.searchParams.get("sector")).sort(),
-    sectorPages.map(([, sector]) => sector).sort()
-  )
-  for (const link of links) {
-    const sector = link.searchParams.get("sector")
-    assertEnquiry(
-      link,
-      {
-        sector,
-        source: "home",
-        service: sector === "apparel" ? "sourcing" : "",
-      },
-      "homepage"
+test("homepage preserves its existing CTA destinations, image sizing and embedded Contact content", async () => {
+  for (const path of ["/", "/?sector=apparel&service=sourcing&source=guide"]) {
+    const { html } = await get(path)
+    assert.equal(enquiryLinks(html).length, 0)
+    const discussions = [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)]
+      .filter((match) => /^Discuss\b/.test(decode(match[2].replace(/<[^>]+>/g, " ")).trim()))
+      .map((match) => attributes(match[0]))
+    assert.equal(discussions.length, sectorPages.length)
+    for (const link of discussions) assert.equal(link.href, "/contact")
+    assert.ok(!tags(html, "a").some((link) => link.href?.startsWith("/resources")))
+    assert.doesNotMatch(html, /Buyer guides for your sourcing brief/)
+    assert.doesNotMatch(html, /<option[^>]*>Apparel &amp; fashion sourcing<\/option>/)
+    const form = one(tags(html, "form").filter((item) => item.id === "enquiry-form"), "homepage form")
+    for (const field of ["sector", "service", "source"]) assert.equal(form[`data-enquiry-${field}`], "")
+    const airport = one(
+      tags(html, "img").filter((item) => item.src?.includes("stocksnap-building-2603781")),
+      "homepage airport image"
     )
+    assert.equal(airport.sizes, "(max-width: 800px) 100vw, 50vw")
   }
+})
+
+test("standalone Contact retains guide discovery and the additional apparel enquiry option", async () => {
+  const { html } = await get("/contact")
+  assert.ok(tags(html, "a").some((link) => link.href === "/resources"))
+  assert.match(html, /Buyer guides for your sourcing brief/)
+  assert.match(html, /<option[^>]*>Apparel &amp; fashion sourcing<\/option>/)
+})
+
+test("both guide CTAs retain sector and source attribution", async () => {
   for (const guide of buyerGuides) {
     const href = `/resources/${guide.slug}`
     const expected = new URL(guide.contactHref, preview)

@@ -25,7 +25,7 @@ test('The explorer is paired with the form on Contact and removed from Aviation'
   const contact = await read('components/site/pages/contact.tsx');
   const capability = await read('components/site/capability-page.tsx');
   const paired = await read('components/site/service-enquiry.tsx');
-  assert.match(contact, /<ServiceEnquiry>/);
+  assert.match(contact, /<ServiceEnquiry embedded=\{embedded\}>/);
   assert.doesNotMatch(capability, /AviationExplorer|ServiceExplorer/);
   assert.match(paired, /<ServiceExplorer/);
   assert.match(paired, /<EnquiryForm\s+service=\{service\}/);
@@ -62,4 +62,15 @@ test('Tabs retain keyboard support and prepared drafts track the selected servic
   assert.match(form, /prepared\?\.service === service/);
   assert.match(form, /Nothing has been sent yet/);
   assert.match(form, /onChange=\{\(\) => setPrepared\(null\)\}/);
+});
+
+test('The embedded homepage form bypasses URL prefill and preserves its original choices', async () => {
+  const paired = await read('components/site/service-enquiry.tsx');
+  assert.match(paired, /if \(embedded\) return \(\s*<ServiceEnquiryContent attribution=\{emptyAttribution\} embedded>/);
+  assert.match(paired, /<EnquiryForm[\s\S]*?embedded=\{embedded\}/);
+  const form = await read('components/site/enquiry-form.tsx');
+  assert.match(form, /\{!embedded && <option>Apparel & fashion sourcing<\/option>\}/);
+  for (const file of ['components/site/capability-page.tsx', 'components/site/pages/defense.tsx', 'components/site/pages/equipment.tsx', 'components/site/pages/fashion.tsx']) {
+    assert.match(await read(file), /href=\{embedded \? "\/contact" : buildEnquiryHref/);
+  }
 });

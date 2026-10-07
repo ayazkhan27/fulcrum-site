@@ -21,7 +21,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 <p className="equipment-lead">For aircraft. For airports.<br />For the operation ahead.</p>
                 <p className="equipment-intro">We help airlines, airport operators and ground handlers source the engines, radars, spares and equipment that keep aircraft and airports operating. From aircraft components to passenger, baggage and ramp equipment, we coordinate suitable suppliers, specifications, quotations and delivery requirements.</p>
                 <p className="equipment-intro">We clarify operating capacity, compatibility, availability and documentation with buyers and suppliers. From the first enquiry to agreed delivery milestones, we keep the commercial process moving and the parties informed.</p>
-                <Link href={buildEnquiryHref({ sector: "equipment", source: embedded ? "home" : "sector" })} className="text-link equipment-contact">Discuss your requirement <ArrowUpRight size={18} aria-hidden="true" /></Link>
+                <Link href={embedded ? "/contact" : buildEnquiryHref({ sector: "equipment", source: "sector" })} className="text-link equipment-contact">Discuss your requirement <ArrowUpRight size={18} aria-hidden="true" /></Link>
               </div>
               <div className="equipment-visual">
                 <figure className="equipment-engine-image"><Image src="/assets/mro-partnership.png" alt="AI-generated image of airline and MRO professionals reviewing maintenance work beside a jet engine" width={1536} height={1024} sizes="(max-width: 600px) 100vw, 50vw" preload={!embedded} /></figure>

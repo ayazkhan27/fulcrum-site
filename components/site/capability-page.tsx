@@ -75,7 +75,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                   </ul>
                 </div>
               )}
-              <Link href={buildEnquiryHref({ sector: enquirySector, source: embedded ? "home" : "sector" })} className="text-link">
+              <Link href={embedded ? "/contact" : buildEnquiryHref({ sector: enquirySector, source: "sector" })} className="text-link">
                 Discuss your requirement{" "}
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
@@ -98,7 +98,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                     src="/assets/stocksnap-building-2603781.jpg"
                     alt="Airport check-in hall with baggage conveyors and passengers"
                     fill
-                    sizes="(max-width: 800px) 50vw, 25vw"
+                    sizes={embedded ? "(max-width: 800px) 100vw, 50vw" : "(max-width: 800px) 50vw, 25vw"}
                   />
                 </div>
                 <div className="aviation-image-box">

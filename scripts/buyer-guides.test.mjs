@@ -53,4 +53,7 @@ test("resource routes stay out of the approved homepage sequence and use locally
   assert.match(component, /<main id="main"/)
   assert.equal((component.match(/<h1>/g) ?? []).length, 1)
   assert.doesNotMatch(component, /dangerouslySetInnerHTML/)
+  const contact = readFileSync(new URL("../components/site/pages/contact.tsx", import.meta.url), "utf8")
+  assert.match(contact, /\{!embedded && <>\s*<br \/><a href="\/resources">/)
+  assert.match(contact, /<ServiceEnquiry embedded=\{embedded\}>/)
 })

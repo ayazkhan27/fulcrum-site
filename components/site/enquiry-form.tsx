@@ -20,10 +20,12 @@ export function EnquiryForm({
   service,
   onServiceChange,
   attribution,
+  embedded = false,
 }: {
   service: EnquiryServiceChoice
   onServiceChange: (service: EnquiryServiceChoice) => void
   attribution: EnquiryAttribution
+  embedded?: boolean
 }) {
   const [sector, setSector] = useState(enquirySectorLabel(attribution.sector))
   const [prepared, setPrepared] = useState<{
@@ -133,7 +135,7 @@ export function EnquiryForm({
               Select an area
             </option>
             <option>Aviation & airports</option>
-            <option>Apparel & fashion sourcing</option>
+            {!embedded && <option>Apparel & fashion sourcing</option>}
             <option>Energy, petroleum & LNG</option>
             <option>Textiles, cotton & mill supply</option>
             <option>Edible oils & commodities</option>

@@ -40,7 +40,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                   <li>Delivery follow-up</li>
                 </ul>
               </div>
-              <Link href={buildEnquiryHref({ sector: "defense", source: embedded ? "home" : "sector" })} className="text-link">
+              <Link href={embedded ? "/contact" : buildEnquiryHref({ sector: "defense", source: "sector" })} className="text-link">
                 Discuss your procurement requirement <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             </div>
