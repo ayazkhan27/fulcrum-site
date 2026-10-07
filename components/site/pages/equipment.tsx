@@ -23,7 +23,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                 <Link href="/contact" className="text-link equipment-contact">Discuss your requirement <ArrowUpRight size={18} aria-hidden="true" /></Link>
               </div>
               <div className="equipment-visual">
-                <figure className="equipment-engine-image"><Image src="/assets/mro-partnership.png" alt="AI-generated image of airline and MRO professionals reviewing maintenance work beside a jet engine" width={1536} height={1024} sizes="(max-width: 600px) 100vw, 50vw" preload /></figure>
+                <figure className="equipment-engine-image"><Image src="/assets/mro-partnership.png" alt="AI-generated image of airline and MRO professionals reviewing maintenance work beside a jet engine" width={1536} height={1024} sizes="(max-width: 600px) 100vw, 50vw" preload={!embedded} /></figure>
                 <figure className="equipment-airport-image equipment-radar-image">
                   <div><Image src="/assets/willi11200-vessel-4875382.jpg" alt="Rotating marine radar antennas aboard a vessel against a blue sky" fill sizes="(max-width: 600px) 100vw, 50vw" /></div>
                 </figure>
