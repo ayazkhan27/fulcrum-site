@@ -270,6 +270,8 @@ test("homepage preserves its existing CTA destinations, image sizing and embedde
     const discussions = [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)]
       .filter((match) => /^Discuss\b/.test(decode(match[2].replace(/<[^>]+>/g, " ")).trim()))
       .map((match) => attributes(match[0]))
+      // Exclude the existing in-page service-explorer link ("Discuss consulting").
+      .filter((link) => new URL(link.href, preview).pathname === "/contact")
     assert.equal(discussions.length, sectorPages.length)
     for (const link of discussions) assert.equal(link.href, "/contact")
     assert.ok(!tags(html, "a").some((link) => link.href?.startsWith("/resources")))
