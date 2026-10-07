@@ -398,10 +398,13 @@
 .edible-oil-stack img {
   height: auto;
   object-fit: contain;
+  /* Let the page background show through as a soft 30% veil. */
+  opacity: 0.7;
 }
 .edible-oil-stack .corn-oil-image {
   width: 65%;
   max-width: 250px;
+  opacity: 0.55;
 }
 @media (min-width: 801px) {
   .hero-object-panel:has(.edible-oil-stack) {
