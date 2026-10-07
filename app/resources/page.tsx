@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { buyerGuides, createResourceMetadata } from "@/lib/buyer-guides"
+import { buildEnquiryHref } from "@/lib/enquiry-attribution"
 import styles from "./resources.module.css"
 
 export const metadata = createResourceMetadata("/resources")
@@ -31,7 +32,7 @@ export default function ResourcesPage() {
         </section>
         <section className={styles.landingNote} aria-labelledby="use-guides-title">
           <h2 id="use-guides-title">Start with what you know.</h2>
-          <div><p>Work through the relevant checklist and mark anything that still needs confirmation. Bring the open questions into your enquiry so the scope, responsibilities and next steps can be discussed.</p><Link className={styles.secondaryLink} href="/contact">Discuss your sourcing requirement <span aria-hidden="true">↗</span></Link></div>
+          <div><p>Work through the relevant checklist and mark anything that still needs confirmation. Bring the open questions into your enquiry so the scope, responsibilities and next steps can be discussed.</p><Link className={styles.secondaryLink} href={buildEnquiryHref({ service: "sourcing", source: "guide" })}>Discuss your sourcing requirement <span aria-hidden="true">↗</span></Link></div>
         </section>
       </div>
     </main>
