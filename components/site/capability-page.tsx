@@ -86,7 +86,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                       alt="Airplane flying between two modern buildings against a blue sky"
                       fill
                       sizes="(max-width: 700px) 100vw, 50vw"
-                      preload
+                      preload={!embedded}
                     />
                   </div>
                 </figure>
@@ -109,8 +109,8 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               </div>
             ) : content.label === "Textile & Mill Supply" ? (
               <div className="textile-image-stack">
-                <AssetVisual asset="cottonBlack" priority />
-                <AssetVisual asset="fabricFolds" priority />
+                <AssetVisual asset="cottonBlack" priority={!embedded} />
+                <AssetVisual asset="fabricFolds" />
               </div>
             ) : content.label === "Medical equipment" ? (
               <div className="medical-hero">
@@ -121,15 +121,15 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               <div className="hero-object-panel">
                 {content.label === "Energy" ? (
                   <figure className="energy-editorial-visual">
-                    <Image src="/assets/energy-editorial-v2.png" alt="Illustrative tanker truck at an energy terminal" width={1536} height={1024} sizes="(max-width: 800px) 90vw, 45vw" priority />
+                    <Image src="/assets/energy-editorial-v2.png" alt="Illustrative tanker truck at an energy terminal" width={1536} height={1024} sizes="(max-width: 800px) 90vw, 45vw" preload={!embedded} />
                   </figure>
                 ) : content.label === "Edible Oil & Commodities" ? (
-                  <EdibleOilVisual />
+                  <EdibleOilVisual priority={!embedded} />
                 ) : (
                 <AssetVisual
                   asset={heroAsset}
                   className="detail-asset"
-                  priority
+                  priority={!embedded}
                 />
                 )}
                 {content.label !== "Edible Oil & Commodities" && <div className="hero-object-scope">
@@ -146,7 +146,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               <AssetVisual
                 asset={heroAsset}
                 className="detail-asset"
-                priority
+                priority={!embedded}
                 caption="Illustrative imagery"
               />
             )}

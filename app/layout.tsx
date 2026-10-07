@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { createPageMetadata, siteUrl } from "@/lib/site-seo"
 import localFont from "next/font/local"
 import { VisitorAnalytics } from "@/components/site/visitor-analytics"
 import { SiteMotion } from "@/components/site/site-motion"
@@ -32,30 +33,14 @@ const avenir = localFont({
 })
 
 export const metadata: Metadata = {
+  ...createPageMetadata("/"),
   verification: { google: "Dzv0rqF46y0VLNYkl_z-pbzpPwc_xjtmsnsp2w-d0xw" },
-  metadataBase: new URL("https://fulcrumtriad.com"),
+  metadataBase: new URL(siteUrl),
   icons: {
     icon: [{ url: "/fulcrum-site-icon.png?v=masthead-mark-only-v3", sizes: "192x192", type: "image/png" }],
     apple: [{ url: "/apple-touch-icon.png?v=masthead-mark-only-v3", sizes: "180x180", type: "image/png" }],
   },
-  title: "Fulcrum | Global sourcing & representation",
-  description:
-    "Sourcing, supplier representation and commercial coordination across aviation, energy, textiles, industrial equipment and healthcare. Bangladesh connections, global reach.",
-  openGraph: {
-    title: "Fulcrum · Global sourcing. Local representation.",
-    description:
-      "Connecting international suppliers and manufacturers with requirements in Bangladesh and beyond.",
-    type: "website",
-    siteName: "Fulcrum",
-    images: [
-      {
-        url: "/fulcrum-masthead-preview.png",
-        width: 1200,
-        height: 630,
-        alt: "Fulcrum masthead with its twin-mountain logo.",
-      },
-    ],
-  },
+
 }
 
 export default function RootLayout({

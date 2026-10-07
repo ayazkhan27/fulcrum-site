@@ -1,12 +1,7 @@
-import type { Metadata } from "next"
+import { createPageMetadata } from "@/lib/site-seo"
 import PageContent from "@/components/site/pages/aviation"
 
-export const metadata: Metadata = {
-  title: "Aviation & Airports | Fulcrum",
-  description:
-    "Aircraft, engine and spare-parts sourcing, MRO partnerships and airport equipment representation for Bangladesh and international markets.",
-  alternates: { canonical: "/aviation" },
-}
+export const metadata = createPageMetadata("/aviation")
 
 export default function Page() {
   return <PageContent />

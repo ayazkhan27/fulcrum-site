@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import { createPageMetadata, organizationStructuredData } from "@/lib/site-seo"
 import { Header } from "@/components/site/chrome"
 import { PaperFlight } from "@/components/site/paper-flight"
 import MissionContent from "@/components/site/pages/mission"
@@ -14,15 +14,14 @@ import "./flight.css"
 import "./home.css"
 import "./scroll-pages.css"
 
-export const metadata: Metadata = {
-  title: "Home | Fulcrum",
-  description:
-    "Connecting international manufacturers and suppliers with Bangladesh. Sourcing, representation and commercial coordination across aviation, energy, textiles, industry and healthcare.",
-  alternates: { canonical: "/" },
-}
+export const metadata = createPageMetadata("/")
 export default function Page() {
   return (
     <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData).replace(/</g, "\\u003c") }}
+    />
     <div className="home-page">
       <Header home />
       <main id="main">
