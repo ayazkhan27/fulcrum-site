@@ -22,15 +22,15 @@ test('The explorer covers five shared services, not aviation disciplines', () =>
 });
 
 test('The explorer is paired with the form on Contact and removed from Aviation', async () => {
-  const contact = await read('app/contact/page.tsx');
+  const contact = await read('components/site/pages/contact.tsx');
   const capability = await read('components/site/capability-page.tsx');
   const paired = await read('components/site/service-enquiry.tsx');
   assert.match(contact, /<ServiceEnquiry>/);
   assert.doesNotMatch(capability, /AviationExplorer|ServiceExplorer/);
   assert.match(paired, /<ServiceExplorer/);
-  assert.match(paired, /<EnquiryForm service=\{service\}/);
+  assert.match(paired, /<EnquiryForm\s+service=\{service\}/);
   assert.match(paired, /if \(isEnquiryService\(value\)\) setActive\(value\)/);
-  assert.equal(sitePages.length, 9);
+  assert.equal(sitePages.length, 12);
   assert.ok(sitePages.some(({ href }) => href === '/contact'));
 });
 

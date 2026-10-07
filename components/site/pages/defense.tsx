@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight, Package, Shirt, Wrench } from "lucide-react"
 import { Header } from "@/components/site/chrome"
+import { buildEnquiryHref } from "@/lib/enquiry-attribution"
 import "@/app/defense/defense.css"
 
 const supplies = [
@@ -39,7 +40,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
                   <li>Delivery follow-up</li>
                 </ul>
               </div>
-              <Link href="/contact" className="text-link">
+              <Link href={buildEnquiryHref({ sector: "defense", source: embedded ? "home" : "sector" })} className="text-link">
                 Discuss your procurement requirement <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             </div>

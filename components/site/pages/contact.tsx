@@ -44,6 +44,8 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
             </dl>
             <p className="section-note">
               Based in New York. Working across borders.
+              <br />
+              <a href="/resources">Buyer guides for your sourcing brief ↗</a>
             </p>
           </div>
         </ServiceEnquiry>

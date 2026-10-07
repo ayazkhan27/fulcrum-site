@@ -1,0 +1,558 @@
+.page {
+  background: #fafbfc;
+  color: #122b43;
+  padding-bottom: 64px;
+}
+
+.container {
+  width: min(1240px, calc(100% - 80px));
+  margin-inline: auto;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-block: 28px;
+  font-size: 0.8rem;
+  color: #49637c;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.eyebrow {
+  color: #0047ab;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.landingHeader,
+.guideHeader {
+  border-bottom: 1px solid #cbd6e2;
+  padding-block: 34px 44px;
+}
+
+.landingHeader h1,
+.guideHeader h1 {
+  font-size: clamp(2.4rem, 4.8vw, 4.25rem);
+  line-height: 1.06;
+  letter-spacing: -0.05em;
+  max-width: 960px;
+  margin-top: 22px;
+}
+
+.guideHeader h1 {
+  max-width: 880px;
+}
+
+.lead {
+  max-width: 730px;
+  font-size: 1.17rem;
+  line-height: 1.7;
+  color: #486079;
+  margin-top: 26px;
+}
+
+.guideMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-top: 30px;
+  color: #52677c;
+  font-size: 0.78rem;
+}
+
+.guideCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  padding-block: 44px;
+}
+
+.guideCard {
+  border: 1px solid #cbd6e2;
+  border-top: 3px solid #0047ab;
+  padding: 34px;
+  background: #f1f5f8;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.cardTop > span {
+  font-size: 0.8rem;
+  color: #52677c;
+}
+
+.guideCard h2 {
+  font-size: clamp(1.7rem, 2.8vw, 2.45rem);
+  line-height: 1.13;
+  margin-block: 28px 20px;
+  max-width: 460px;
+}
+
+.guideCard h2 a:hover {
+  color: #0047ab;
+}
+
+.cardArrow {
+  margin-left: 10px;
+  white-space: nowrap;
+  color: #0047ab;
+}
+
+.guideCard > p:not(.cardAudience) {
+  color: #486079;
+}
+
+.guideCard ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-block: 24px 30px;
+  font-size: 0.92rem;
+}
+
+.guideCard li + li {
+  margin-top: 7px;
+}
+
+.cardAudience {
+  border-top: 1px solid #cbd6e2;
+  padding-top: 20px;
+  margin-top: auto;
+  font-size: 0.78rem;
+  color: #52677c;
+}
+
+.landingNote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  border-top: 1px solid #cbd6e2;
+  padding-block: 42px;
+}
+
+.landingNote h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  max-width: 350px;
+}
+
+.landingNote p {
+  color: #486079;
+}
+
+.landingNote a {
+  display: inline-flex;
+  margin-top: 20px;
+}
+
+.guideLayout {
+  display: grid;
+  grid-template-columns: 255px minmax(0, 1fr);
+  gap: 70px;
+  align-items: start;
+  padding-top: 46px;
+}
+
+.contents {
+  position: sticky;
+  top: 32px;
+}
+
+.contents ol {
+  list-style: none;
+  padding: 0;
+  margin-top: 18px;
+}
+
+.contents li {
+  border-bottom: 1px solid #d9e1e9;
+}
+
+.contents li a {
+  display: flex;
+  gap: 14px;
+  font-size: 0.87rem;
+  line-height: 1.45;
+  padding-block: 13px;
+}
+
+.contents li a > span {
+  color: #52677c;
+  font-size: 0.73rem;
+  padding-top: 2px;
+}
+
+.contents a:hover {
+  color: #0047ab;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contentsBrief {
+  display: block;
+  font-size: 0.88rem;
+  margin-top: 22px;
+  color: #0047ab;
+}
+
+.article {
+  max-width: 820px;
+  min-width: 0;
+}
+
+.introduction > p:first-child {
+  font-size: 1.12rem;
+  line-height: 1.75;
+}
+
+.scope {
+  margin-top: 26px;
+  padding-left: 20px;
+  border-left: 2px solid #a7bdd8;
+  color: #52677c;
+  font-size: 0.87rem;
+  line-height: 1.7;
+}
+
+.checklistSection {
+  border-top: 1px solid #cbd6e2;
+  margin-top: 44px;
+  padding-top: 30px;
+  scroll-margin-top: 28px;
+}
+
+.sectionNumber {
+  color: #0047ab;
+  font-size: 0.8rem;
+  margin-bottom: 14px;
+}
+
+.article h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.17;
+  letter-spacing: -0.03em;
+}
+
+.sectionIntroduction {
+  margin-top: 18px;
+  color: #486079;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin-top: 24px;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 28px;
+  line-height: 1.7;
+}
+
+.checklist li + li {
+  margin-top: 17px;
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.48em;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #50769d;
+}
+
+.reference {
+  background: #edf2f7;
+  padding: 20px 24px;
+  margin-top: 26px;
+  font-size: 0.84rem;
+  color: #486079;
+  line-height: 1.7;
+}
+
+.referenceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+  margin-top: 12px;
+}
+
+.reference a,
+.sources a,
+.secondaryLink {
+  color: #0047ab;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.comparison {
+  margin-block: 50px;
+}
+
+.comparison h2 {
+  margin-block: 15px 24px;
+}
+
+.comparison dl > div {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 24px;
+  padding-block: 19px;
+  border-top: 1px solid #cbd6e2;
+}
+
+.comparison dt {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.comparison dd {
+  color: #486079;
+  font-size: 0.93rem;
+  margin: 0;
+}
+
+.brief {
+  background: #05254a;
+  color: #fff;
+  padding: 34px;
+  scroll-margin-top: 28px;
+}
+
+.brief .eyebrow {
+  color: #bdcee5;
+}
+
+.brief h2 {
+  margin-block: 15px 18px;
+}
+
+.brief > p:not(.eyebrow) {
+  color: #d1deed;
+  font-size: 0.93rem;
+}
+
+.brief ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 26px;
+}
+
+.brief li {
+  border-top: 1px solid #ffffff30;
+  padding-block: 10px;
+  font-size: 0.9rem;
+}
+
+.support {
+  padding-block: 44px;
+}
+
+.support p {
+  margin-top: 20px;
+  color: #486079;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+  margin-top: 26px;
+}
+
+.primaryLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #0047ab;
+  color: #fff;
+  padding: 13px 22px;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.primaryLink:hover {
+  background: #05254a;
+}
+
+.secondaryLink {
+  font-size: 0.9rem;
+}
+
+.sources {
+  border-top: 1px solid #cbd6e2;
+  padding-block: 28px 44px;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: #52677c;
+}
+
+.sources h2 {
+  font-size: 1.15rem;
+  color: #122b43;
+  margin-bottom: 15px;
+}
+
+.sources ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 22px;
+}
+
+.sources li + li {
+  margin-top: 18px;
+}
+
+.sources li p {
+  margin-top: 4px;
+}
+
+.endNavigation {
+  border-top: 1px solid #cbd6e2;
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  color: #0047ab;
+  font-size: 0.87rem;
+}
+
+.endNavigation a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 950px) {
+  .container {
+    width: calc(100% - 48px);
+  }
+
+  .guideLayout {
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .guideCard {
+    padding: 26px;
+  }
+
+  .comparison dl > div {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+}
+
+@media (max-width: 700px) {
+  .guideCards,
+  .guideLayout,
+  .landingNote {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .guideLayout {
+    padding-top: 28px;
+  }
+
+  .contents {
+    position: static;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #cbd6e2;
+  }
+
+  .contents ol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+
+  .landingHeader,
+  .guideHeader {
+    padding-block: 20px 30px;
+  }
+
+  .lead {
+    font-size: 1.05rem;
+  }
+
+  .guideCard h2 {
+    font-size: 1.9rem;
+  }
+
+  .brief {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: calc(100% - 36px);
+  }
+
+  .contents ol {
+    grid-template-columns: 1fr;
+  }
+
+  .landingHeader h1,
+  .guideHeader h1 {
+    font-size: 2.15rem;
+  }
+}
+
+@media print {
+  .contents,
+  .breadcrumbs,
+  .actions,
+  .endNavigation {
+    display: none;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .guideLayout {
+    display: block;
+  }
+
+  .article {
+    max-width: none;
+  }
+
+  .brief {
+    background: white;
+    border: 1px solid #cbd6e2;
+    color: #122b43;
+  }
+
+  .brief .eyebrow,
+  .brief > p:not(.eyebrow) {
+    color: #486079;
+  }
+
+  .checklist li,
+  .comparison dl > div,
+  .sources li {
+    break-inside: avoid;
+  }
+}

@@ -39,8 +39,40 @@ export const enquiryServices = [
 export type EnquiryServiceId = (typeof enquiryServices)[number]["id"]
 export type EnquiryServiceChoice = EnquiryServiceId | "guidance" | ""
 
-export function isEnquiryService(value: string): value is EnquiryServiceId {
+export function isEnquiryService(value: unknown): value is EnquiryServiceId {
   return enquiryServices.some((service) => service.id === value)
+}
+
+export function isEnquiryServiceChoice(
+  value: unknown
+): value is Exclude<EnquiryServiceChoice, ""> {
+  return isEnquiryService(value) || value === "guidance"
+}
+
+export const enquirySectors = [
+  { id: "aviation", label: "Aviation & airports" },
+  { id: "apparel", label: "Apparel & fashion sourcing" },
+  { id: "textiles", label: "Textiles, cotton & mill supply" },
+  { id: "commodities", label: "Edible oils & commodities" },
+  { id: "energy", label: "Energy, petroleum & LNG" },
+  { id: "equipment", label: "Spares & equipment" },
+  { id: "defense", label: "Government & defense procurement" },
+] as const
+
+export type EnquirySectorId = (typeof enquirySectors)[number]["id"]
+
+export function isEnquirySector(value: unknown): value is EnquirySectorId {
+  return enquirySectors.some((sector) => sector.id === value)
+}
+
+export function enquirySectorLabel(value: EnquirySectorId | "") {
+  return enquirySectors.find((sector) => sector.id === value)?.label ?? ""
+}
+
+export function enquirySectorFromLabel(value: unknown): EnquirySectorId | "" {
+  if (value === "Industrial equipment" || value === "Medical equipment")
+    return "equipment"
+  return enquirySectors.find((sector) => sector.label === value)?.id ?? ""
 }
 
 export function enquiryServiceLabel(value: EnquiryServiceChoice) {

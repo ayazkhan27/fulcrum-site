@@ -4,37 +4,62 @@ import { track } from "@vercel/analytics"
 import { ArrowUpRight } from "lucide-react"
 import {
   buildEnquiryMailto,
+  enquirySectorFromLabel,
+  enquirySectorLabel,
   enquiryServices,
+  isEnquiryServiceChoice,
   type EnquiryServiceChoice,
 } from "@/lib/enquiry-services"
+import {
+  enquiryPageContext,
+  recordEnquiryEvent,
+  type EnquiryAttribution,
+} from "@/lib/enquiry-attribution"
 
 export function EnquiryForm({
   service,
   onServiceChange,
+  attribution,
 }: {
   service: EnquiryServiceChoice
   onServiceChange: (service: EnquiryServiceChoice) => void
+  attribution: EnquiryAttribution
 }) {
+  const [sector, setSector] = useState(enquirySectorLabel(attribution.sector))
   const [prepared, setPrepared] = useState<{
     service: EnquiryServiceChoice
+    sector: string
     url: string
   } | null>(null)
-  const draft = prepared?.service === service ? prepared.url : null
+  const draft =
+    prepared?.service === service && prepared.sector === sector
+      ? prepared.url
+      : null
   function prepare(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     setPrepared({
       service,
+      sector,
       url: buildEnquiryMailto({
         name: String(data.get("name") ?? ""),
         organization: String(data.get("organization") ?? ""),
         email: String(data.get("email") ?? ""),
-        sector: String(data.get("sector") ?? ""),
+        sector,
         service,
         requirement: String(data.get("requirement") ?? ""),
       }),
     })
-    track("Enquiry prepared")
+    const context = enquiryPageContext(
+      window.location.pathname,
+      event.currentTarget.closest('[id^="page-"]')?.id
+    )
+    recordEnquiryEvent(track, "Enquiry prepared", {
+      ...context,
+      sector: enquirySectorFromLabel(sector),
+      service,
+      source: attribution.source || context.source,
+    })
   }
   return (
     <form
@@ -42,6 +67,9 @@ export function EnquiryForm({
       id="enquiry-form"
       tabIndex={-1}
       aria-labelledby="enquiry-form-title"
+      data-enquiry-sector={enquirySectorFromLabel(sector)}
+      data-enquiry-service={service}
+      data-enquiry-source={attribution.source}
       onSubmit={prepare}
       onChange={() => setPrepared(null)}
     >
@@ -53,9 +81,10 @@ export function EnquiryForm({
           name="service"
           required
           value={service}
-          onChange={(event) =>
-            onServiceChange(event.target.value as EnquiryServiceChoice)
-          }
+          onChange={(event) => {
+            if (isEnquiryServiceChoice(event.target.value))
+              onServiceChange(event.target.value)
+          }}
         >
           <option value="" disabled>
             Select a service
@@ -94,11 +123,17 @@ export function EnquiryForm({
         </label>
         <label>
           Area of interest
-          <select name="sector" defaultValue="" required>
+          <select
+            name="sector"
+            value={sector}
+            onChange={(event) => setSector(event.target.value)}
+            required
+          >
             <option value="" disabled>
               Select an area
             </option>
             <option>Aviation & airports</option>
+            <option>Apparel & fashion sourcing</option>
             <option>Energy, petroleum & LNG</option>
             <option>Textiles, cotton & mill supply</option>
             <option>Edible oils & commodities</option>
@@ -129,7 +164,7 @@ export function EnquiryForm({
         {draft && (
           <div className="form-status">
             <p>Your enquiry is ready. Nothing has been sent yet.</p>
-            <a href={draft} className="text-link">
+            <a href={draft} className="text-link" data-enquiry-draft>
               Open email draft <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </div>

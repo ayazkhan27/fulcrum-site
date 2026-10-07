@@ -1,4 +1,5 @@
 import { Header } from "@/components/site/chrome"
+import { buildEnquiryHref } from "@/lib/enquiry-attribution"
 import Image from "next/image"
 import "@/app/fashion-and-finery/fashion.css"
 
@@ -18,7 +19,7 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
               <p>Our approach begins with the buyer’s customers: the styles they seek, the fit they expect and the price points they need. From everyday essentials and contemporary clothing to occasion wear rooted in South Asian traditions, we aim to connect each requirement with manufacturers suited to the product, order size and delivery schedule.</p>
               <p>We identify suitable suppliers, coordinate samples and quotations, and help buyers and manufacturers agree on product specifications, quality expectations and delivery schedules. From the initial enquiry through order follow-up, we keep commercial communication clear and focused.</p>
               <p>Whether you are building a clothing brand, expanding a retail collection or serving a community with a distinctive sense of style, we welcome a conversation about your sourcing needs.</p>
-              <a className="text-link" href="/contact">Discuss apparel sourcing <span aria-hidden="true">↗</span></a>
+              <a className="text-link" href={buildEnquiryHref({ sector: "apparel", service: "sourcing", source: embedded ? "home" : "sector" })}>Discuss apparel sourcing <span aria-hidden="true">↗</span></a>
               </div>
             </div>
               <div className="fashion-gallery">

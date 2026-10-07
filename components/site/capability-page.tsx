@@ -10,6 +10,8 @@ import { suppliedAssets } from "@/lib/asset-library"
 import { AircraftTransactions } from "@/components/site/aircraft-transactions"
 import { EngagementDisclosure } from "@/components/site/engagement-disclosure"
 import { EdibleOilVisual } from "@/components/site/edible-oil-visual"
+import { buildEnquiryHref } from "@/lib/enquiry-attribution"
+import type { EnquirySectorId } from "@/lib/enquiry-services"
 export type CapabilityContent = {
   label: string
   pageLabel?: string
@@ -27,6 +29,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
   const Container = embedded ? "div" : "main"
   const sector = content.label === "Aviation" || content.label === "Energy"
   const match = sectors.find((s) => s.name === content.label)
+  const enquirySector = ({ Aviation: "aviation", Energy: "energy", "Textile & Mill Supply": "textiles", "Edible Oil & Commodities": "commodities" } as Record<string, EnquirySectorId>)[content.label]
   const heroAsset: AssetKey =
     match?.asset ??
     (
@@ -72,7 +75,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                   </ul>
                 </div>
               )}
-              <Link href="/contact" className="text-link">
+              <Link href={buildEnquiryHref({ sector: enquirySector, source: embedded ? "home" : "sector" })} className="text-link">
                 Discuss your requirement{" "}
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
@@ -95,7 +98,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                     src="/assets/stocksnap-building-2603781.jpg"
                     alt="Airport check-in hall with baggage conveyors and passengers"
                     fill
-                    sizes="(max-width: 800px) 100vw, 50vw"
+                    sizes="(max-width: 800px) 50vw, 25vw"
                   />
                 </div>
                 <div className="aviation-image-box">

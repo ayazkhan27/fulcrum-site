@@ -16,15 +16,15 @@ export const sitePages = [
 
 // Retired addresses remain useful, but do not create additional content pages.
 export const legacyRedirects = [
-  { source: "/services", destination: "/mission#capabilities" },
-  { source: "/consulting", destination: "/mission#consulting" },
-  { source: "/brokerage", destination: "/mission#brokerage" },
+  { source: "/services", destination: "/contact#services" },
+  { source: "/consulting", destination: "/contact?service=consulting#services" },
+  { source: "/brokerage", destination: "/mission#purpose" },
   { source: "/method", destination: "/aviation#aircraft-engine-transactions" },
   {
     source: "/aviation/aircraft-engine-transactions",
     destination: "/aviation#aircraft-engine-transactions",
   },
   { source: "/sectors/industrial", destination: "/equipment#industrial" },
-  { source: "/sectors/healthcare", destination: "/equipment#healthcare" },
+  { source: "/sectors/healthcare", destination: "/contact#enquiry-form" },
   { source: "/sectors/defense", destination: "/defense" },
 ] as const
