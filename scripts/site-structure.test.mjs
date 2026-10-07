@@ -7,13 +7,13 @@ import { sectors } from '../lib/sectors.ts';
 const root = new URL('../', import.meta.url);
 const read = (file) => readFile(new URL(file, root), 'utf8');
 
-test('The site has exactly the eleven pages approved by the owner, in order', () => {
+test('The established twelve company pages remain in their approved order', () => {
   assert.deepEqual(sitePages.map((page) => page.label), [
     'Home', 'Mission', 'Our People', 'Aviation & Airports', 'Spares & Equipment', 'Defense Supply',
-    'Energy & Petroleum', 'Textile & Mill Supply', 'Edible Oil & Commodities',
+    'Energy & Petroleum', 'Textile & Mill Supply', 'Fulcrum Fashion and Finery', 'Edible Oil & Commodities',
     'Career', 'Contact',
   ]);
-  assert.equal(new Set(sitePages.map((page) => page.href)).size, 11);
+  assert.equal(new Set(sitePages.map((page) => page.href)).size, 12);
 });
 
 test('Only approved content routes remain, including exactly two sector pages', async () => {
@@ -28,6 +28,9 @@ test('Only approved content routes remain, including exactly two sector pages', 
     'app/page.tsx', 'app/mission/page.tsx', 'app/aviation/page.tsx',
     'app/equipment/page.tsx', 'app/defense/page.tsx', 'app/energy/page.tsx', 'app/people/page.tsx',
     'app/career/page.tsx', 'app/contact/page.tsx', 'app/sectors/[slug]/page.tsx',
+    'app/fashion-and-finery/page.tsx', 'app/resources/page.tsx',
+    'app/resources/aircraft-dry-lease-enquiry-checklist/page.tsx',
+    'app/resources/bangladesh-garment-sourcing-checklist/page.tsx',
   ].sort());
   assert.deepEqual(sectors.filter((sector) => sector.href.startsWith('/sectors/')).map((sector) => sector.slug), ['textiles', 'commodities']);
   assert.match(await read('app/sectors/[slug]/page.tsx'), /export const dynamicParams = false/);
@@ -49,8 +52,9 @@ test('Retired URLs redirect directly to the appropriate sections without loops',
   assert.equal(sources.size, legacyRedirects.length);
   for (const { source, destination } of legacyRedirects) {
     assert.ok(!canonical.has(source));
-    assert.ok(canonical.has(destination.split('#')[0]));
-    assert.ok(!sources.has(destination.split('#')[0]));
+    const pathname = new URL(destination, 'https://fulcrumtriad.com').pathname;
+    assert.ok(canonical.has(pathname));
+    assert.ok(!sources.has(pathname));
   }
   for (const sector of sectors) assert.ok(canonical.has(sector.href.split('#')[0]));
 });
@@ -69,9 +73,10 @@ test('Home presents the approved pages in scroll order', async () => {
   const home = await read('app/page.tsx');
   assert.deepEqual([...home.matchAll(/<section id="(page-[^"]+)"/g)].map(match => match[1]), [
     'page-mission', 'page-people', 'page-aviation', 'page-equipment', 'page-defense', 'page-energy',
-    'page-textiles', 'page-commodities', 'page-contact',
+    'page-textiles', 'page-fashion', 'page-commodities', 'page-contact',
   ]);
-  assert.equal((home.match(/ embedded/g) || []).length, 9);
+  assert.equal((home.match(/ embedded/g) || []).length, 10);
+  assert.doesNotMatch(home, /BuyerGuide|page-resources/);
   assert.doesNotMatch(home, /CareerContent|page-career/);
   assert.match(home, /<PaperFlight/);
 });

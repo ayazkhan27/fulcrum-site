@@ -88,7 +88,7 @@ export const sectors: Sector[] = [
     slug: "healthcare",
     name: "Medical equipment",
     short: "Clear requirements. Considered sourcing.",
-    href: "/equipment#healthcare",
+    href: "/contact#enquiry-form",
     intro:
       "Connecting medical equipment buyers with manufacturers and suppliers around a clearly defined procurement need.",
     scope: [

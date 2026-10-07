@@ -12,7 +12,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
         <div className="shell contact-page-label">
           <p className="eyebrow">Fulcrum / Contact Us</p>
         </div>
-        <ServiceEnquiry>
+        <ServiceEnquiry embedded={embedded}>
           <div>
             <p className="eyebrow">Connect with Fulcrum</p>
             <h2>
@@ -44,6 +44,7 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
             </dl>
             <p className="section-note">
               Based in New York. Working across borders.
+              {!embedded && <><br /><a href="/resources">Buyer guides for your sourcing brief ↗</a></>}
             </p>
           </div>
         </ServiceEnquiry>

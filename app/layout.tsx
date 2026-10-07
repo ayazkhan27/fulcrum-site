@@ -4,6 +4,8 @@ import localFont from "next/font/local"
 import { VisitorAnalytics } from "@/components/site/visitor-analytics"
 import { SiteMotion } from "@/components/site/site-motion"
 import { PageSequence } from "@/components/site/page-sequence"
+import { PerformanceInsights } from "@/components/site/performance-insights"
+import { isProductionPerformanceEnabled } from "@/lib/performance-privacy"
 
 import "./globals.css"
 import "./editorial.css"
@@ -55,6 +57,9 @@ export default function RootLayout({
         <PageSequence />
         <SiteMotion />
         <VisitorAnalytics />
+        {isProductionPerformanceEnabled(process.env.NODE_ENV, process.env.VERCEL_ENV) && (
+          <PerformanceInsights />
+        )}
       </body>
     </html>
   )
