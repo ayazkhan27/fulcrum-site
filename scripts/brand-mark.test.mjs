@@ -82,12 +82,14 @@ test('The shared header/footer component reserves the restored masthead aspect r
   assert.match(component, /alt="Fulcrum"/);
 });
 
-test('Only the footer adds the bus signature below its unchanged website wordmark', async () => {
+test('Only the closing footer uses a black masthead; the standard footer remains unchanged', async () => {
   const chrome = await readFile(new URL('../components/site/chrome.tsx', import.meta.url), 'utf8');
   const [header, footer] = chrome.split('export function Footer(');
   assert.doesNotMatch(header, /footer-tagline|Precision in motion\./);
-  assert.match(footer, /<Wordmark dark=\{closing\} \/>/,
-    'Use the dark master on the light closing footer and the light variant elsewhere');
+  assert.match(footer, /src=\{closing \? "\/fulcrum-logo-footer-black\.svg" : "\/fulcrum-logo-footer-cobalt\.svg"\}/);
+  const cobalt = await readFile(new URL('../public/fulcrum-logo-footer-cobalt.svg', import.meta.url), 'utf8');
+  const black = await readFile(new URL('../public/fulcrum-logo-footer-black.svg', import.meta.url), 'utf8');
+  assert.equal(black, cobalt.replaceAll('#003d91', '#000000'), 'Change only the closing masthead colour, never its geometry');
   assert.match(footer, /src="\/fulcrum-signature-white\.svg"/);
   assert.match(footer, /alt="Precision in motion\."/);
   assert.match(footer, /className="footer-tagline"/);
@@ -117,7 +119,9 @@ test('The footer logo grows by ten percent at both established sizes', async () 
   assert.deepEqual(widths, [240, 200].map((width) => Math.round(width * 1.1)));
 });
 
-test('The approved Contact closing logo retains its additional five-percent enlargement', async () => {
+test('The Contact closing logo gains five percent from its approved size and keeps its vertical offset', async () => {
   const css = await readFile(new URL('../app/contact/contact.css', import.meta.url), 'utf8');
-  assert.match(css, /\.contact-closing \.footer-brand\s*\{[^}]*transform:\s*scale\(1\.05\)/);
+  const scale = css.match(/\.contact-closing \.footer-brand\s*\{[^}]*transform:\s*translateY\(4px\) scale\(([\d.]+)\)/)?.[1];
+  assert.ok(scale);
+  assert.equal(Number(scale), Number((1.0815 * 1.05).toFixed(6)));
 });

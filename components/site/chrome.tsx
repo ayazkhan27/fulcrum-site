@@ -25,18 +25,19 @@ export function Footer({ closing = false }: { closing?: boolean }) {
   const explore = { title: "Explore", pages: sitePages.filter((page) => !companyPaths.has(page.href) && page.href !== "/contact") }
   const company = { title: "Fulcrum", pages: sitePages.filter((page) => companyPaths.has(page.href)) }
   const linkGroups = closing ? [company, explore] : [explore, company]
+  const NavigationGroup = closing ? "nav" : "div"
   const navigationGroups = linkGroups.map(({ title, pages }) => (
-    <div key={title}>
+    <NavigationGroup key={title} aria-label={closing ? `${title} footer links` : undefined}>
       <p className="eyebrow">{title}</p>
       {pages.map(({ href, label }) => (
         <Link key={href} href={href}>
           {label}
         </Link>
       ))}
-    </div>
+    </NavigationGroup>
   ))
   return (
-    <footer className={closing ? "site-footer contact-closing" : "site-footer"}>
+    <footer id={closing ? "contact-closing" : undefined} className={closing ? "site-footer contact-closing" : "site-footer"}>
       <div className="shell">
         {!closing && (
           <div className="footer-top">
@@ -56,7 +57,7 @@ export function Footer({ closing = false }: { closing?: boolean }) {
           <div className="footer-identity">
             <Link href="/" aria-label="Fulcrum, home" className="footer-brand">
               <Image
-                src="/fulcrum-logo-footer-cobalt.svg"
+                src={closing ? "/fulcrum-logo-footer-black.svg" : "/fulcrum-logo-footer-cobalt.svg"}
                 width={595}
                 height={112}
                 alt="Fulcrum"
@@ -84,12 +85,20 @@ export function Footer({ closing = false }: { closing?: boolean }) {
                     <a href="tel:+19173294170">+1 (917) 329-4170</a><br />
                     <a href="tel:+15614407168">+1 (561) 440-7168</a>
                     <br />
-                    <a href="mailto:infobd@fulcrumtriad.com">infobd@fulcrumtriad.com</a>
+                    <a href="mailto:khanhussein@fulcrumtriad.com">khanhussein@fulcrumtriad.com</a>
                   </div>
                 </address>
                 <address className="footer-office">
                   <span className="eyebrow">Bangladesh Office</span>
-                  House 426, Unit 3A, Road 06, Mirpur DOHS, Dhaka 1216 Bangladesh
+                  House 426, Unit 3A, Road 06,
+                  <br />
+                  Mirpur DOHS, Dhaka 1216 Bangladesh
+                  <div className="footer-office-phones">
+                    Phone:{" "}
+                    <a href="tel:+8801770392001">+880 1770-392001</a>
+                    <br />
+                    <a href="mailto:infobd@fulcrumtriad.com">infobd@fulcrumtriad.com</a>
+                  </div>
                 </address>
               </>
             )}
@@ -98,15 +107,9 @@ export function Footer({ closing = false }: { closing?: boolean }) {
             <div className="footer-link-stack">{navigationGroups}</div>
           ) : navigationGroups}
           {closing && (
-            <div className="footer-bus">
-              <Image
-                src="/assets/fulcrum-bus-slogan-only-v4.png"
-                width={1920}
-                height={986}
-                alt="Red bus illustration with a large Precision in motion slogan"
-                sizes="(max-width: 800px) 90vw, 45vw"
-              />
-            </div>
+            <p className="footer-statement">
+              <span>precision in motion.</span>
+            </p>
           )}
           {!closing && (
             <div>
