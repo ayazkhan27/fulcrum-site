@@ -38,7 +38,7 @@
   align-items: start;
 }
 
-.headingBlock h1 {
+.headingBlock .title {
   margin: 0;
   color: var(--people-ink);
   font-family: var(--font-condensed);
@@ -92,7 +92,7 @@
   border-bottom: 2px solid var(--people-cobalt);
 }
 
-.directoryHeading h2 {
+.directoryHeading .teamTitle {
   margin: 0;
   font-family: inherit;
   font-size: 1.35rem;
@@ -126,7 +126,7 @@
   text-transform: uppercase;
 }
 
-.identity h3 {
+.identity .personName {
   margin: 0;
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(1.35rem, 2.15vw, 1.8rem);
@@ -261,7 +261,7 @@
   .hero { padding-block: 32px 36px; }
   .eyebrow { margin-bottom: 26px; font-size: 0.65rem; }
   .introduction, .profile { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .headingBlock h1 { font-size: clamp(2.1rem, 8.8vw, 2.8rem); }
+  .headingBlock .title { font-size: clamp(2.1rem, 8.8vw, 2.8rem); }
   .heroNote { margin-top: 16px; font-size: 0.85rem; }
   .meetLink { margin-top: 12px; }
   .introCopy { font-size: 0.9rem; line-height: 1.8; }
@@ -269,7 +269,7 @@
   .directoryHeading { align-items: start; gap: 12px; }
   .directoryHeading > p { max-width: 140px; text-align: right; line-height: 1.5; font-size: 0.7rem; }
   .profile { padding-block: 28px; gap: 20px; }
-  .identity h3 { font-size: 1.55rem; }
+  .identity .personName { font-size: 1.55rem; }
   .expertise { margin-top: 12px; }
   .summary { font-size: 0.95rem; }
   .biography { margin-top: 12px; }
