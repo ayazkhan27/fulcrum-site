@@ -1,8 +1,9 @@
 import { createPageMetadata } from "@/lib/site-seo"
-import PageContent from "@/components/site/pages/people"
+import { PEOPLE } from "@/components/site/pages/people"
+import { PeopleEditorial } from "@/components/site/people-editorial"
 
 export const metadata = createPageMetadata("/people")
 
 export default function Page() {
-  return <PageContent />
+  return <PeopleEditorial people={PEOPLE} />
 }

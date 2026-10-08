@@ -1,0 +1,278 @@
+.page {
+  --people-ink: #102f4c;
+  --people-muted: #4c6072;
+  --people-line: #d2dce3;
+  --people-cobalt: #0047ab;
+  background: #f9fafb;
+  color: var(--people-ink);
+}
+
+.shell {
+  width: min(1160px, calc(100% - 96px));
+  margin-inline: auto;
+}
+
+.hero {
+  padding-block: 54px 56px;
+  background: #e9edf0;
+  border-bottom: 1px solid var(--people-line);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 34px;
+  color: var(--people-cobalt);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.introduction {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(36px, 6vw, 84px);
+  align-items: start;
+}
+
+.headingBlock h1 {
+  margin: 0;
+  color: var(--people-ink);
+  font-family: var(--font-condensed);
+  font-size: clamp(2.3rem, 4.1vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.09;
+  letter-spacing: -0.022em;
+}
+
+.heroNote {
+  margin: 22px 0 0;
+  color: var(--people-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.meetLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  min-height: 44px;
+  margin-top: 24px;
+  border-bottom: 1px solid #8ca6c1;
+  color: var(--people-cobalt);
+  font-size: 0.8rem;
+}
+
+.introCopy {
+  margin: 2px 0 0;
+  color: #344d63;
+  font-size: 0.96rem;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.directory {
+  padding-block: 40px 56px;
+  scroll-margin-top: 32px;
+}
+
+.directoryHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 2px solid var(--people-cobalt);
+}
+
+.directoryHeading h2 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.directoryHeading > p {
+  margin: 0;
+  color: var(--people-muted);
+  font-size: 0.78rem;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(36px, 6vw, 84px);
+  align-items: start;
+  padding-block: 36px;
+  border-bottom: 1px solid var(--people-line);
+}
+
+.role {
+  margin: 0 0 12px;
+  color: var(--people-cobalt);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.identity h3 {
+  margin: 0;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.35rem, 2.15vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+
+.expertise {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  color: var(--people-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.expertise li:not(:last-child)::after {
+  content: "/";
+  padding-inline: 9px;
+  color: #7b8b99;
+}
+
+.summary {
+  margin: 0;
+  color: #233f56;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.biography {
+  margin-top: 20px;
+}
+
+.biography summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: 44px;
+  color: var(--people-cobalt);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  cursor: pointer;
+  list-style: none;
+}
+
+.biography summary::-webkit-details-marker {
+  display: none;
+}
+
+.biography[open] summary svg {
+  transform: rotate(45deg);
+}
+
+.bioContent {
+  margin-top: 8px;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--people-line);
+  color: var(--people-muted);
+  font-size: 0.93rem;
+  line-height: 1.8;
+}
+
+.bioContent p {
+  margin: 0;
+}
+
+.bioContent p + p {
+  margin-top: 16px;
+}
+
+.bioContent a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 12px;
+  color: var(--people-cobalt);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.page a:hover,
+.biography summary:hover {
+  color: #002c70;
+}
+
+.page a:focus-visible,
+.biography summary:focus-visible {
+  outline: 2px solid var(--people-cobalt);
+  outline-offset: 6px;
+  border-radius: 1px;
+}
+
+.closing {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 40px;
+  padding: 32px 40px;
+  background: #102f4c;
+  color: #fff;
+}
+
+.closingMark {
+  flex: 0 0 3px;
+  align-self: stretch;
+  background: #8eb4da;
+}
+
+.closing p {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  line-height: 1.6;
+  letter-spacing: -0.012em;
+}
+
+@media (max-width: 900px) {
+  .shell { width: calc(100% - 64px); }
+  .introduction, .profile { gap: 32px; }
+  .role { letter-spacing: 0.065em; }
+}
+
+@media (max-width: 700px) {
+  .shell { width: calc(100% - 40px); }
+  .hero { padding-block: 32px 36px; }
+  .eyebrow { margin-bottom: 26px; font-size: 0.65rem; }
+  .introduction, .profile { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .headingBlock h1 { font-size: clamp(2.1rem, 8.8vw, 2.8rem); }
+  .heroNote { margin-top: 16px; font-size: 0.85rem; }
+  .meetLink { margin-top: 12px; }
+  .introCopy { font-size: 0.9rem; line-height: 1.8; }
+  .directory { padding-block: 30px 36px; }
+  .directoryHeading { align-items: start; gap: 12px; }
+  .directoryHeading > p { max-width: 140px; text-align: right; line-height: 1.5; font-size: 0.7rem; }
+  .profile { padding-block: 28px; gap: 20px; }
+  .identity h3 { font-size: 1.55rem; }
+  .expertise { margin-top: 12px; }
+  .summary { font-size: 0.95rem; }
+  .biography { margin-top: 12px; }
+  .closing { margin-top: 28px; padding: 26px 24px; gap: 20px; }
+  .desktopBreak { display: none; }
+}
