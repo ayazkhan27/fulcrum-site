@@ -127,7 +127,7 @@
   min-height: clamp(5.1rem, 9.18vw, 7.752rem);
   margin: 0;
   text-align: left;
-  color: #0047ab;
+  color: #000;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 100;
@@ -135,12 +135,22 @@
   white-space: nowrap;
 }
 
-.contact-closing .footer-statement span {
-  /* A close first-paint fit; measured sizing handles local font fallbacks. */
+.contact-closing .footer-statement > span {
+  /* 55% of the full-fit size; measured sizing handles font fallbacks. */
   flex: 0 0 auto;
-  font-size: 13cqw;
+  font-size: 7.15cqw;
   letter-spacing: normal;
   word-spacing: normal;
+}
+
+.contact-closing .footer-slogan-dot {
+  display: inline-block;
+  width: 0.18em;
+  height: 0.18em;
+  margin-left: 0.1em;
+  border-radius: 50%;
+  background: #000;
+  vertical-align: 0.02em;
 }
 
 .contact-closing .footer-statement::before {

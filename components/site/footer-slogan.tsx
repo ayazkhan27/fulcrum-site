@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-/** Fit the closing slogan without stretching glyphs or adding letter spacing. */
+/** Keep the closing slogan at 55% of its full-fit size, with natural lettering. */
 export function FooterSlogan() {
   const containerRef = useRef<HTMLParagraphElement>(null)
   const textRef = useRef<HTMLSpanElement>(null)
@@ -22,7 +22,7 @@ export function FooterSlogan() {
       const measured = text.getBoundingClientRect().width
       const currentSize = Number.parseFloat(getComputedStyle(text).fontSize)
       if (available <= 0 || measured <= 0 || !Number.isFinite(currentSize)) return
-      const fittedSize = Math.floor(currentSize * available / measured * 100) / 100
+      const fittedSize = Math.floor(currentSize * available / measured * 0.55 * 100) / 100
       if (Math.abs(fittedSize - currentSize) > 0.01) {
         text.style.fontSize = `${fittedSize}px`
       }
@@ -51,7 +51,9 @@ export function FooterSlogan() {
 
   return (
     <p className="footer-statement" ref={containerRef}>
-      <span ref={textRef}>precision in motion.</span>
+      <span ref={textRef}>
+        precision in motion<span className="footer-slogan-dot" aria-hidden="true" />
+      </span>
     </p>
   )
 }

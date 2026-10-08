@@ -9,24 +9,25 @@ test('The closing footer uses a plain-text slogan without speed strokes and reta
   const slogan = await read('components/site/footer-slogan.tsx');
   assert.doesNotMatch(chrome, /footer-bus|fulcrum-bus-slogan-only/);
   assert.match(chrome, /closing && <FooterSlogan \/>/);
-  assert.match(slogan, /<p className="footer-statement" ref=\{containerRef\}>\s*<span ref=\{textRef\}>precision in motion\.<\/span>\s*<\/p>/);
+  assert.match(slogan, /<p className="footer-statement" ref=\{containerRef\}>\s*<span ref=\{textRef\}>\s*precision in motion<span className="footer-slogan-dot" aria-hidden="true" \/>\s*<\/span>\s*<\/p>/);
+  assert.doesNotMatch(slogan, /precision in motion\./);
   assert.doesNotMatch(chrome, /fulcrum-signature-editorial\.svg|speed-strokes/);
   await access(new URL('../public/assets/fulcrum-bus-slogan-only-v4.png', import.meta.url));
 });
 
-test('The fitted closing slogan retains right breathing room and aligns left with the column below', async () => {
+test('The resized black closing slogan retains its left alignment and normal lettering', async () => {
   const css = await read('app/contact/contact.css');
   const statement = css.match(/\.contact-closing \.footer-statement\s*\{([^}]+)\}/)?.[1];
   assert.ok(statement);
   for (const rule of [
-    'color: #0047ab;', 'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;',
+    'color: #000;', 'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;',
     'grid-column: 3 / -1;', 'grid-row: 1;', 'justify-self: start;',
     'align-items: baseline;', 'text-align: left;', 'font-style: normal;',
     'width: calc(100% - 32px);', 'min-width: 0;', 'container-type: inline-size;',
     'font-weight: 100;',
     'white-space: nowrap;',
   ]) assert.ok(statement.includes(rule), `Missing slogan rule: ${rule}`);
-  assert.match(css, /\.contact-closing \.footer-statement span\s*\{[^}]*flex: 0 0 auto;\s*font-size: 13cqw;\s*letter-spacing: normal;\s*word-spacing: normal;/);
+  assert.match(css, /\.contact-closing \.footer-statement > span\s*\{[^}]*flex: 0 0 auto;\s*font-size: 7\.15cqw;\s*letter-spacing: normal;\s*word-spacing: normal;/);
   assert.match(css, /\.footer-statement::before\s*\{[^}]*height: calc\([^;]*var\(--closing-brand-width\) \* 0\.071217 \+ 4px\);/);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.footer-statement\s*\{\s*grid-column: 2 \/ -1;/);
   assert.doesNotMatch(css, /0\.2977305882/);
@@ -34,12 +35,21 @@ test('The fitted closing slogan retains right breathing room and aligns left wit
   assert.match(css, /--closing-brand-width: 220px/);
 });
 
-test('The slogan refits to width changes and loaded fonts without stretching the text', async () => {
+test('The trailing punctuation is a visible round black decorative dot', async () => {
+  const css = await read('app/contact/contact.css');
+  const dot = css.match(/\.contact-closing \.footer-slogan-dot\s*\{([^}]+)\}/)?.[1];
+  assert.ok(dot);
+  for (const rule of ['display: inline-block;', 'width: 0.18em;', 'height: 0.18em;', 'margin-left: 0.1em;', 'border-radius: 50%;', 'background: #000;']) {
+    assert.ok(dot.includes(rule), `Missing dot rule: ${rule}`);
+  }
+});
+
+test('The slogan enlarges the half-size version by 10 percent without stretching the text', async () => {
   const source = await read('components/site/footer-slogan.tsx');
   assert.match(source, /new ResizeObserver/);
   assert.match(source, /entry\.contentRect\.width === lastWidth/);
   assert.match(source, /document\.fonts\.ready\.then\(schedule\)/);
-  assert.match(source, /currentSize \* available \/ measured/);
+  assert.match(source, /currentSize \* available \/ measured \* 0\.55 \* 100/);
   assert.match(source, /text\.style\.fontSize =/);
   assert.match(source, /observer\.disconnect\(\)/);
   assert.match(source, /cancelAnimationFrame\(frame\)/);
