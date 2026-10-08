@@ -3,6 +3,7 @@ import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { Navigation } from "@/components/site/navigation"
 import { Wordmark } from "@/components/site/wordmark"
+import { FooterSlogan } from "@/components/site/footer-slogan"
 import { sitePages } from "@/lib/site-pages"
 
 export function Header({ home = false }: { home?: boolean }) {
@@ -106,11 +107,7 @@ export function Footer({ closing = false }: { closing?: boolean }) {
           {closing ? (
             <div className="footer-link-stack">{navigationGroups}</div>
           ) : navigationGroups}
-          {closing && (
-            <p className="footer-statement">
-              <span>precision in motion.</span>
-            </p>
-          )}
+          {closing && <FooterSlogan />}
           {!closing && (
             <div>
               <p className="eyebrow">Connect</p>
