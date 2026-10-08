@@ -1,16 +1,21 @@
 import { projectPaperPlane } from "./paper-plane-model"
 
-export const formationDuration = 4.7
-/** Extend only the gathering phase; keep the burst and final reveal pace. */
+export const formationBubbleDuration = 1.5
+const bubbleExtraDuration = formationBubbleDuration - .4
+export const formationDuration = 4.7 + bubbleExtraDuration
+/** Give the bubble time to swell, then preserve the existing particle/reveal pace. */
 export function formationTimelineTime(elapsed: number) {
+  const originalElapsed = elapsed <= formationBubbleDuration
+    ? elapsed * .4 / formationBubbleDuration
+    : elapsed - bubbleExtraDuration
   const gatherStart = .88
   const originalGather = 1.05
   const slowerGather = 2.55
-  if (elapsed <= gatherStart) return elapsed
-  if (elapsed < gatherStart + slowerGather) {
-    return gatherStart + (elapsed - gatherStart) * originalGather / slowerGather
+  if (originalElapsed <= gatherStart) return originalElapsed
+  if (originalElapsed < gatherStart + slowerGather) {
+    return gatherStart + (originalElapsed - gatherStart) * originalGather / slowerGather
   }
-  return elapsed - (slowerGather - originalGather)
+  return originalElapsed - (slowerGather - originalGather)
 }
 const clamp = (n: number) => Math.max(0, Math.min(1, n))
 const smooth = (n: number) => { const t = clamp(n); return t * t * (3 - 2 * t) }
@@ -23,11 +28,18 @@ export function drawFormation(ctx: CanvasRenderingContext2D, width: number, heig
   const reveal = smooth((time - 1.65) / .5)
   const cx = width * .5, cy = height * .57
   if (time < .4) {
+    // A white dot swells to the smaller approved size, then briefly holds before bursting.
+    const maximumRadius = Math.max(9, Math.min(34, Math.min(width, height) * .0475))
+    const inflation = smooth(Math.pow(clamp(time / .35), 1.35))
+    const radius = 6 + inflation * (maximumRadius - 6)
+    ctx.save()
     ctx.fillStyle = "#ffffff"
-    ctx.shadowColor = "#d9ecff"
-    ctx.shadowBlur = 10
-    ctx.beginPath(); ctx.arc(cx, cy, 2 + smooth(time / .4) * 8, 0, Math.PI * 2); ctx.fill()
-    ctx.shadowBlur = 0
+    ctx.strokeStyle = "#ffffff"
+    ctx.lineWidth = .6
+    ctx.shadowColor = "#ffffff"
+    ctx.shadowBlur = 4.5
+    ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fill(); ctx.stroke()
+    ctx.restore()
     return 0
   }
   const burst = 1 - Math.pow(1 - clamp((time - .4) / .38), 3)
