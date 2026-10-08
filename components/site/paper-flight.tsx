@@ -118,15 +118,19 @@ export function PaperFlight() {
         last = 0
         return
       }
-      const dt = Math.min((time - (last || time - 16)) / 1000, 0.032)
+      const frameElapsed = Math.max(0, time - (last || time - 16)) / 1000
+      const dt = Math.min(frameElapsed, 0.032)
       last = time
+      const wasForming = introTime < formationDuration
       if (!pausedRef.current && !reduced.matches) {
-        if (introTime < formationDuration) introTime += dt
+        // Keep the intro on elapsed time even when frames are slow; only
+        // the continuing flight uses the capped simulation step.
+        if (introTime < formationDuration) introTime = Math.min(formationDuration, introTime + frameElapsed)
         else ambientTime += dt
       }
       const moving = Math.abs(target - position) > 0.0001
       position = target
-      if (moving || time - lastDraw >= 32) {
+      if (moving || time - lastDraw >= 32 || (wasForming && introTime >= formationDuration)) {
         draw()
         lastDraw = time
       }
@@ -147,10 +151,16 @@ export function PaperFlight() {
     const update = () => {
       if (reduced.matches || document.hidden || !intersecting) return
       target = introTime < formationDuration ? 0 : progress()
-      if (!frame) frame = requestAnimationFrame(tick)
+      if (!frame) {
+        last = performance.now()
+        frame = requestAnimationFrame(tick)
+      }
     }
     wakeRef.current = update
     replayRef.current = () => {
+      cancelAnimationFrame(frame)
+      frame = 0
+      last = 0
       // Replay deliberately, without clearing the saved first-visit preference.
       const page = document.documentElement
       restoreScroll?.()

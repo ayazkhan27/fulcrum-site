@@ -1,13 +1,18 @@
 import { projectPaperPlane } from "./paper-plane-model"
 
-export const formationBubbleDuration = 1.5
-const bubbleExtraDuration = formationBubbleDuration - .4
-export const formationDuration = 4.7 + bubbleExtraDuration
-/** Give the bubble time to swell, then preserve the existing particle/reveal pace. */
+// Retain the approved choreography, uniformly condensed to a 3.5-second intro.
+const referenceDuration = 5.8
+const referenceBubbleDuration = 1.5
+const bubbleExtraDuration = referenceBubbleDuration - .4
+export const formationDuration = 3.5
+const playbackRate = referenceDuration / formationDuration
+export const formationBubbleDuration = referenceBubbleDuration / playbackRate
+/** Keep every visual phase in proportion, including the sky and masthead reveal. */
 export function formationTimelineTime(elapsed: number) {
-  const originalElapsed = elapsed <= formationBubbleDuration
-    ? elapsed * .4 / formationBubbleDuration
-    : elapsed - bubbleExtraDuration
+  const referenceElapsed = Math.max(0, elapsed) * playbackRate
+  const originalElapsed = referenceElapsed <= referenceBubbleDuration
+    ? referenceElapsed * .4 / referenceBubbleDuration
+    : referenceElapsed - bubbleExtraDuration
   const gatherStart = .88
   const originalGather = 1.05
   const slowerGather = 2.55
@@ -28,17 +33,38 @@ export function drawFormation(ctx: CanvasRenderingContext2D, width: number, heig
   const reveal = smooth((time - 1.65) / .5)
   const cx = width * .5, cy = height * .57
   if (time < .4) {
-    // A white dot swells to the smaller approved size, then briefly holds before bursting.
+    // A satin-white sphere keeps the approved swelling and size; light from
+    // the upper left gives the dot depth without changing its silhouette.
     const maximumRadius = Math.max(9, Math.min(34, Math.min(width, height) * .0475))
     const inflation = smooth(Math.pow(clamp(time / .35), 1.35))
     const radius = 6 + inflation * (maximumRadius - 6)
     ctx.save()
-    ctx.fillStyle = "#ffffff"
-    ctx.strokeStyle = "#ffffff"
+    const body = ctx.createRadialGradient(
+      cx - radius * .32, cy - radius * .38, radius * .04,
+      cx - radius * .32, cy - radius * .38, radius * 1.45,
+    )
+    body.addColorStop(0, "#ffffff")
+    body.addColorStop(.30, "#fffefb")
+    body.addColorStop(.60, "#ebece9")
+    body.addColorStop(.82, "#c4cbd2")
+    body.addColorStop(1, "#85909e")
+    ctx.fillStyle = body
+    ctx.strokeStyle = "rgba(255,255,255,.28)"
     ctx.lineWidth = .6
-    ctx.shadowColor = "#ffffff"
+    ctx.shadowColor = "rgba(255,255,255,.30)"
     ctx.shadowBlur = 4.5
     ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fill(); ctx.stroke()
+    // A broad, diffused reflection keeps the surface pearly rather than metallic.
+    ctx.shadowBlur = 0
+    const highlight = ctx.createRadialGradient(
+      cx - radius * .30, cy - radius * .38, 0,
+      cx - radius * .30, cy - radius * .38, radius * .55,
+    )
+    highlight.addColorStop(0, "rgba(255,255,255,.52)")
+    highlight.addColorStop(.45, "rgba(255,255,255,.16)")
+    highlight.addColorStop(1, "rgba(255,255,255,0)")
+    ctx.fillStyle = highlight
+    ctx.fill()
     ctx.restore()
     return 0
   }
