@@ -116,34 +116,36 @@
 }
 
 .contact-closing .footer-statement {
-  grid-column: 1 / -1;
+  grid-column: 3 / -1;
   grid-row: 1;
-  justify-self: end;
+  justify-self: start;
   display: flex;
   align-items: baseline;
-  justify-content: flex-end;
-  width: 50%;
+  width: calc(100% - 32px);
+  min-width: 0;
   container-type: inline-size;
   min-height: clamp(5.1rem, 9.18vw, 7.752rem);
   margin: 0;
-  color: #000000;
+  text-align: left;
+  color: #0047ab;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 100;
-  line-height: 1.4;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
 .contact-closing .footer-statement span {
-  /* Let the one-line lettering use almost all of its half-width column. */
-  font-size: 7.7cqw;
-  letter-spacing: 0.22em;
-  word-spacing: 0.12em;
+  /* A close first-paint fit; measured sizing handles local font fallbacks. */
+  flex: 0 0 auto;
+  font-size: 13cqw;
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 
 .contact-closing .footer-statement::before {
-  /* Invisible baseline strut: account for the SVG's 12-unit bottom inset,
-     the approved logo scale and its 4px offset, without moving the masthead. */
+  /* Preserve the live masthead baseline while the text starts at the
+     same grid column as the writing below. */
   content: "";
   flex: 0 0 0;
   height: calc(clamp(5.1rem, 9.18vw, 7.752rem) / 2 + var(--closing-brand-width) * 0.071217 + 4px);
@@ -248,6 +250,10 @@
     grid-column: 1;
   }
 
+  .contact-closing .footer-statement {
+    grid-column: 2 / -1;
+  }
+
   .contact-closing .footer-link-stack > nav {
     grid-column: 1;
     grid-row: 4;
@@ -266,11 +272,7 @@
   .contact-closing .footer-statement {
     grid-column: 1 / -1;
     grid-row: 2;
-    width: 100%;
-    justify-self: start;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 5.1rem;
+    min-height: 0;
   }
 
   .contact-closing .footer-statement::before {
