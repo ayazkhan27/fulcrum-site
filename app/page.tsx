@@ -2,7 +2,8 @@ import { createPageMetadata, organizationStructuredData } from "@/lib/site-seo"
 import { Header } from "@/components/site/chrome"
 import { PaperFlight } from "@/components/site/paper-flight"
 import MissionContent from "@/components/site/pages/mission"
-import PeopleContent from "@/components/site/pages/people"
+import { PEOPLE } from "@/components/site/pages/people"
+import { PeopleEditorial } from "@/components/site/people-editorial"
 import AviationContent from "@/components/site/pages/aviation"
 import EnergyContent from "@/components/site/pages/energy"
 import SectorContent from "@/components/site/pages/sector"
@@ -29,7 +30,7 @@ export default function Page() {
       </main>
     </div>
     <section id="page-mission" aria-label="Mission"><MissionContent embedded /></section>
-    <section id="page-people" aria-label="Our People"><PeopleContent embedded /></section>
+    <section id="page-people" aria-label="Our People"><PeopleEditorial people={PEOPLE} embedded /></section>
     <section id="page-aviation" aria-label="Aviation & Airports"><AviationContent embedded /></section>
     <section id="page-equipment" aria-label="Equipment"><EquipmentContent embedded /></section>
     <section id="page-defense" aria-label="Defense Supply"><DefenseContent embedded /></section>

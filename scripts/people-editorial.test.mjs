@@ -11,13 +11,32 @@ test('Team profiles use the approved full names', async () => {
   assert.doesNotMatch(shared, /name: "(?:Fatin|Ayaz) Khan"/);
 });
 
-test('The editorial redesign is restricted to the standalone People route', async () => {
+test('Standalone and homepage People sections share the approved editorial layout', async () => {
   const route = await read('app/people/page.tsx');
   const home = await read('app/page.tsx');
   assert.match(route, /<PeopleEditorial people=\{PEOPLE\}/);
   assert.match(route, /createPageMetadata\("\/people"\)/);
-  assert.doesNotMatch(home, /PeopleEditorial|people-editorial/);
-  assert.match(home, /<PeopleContent embedded/);
+  assert.match(home, /<section id="page-people" aria-label="Our People"><PeopleEditorial people=\{PEOPLE\} embedded \/><\/section>/);
+  assert.doesNotMatch(home, /PeopleContent/);
+});
+
+test('Embedding People preserves the opening markup and avoids duplicate navigation and IDs', async () => {
+  const home = await read('app/page.tsx');
+  const editorial = await read('components/site/people-editorial.tsx');
+  assert.ok(home.includes(`    <div className="home-page">
+      <Header home />
+      <main id="main">
+        <PaperFlight />
+      </main>
+    </div>`));
+  assert.match(editorial, /const Container = embedded \? "div" : "main"/);
+  assert.match(editorial, /\{!embedded && <Header \/>\}/);
+  assert.match(editorial, /id=\{embedded \? undefined : "main"\}/);
+  assert.match(editorial, /const idPrefix = embedded \? "home-" : ""/);
+  assert.ok(editorial.includes('href={`#${idPrefix}our-team`}'));
+  assert.match(editorial, /const Title = embedded \? "h2" : "h1"/);
+  assert.match(editorial, /const TeamHeading = embedded \? "h3" : "h2"/);
+  assert.match(editorial, /const PersonHeading = embedded \? "h4" : "h3"/);
 });
 
 test('Editorial profiles reuse the approved team data and native accessible disclosures', async () => {
@@ -26,9 +45,9 @@ test('Editorial profiles reuse the approved team data and native accessible disc
   for (const field of ['name', 'role', 'summary', 'bio', 'expertise', 'email']) {
     assert.ok(source.includes(`person.${field}`), `Missing approved person field: ${field}`);
   }
-  assert.match(source, /<h1 id="people-title"/);
-  assert.match(source, /<h2 id="team-title"/);
-  assert.match(source, /<h3 id=\{`team-person-/);
+  assert.ok(source.includes('<Title id={`${idPrefix}people-title`}'));
+  assert.ok(source.includes('<TeamHeading id={`${idPrefix}team-title`}'));
+  assert.ok(source.includes('<PersonHeading id={`${idPrefix}team-person-${index}`}'));
   assert.match(source, /<details className=\{styles\.biography\}/);
   assert.match(source, /aria-label=\{`Read biography of \$\{person\.name\}`\}/);
   assert.doesNotMatch(source, /use client|dangerouslySetInnerHTML/);
@@ -62,7 +81,7 @@ test('Confirmed education and training are preserved but not rendered', async ()
   assert.doesNotMatch(shared.split('export default function')[1], /educationAndTraining/);
 });
 
-test('Editorial biographies show experience while education stays saved and embedded biographies stay unchanged', async () => {
+test('Shared editorial biographies show experience while education stays saved and hidden', async () => {
   const shared = await read('components/site/pages/people.tsx');
   const editorial = await read('components/site/people-editorial.tsx');
   const styles = await read('app/people/people-editorial.module.css');
@@ -70,9 +89,6 @@ test('Editorial biographies show experience while education stays saved and embe
   assert.match(editorial, /<p>\{person\.experienceBio \?\? person\.bio\}<\/p>/);
   assert.doesNotMatch(editorial, /person\.educationAndTraining/);
   assert.match(styles, /\.bioContent p \+ p\s*\{\s*margin-top: 16px;/);
-  const embedded = shared.split('export default function')[1];
-  assert.match(embedded, /<p>\{person\.bio\}<\/p>/);
-  assert.doesNotMatch(embedded, /experienceBio|educationAndTraining/);
 });
 
 test('Final editorial polish keeps the introduction consistent and smaller labels readable', async () => {

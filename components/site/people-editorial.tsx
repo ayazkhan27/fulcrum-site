@@ -13,20 +13,26 @@ type Person = {
   email?: string
 }
 
-/** Standalone People page only. The approved homepage retains its own rendering. */
-export function PeopleEditorial({ people }: { people: readonly Person[] }) {
+/** Shared People layout; embedding omits standalone navigation and landmarks. */
+export function PeopleEditorial({ people, embedded = false }: { people: readonly Person[]; embedded?: boolean }) {
+  const Container = embedded ? "div" : "main"
+  const Title = embedded ? "h2" : "h1"
+  const TeamHeading = embedded ? "h3" : "h2"
+  const PersonHeading = embedded ? "h4" : "h3"
+  const idPrefix = embedded ? "home-" : ""
+
   return (
     <>
-      <Header />
-      <main id="main" className={styles.page}>
-        <section className={styles.hero} aria-labelledby="people-title">
+      {!embedded && <Header />}
+      <Container id={embedded ? undefined : "main"} className={styles.page}>
+        <section className={styles.hero} aria-labelledby={`${idPrefix}people-title`}>
           <div className={styles.shell}>
             <p className={styles.eyebrow}>Fulcrum / Our People</p>
             <div className={styles.introduction}>
               <div className={styles.headingBlock}>
-                <h1 id="people-title">The People<br />Behind the Motion</h1>
+                <Title id={`${idPrefix}people-title`} className={styles.title}>The People<br />Behind the Motion</Title>
                 <p className={styles.heroNote}>One team. Complementary perspectives.</p>
-                <a className={styles.meetLink} href="#our-team">
+                <a className={styles.meetLink} href={`#${idPrefix}our-team`}>
                   Meet the team <ArrowDown size={16} aria-hidden="true" />
                 </a>
               </div>
@@ -41,18 +47,18 @@ export function PeopleEditorial({ people }: { people: readonly Person[] }) {
           </div>
         </section>
 
-        <section id="our-team" className={styles.directory} aria-labelledby="team-title">
+        <section id={`${idPrefix}our-team`} className={styles.directory} aria-labelledby={`${idPrefix}team-title`}>
           <div className={styles.shell}>
             <div className={styles.directoryHeading}>
-              <h2 id="team-title">Our team</h2>
+              <TeamHeading id={`${idPrefix}team-title`} className={styles.teamTitle}>Our team</TeamHeading>
               <p>Experience. Perspective. People.</p>
             </div>
             <div className={styles.profiles}>
               {people.map((person, index) => (
-                <article className={styles.profile} key={person.name} aria-labelledby={`team-person-${index}`}>
+                <article className={styles.profile} key={person.name} aria-labelledby={`${idPrefix}team-person-${index}`}>
                   <header className={styles.identity}>
                     <p className={styles.role}>{person.role.replace(/\s*–\s*/g, " – ")}</p>
-                    <h3 id={`team-person-${index}`}>{person.name}</h3>
+                    <PersonHeading id={`${idPrefix}team-person-${index}`} className={styles.personName}>{person.name}</PersonHeading>
                     <ul className={styles.expertise} aria-label={`Areas of focus for ${person.name}`}>
                       {person.expertise.split(" · ").map((item) => <li key={item}>{item}</li>)}
                     </ul>
@@ -84,7 +90,7 @@ export function PeopleEditorial({ people }: { people: readonly Person[] }) {
             </aside>
           </div>
         </section>
-      </main>
+      </Container>
     </>
   )
 }
