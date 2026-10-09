@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-/** Keep the closing slogan at 55% of its full-fit size, with natural lettering. */
+/** Keep the approved natural-lettering size while adding space between letters. */
 export function FooterSlogan() {
   const containerRef = useRef<HTMLParagraphElement>(null)
   const textRef = useRef<HTMLSpanElement>(null)
@@ -19,7 +19,11 @@ export function FooterSlogan() {
     const fit = () => {
       if (disposed) return
       const available = container.getBoundingClientRect().width
+      // Measure without tracking so the added spacing doesn't shrink the font.
+      const letterSpacing = text.style.letterSpacing
+      text.style.letterSpacing = "normal"
       const measured = text.getBoundingClientRect().width
+      text.style.letterSpacing = letterSpacing
       const currentSize = Number.parseFloat(getComputedStyle(text).fontSize)
       if (available <= 0 || measured <= 0 || !Number.isFinite(currentSize)) return
       const fittedSize = Math.floor(currentSize * available / measured * 0.55 * 100) / 100

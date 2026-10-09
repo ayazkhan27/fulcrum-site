@@ -15,7 +15,7 @@ test('The closing footer uses a plain-text slogan without speed strokes and reta
   await access(new URL('../public/assets/fulcrum-bus-slogan-only-v4.png', import.meta.url));
 });
 
-test('The resized black closing slogan retains its left alignment and normal lettering', async () => {
+test('The resized black closing slogan retains its left alignment with spaced lettering', async () => {
   const css = await read('app/contact/contact.css');
   const statement = css.match(/\.contact-closing \.footer-statement\s*\{([^}]+)\}/)?.[1];
   assert.ok(statement);
@@ -27,7 +27,7 @@ test('The resized black closing slogan retains its left alignment and normal let
     'font-weight: 100;',
     'white-space: nowrap;',
   ]) assert.ok(statement.includes(rule), `Missing slogan rule: ${rule}`);
-  assert.match(css, /\.contact-closing \.footer-statement > span\s*\{[^}]*flex: 0 0 auto;\s*font-size: 7\.15cqw;\s*letter-spacing: normal;\s*word-spacing: normal;/);
+  assert.match(css, /\.contact-closing \.footer-statement > span\s*\{[^}]*flex: 0 0 auto;\s*font-size: 7\.15cqw;\s*letter-spacing: 0\.2em;\s*word-spacing: normal;/);
   assert.match(css, /\.footer-statement::before\s*\{[^}]*height: calc\([^;]*var\(--closing-brand-width\) \* 0\.071217 \+ 4px\);/);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.footer-statement\s*\{\s*grid-column: 2 \/ -1;/);
   assert.doesNotMatch(css, /0\.2977305882/);
@@ -53,7 +53,8 @@ test('The slogan enlarges the half-size version by 10 percent without stretching
   assert.match(source, /text\.style\.fontSize =/);
   assert.match(source, /observer\.disconnect\(\)/);
   assert.match(source, /cancelAnimationFrame\(frame\)/);
-  assert.doesNotMatch(source, /scaleX|letterSpacing|wordSpacing|innerHTML/);
+  assert.match(source, /const letterSpacing = text\.style\.letterSpacing\s*text\.style\.letterSpacing = "normal"\s*const measured = text\.getBoundingClientRect\(\)\.width\s*text\.style\.letterSpacing = letterSpacing/);
+  assert.doesNotMatch(source, /scaleX|wordSpacing|innerHTML/);
 });
 
 test('The compact slogan keeps contact text readable without an empty mobile branding row', async () => {

@@ -42,7 +42,7 @@
   margin: 0;
   color: var(--people-ink);
   font-family: var(--font-condensed);
-  font-size: clamp(2.3rem, 4.1vw, 3.5rem);
+  font-size: var(--section-title-size);
   font-weight: 700;
   line-height: 1.09;
   letter-spacing: -0.022em;
@@ -261,7 +261,6 @@
   .hero { padding-block: 32px 36px; }
   .eyebrow { margin-bottom: 26px; font-size: 0.65rem; }
   .introduction, .profile { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .headingBlock .title { font-size: clamp(2.1rem, 8.8vw, 2.8rem); }
   .heroNote { margin-top: 16px; font-size: 0.85rem; }
   .meetLink { margin-top: 12px; }
   .introCopy { font-size: 0.9rem; line-height: 1.8; }

@@ -13,7 +13,7 @@
 .fashion-page .fashion-grid > div:first-child { padding-top: 18px; }
 .fashion-page .fashion-hero h1 {
   margin: 46px 0 24px;
-  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-size: var(--section-title-size);
   line-height: 1.12;
   letter-spacing: -0.03em;
 }
