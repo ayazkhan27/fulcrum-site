@@ -52,7 +52,7 @@ export function Navigation({ editorial = false }: { editorial?: boolean }) {
             key={href}
             href={href}
             aria-current={
-              pathname === href || pathname.startsWith(`${href}/`)
+              pathname === href || pathname?.startsWith(`${href}/`)
                 ? "page"
                 : undefined
             }

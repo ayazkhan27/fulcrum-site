@@ -62,9 +62,9 @@ for (const filename of variants) {
       assert.match(svg, /viewBox="80 140 595 112"/);
       const expected = filename === 'fulcrum-logo-shadow-dark.svg'
         ? websiteMaster
-        : websiteMaster.replace('fill="#101f26"', 'fill="#ffffff"')
-          .replace('fill="#3f505c" opacity="0.6375"', 'fill="#b2bdcd" opacity="0.8"')
-          .replace(' fill="#000000"', '');
+        : websiteMaster.replace('fill="#003b8c"', 'fill="#ffffff"')
+          .replace('fill="#003b8c" opacity="0.6375"', 'fill="#b2bdcd" opacity="0.8"')
+          .replace(' fill="#003b8c"/>', '/>');
       assert.equal(svg, expected, 'Every website variant derives from the approved homepage master');
       assert.match(svg, /<title>Fulcrum<\/title>/);
       if (filename === 'fulcrum-logo-shadow-rivet-light.svg') {

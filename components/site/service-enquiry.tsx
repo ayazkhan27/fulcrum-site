@@ -42,7 +42,7 @@ export function ServiceEnquiry({ children, embedded = false }: { children: React
 
 function PrefilledServiceEnquiry({ children }: { children: ReactNode }) {
   const searchParams = useSearchParams()
-  const attribution = readEnquiryAttribution(searchParams)
+  const attribution = readEnquiryAttribution(searchParams ?? new URLSearchParams())
   // A new supported selection starts a fresh form. Unrelated URL parameters
   // cannot populate fields or reset the visitor's work.
   const selectionKey = `${attribution.sector}:${attribution.service}:${attribution.source}`

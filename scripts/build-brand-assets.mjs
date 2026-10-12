@@ -10,9 +10,9 @@ const websiteLogo = await readFile(new URL('../assets/brand/fulcrum-website-mast
 // The owner-selected homepage artwork is the canonical website logo.
 // Only colours change for navy backgrounds; geometry and lettering stay exact.
 const lightWebsiteLogo = websiteLogo
-  .replace('fill="#101f26"', 'fill="#ffffff"')
-  .replace('fill="#3f505c" opacity="0.6375"', 'fill="#b2bdcd" opacity="0.8"')
-  .replace(' fill="#000000"', '');
+  .replace('fill="#003b8c"', 'fill="#ffffff"')
+  .replace('fill="#003b8c" opacity="0.6375"', 'fill="#b2bdcd" opacity="0.8"')
+  .replace(' fill="#003b8c"/>', '/>');
 
 for (const [filename, variant] of [
   ['fulcrum-logo-shadow-dark.svg', websiteLogo],
