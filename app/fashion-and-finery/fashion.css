@@ -35,7 +35,7 @@
   max-width: none;
   color: var(--color-ink);
   font-family: var(--font-display);
-  font-size: clamp(2.35rem, 3.9vw, 3.65rem);
+  font-size: var(--section-title-size);
   font-weight: 600;
   font-style: normal;
   line-height: 1.04;
@@ -47,7 +47,7 @@
 .fashion-page .fashion-lead {
   margin: 0 0 1.4rem;
   color: var(--color-brand);
-  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-size: clamp(1.3125rem, 1.6875vw, 1.5625rem);
   line-height: 1.45;
 }
 
@@ -82,10 +82,12 @@
 .fashion-page .fashion-gallery {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: start;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   gap: 0.125rem;
   min-width: 0;
   width: 94.5%;
+  aspect-ratio: 1 / 1;
   justify-self: center;
   transform: translateY(8px);
 }
@@ -100,8 +102,13 @@
   display: grid;
   place-items: center;
   overflow: clip;
-  aspect-ratio: 0.53 / 1;
+  height: 100%;
+  min-height: 0;
   background: var(--color-panel);
+}
+
+.fashion-page .fashion-plate-muslin {
+  grid-row: span 2;
 }
 
 .fashion-page .fashion-image-frame img {
@@ -114,9 +121,18 @@
   object-position: center;
 }
 
-.fashion-page .fashion-plate-lehenga .fashion-image-frame img {
-  object-fit: cover;
-  object-position: center 44%;
+.fashion-page .fashion-plate-tee .fashion-image-frame {
+  background: #fff;
+}
+
+.fashion-page .fashion-plate-tee .fashion-image-frame img {
+  object-fit: contain;
+}
+
+.fashion-page .fashion-plate-big-apple .fashion-image-frame img {
+  inset: 5%;
+  width: 90%;
+  height: 90%;
 }
 
 .fashion-page .fashion-plate figcaption {
@@ -143,10 +159,6 @@
     gap: 1.75rem;
   }
 
-  .fashion-page .fashion-hero h1 {
-    font-size: clamp(2.25rem, 5vw, 3.35rem);
-  }
-
   .fashion-page .fashion-copy p {
     font-size: 0.875rem;
   }
@@ -164,11 +176,24 @@
   }
 
   .fashion-page .fashion-gallery {
+    aspect-ratio: auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
     gap: 0.125rem;
   }
 
   .fashion-page .fashion-image-frame {
     aspect-ratio: 2 / 3;
+    height: auto;
+  }
+
+  .fashion-page .fashion-plate-muslin {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .fashion-page .fashion-plate-tee .fashion-image-frame {
+    aspect-ratio: 1 / 1;
   }
 
   .fashion-page .fashion-plate-muslin .fashion-image-frame img {
@@ -182,11 +207,15 @@
 
 @media (max-width: 24rem) {
   .fashion-page .fashion-gallery {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.125rem;
   }
 
   .fashion-page .fashion-image-frame {
     aspect-ratio: 2 / 2.65;
+  }
+
+  .fashion-page .fashion-plate-tee .fashion-image-frame {
+    aspect-ratio: 1 / 1;
   }
 }

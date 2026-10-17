@@ -23,7 +23,7 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
             </div>
           </div>
 
-          <div className="fashion-gallery" aria-label="South Asian garment concepts">
+          <div className="fashion-gallery" aria-label="Garment concepts">
             <figure className="fashion-plate fashion-plate-muslin">
               <div className="fashion-image-frame">
                 <Image
@@ -35,14 +35,25 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
                 />
               </div>
             </figure>
-            <figure className="fashion-plate fashion-plate-lehenga">
+            <figure className="fashion-plate fashion-plate-tee fashion-plate-subway">
               <div className="fashion-image-frame">
                 <Image
-                  src="/assets/fashion-lehenga-elsacyber-9215668.jpg"
-                  width={6912}
-                  height={12096}
-                  sizes="(max-width: 800px) 100vw, (max-width: 1200px) 27vw, 340px"
-                  alt="Red embroidered South Asian lehenga in a carved heritage-inspired interior"
+                  src="/assets/fulcrum-nyc-tee-01.jpeg"
+                  width={1080}
+                  height={1009}
+                  sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
+                  alt="Fulcrum-designed black T-shirt featuring a colorful New York subway illustration"
+                />
+              </div>
+            </figure>
+            <figure className="fashion-plate fashion-plate-tee fashion-plate-big-apple">
+              <div className="fashion-image-frame">
+                <Image
+                  src="/assets/fulcrum-nyc-tee-02.jpeg"
+                  width={679}
+                  height={690}
+                  sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
+                  alt="Fulcrum-designed black T-shirt with a colorful Big Apple and New York skyline illustration"
                 />
               </div>
             </figure>
