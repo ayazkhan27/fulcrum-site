@@ -24,15 +24,6 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
           </div>
 
           <div className="fashion-gallery" aria-label="South Asian garment concepts">
-            <div className="fashion-ornament" aria-hidden="true">
-              <Image
-                src="/assets/openclipart-vectors-ornament-158428_1920-ivory-v2.png"
-                width={1920}
-                height={1104}
-                sizes="(max-width: 800px) 100vw, 55vw"
-                alt=""
-              />
-            </div>
             <figure className="fashion-plate fashion-plate-muslin">
               <div className="fashion-image-frame">
                 <Image
