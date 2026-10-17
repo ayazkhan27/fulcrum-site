@@ -95,8 +95,8 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                 </figure>
                 <div className="aviation-airport-photo">
                   <Image
-                    src="/assets/stocksnap-building-2603781.jpg"
-                    alt="Airport check-in hall with baggage conveyors and passengers"
+                    src="/assets/airport-ground-operations-v1.png"
+                    alt="Passenger aircraft at a terminal gate with a jet bridge and baggage tug on the airport apron"
                     fill
                     sizes={embedded ? "(max-width: 800px) 100vw, 50vw" : "(max-width: 800px) 50vw, 25vw"}
                   />
