@@ -35,17 +35,6 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
                 />
               </div>
             </figure>
-            <figure className="fashion-plate fashion-plate-tee fashion-plate-subway">
-              <div className="fashion-image-frame">
-                <Image
-                  src="/assets/fulcrum-nyc-tee-01.jpeg"
-                  width={1080}
-                  height={1009}
-                  sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
-                  alt="Fulcrum-designed black T-shirt featuring a colorful New York subway illustration"
-                />
-              </div>
-            </figure>
             <figure className="fashion-plate fashion-plate-tee fashion-plate-big-apple">
               <div className="fashion-image-frame">
                 <Image
@@ -54,6 +43,17 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
                   height={690}
                   sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
                   alt="Fulcrum-designed black T-shirt with a colorful Big Apple and New York skyline illustration"
+                />
+              </div>
+            </figure>
+            <figure className="fashion-plate fashion-plate-tee fashion-plate-subway">
+              <div className="fashion-image-frame">
+                <Image
+                  src="/assets/fulcrum-nyc-tee-01.jpeg"
+                  width={1080}
+                  height={1009}
+                  sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
+                  alt="Fulcrum-designed black T-shirt featuring a colorful New York subway illustration"
                 />
               </div>
             </figure>

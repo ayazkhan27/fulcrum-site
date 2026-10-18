@@ -32,8 +32,8 @@ export default function PageContent({ embedded = false }: { embedded?: boolean }
             </div>
             <div className="mission-statement-copy">
               <p>
-                We work across aviation, maritime services, energy, commodities,
-                industrial equipment, defense supply, textile and mill supply, and
+                We work across aviation, maritime services, energy, industrial
+                equipment, defense supply, textile and mill supply, and
                 fashion and finery. Our role is to understand each requirement,
                 identify suitable partners and support discussions on specifications,
                 pricing, delivery and commercial terms.
