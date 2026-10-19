@@ -80,11 +80,12 @@
 }
 
 .fashion-page .fashion-gallery {
+  background: #fff;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: repeat(2, minmax(0, 1fr));
   align-items: stretch;
-  gap: 0.125rem;
+  gap: 4px;
   min-width: 0;
   width: 94.5%;
   aspect-ratio: 1 / 1;
@@ -126,7 +127,8 @@
 }
 
 .fashion-page .fashion-plate-tee .fashion-image-frame img {
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .fashion-page .fashion-plate-big-apple .fashion-image-frame img {
@@ -180,7 +182,7 @@
     aspect-ratio: auto;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto;
-    gap: 0.125rem;
+    gap: 4px;
   }
 
   .fashion-page .fashion-image-frame {
@@ -209,7 +211,7 @@
 @media (max-width: 24rem) {
   .fashion-page .fashion-gallery {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 0.125rem;
+    gap: 4px;
   }
 
   .fashion-page .fashion-image-frame {
@@ -219,4 +221,8 @@
   .fashion-page .fashion-plate-tee .fashion-image-frame {
     aspect-ratio: 1 / 1;
   }
+}
+
+.fashion-page .fashion-plate-subway .fashion-image-frame {
+  background: #fff;
 }
