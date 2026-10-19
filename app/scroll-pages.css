@@ -1,3 +1,21 @@
+#page-fashion .fulcrum-connection-panel {
+  min-height: 134px;
+  display: flex;
+  align-items: center;
+  background: #112f50;
+  color: #fff;
+}
+
+#page-fashion .fulcrum-connection-panel p {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  text-align: center;
+  padding-block: 24px;
+  margin-block: 0;
+  font-size: clamp(30px, 4vw, 50px);
+  line-height: 1.2;
+}
+
 /* Rhythm for the continuous homepage; standalone pages retain their layouts. */
 #page-commodities {
   border-bottom: 1px solid #c4d3e1;
