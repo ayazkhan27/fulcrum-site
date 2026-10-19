@@ -38,22 +38,22 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
             <figure className="fashion-plate fashion-plate-tee fashion-plate-big-apple">
               <div className="fashion-image-frame">
                 <Image
-                  src="/assets/fulcrum-nyc-tee-02.jpeg"
-                  width={679}
-                  height={690}
+                  src="/assets/small-frog-big-leap-black-tee-v2.png"
+                  width={1145}
+                  height={1374}
                   sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
-                  alt="Fulcrum-designed black T-shirt with a colorful Big Apple and New York skyline illustration"
+                  alt="Black T-shirt featuring a colorful frog and bamboo with Small Frog. Big Leap. lettering"
                 />
               </div>
             </figure>
             <figure className="fashion-plate fashion-plate-tee fashion-plate-subway">
               <div className="fashion-image-frame">
                 <Image
-                  src="/assets/fulcrum-nyc-tee-01.jpeg"
-                  width={1080}
-                  height={1009}
+                  src="/assets/quan-black-tee-new-york-city-v2.png"
+                  width={1145}
+                  height={1374}
                   sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
-                  alt="Fulcrum-designed black T-shirt featuring a colorful New York subway illustration"
+                  alt="Black Hit the Quan T-shirt featuring a crocodile and domino design"
                 />
               </div>
             </figure>
