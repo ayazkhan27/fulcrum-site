@@ -229,11 +229,12 @@
 
 .closing {
   width: 100%;
+  min-height: 88px;
   display: flex;
   align-items: center;
   gap: 32px;
   margin-top: 40px;
-  padding: 32px 40px;
+  padding: 20px 40px;
   background: #000000;
   color: #fff;
 }
@@ -241,7 +242,7 @@
 .closingMark {
   flex: 0 0 3px;
   align-self: stretch;
-  background: #8eb4da;
+  background: #ffffff;
 }
 
 .closing p {
@@ -273,6 +274,6 @@
   .expertise { margin-top: 12px; }
   .summary { font-size: 0.95rem; }
   .biography { margin-top: 12px; }
-  .closing { margin-top: 28px; padding: 26px 24px; gap: 20px; }
+  .closing { margin-top: 28px; padding: 20px 24px; gap: 20px; }
   .desktopBreak { display: none; }
 }
