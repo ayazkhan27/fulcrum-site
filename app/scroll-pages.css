@@ -1,18 +1,20 @@
 #page-fashion .fulcrum-connection-panel {
-  min-height: 134px;
+  min-height: 88px;
+  justify-content: center;
+  padding-inline: clamp(24px, 4vw, 56px);
   display: flex;
   align-items: center;
-  background: #112f50;
+  background: #000000;
   color: #fff;
 }
 
 #page-fashion .fulcrum-connection-panel p {
   font-family: var(--font-condensed);
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
-  padding-block: 24px;
+  padding-block: 20px;
   margin-block: 0;
-  font-size: clamp(30px, 4vw, 50px);
+  font-size: clamp(22.5px, 3vw, 37.5px);
   line-height: 1.2;
 }
 

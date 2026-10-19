@@ -37,8 +37,8 @@ export default function Page() {
     <section id="page-energy" aria-label="Energy & Petroleum"><EnergyContent embedded /></section>
     <section id="page-textiles" aria-label="Textile & Mill Supply"><SectorContent slug="textiles" embedded /></section>
     <section id="page-fashion" aria-label="Fulcrum Fashion and Finery">
-      <div className="fulcrum-connection-panel">
-        <p className="shell">Connecting capability with opportunity.</p>
+      <div className="fulcrum-connection-panel shell">
+        <p>Connecting capability with opportunity.</p>
       </div>
       <FashionContent embedded />
     </section>
