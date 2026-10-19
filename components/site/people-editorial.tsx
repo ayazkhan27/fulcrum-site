@@ -84,11 +84,11 @@ export function PeopleEditorial({ people, embedded = false }: { people: readonly
                 </article>
               ))}
             </div>
-          </div>
-            <aside className={`${styles.closing} shell`} aria-label="Our shared perspective">
+            <aside className={styles.closing} aria-label="Our shared perspective">
               <span className={styles.closingMark} aria-hidden="true" />
-              <p>Operating, analytical and commercial perspectives meet around the work.</p>
+              <p>Operating, analytical and commercial perspectives<br className={styles.desktopBreak} /> meet around the work.</p>
             </aside>
+          </div>
         </section>
       </Container>
     </>
