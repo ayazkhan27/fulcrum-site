@@ -38,7 +38,7 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
             <figure className="fashion-plate fashion-plate-tee fashion-plate-big-apple">
               <div className="fashion-image-frame">
                 <Image
-                  src="/assets/small-frog-big-leap-active-v2.png"
+                  src="/assets/small-frog-big-leap-smaller-title.png"
                   width={1145}
                   height={1374}
                   sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
