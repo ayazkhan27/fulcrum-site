@@ -49,11 +49,11 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
             <figure className="fashion-plate fashion-plate-tee fashion-plate-subway">
               <div className="fashion-image-frame">
                 <Image
-                  src="/assets/quan-white-tee-dynamic-edge-v3.png"
+                  src="/assets/wherever-eve-expressive-cat.png"
                   width={1145}
                   height={1374}
                   sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
-                  alt="White T-shirt featuring the original Hit the Quan crocodile and domino design"
+                  alt="Premium white T-shirt featuring a ginger cat and Wherever Eve Is, A Tom Follows lettering"
                 />
               </div>
             </figure>
