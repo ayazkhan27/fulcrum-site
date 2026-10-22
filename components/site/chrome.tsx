@@ -58,7 +58,7 @@ export function Footer({ closing = false }: { closing?: boolean }) {
           <div className="footer-identity">
             <Link href="/" aria-label="Fulcrum, home" className="footer-brand">
               <Image
-                src={closing ? "/fulcrum-logo-footer-black.svg" : "/fulcrum-logo-footer-cobalt.svg"}
+                src="/fulcrum-logo-footer-cobalt.svg"
                 width={595}
                 height={112}
                 alt="Fulcrum"
