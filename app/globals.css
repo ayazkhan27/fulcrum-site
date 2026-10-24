@@ -656,11 +656,11 @@
 }
 .footer-brand {
   display: block;
-  width: var(--footer-brand-width);
+  width: calc(var(--footer-brand-width) * 1.1);
   margin-top: -20px;
   /* Compensate for 19 units of transparent left inset in the 595-unit SVG.
      The visible mountain edge then aligns with the invitation above. */
-  margin-left: calc(var(--footer-brand-width) * -0.0319327731);
+  margin-left: calc(var(--footer-brand-width) * -0.0351260504);
 }
 .footer-tagline {
   display: block;
