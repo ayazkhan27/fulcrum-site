@@ -65,10 +65,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               {content.tagline && (
                 content.label === "Energy" ? (
                   <p className="detail-tagline energy-tagline">
-                    <strong>
-                      <span>We move heaven and earth to ease your burden.</span>
-                      <span className="energy-tagline-final">With precision. Everywhere.</span>
-                    </strong>
+                    <strong>We move heaven and earth to ease your burden. With precision. Everywhere.</strong>
                   </p>
                 ) : (
                   <p className="detail-tagline"><strong>{content.tagline}</strong></p>
