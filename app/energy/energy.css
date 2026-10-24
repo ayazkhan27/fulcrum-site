@@ -7,6 +7,11 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   color: #174572;
 }
 
+.vertical-hero-energy .detail-hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 44px;
+}
+
 .vertical-hero-energy .detail-hero-grid > div:first-child {
   container-type: inline-size;
 }
@@ -24,6 +29,28 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
 .vertical-hero-energy .detail-tagline strong {
   font-weight: 300;
 }
+
+.vertical-hero-energy .energy-tagline {
+  font-size: clamp(18px, 4.6cqw, 25px);
+  line-height: 1.4;
+}
+
+.vertical-hero-energy .energy-tagline strong {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical-hero-energy .energy-tagline strong > span {
+  display: block;
+}
+
+.vertical-hero-energy .energy-tagline strong > span:first-child {
+  white-space: nowrap;
+}
+
+.vertical-hero-energy .energy-tagline-final { text-align: center; }
 
 .vertical-hero-energy .energy-image-pair {
   display: grid;
@@ -107,12 +134,40 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
 }
 
 .vertical-hero-energy .hero-object-panel {
-  padding: 24px;
+  padding: 0;
   background: transparent;
 }
 
 .vertical-hero-energy .hero-object-scope {
-  padding-top: 54px;
+  padding-top: 22px;
+}
+
+.vertical-hero-energy .energy-visual-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+  transform: translateY(-10px);
+}
+
+.vertical-hero-energy .energy-editorial-visual {
+  min-width: 0;
+  margin: 0;
+}
+
+.vertical-hero-energy .energy-image-frame {
+  position: relative;
+  aspect-ratio: 1.3;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #dce5ec;
+}
+
+.vertical-hero-energy .energy-image-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 520px) {
@@ -132,5 +187,13 @@ body:has(> main .vertical-hero-energy) .footer-tagline {
   hyphens: none;
 }
 
-.energy-editorial-visual { margin: 0; }
-.energy-editorial-visual img { display: block; width: 100%; height: auto; border-radius: 3px; }
+@media (max-width: 520px) {
+  .vertical-hero-energy .energy-visual-pair {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .vertical-hero-energy .energy-image-frame {
+    aspect-ratio: 1.7;
+  }
+}

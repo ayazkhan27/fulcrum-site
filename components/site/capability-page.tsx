@@ -63,7 +63,16 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
               <h1>{content.pageLabel ?? content.label}</h1>
               <p className="detail-intro">{content.intro}</p>
               {content.tagline && (
-                <p className="detail-tagline"><strong>{content.tagline}</strong></p>
+                content.label === "Energy" ? (
+                  <p className="detail-tagline energy-tagline">
+                    <strong>
+                      <span>We move heaven and earth to ease your burden.</span>
+                      <span className="energy-tagline-final">With precision. Everywhere.</span>
+                    </strong>
+                  </p>
+                ) : (
+                  <p className="detail-tagline"><strong>{content.tagline}</strong></p>
+                )
               )}
               {content.label === "Edible Oil & Commodities" && (
                 <div className="hero-object-scope">
@@ -123,9 +132,18 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
             ) : suppliedAssets[heroAsset].treatment === "object" ? (
               <div className="hero-object-panel">
                 {content.label === "Energy" ? (
-                  <figure className="energy-editorial-visual">
-                    <Image src="/assets/energy-editorial-v2.png" alt="Illustrative tanker truck at an energy terminal" width={1536} height={1024} sizes="(max-width: 800px) 90vw, 45vw" preload={!embedded} />
-                  </figure>
+                  <div className="energy-visual-pair">
+                    <figure className="energy-editorial-visual">
+                      <div className="energy-image-frame">
+                        <Image src="/assets/energy-editorial-v2.png" alt="Road tanker at a petroleum terminal" width={1536} height={1024} sizes="(max-width: 520px) 90vw, (max-width: 800px) 44vw, 22vw" preload={!embedded} />
+                      </div>
+                    </figure>
+                    <figure className="energy-editorial-visual">
+                      <div className="energy-image-frame">
+                        <Image src="/assets/lng-carrier-editorial-v1.png" alt="LNG carrier transporting liquefied natural gas across the sea" width={1983} height={793} sizes="(max-width: 520px) 90vw, (max-width: 800px) 44vw, 22vw" preload={!embedded} />
+                      </div>
+                    </figure>
+                  </div>
                 ) : content.label === "Edible Oil & Commodities" ? (
                   <EdibleOilVisual priority={!embedded} />
                 ) : (
@@ -142,7 +160,7 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                       <li key={name}>{name}</li>
                     ))}
                   </ul>
-                  <span>Illustrative imagery</span>
+                  {content.label !== "Energy" && <span>Illustrative imagery</span>}
                 </div>}
               </div>
             ) : (
