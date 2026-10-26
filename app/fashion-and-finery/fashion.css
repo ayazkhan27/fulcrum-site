@@ -85,7 +85,8 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: repeat(2, minmax(0, 1fr));
   align-items: stretch;
-  gap: 4px;
+  column-gap: 4px;
+  row-gap: 0;
   min-width: 0;
   width: 94.5%;
   aspect-ratio: 1 / 1;
@@ -133,7 +134,7 @@
 
 .fashion-page .fashion-plate-she-light .fashion-image-frame img {
   object-fit: contain;
-  object-position: center;
+  object-position: center top;
 }
 
 .fashion-page .fashion-plate-big-apple .fashion-image-frame img {
@@ -187,7 +188,8 @@
     aspect-ratio: auto;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto;
-    gap: 4px;
+    column-gap: 4px;
+    row-gap: 0;
   }
 
   .fashion-page .fashion-image-frame {
@@ -216,7 +218,8 @@
 @media (max-width: 24rem) {
   .fashion-page .fashion-gallery {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 4px;
+    column-gap: 4px;
+    row-gap: 0;
   }
 
   .fashion-page .fashion-image-frame {
