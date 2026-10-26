@@ -35,14 +35,14 @@ export default function FashionContent({ embedded = false }: { embedded?: boolea
                 />
               </div>
             </figure>
-            <figure className="fashion-plate fashion-plate-tee fashion-plate-big-apple">
+            <figure className="fashion-plate fashion-plate-tee fashion-plate-she-light">
               <div className="fashion-image-frame">
                 <Image
-                  src="/assets/small-frog-big-leap-smaller-title.webp"
+                  src="/assets/she-is-light-brighter.webp"
                   width={640}
-                  height={769}
+                  height={585}
                   sizes="(max-width: 800px) 50vw, (max-width: 1200px) 27vw, 340px"
-                  alt="Black T-shirt featuring a colorful frog and bamboo with Small Frog. Big Leap. lettering"
+                  alt="Black T-shirt featuring a luminous white graphic and She Is Light lettering"
                 />
               </div>
             </figure>

@@ -131,6 +131,11 @@
   object-position: center top;
 }
 
+.fashion-page .fashion-plate-she-light .fashion-image-frame img {
+  object-fit: contain;
+  object-position: center;
+}
+
 .fashion-page .fashion-plate-big-apple .fashion-image-frame img {
   inset: 0;
   width: 100%;
