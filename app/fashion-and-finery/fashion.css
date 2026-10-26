@@ -86,7 +86,7 @@
   grid-template-rows: repeat(2, minmax(0, 1fr));
   align-items: stretch;
   column-gap: 4px;
-  row-gap: 0;
+  row-gap: 4px;
   min-width: 0;
   width: 94.5%;
   aspect-ratio: 1 / 1;
@@ -189,7 +189,7 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto;
     column-gap: 4px;
-    row-gap: 0;
+    row-gap: 4px;
   }
 
   .fashion-page .fashion-image-frame {
@@ -219,7 +219,7 @@
   .fashion-page .fashion-gallery {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: 4px;
-    row-gap: 0;
+    row-gap: 4px;
   }
 
   .fashion-page .fashion-image-frame {
