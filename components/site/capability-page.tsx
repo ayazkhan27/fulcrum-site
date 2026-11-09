@@ -91,8 +91,8 @@ export function CapabilityPage({ content, heroOnly = false, embedded = false }: 
                 <figure className="asset-visual asset-photo aviation-lower-image">
                   <div className="asset-image">
                     <Image
-                      src="/assets/zhai-ken-airplane-6674689.jpg"
-                      alt="Airplane flying between two modern buildings against a blue sky"
+                      src="/assets/leerosario-airplane-7766082.jpg"
+                      alt="Head-on view of a passenger jet flying above clouds and snow-covered mountains"
                       fill
                       sizes="(max-width: 700px) 100vw, 50vw"
                       preload={!embedded}
