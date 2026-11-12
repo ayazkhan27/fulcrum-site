@@ -77,6 +77,7 @@ export default function CareerContent({ embedded = false }: { embedded?: boolean
             <p>Commission rates and the conditions for earning and receiving payment will be discussed individually and set out in a written agreement before work begins.</p>
             <h3>How to apply</h3>
             <p>Email your CV and a brief introduction describing your relevant experience, market knowledge and location to <a href="mailto:khanhussein@fulcrumtriad.com">khanhussein@fulcrumtriad.com</a>. Select your location below to use the corresponding application subject.</p>
+            <p>Applications are reviewed on a rolling basis.</p>
           </div>
           <div className="career-jobs">
             {["USA", "Malaysia", "Bangladesh"].map((location) => (
